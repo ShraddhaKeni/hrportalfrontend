@@ -6,7 +6,7 @@ const initialState = {
   nameError: ""
 }
 
-export default class Roles extends React.Component {
+export default class Documenttype extends React.Component {
   state = initialState;
 
   handleChange = event => {
@@ -17,11 +17,11 @@ export default class Roles extends React.Component {
    
     let nameError = ""; 
     if(!this.state.name){
-      nameError = "Role name cannot be empty";
+      nameError = "Document type name cannot be empty";
       this.setState({nameError});
       return false;
     } else if (!(/^[aA-zZ\s]+$/.test(this.state.name)))  {      
-      nameError = "Invalid role name";
+      nameError = "Invalid Document type name";
       this.setState({nameError});
       return false;
     } 
@@ -39,7 +39,7 @@ export default class Roles extends React.Component {
       name: this.state.name
     };
 
-    axios.post(`http://localhost:3200/roles/add`, user ,
+    axios.post(`http://localhost:3200/document-type/create`, user ,
     {
       'Content-type':'application/json'
     })
@@ -61,8 +61,8 @@ export default class Roles extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div>
           <label>
-            Role Name:
-            <input type="text" name="name" value={this.state.name}  placeholder="Enter role name" onChange={this.handleChange} />
+             Document type Name:
+            <input type="text" name="name" value={this.state.name}  placeholder="Enter Document type name" onChange={this.handleChange} />
            <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div>
           </label>
           </div>

@@ -18,14 +18,15 @@ export default class Roles extends React.Component {
     let nameError = ""; 
     if(!this.state.name){
       nameError = "Role name cannot be empty";
-    } else if (!this.state.name.includes("a-zA-Z"))  {      
-      nameError = "Invalid role name";
-    } 
-     
-    if(nameError){
       this.setState({nameError});
       return false;
-    }
+    } else if (!(/^[aA-zZ\s]+$/.test(this.state.name)))  {      
+      nameError = "Invalid role name";
+      this.setState({nameError});
+      return false;
+    } 
+
+    
   return true;
 };   
 
@@ -34,17 +35,11 @@ export default class Roles extends React.Component {
     
     const isValid = this.handleFormValidation();
     if(isValid){
-      console.log(this.state);
-      //clear form 
-      this.setState(initialState);
-    }
-    
-
     const user = {
       name: this.state.name
     };
 
-    axios.post(`http://localhost:3200/roles/add`, user ,
+    axios.post(`http://localhost:3000/roles/add`, user ,
     {
       'Content-type':'application/json'
     })
@@ -52,6 +47,11 @@ export default class Roles extends React.Component {
         console.log(res);
         console.log(res.data);
       })
+      //clear form 
+      this.setState(initialState);
+    }
+    
+
   }
 
   render() {

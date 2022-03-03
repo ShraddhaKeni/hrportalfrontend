@@ -6,7 +6,7 @@ const initialState = {
   nameError: ""
 }
 
-export default class Department extends React.Component {
+export default class Countries extends React.Component {
   state = initialState;
 
   handleChange = event => {
@@ -17,16 +17,14 @@ export default class Department extends React.Component {
    
     let nameError = ""; 
     if(!this.state.name){
-      nameError = "Department name cannot be empty";
+      nameError = "Country cannot be empty";
       this.setState({nameError});
       return false;
     } else if (!(/^[aA-zZ\s]+$/.test(this.state.name)))  {      
-      nameError = "Invalid role name";
+      nameError = "Invalid country name";
       this.setState({nameError});
       return false;
-    } 
-
-    
+    }     
   return true;
 };   
 
@@ -39,7 +37,7 @@ export default class Department extends React.Component {
       name: this.state.name
     };
 
-    axios.post(`http://localhost:3000/departments/add`, user ,
+    axios.post(`http://localhost:3000/countries/create`, user ,
     {
       'Content-type':'application/json'
     })
@@ -61,8 +59,8 @@ export default class Department extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div>
           <label>
-            Department Name:
-            <input type="text" name="name" value={this.state.name}  placeholder="Enter department name" onChange={this.handleChange} />
+             Country Name:
+            <input type="text" name="name" value={this.state.name}  placeholder="Enter country name" onChange={this.handleChange} />
            <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div>
           </label>
           </div>

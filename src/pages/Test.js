@@ -1,36 +1,3 @@
-/* import React from 'react';
-
-const initialState = {
-  name: "",
-  nameError: ""
-}
-
-export default class Test extends React.Component {
-  state = initialState;
-
-  handleChange = event => {
-    this.setState({ name: event.target.value });
-    console.log(event.target.value);
-  }
-  
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>
-              Test:
-              <input type="text" name="name" value={this.state.name}  placeholder="Enter role name" onChange={this.handleChange} />
-              <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div>
-            </label>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    )
-  }
-} */
-
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -41,13 +8,12 @@ export default function App() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm();
    
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>First Name</label>
+      <label>First Name:</label>
       <input
         {...register("firstName", {
             required: true,
@@ -59,8 +25,8 @@ export default function App() {
       {errors?.firstName?.type === "required" && <p>This field is required</p>}
       {errors?.firstName?.type === "maxLength" && <p>First name cannot exceed 20 characters</p>}
       {errors?.firstName?.type === "pattern" && <p>Alphabetical characters only</p>}
-
-      <label>Last Name</label>
+      <br></br>
+      <label>Last Name:</label>
       <input 
         {...register("lastName", { 
             pattern: /^[A-Za-z]+$/i,
@@ -72,8 +38,8 @@ export default function App() {
       {errors?.lastName?.type === "required" && <p>This field is required</p>}
       {errors?.lastName?.type === "maxLength" && <p>Last name cannot exceed 20 characters</p>}
       {errors?.lastName?.type === "pattern" && <p>Alphabetical characters only</p>}
-
-      <label>Age</label>
+      <br></br>
+      <label>Age:</label>
       <input 
         {...register("age", { 
             min: 18, 

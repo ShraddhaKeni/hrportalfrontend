@@ -33,7 +33,7 @@ export default class States extends React.Component {
         // console.log('ssss');
         // console.log(this.state.country);
 
-        axios.get('http://localhost:3200/states').then(response => {
+        axios.get('http://localhost:3000/countries').then(response => {
             console.log(response.data);
             this.setState({
                 CountryData: response.data
@@ -50,7 +50,7 @@ export default class States extends React.Component {
                 name: this.state.sname //column name:value
             };
 //console.log(user);
-             axios.post(`http://localhost:3200/states/create`, user,
+             axios.post(`http://localhost:3000/states/create`, user,
                 {
                     'Content-type': 'application/json'
                 })

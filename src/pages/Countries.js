@@ -37,7 +37,7 @@ export default class Countries extends React.Component {
       name: this.state.name
     };
 
-    axios.post(`http://localhost:3200/countries/create`, user ,
+    axios.post(`http://localhost:3000/countries/create`, user ,
     {
       'Content-type':'application/json'
     })

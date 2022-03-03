@@ -39,7 +39,7 @@ export default class Roles extends React.Component {
       name: this.state.name
     };
 
-    axios.post(`http://localhost:3200/roles/add`, user ,
+    axios.post(`http://localhost:3000/roles/add`, user ,
     {
       'Content-type':'application/json'
     })

@@ -68,4 +68,14 @@ export const NavbarData = [
             },
         ]
     },
+    {
+        title: 'Level types',
+        path: '/leveltype',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
+        title: 'Users',
+        path: '/users',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
 ]

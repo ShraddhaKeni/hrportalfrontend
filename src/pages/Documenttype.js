@@ -39,7 +39,7 @@ export default class Documenttype extends React.Component {
       name: this.state.name
     };
 
-    axios.post(`http://localhost:3200/document-type/create`, user ,
+    axios.post(`http://localhost:3000/document-type/create`, user ,
     {
       'Content-type':'application/json'
     })

@@ -60,7 +60,7 @@ export default class Companies extends React.Component {
         // console.log('ssss');
         // console.log(this.state.country);
 
-        axios.get('http://localhost:3200/countries').then(response => {
+        axios.get('http://localhost:3000/countries').then(response => {
             console.log(response.data);
             this.setState({
                 CountryData: response.data
@@ -74,7 +74,7 @@ export default class Companies extends React.Component {
         });
        // console.log(e.target.value);
        //console.log(this.state.country);
-         axios.get('http://localhost:3200/states/list/' + e.target.value).then(response => {
+         axios.get('http://localhost:3000/states/list/' + e.target.value).then(response => {
              console.log(response.data);
             //  if(response.status)
             this.setState({
@@ -87,7 +87,7 @@ export default class Companies extends React.Component {
         this.setState({
             stateid: e.target.value
         });
-        axios.get('http://localhost:3200/cities/list/' + e.target.value).then(response => {
+        axios.get('http://localhost:3000/cities/list/' + e.target.value).then(response => {
             console.log(response.data);
             this.setState({
                 CityData: response.data
@@ -116,7 +116,7 @@ export default class Companies extends React.Component {
                 cin_number: this.state.cinnumber
             };
 //console.log(user);
-             axios.post(`http://localhost:3200/companies/add`, user,
+             axios.post(`http://localhost:3000/companies/add`, user,
                 {
                     'Content-type': 'application/json'
                 })

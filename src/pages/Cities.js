@@ -31,7 +31,7 @@ export default class Cities extends React.Component {
 
     componentDidMount() {
 
-        axios.get('http://localhost:3200/states').then(response => {
+        axios.get('http://localhost:3000/states').then(response => {
             console.log(response.data);
             this.setState({
                 StateData: response.data
@@ -48,7 +48,7 @@ export default class Cities extends React.Component {
                 name: this.state.city //column name:value
             };
 //console.log(user);
-             axios.post(`http://localhost:3200/cities/create`, user,
+             axios.post(`http://localhost:3000/cities/create`, user,
                 {
                     'Content-type': 'application/json'
                 })

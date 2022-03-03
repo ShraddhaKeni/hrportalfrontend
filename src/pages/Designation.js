@@ -39,7 +39,7 @@ export default class Designation extends React.Component {
       name: this.state.name
     };
 
-    axios.post(`http://localhost:3200/designation/create`, user ,
+    axios.post(`http://localhost:3000/designation/create`, user ,
     {
       'Content-type':'application/json'
     })

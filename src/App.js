@@ -7,27 +7,31 @@ import Companies from './pages/Companies';
 import Countries from './pages/Countries';
 import States from './pages/States';
 import Cities from './pages/Cities';
+import Leveltype from './pages/Leveltype';
+import Users from './pages/Users';
 import Navbar from './components/Navbar';
 import './components/App.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />}></Route> 
-        <Route path="/roles" element={<Roles />}></Route>   
-        <Route path="/designation" element={<Designation />}></Route>  
-        <Route path="/department" element={<Department />}></Route> 
-        <Route path="/documenttype" element={<Documenttype />}></Route> 
-        <Route path="/companies" element={<Companies />}></Route>
-        <Route path="/countries" element={<Countries />}></Route>
-        <Route path="/states" element={<States />}></Route>
-        <Route path="/cities" element={<Cities />}></Route>
-      </Routes>
-    </div>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/roles" element={<Roles />}></Route>
+          <Route path="/designation" element={<Designation />}></Route>
+          <Route path="/department" element={<Department />}></Route>
+          <Route path="/documenttype" element={<Documenttype />}></Route>
+          <Route path="/companies" element={<Companies />}></Route>
+          <Route path="/countries" element={<Countries />}></Route>
+          <Route path="/states" element={<States />}></Route>
+          <Route path="/cities" element={<Cities />}></Route>
+          <Route path="/leveltype" element={<Leveltype />}></Route>
+          <Route path="/users" element={<Users />}></Route>
+        </Routes>
+      </div>
     </Router>
   );
 }

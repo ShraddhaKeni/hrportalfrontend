@@ -5,6 +5,7 @@ import Department from './pages/Department';
 import Navbar from './components/Navbar';
 import './components/App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Test from './pages/Test';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="/" element={<Home />}></Route> 
         <Route path="/roles" element={<Roles />}></Route>   
         <Route path="/designation" element={<Designation />}></Route>  
-        <Route path="/department" element={<Department />}></Route> 
+        <Route path="/department" element={<Department />}></Route>
+        <Route path="/test" element={<Test />}></Route> 
       </Routes>
     </div>
     </Router>

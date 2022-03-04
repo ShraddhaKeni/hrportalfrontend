@@ -35,6 +35,11 @@ export const NavbarData = [
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
     {
+        title: 'Test',
+        path: '/test',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
         title: 'Document type',
         path: '/documenttype',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,

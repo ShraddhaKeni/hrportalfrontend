@@ -11,7 +11,8 @@ import Leveltype from './pages/Leveltype';
 import Users from './pages/Users';
 import Navbar from './components/Navbar';
 import './components/App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Test from './pages/Test';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/cities" element={<Cities />}></Route>
           <Route path="/leveltype" element={<Leveltype />}></Route>
           <Route path="/users" element={<Users />}></Route>
+          <Route path="/test" element={<Test />}></Route> 
         </Routes>
       </div>
     </Router>

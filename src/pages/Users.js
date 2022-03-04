@@ -14,26 +14,25 @@ const initialState = {
 }
 export default class Users extends React.Component {
     state = initialState;
-    /*  () => {
-         const [startDate, setStartDate] = useState(new Date());
-     } */
 
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
-       console.log(event);
     }
     onFileChange = event => {
-        console.log(event.target.files[0]);
-        // Update the state
+        //console.log(event.target.files[0]);
         this.setState({ selectedFile: event.target.files[0] }); // file data is stored in state
-
+        if(event.type !== "image/png"){
+            alert("adsdja");
+            //break;
+        }
+        console.log(event.target.files[0]);
     };
     componentDidMount() {
 
         axios.get('http://localhost:3000/roles').then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             this.setState({
-                RoleData: response.data
+                RoleData: response.data.data
             });
         });
     }
@@ -50,8 +49,6 @@ export default class Users extends React.Component {
             this.setState({ nameError });
             return false;
         }
-
-
         return true;
     };
 
@@ -67,41 +64,25 @@ export default class Users extends React.Component {
             fd.append('contact_no', this.state.contactno);
             fd.append('email', this.state.email);
             fd.append('role_id', this.state.roleid);
-            fd.append('profile_pic', this.state.selectedFile);
-            // const user = {
-            //     username: this.state.username,
-            //     password: this.state.password,
-            //     dob: this.state.dob,
-            //     contact_no: this.state.contactno,
-            //     email: this.state.email,
-            //     role_id: this.state.roleid,
-            //     profile_pic: fd
-            // };
-
+            console.log(this.state.selectedFile);
+            if (this.state.selectedFile != null) {
+                fd.append('profile_pic', this.state.selectedFile);
+            }
             axios.post(`http://localhost:3000/users/signup`, fd,
                 {
                     'Content-type': 'application/json'
                 })
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
-                })
-            //clear form 
-            this.setState(initialState);
+                    //console.log(res);
+                    //console.log(res.data);
+                    alert("User details submitted successfully!");
+
+                    //clear form 
+                    this.setState(initialState);
+                    window.location.reload(false);
+                });
         }
     }
-
-    // fileUploadHandler = () => {
-    //     const fd = new FormData();
-    //     fd.append('image', this.state.selectedFile,this.state.selectedFile.name);
-    //     axios.post(`http://localhost:3000/users/signup`, fd,
-    //     {
-    //         'Content-type': 'application/json'
-    //     })
-    //     .then(res =>{
-    //         console.log(res);
-    //     });
-    // }
 
     render() {
 
@@ -111,13 +92,13 @@ export default class Users extends React.Component {
                     <div>
                         <label>
                             User name:
-                            <input type="text" name="username" value={this.state.username} placeholder="Enter name" onChange={this.handleChange} />
+                            <input type="text" name="username" value={this.state.username} placeholder="Enter name" maxLength="20" onChange={this.handleChange} />
                             <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div>
                         </label>
                         <br></br>
                         <label>
                             Password:
-                            <input type="password" name="password" value={this.state.password} placeholder="Enter password" onChange={this.handleChange} />
+                            <input type="password" name="password" value={this.state.password} placeholder="Enter password" maxLength="32" onChange={this.handleChange} />
                             {/* <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div> */}
                         </label>
                         <br></br>
@@ -138,7 +119,7 @@ export default class Users extends React.Component {
                         <br></br>
                         <label>
                             Contact no.:
-                            <input type="text" name="contactno" value={this.state.contactno} placeholder="Enter contact no" onChange={this.handleChange} />
+                            <input type="text" name="contactno" value={this.state.contactno} placeholder="Enter contact no" maxLength="10" onChange={this.handleChange} />
                             {/* <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div> */}
                         </label>
                         <br></br>
@@ -150,7 +131,7 @@ export default class Users extends React.Component {
                         <br></br>
                         <label>
                             Upload profile picture:
-                            <input type="file" name="uploadpic" value={this.state.uploadpic} placeholder="Enter email" onChange={this.onFileChange} />
+                            <input type="file" name="uploadpic" value={this.state.uploadpic} onChange={this.onFileChange} />
                             {/* <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div> */}
                         </label>
                     </div>

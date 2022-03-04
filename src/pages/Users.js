@@ -6,6 +6,7 @@ const initialState = {
     nameError: "",
     password: "",
     roleid: "",
+    dob: "",
     contactno: "",
     email: "",
     selectedFile: null,
@@ -19,16 +20,15 @@ export default class Users extends React.Component {
          const [startDate, setStartDate] = useState(new Date());
      } */
 
-     handleChange = event => {
+    handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
-        this.setState({ [event.target.dob]: event.target.value });
     }
     onFileChange = event => {
-    
+
         // Update the state
         this.setState({ selectedFile: event.target.files[0] });
-      
-      };
+
+    };
     componentDidMount() {
 
         axios.get('http://localhost:3000/roles').then(response => {
@@ -51,7 +51,6 @@ export default class Users extends React.Component {
             this.setState({ nameError });
             return false;
         }
-
 
         return true;
     };

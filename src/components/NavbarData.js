@@ -78,4 +78,9 @@ export const NavbarData = [
         path: '/users',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
+    {
+        title: 'Employees',
+        path: '/employees',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
 ]

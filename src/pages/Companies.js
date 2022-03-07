@@ -63,7 +63,7 @@ export default class Companies extends React.Component {
         axios.get('http://localhost:3000/countries').then(response => {
             console.log(response.data);
             this.setState({
-                CountryData: response.data
+                CountryData: response.data.data
             });
         });
     }
@@ -78,7 +78,7 @@ export default class Companies extends React.Component {
              console.log(response.data);
             //  if(response.status)
             this.setState({
-                 StatesData: response.data
+                 StatesData: response.data.data
              });
          });
     }
@@ -90,7 +90,7 @@ export default class Companies extends React.Component {
         axios.get('http://localhost:3000/cities/list/' + e.target.value).then(response => {
             console.log(response.data);
             this.setState({
-                CityData: response.data
+                CityData: response.data.data
             });
         });
     }

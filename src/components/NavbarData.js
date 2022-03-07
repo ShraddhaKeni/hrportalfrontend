@@ -5,20 +5,6 @@ import * as IoIcons from 'react-icons/io'
 import * as RiIcons from 'react-icons/ri'
 
 export const NavbarData = [
-    // {
-    //     title: 'Employee',
-    //     path: '/employee',
-    //     icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
-    //     iconClosed: <RiIcons.RiArrowDownSFill></RiIcons.RiArrowDownSFill>,
-    //     iconOpen: <RiIcons.RiArrowUpSFill></RiIcons.RiArrowUpSFill>,
-    //     subNav: [
-    //         {
-    //             title: 'Add employee',
-    //             path: '/employee/addemployee',
-    //             icon: <IoIcons.IoIosPaper></IoIcons.IoIosPaper>,
-    //         },
-    //     ]
-    // },
     {
         title: 'Designation',
         path: '/designation',
@@ -81,6 +67,16 @@ export const NavbarData = [
     {
         title: 'Users',
         path: '/users',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
+        title: 'Address',
+        path: '/address',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
+        title: 'Employees',
+        path: '/employees',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
 ]

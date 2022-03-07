@@ -9,6 +9,8 @@ import States from './pages/States';
 import Cities from './pages/Cities';
 import Leveltype from './pages/Leveltype';
 import Users from './pages/Users';
+import Address from './pages/Address';
+import Employees from './pages/Employees';
 import Navbar from './components/Navbar';
 import './components/App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -32,6 +34,8 @@ function App() {
           <Route path="/leveltype" element={<Leveltype />}></Route>
           <Route path="/users" element={<Users />}></Route>
           <Route path="/test" element={<Test />}></Route> 
+          <Route path="/address" element={<Address />}></Route> 
+          <Route path="/employees" element={<Employees />}></Route> 
         </Routes>
       </div>
     </Router>

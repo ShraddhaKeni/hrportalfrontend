@@ -21,11 +21,11 @@ export default class Users extends React.Component {
     onFileChange = event => {
         //console.log(event.target.files[0]);
         this.setState({ selectedFile: event.target.files[0] }); // file data is stored in state
-        if(event.type !== "image/png"){
-            alert("adsdja");
-            //break;
-        }
-        console.log(event.target.files[0]);
+        const image = event.target.files[0];  
+         if(image.type !== "image/png" && image.type !== "image/jpg" && image.type !== "image/jpeg"){
+             alert("Invalid file type");
+             event.target.value = null; // clears file input
+         }
     };
     componentDidMount() {
 
@@ -64,7 +64,7 @@ export default class Users extends React.Component {
             fd.append('contact_no', this.state.contactno);
             fd.append('email', this.state.email);
             fd.append('role_id', this.state.roleid);
-            console.log(this.state.selectedFile);
+            //console.log(this.state.selectedFile);
             if (this.state.selectedFile != null) {
                 fd.append('profile_pic', this.state.selectedFile);
             }

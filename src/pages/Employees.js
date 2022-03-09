@@ -10,7 +10,7 @@ const initialState = {
     department: "",
     email: "",
     doj: null,
-    signaturee: "",
+    //signaturee: "",
     emp_code: "",
     CompData: [],
     UserData: [],
@@ -52,16 +52,16 @@ export default class Employees extends React.Component {
         });
     }
 
-    onFileChange = event => {
-        this.setState({ signature: event.target.files[0] });
-        const image = event.target.files[0];
-        if (image.type !== "image/png" && image.type !== "image/jpg" && image.type !== "image/jpeg") {
-            alert("Invalid file type");
-            event.target.value = null;
-        }
-    };
+    // onFileChange = event => {
+    //     this.setState({ signature: event.target.files[0] });
+    //     const image = event.target.files[0];
+    //     if (image.type !== "image/png" && image.type !== "image/jpg" && image.type !== "image/jpeg") {
+    //         alert("Invalid file type");
+    //         event.target.value = null;
+    //     }
+    // };
 
-    handleFormValidation() {
+  /*   handleFormValidation() {
         let nameError = "";
         if (!this.state.name) {
             nameError = "User Name cannot be empty";
@@ -73,25 +73,25 @@ export default class Employees extends React.Component {
             return false;
         }
         return true;
-    };
+    }; */
 
     handleSubmit = event => {
         event.preventDefault();
-        const isValid = this.handleFormValidation();
-        if (isValid) {
-            const fd = new FormData();
-            fd.append('name', this.state.name.toString());
-            fd.append('comp_id', this.state.company.toString());
-            fd.append('user_id', this.state.user.toString());
-            fd.append('desig_id', this.state.designation);
-            fd.append('dept_id', this.state.department);
-            fd.append('email', this.state.email);
-            fd.append('doj', this.state.doj);
-            fd.append('emp_code', this.state.emp_code);
-            if (this.state.signature != null) {
-                fd.append('signature', this.state.signature);
-            }
-            axios.post(`http://localhost:3000/employees/create`, fd,
+       // const isValid = this.handleFormValidation();
+       // if (isValid) {
+            const data = {
+                name: this.state.name,
+                comp_id: this.state.company,
+                user_id: this.state.user,   //column name:value
+                desig_id: +this.state.designation,
+                dept_id: +this.state.department,
+                email: this.state.email, 
+                doj: this.state.doj,
+                emp_code: this.state.emp_code,
+               
+            };
+            
+            axios.post(`http://localhost:3000/employees/create`, data,
                 {
                     'Content-type': 'application/json'
                 }).then(res => {
@@ -99,7 +99,7 @@ export default class Employees extends React.Component {
                     this.setState(initialState);
                     window.location.reload(false);
                 });
-        }
+        //}
     }
 
     render() {
@@ -173,11 +173,11 @@ export default class Employees extends React.Component {
                     <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div>
                 </FormGroup>
 
-                <FormGroup>
+                {/* <FormGroup>
                     <Label>Signature: </Label>
                     <Input type="file" name="signaturee" value={this.state.signaturee} onChange={this.onFileChange} />
                     <div style={{ color: "red", paddingBottom: 10 }}>{this.state.signatureError}</div>
-                </FormGroup>
+                </FormGroup> */}
 
                 <FormGroup>
                     <Label>Employee code:: </Label>

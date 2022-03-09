@@ -11,6 +11,8 @@ import Leveltype from './pages/Leveltype';
 import Users from './pages/Users';
 import Address from './pages/Address';
 import Employees from './pages/Employees';
+import ReportingTo from './pages/Reportingto';
+import Jobs from './pages/Jobs';
 import Navbar from './components/Navbar';
 import './components/App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -36,6 +38,8 @@ function App() {
           <Route path="/test" element={<Test />}></Route> 
           <Route path="/address" element={<Address />}></Route> 
           <Route path="/employees" element={<Employees />}></Route> 
+          <Route path="/reportingto" element={<ReportingTo />}></Route> 
+          <Route path="/jobs" element={<Jobs />}></Route> 
         </Routes>
       </div>
     </Router>

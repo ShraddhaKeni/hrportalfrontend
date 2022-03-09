@@ -7,12 +7,15 @@ import Companies from './pages/Companies';
 import Countries from './pages/Countries';
 import States from './pages/States';
 import Cities from './pages/Cities';
+import Salary from './pages/Salary';
 import Leveltype from './pages/Leveltype';
 import Users from './pages/Users';
+import Address from './pages/Address';
+import Employees from './pages/Employees';
 import Navbar from './components/Navbar';
 import './components/App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Employees from './pages/Employees';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Test from './pages/Test';
 
 function App() {
   return (
@@ -31,7 +34,10 @@ function App() {
           <Route path="/cities" element={<Cities />}></Route>
           <Route path="/leveltype" element={<Leveltype />}></Route>
           <Route path="/users" element={<Users />}></Route>
-          <Route path="/employees" element={<Employees />}></Route>
+          <Route path="/test" element={<Test />}></Route> 
+          <Route path="/address" element={<Address />}></Route> 
+          <Route path="/employees" element={<Employees />}></Route> 
+          <Route path="/salary" element={<Salary />}></Route> 
         </Routes>
       </div>
     </Router>

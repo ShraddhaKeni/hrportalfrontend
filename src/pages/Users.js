@@ -9,32 +9,31 @@ const initialState = {
     dob: "",
     contactno: "",
     email: "",
+    dob: "",
     selectedFile: null,
-    emergencycontact1: "",
-    emergencycontact2: "",
     RoleData: [],
 }
 export default class Users extends React.Component {
     state = initialState;
-    /*  () => {
-         const [startDate, setStartDate] = useState(new Date());
-     } */
 
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
     }
     onFileChange = event => {
-
-        // Update the state
-        this.setState({ selectedFile: event.target.files[0] });
-
+        //console.log(event.target.files[0]);
+        this.setState({ selectedFile: event.target.files[0] }); // file data is stored in state
+        const image = event.target.files[0];  
+         if(image.type !== "image/png" && image.type !== "image/jpg" && image.type !== "image/jpeg"){
+             alert("Invalid file type");
+             event.target.value = null; // clears file input
+         }
     };
     componentDidMount() {
 
         axios.get('http://localhost:3000/roles').then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             this.setState({
-                RoleData: response.data
+                RoleData: response.data.data
             });
         });
     }
@@ -51,7 +50,6 @@ export default class Users extends React.Component {
             this.setState({ nameError });
             return false;
         }
-
         return true;
     };
 
@@ -60,28 +58,30 @@ export default class Users extends React.Component {
 
         const isValid = this.handleFormValidation();
         if (isValid) {
-            const user = {
-                username: this.state.name,
-                password: this.state.password,
-                dob: this.state.dob,
-                contact_no: this.state.contactno,
-                email: this.state.email,
-                profile_pic: this.state.uploadpic,
-                emergency_no1: this.state.emergencycontact1,
-                emergency_no2: this.state.emergencycontact2,
-                role_id: this.state.roleid,
-            };
-
-            axios.post(`http://localhost:3000/users/signup`, user,
+            const fd = new FormData();
+            fd.append('username', this.state.username);
+            fd.append('password', this.state.password);
+            fd.append('dob', this.state.dob);
+            fd.append('contact_no', this.state.contactno);
+            fd.append('email', this.state.email);
+            fd.append('role_id', this.state.roleid);
+            //console.log(this.state.selectedFile);
+            if (this.state.selectedFile != null) {
+                fd.append('profile_pic', this.state.selectedFile);
+            }
+            axios.post(`http://localhost:3000/users/signup`, fd,
                 {
                     'Content-type': 'application/json'
                 })
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
-                })
-            //clear form 
-            this.setState(initialState);
+                    //console.log(res);
+                    //console.log(res.data);
+                    alert("User details submitted successfully!");
+
+                    //clear form 
+                    this.setState(initialState);
+                    window.location.reload(false);
+                });
         }
     }
 
@@ -93,13 +93,13 @@ export default class Users extends React.Component {
                     <div>
                         <label>
                             User name:
-                            <input type="text" name="username" value={this.state.username} placeholder="Enter name" onChange={this.handleChange} />
+                            <input type="text" name="username" value={this.state.username} placeholder="Enter name" maxLength="20" onChange={this.handleChange} />
                             <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div>
                         </label>
                         <br></br>
                         <label>
                             Password:
-                            <input type="password" name="password" value={this.state.password} placeholder="Enter password" onChange={this.handleChange} />
+                            <input type="password" name="password" value={this.state.password} placeholder="Enter password" maxLength="32" onChange={this.handleChange} />
                             {/* <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div> */}
                         </label>
                         <br></br>
@@ -120,7 +120,7 @@ export default class Users extends React.Component {
                         <br></br>
                         <label>
                             Contact no.:
-                            <input type="text" name="contactno" value={this.state.contactno} placeholder="Enter contact no" onChange={this.handleChange} />
+                            <input type="text" name="contactno" value={this.state.contactno} placeholder="Enter contact no" maxLength="10" onChange={this.handleChange} />
                             {/* <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div> */}
                         </label>
                         <br></br>
@@ -132,19 +132,7 @@ export default class Users extends React.Component {
                         <br></br>
                         <label>
                             Upload profile picture:
-                            <input type="file" name="uploadpic" value={this.state.uploadpic} placeholder="Enter email" onChange={this.onFileChange} />
-                            {/* <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div> */}
-                        </label>
-                        <br></br>
-                        <label>
-                            Emergency contact number 1:
-                            <input type="text" name="emergencycontact1" value={this.state.emergencycontact1} placeholder="Enter emergency contact 1" onChange={this.handleChange} />
-                            {/* <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div> */}
-                        </label>
-                        <br></br>
-                        <label>
-                            Emergency contact number 2:
-                            <input type="text" name="emergencycontact2" value={this.state.emergencycontact2} placeholder="Enter emergency contact 2" onChange={this.handleChange} />
+                            <input type="file" name="uploadpic" value={this.state.uploadpic} onChange={this.onFileChange} />
                             {/* <div style={{ color: "red", paddingBottom: 10 }}>{this.state.nameError}</div> */}
                         </label>
                     </div>

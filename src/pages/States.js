@@ -36,7 +36,7 @@ export default class States extends React.Component {
         axios.get('http://localhost:3000/countries').then(response => {
             console.log(response.data);
             this.setState({
-                CountryData: response.data
+                CountryData: response.data.data
             });
         });
     }

@@ -6,6 +6,7 @@ const initialState = {
     nameError: "",
     password: "",
     roleid: "",
+    dob: "",
     contactno: "",
     email: "",
     dob: "",

@@ -15,8 +15,8 @@ import ReportingTo from './pages/Reportingto';
 import Jobs from './pages/Jobs';
 import Navbar from './components/Navbar';
 import './components/App.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Test from './pages/Test';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -40,6 +40,7 @@ function App() {
           <Route path="/employees" element={<Employees />}></Route> 
           <Route path="/reportingto" element={<ReportingTo />}></Route> 
           <Route path="/jobs" element={<Jobs />}></Route> 
+          <Route path="/employees" element={<Employees />}></Route>
         </Routes>
       </div>
     </Router>

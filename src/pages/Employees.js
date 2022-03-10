@@ -1,4 +1,5 @@
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+// import { Button } from 'react-bootstrap/Button';
 import React from 'react';
 import axios from 'axios';
 
@@ -10,7 +11,7 @@ const initialState = {
     department: "",
     email: "",
     doj: null,
-    //signaturee: "",
+    signature: "",
     emp_code: "",
     CompData: [],
     UserData: [],
@@ -52,28 +53,19 @@ export default class Employees extends React.Component {
         });
     }
 
-    // onFileChange = event => {
-    //     this.setState({ signature: event.target.files[0] });
-    //     const image = event.target.files[0];
-    //     if (image.type !== "image/png" && image.type !== "image/jpg" && image.type !== "image/jpeg") {
-    //         alert("Invalid file type");
-    //         event.target.value = null;
-    //     }
-    // };
-
-  /*   handleFormValidation() {
+    handleFormValidation() {
         let nameError = "";
-        if (!this.state.name) {
+        if (!this.state.username) {
             nameError = "User Name cannot be empty";
             this.setState({ nameError });
             return false;
-        } else if (!(/^[aA-zZ\s]+$/.test(this.state.name))) {
+        } else if (!(/^[aA-zZ\s]+$/.test(this.state.username))) {
             nameError = "Invalid user name";
             this.setState({ nameError });
             return false;
         }
         return true;
-    }; */
+    }; 
 
     handleSubmit = event => {
         event.preventDefault();

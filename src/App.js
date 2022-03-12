@@ -9,10 +9,14 @@ import States from './pages/States';
 import Cities from './pages/Cities';
 import Leveltype from './pages/Leveltype';
 import Users from './pages/Users';
+import Address from './pages/Address';
+import Employees from './pages/Employees';
+import ReportingTo from './pages/Reportingto';
+import Jobs from './pages/Jobs';
 import Navbar from './components/Navbar';
 import './components/App.css';
+import Test from './pages/Test';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Employees from './pages/Employees';
 
 function App() {
   return (
@@ -31,6 +35,11 @@ function App() {
           <Route path="/cities" element={<Cities />}></Route>
           <Route path="/leveltype" element={<Leveltype />}></Route>
           <Route path="/users" element={<Users />}></Route>
+          <Route path="/test" element={<Test />}></Route> 
+          <Route path="/address" element={<Address />}></Route> 
+          <Route path="/employees" element={<Employees />}></Route> 
+          <Route path="/reportingto" element={<ReportingTo />}></Route> 
+          <Route path="/jobs" element={<Jobs />}></Route> 
           <Route path="/employees" element={<Employees />}></Route>
         </Routes>
       </div>

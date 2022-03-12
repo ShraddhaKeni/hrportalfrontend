@@ -5,20 +5,6 @@ import * as IoIcons from 'react-icons/io'
 import * as RiIcons from 'react-icons/ri'
 
 export const NavbarData = [
-    // {
-    //     title: 'Employee',
-    //     path: '/employee',
-    //     icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
-    //     iconClosed: <RiIcons.RiArrowDownSFill></RiIcons.RiArrowDownSFill>,
-    //     iconOpen: <RiIcons.RiArrowUpSFill></RiIcons.RiArrowUpSFill>,
-    //     subNav: [
-    //         {
-    //             title: 'Add employee',
-    //             path: '/employee/addemployee',
-    //             icon: <IoIcons.IoIosPaper></IoIcons.IoIosPaper>,
-    //         },
-    //     ]
-    // },
     {
         title: 'Designation',
         path: '/designation',
@@ -32,6 +18,11 @@ export const NavbarData = [
     {
         title: 'Department',
         path: '/department',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
+        title: 'Test',
+        path: '/test',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
     {
@@ -79,8 +70,23 @@ export const NavbarData = [
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
     {
+        title: 'Address',
+        path: '/address',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
         title: 'Employees',
         path: '/employees',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
+        title: 'ReportingTo',
+        path: '/reportingto',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
+        title: 'Jobs',
+        path: '/jobs',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
 ]

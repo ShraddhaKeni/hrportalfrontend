@@ -7,8 +7,8 @@ build:
         - axr-hr-portal
     script:
         - echo "Building deploy package"
-        - npm install
-        - npm run build
+        - yarn install
+        - yarn build
         - echo "Build successful"
     artifacts:
         expire_in: 1 hour

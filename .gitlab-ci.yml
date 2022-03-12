@@ -20,7 +20,7 @@ deploy_production:
       - axr-hr-portal
     script:
         - echo "Deploying to server"
-        - sudo cp -rv build/* /var/www/hr-portal.axzora.in/
+        - cp -rv build/* /var/www/hr-portal.axzora.in/
         - echo "Deployed"
     environment:
         name: production

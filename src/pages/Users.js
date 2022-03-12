@@ -9,7 +9,6 @@ const initialState = {
     dob: "",
     contactno: "",
     email: "",
-    dob: "",
     selectedFile: null,
     RoleData: [],
 }

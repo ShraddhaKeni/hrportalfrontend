@@ -17,6 +17,8 @@ import Leveltype from './pages/Leveltype';
 import Users from './pages/Users';
 import Address from './pages/Address';
 import Employees from './pages/Employees';
+import ReportingTo from './pages/Reportingto';
+import Jobs from './pages/Jobs';
 import Navbar from './components/Navbar';
 import './components/App.css';
 import { Routes, Route } from 'react-router-dom';
@@ -59,8 +61,11 @@ function App() {
           {/* routes for salary */}
           <Route exact path="/add-salary" element={<Salary />}></Route>
           <Route exact path="/salary" element={<ViewSalary />}></Route>
-          <Route path="/salary-info/:id" render={(props) => <SalaryInfo {...props} />} element={<SalaryInfo />} /> 
-
+          <Route path="/salary-info/:id" render={(props) => <SalaryInfo {...props} />} element={<SalaryInfo />} />           
+          
+          <Route path="/reportingto" element={<ReportingTo />}></Route> 
+          <Route path="/jobs" element={<Jobs />}></Route> 
+          
         </Routes>
       </div>
   );

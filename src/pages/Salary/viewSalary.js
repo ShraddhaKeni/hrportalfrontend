@@ -76,7 +76,7 @@ export default class ViewSalary extends React.Component {
             return (
                 
                 <div className='main'>
-                    <h2>Employee Salaries <span style={{float:'right'}}><Link to={{ pathname: "/add-salary" }}><Button variant='success'><b>+</b></Button></Link></span></h2>
+                    <h2>Employee Salaries <span style={{float:'right'}}><Link to={{ pathname: "/add-salary" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
                     <Table bordered striped>
                         <thead>
                             <tr>

@@ -84,4 +84,14 @@ export const NavbarData = [
         path: '/salary',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
+    {
+        title: 'ReportingTo',
+        path: '/reportingto',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
+        title: 'Jobs',
+        path: '/jobs',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
 ]

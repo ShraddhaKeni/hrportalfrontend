@@ -96,7 +96,7 @@ export default class Salary extends React.Component {
                                 if (!this.checkSalaryExist(e.id) || this.state.isEdit) {
                                     return <option value={e.id}>{e.name}</option>
                                 }else{
-                                    return <option>Cannot fetch</option>
+                                    return ""
                                 }
                             })}
                         </select>

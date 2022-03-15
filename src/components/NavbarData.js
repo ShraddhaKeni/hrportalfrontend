@@ -80,6 +80,11 @@ export const NavbarData = [
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
     {
+        title: 'Salary',
+        path: '/salary',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
         title: 'ReportingTo',
         path: '/reportingto',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,

@@ -91,12 +91,18 @@ export default class AddDesignation extends Component {
     return (
       <div className='main'>
         {this.state.depart === " "? <h2>Add Department</h2> : <h2>Edit Department</h2>}
+        <label>Enter department name:</label>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" >
               <Form.Control type="text" name="name" placeholder="Enter department name" value={this.state.name} onChange={this.handleChange} required />
           </Form.Group>
           
           <br />
+          {this.state.depart !== " "?
+            <label>Select status:</label>
+          :
+            ""
+          }
           {this.state.depart !== " "?
             <Form.Group className="mb-3">
                 <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>

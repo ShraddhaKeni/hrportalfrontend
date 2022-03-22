@@ -1,22 +1,21 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-export default class AddRoles extends Component {
+export default class AddDocumenttype extends Component {
   constructor(props){
     super(props)
     this.state = {
-      role: this.props.id? this.props.id : " ",
+      doctype: this.props.id? this.props.id : " ",
       status: "true",
       name: "",
     }
   }
 
   componentDidMount(){
-    if(this.state.role !== " "){
-      // axios.get('http://10.201.10.191:3000/roles/'+this.state.role).then(response => {
-        axios.get('http://localhost:3000/roles/'+this.state.role).then(response => {
+    if(this.state.doctype !== " "){
+        axios.get('http://localhost:3000/document-type/find/'+this.state.doctype).then(response => {
           this.setState({
               name: response.data.data.name
           });
@@ -26,29 +25,28 @@ export default class AddRoles extends Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }  
+  } 
 
   handleSubmit = event => {
     event.preventDefault();
 
-    var role = {}
+    var type = {}
     
-    this.state.role === " " ? 
-      role = {
+    this.state.doctype === " " ? 
+      type = {
         name: this.state.name,
       }
-    : role = {
+    : type = {
       name: this.state.name,
       status: this.state.status
     };
 
-    this.state.role === " "? this.addRole(role) : this.editRole(role)
+    this.state.doctype === " "? this.addDoctype(type) : this.editDoctype(type)
 
   }
 
-  addRole(role){
-    // axios.post(`http://10.201.10.191:3000/roles/add`, role ,
-    axios.post(`http://localhost:3000/roles/add`, role ,
+  addDoctype(type){
+    axios.post(`http://localhost:3000/document-type/create`, type ,
     {
       'Content-type':'application/json'
     }).then(res => {
@@ -56,9 +54,8 @@ export default class AddRoles extends Component {
     })
   }
 
-  editRole(role){
-    // axios.patch(`http://10.201.10.191:3000/roles/`+this.state.role, role ,
-    axios.patch(`http://localhost:3000/roles/`+this.state.role, role ,
+  editDoctype(type){
+    axios.patch(`http://localhost:3000/roles/`+this.state.doctype, type ,
     {
       'Content-type':'application/json'
     }).then(res => {
@@ -71,23 +68,24 @@ export default class AddRoles extends Component {
   }
 
   render() {
-
+  
     return (
+
       <div className='main'>
-        {this.state.role === " "? <h2>Add Role</h2> : <h2>Edit Role</h2>}
-        <label>Enter role name:</label>
+        {this.state.doctype === " "? <h2>Add document type</h2> : <h2>Edit document type</h2>}
+        <label>Enter document type name:</label>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" >
-              <Form.Control type="text" name="name" placeholder="Enter role name" value={this.state.name} onChange={this.handleChange} required />
+              <Form.Control type="text" name="name" placeholder="Enter document type name" value={this.state.name} onChange={this.handleChange} required />
           </Form.Group>
           
           <br />
-          {this.state.role !== " "?
+          {this.state.doctype !== " "?
             <label>Select status:</label>
           :
             ""
           }
-          {this.state.role !== " "?
+          {this.state.doctype !== " "?
             <Form.Group className="mb-3">
                 <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
                     <option>Select</option>
@@ -103,8 +101,8 @@ export default class AddRoles extends Component {
           <Button variant="success" type="submit">
               Save
           </Button>&nbsp;&nbsp;
-          {this.state.role === " "?
-              <Link to={{pathname: "/roles"}}><Button variant="danger" type="cancel">
+          {this.state.doctype === " "?
+              <Link to={{pathname: "/documenttype"}}><Button variant="danger" type="cancel">
                   Cancel
               </Button></Link>
             : <Button variant="danger" type="cancel" onClick={() => {this.cancel()}}>

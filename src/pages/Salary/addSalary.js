@@ -89,6 +89,7 @@ export default class Salary extends React.Component {
                 <h2>Add salary</h2>
 
                 <Form onSubmit={this.handleSubmit}>
+                    <label>Select employee:</label>
                     <Form.Group className="mb-3">
                         <select className="form-control" name="employee" value={this.state.employee} onChange={this.handleChange}>
                             <option>Select employee</option>
@@ -102,6 +103,7 @@ export default class Salary extends React.Component {
                         </select>
                     </Form.Group>
                     <br/>
+                    <label>Enter salary:</label>
                     <Form.Group className="mb-3" >
                         <Form.Control type="number" placeholder="Enter Salary" value={this.state.salary} onChange={this.handleChange} />
                     </Form.Group>

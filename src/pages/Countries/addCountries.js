@@ -3,20 +3,20 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-export default class AddRoles extends Component {
+export default class AddCountries extends Component {
   constructor(props){
     super(props)
     this.state = {
-      role: this.props.id? this.props.id : " ",
+      country: this.props.id? this.props.id : " ",
       status: "true",
       name: "",
+      nameError: ""
     }
   }
 
   componentDidMount(){
-    if(this.state.role !== " "){
-      // axios.get('http://10.201.10.191:3000/roles/'+this.state.role).then(response => {
-        axios.get('http://localhost:3000/roles/'+this.state.role).then(response => {
+    if(this.state.country !== " "){
+      axios.get('http://localhost:3000/countries/'+this.state.country).then(response => {
           this.setState({
               name: response.data.data.name
           });
@@ -26,29 +26,28 @@ export default class AddRoles extends Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }  
+  }
+   
 
   handleSubmit = event => {
     event.preventDefault();
-
-    var role = {}
     
-    this.state.role === " " ? 
-      role = {
-        name: this.state.name,
+    var country = {}
+    this.state.country === " "?
+      country = {
+        name: this.state.name
       }
-    : role = {
-      name: this.state.name,
-      status: this.state.status
-    };
+    : country = {
+        name: this.state.name,
+        status: this.state.status
+    }
 
-    this.state.role === " "? this.addRole(role) : this.editRole(role)
-
+    this.state.country === " "? this.addCountry(country) : this.editCountry(country)
+    
   }
 
-  addRole(role){
-    // axios.post(`http://10.201.10.191:3000/roles/add`, role ,
-    axios.post(`http://localhost:3000/roles/add`, role ,
+  addCountry(country){
+    axios.post(`http://localhost:3000/countries/create`, country ,
     {
       'Content-type':'application/json'
     }).then(res => {
@@ -56,9 +55,8 @@ export default class AddRoles extends Component {
     })
   }
 
-  editRole(role){
-    // axios.patch(`http://10.201.10.191:3000/roles/`+this.state.role, role ,
-    axios.patch(`http://localhost:3000/roles/`+this.state.role, role ,
+  editCountry(country){
+    axios.patch(`http://localhost:3000/countries/`+this.state.country, country ,
     {
       'Content-type':'application/json'
     }).then(res => {
@@ -71,23 +69,24 @@ export default class AddRoles extends Component {
   }
 
   render() {
-
+  
     return (
       <div className='main'>
-        {this.state.role === " "? <h2>Add Role</h2> : <h2>Edit Role</h2>}
-        <label>Enter role name:</label>
+        {this.state.country === " "? <h2>Add Country</h2> : <h2>Edit Country</h2>}
+        <label>Enter Country name:</label>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" >
-              <Form.Control type="text" name="name" placeholder="Enter role name" value={this.state.name} onChange={this.handleChange} required />
+              <Form.Control type="text" name="name" placeholder="Enter Country name" value={this.state.name} onChange={this.handleChange} required />
           </Form.Group>
           
           <br />
-          {this.state.role !== " "?
+
+          {this.state.country !== " "?
             <label>Select status:</label>
           :
             ""
           }
-          {this.state.role !== " "?
+          {this.state.country !== " "?
             <Form.Group className="mb-3">
                 <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
                     <option>Select</option>
@@ -103,8 +102,8 @@ export default class AddRoles extends Component {
           <Button variant="success" type="submit">
               Save
           </Button>&nbsp;&nbsp;
-          {this.state.role === " "?
-              <Link to={{pathname: "/roles"}}><Button variant="danger" type="cancel">
+          {this.state.country === " "?
+              <Link to={{pathname: "/countries"}}><Button variant="danger" type="cancel">
                   Cancel
               </Button></Link>
             : <Button variant="danger" type="cancel" onClick={() => {this.cancel()}}>

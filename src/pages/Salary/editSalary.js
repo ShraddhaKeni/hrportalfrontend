@@ -75,14 +75,20 @@ export default class EditSalary extends Component{
                 <h2>Edit salary</h2>
 
                 <Form onSubmit={this.handleSubmit}>
+                    <label>Select employee:</label>
                     <Form.Group className="mb-3">
                         <Form.Control type="text" className="form-control" name="employee" value={this.state.empName? this.state.empName:""} disabled/>
                     </Form.Group>
+
                     <br/>
+
+                    <label>Enter salary:</label>
                     <Form.Group className="mb-3" >
                         <Form.Control type="text" name="salary" placeholder="Enter Salary" value={this.state.salary} onChange={this.handleChange} />
                     </Form.Group>
+
                     <br/>
+                    
                     <Button variant="success" type="submit">
                         Save
                     </Button>&nbsp;&nbsp;

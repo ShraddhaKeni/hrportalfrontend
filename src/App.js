@@ -62,17 +62,18 @@ import AddJobApplicants from './pages/Job_Applicants/AddJobApplicants';
 import ViewJobApplicants from './pages/Job_Applicants/ViewJobApplicants';
 import ViewApplicationTrack from './pages/Application_track/ViewApplicationTrack';
 import AddApplicationTrack from './pages/Application_track/AddApplicationTrack';
+import Login from './pages/Login/Login';
 
 function App() {
 
 
   return (
       <div className="App">
-        <Navbar />
+        <Navbar/>
         <Routes>
 
           {/* home routes */}
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Login />}></Route>
 
           {/* routes for designation */}
           <Route path="/designation" element={<Designation />}></Route>

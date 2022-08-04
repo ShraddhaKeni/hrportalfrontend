@@ -48,6 +48,17 @@ export default class States extends Component{
             countryValue: cid,
         })
     }
+    async changeStatus(id,status)
+    {
+        const change = {
+            status:!status
+        }
+        console.log(change)
+        const requestStatusChange = await axios.patch(`http://localhost:3000/states/${id}`,change,{
+            'Content-type':'application/json'
+        })
+        window.location.reload();
+    }
 
     render(){
         if(this.state.isEdit === true){
@@ -81,6 +92,11 @@ export default class States extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
+                                           {state.status!=false?<Button variant="danger" onClick={() => {this.changeStatus(state.id,state.status)}}>
+                                                Delete 
+                                            </Button>:<Button variant="secondary" onClick={() => {this.changeStatus(state.id,state.status)}}>
+                                                Activate
+                                            </Button>}
                                             <Button variant="info" onClick={() => {this.editClicked(state.id, state.country_id)}} >
                                                 Edit 
                                             </Button> 

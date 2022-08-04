@@ -28,7 +28,7 @@ export default class EditSalary extends Component{
             emp_id: this.state.emp_id,    // "+" string to integer conversion
             salary: this.state.salary //column name:value
         };
-
+        console.log(salary)
         axios.post(`http://localhost:3000/salary/create`, salary,
         {
             'Content-type': 'application/json'

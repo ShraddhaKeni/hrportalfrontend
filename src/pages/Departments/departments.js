@@ -8,6 +8,7 @@ const initialState = {
     departments: [],
     isEdit: false,
     editValue: null,
+    
 }
 export default class Department extends Component{
     constructor(props){
@@ -21,7 +22,7 @@ export default class Department extends Component{
             this.setState({
                 departments: response.data.data
             });
-        });
+        });//
 
     }
 
@@ -30,6 +31,26 @@ export default class Department extends Component{
             isEdit: true,
             editValue: id,
         })
+    }
+    async deleteClicked(id)
+    {
+        const status = {
+            status:false
+        }
+        const data = await axios.patch(`http://localhost:3000/departments/${id}`,status,{
+            'Content-type':'application/json'
+        })
+        window.location.reload()
+    }
+    async activateClicked(id)
+    {
+        const status = {
+            status:true
+        }
+        const data = await axios.patch(`http://localhost:3000/departments/${id}`,status,{
+            'Content-type':'application/json'
+        })
+        window.location.reload()
     }
 
     render(){
@@ -62,6 +83,11 @@ export default class Department extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
+                                            {depart.status==true?<Button variant="danger" onClick={() => {this.deleteClicked(depart.id)}} >
+                                                Delete
+                                            </Button> :<Button variant="primary" onClick={() => {this.activateClicked(depart.id)}} >
+                                                Activate
+                                            </Button>}
                                             <Button variant="info" onClick={() => {this.editClicked(depart.id)}} >
                                                 Edit 
                                             </Button> 

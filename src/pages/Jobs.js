@@ -9,6 +9,7 @@ const initialState = {
     description: "",
     salary: "",
     EmployeeData: [],
+    CompanyData:[]
 }
 
 export default class Jobs extends React.Component {
@@ -35,21 +36,33 @@ export default class Jobs extends React.Component {
                 EmployeeData: response.data.data
             });
         });
+        axios.get('http://localhost:3000/companies')
+             .then(response=>{
+                this.setState({
+                    CompanyData:response.data.data
+                })
+             })
     }
 
     handleSubmit = event => {
         event.preventDefault();
             const user = {
-                department: this.state.department
+                comp_id: this.state.company,
+                dept_id: parseInt(this.state.department),
+                title:this.state.title,
+                role_id: parseInt(this.state.role),
+                description:this.state.description,
+                salary:this.state.salary,
+                raised_by_emp:this.state.employee
             };
-
-             axios.post(`http://localhost:3000/companies/add`, user,
+           console.log(user)
+             axios.post(`http://localhost:3000/jobs/create`, user,
                 {
                     'Content-type': 'application/json'
                 })
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
+                    console.log('success')
+                    window.location.href='/viewJobs'
                 }) 
             //clear form 
             this.setState(initialState);
@@ -58,11 +71,20 @@ export default class Jobs extends React.Component {
 
   
     render() {
-
+        console.log(this.state)
         return (
-            <div>
+            <div style={{margin:'0px',justifyContent:'center'}}>
                 <form onSubmit={this.handleSubmit}>
-                    <div>
+                    <div style={{display:'flex',flexDirection:'column',width:'500px',justifyContent:'right',alignItems:'center'}}>
+                    <label>
+                            Choose Company:
+                            <select className="form-control" name="company" value={this.state.company}  onChange={this.handleChange}>
+                                <option>Select Company</option>
+                                {this.state.CompanyData.map((e, id) => {
+                                    return <option value={e.id}>{e.name}</option>;
+                                })}
+                            </select>
+                        </label>
                         <label>
                             Choose department:
                             <select className="form-control" name="department" value={this.state.department}  onChange={this.handleChange}>
@@ -108,8 +130,9 @@ export default class Jobs extends React.Component {
                                 })}
                             </select>
                         </label>
+                        <button type="submit">Submit</button>
                     </div>
-                    <button type="submit">Submit</button>
+                    
                 </form>
             </div>
         )

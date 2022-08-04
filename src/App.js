@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './components/App.css';
 
+
 import Navbar from './components/Navbar';
 
 import Roles from './pages/Roles/roles';
@@ -46,12 +47,24 @@ import Reportingto from './pages/Reporting-to/reportingto';
 import AddReportingto from './pages/Reporting-to/addReportingto';
 
 
-
+import Footer from './components/Footer';
 import Address from './pages/Address';
 import Jobs from './pages/Jobs';
 import Test from './pages/Test';
+import UpdateJobs from './pages/Jobs/UpdateJobs';
+import Viewjobs from './pages/Jobs/Viewjobs';
+import ViewAddress from './pages/Address/ViewAddress';
+import UserDocuments from './pages/User_docs/UserDocuments';
+import AddDocuments from './pages/User_docs/AddDocuments';
+import UpdateJobApplicants from './pages/Job_Applicants/UpdateJobApplicants';
+import AddJobApplicants from './pages/Job_Applicants/AddJobApplicants';
+import ViewJobApplicants from './pages/Job_Applicants/ViewJobApplicants';
+import ViewApplicationTrack from './pages/Application_track/ViewApplicationTrack';
+import AddApplicationTrack from './pages/Application_track/AddApplicationTrack';
 
 function App() {
+
+
   return (
       <div className="App">
         <Navbar />
@@ -119,8 +132,18 @@ function App() {
           <Route path="/test" element={<Test />}></Route>
           <Route path="/address" element={<Address />}></Route>
           <Route path="/jobs" element={<Jobs />}></Route> 
-          
+          <Route path="/Updatejobs" element={<UpdateJobs />}></Route>
+          <Route path="/viewJobs" element={<Viewjobs />}></Route>
+          <Route path="/viewAddress" element={<ViewAddress />}></Route>
+          <Route path="/userDocuments" element={<UserDocuments />}></Route>
+          <Route path="/addUserDocuments" element={<AddDocuments />}></Route>
+          <Route path="/viewApplicants" element={<ViewJobApplicants/>}></Route>
+          <Route path="/addApplicants" element={<AddJobApplicants/>}></Route>
+          <Route path="/updateApplicants" element={<UpdateJobApplicants/>}></Route>
+          <Route path="/viewApplicationTrack" element={<ViewApplicationTrack/>}></Route>
+          <Route path="/addApplicationTrack" element={<AddApplicationTrack/>}></Route>
         </Routes>
+        <Footer/>
       </div>
   );
 }

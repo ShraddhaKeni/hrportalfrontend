@@ -8,7 +8,7 @@ export default class AddDocumenttype extends Component {
     super(props)
     this.state = {
       doctype: this.props.id? this.props.id : " ",
-      status: "true",
+      status: true,
       name: "",
     }
   }
@@ -55,10 +55,18 @@ export default class AddDocumenttype extends Component {
   }
 
   editDoctype(type){
-    axios.patch(`http://localhost:3000/roles/`+this.state.doctype, type ,
+    
+    const toBool = type.status.toString().toLowerCase()==='true';
+    const data ={
+      name:type.name,
+      status:toBool
+    }
+    console.log(data)
+    axios.patch(`http://localhost:3000/document-type/update/${this.state.doctype}`, data ,
     {
       'Content-type':'application/json'
     }).then(res => {
+      
       window.location.reload()
     })
   }
@@ -89,8 +97,8 @@ export default class AddDocumenttype extends Component {
             <Form.Group className="mb-3">
                 <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
                     <option>Select</option>
-                    <option value={"true"}>True</option>
-                    <option value={"false"}>False</option>
+                    <option value={true}>True</option>
+                    <option value={false}>False</option>
                 </select>
             </Form.Group>
           :

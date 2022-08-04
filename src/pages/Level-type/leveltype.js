@@ -31,6 +31,17 @@ export default class Leveltype extends Component{
             editValue: id,
         })
     }
+    async changeStatus(id,status)
+    {
+        const change = {
+            status:!status
+        }
+        //console.log(change)
+        const requestStatusChange = await axios.patch(`http://localhost:3000/level-types/${id}`,change,{
+            'Content-type':'application/json'
+        })
+        window.location.reload();
+    }
 
     render(){
         if(this.state.isEdit === true){
@@ -62,7 +73,12 @@ export default class Leveltype extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
-                                            <Button variant="info" onClick={() => {this.editClicked(level.id)}} >
+                                            {level.status==true?<Button variant="danger" style={{marginRight:'10px'}} onClick={() => {this.changeStatus(level.id,level.status)}} >
+                                                Delete 
+                                            </Button>:<Button variant="primary" style={{marginRight:'10px'}} onClick={() => {this.changeStatus(level.id,level.status)}} >
+                                                Activate 
+                                            </Button>  }
+                                            <Button variant="info" style={{marginRight:'10px'}} onClick={() => {this.editClicked(level.id)}} >
                                                 Edit 
                                             </Button> 
                                         </td>

@@ -31,6 +31,15 @@ export default class Designation extends Component{
             editValue: id,
         })
     }
+    async deleteDesignation(id){
+        const status = {
+            status:false
+        }
+        const deleted = await axios.patch(`http://localhost:3000/designation/update/${id}`,status,{
+            'Content-type':'application/json'
+        })
+        window.location.reload();
+    }
 
     render(){
         if(this.state.isEdit === true){
@@ -62,6 +71,9 @@ export default class Designation extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
+                                        <Button variant="danger" style={{marginRight:'10px'}} onClick={() => {this.deleteDesignation(design.id)}} >
+                                                Delete 
+                                            </Button> 
                                             <Button variant="info" onClick={() => {this.editClicked(design.id)}} >
                                                 Edit 
                                             </Button> 

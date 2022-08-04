@@ -71,7 +71,7 @@ export const NavbarData = [
     },
     {
         title: 'Address',
-        path: '/address',
+        path: '/viewAddress',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
     {
@@ -91,7 +91,22 @@ export const NavbarData = [
     },
     {
         title: 'Jobs',
-        path: '/jobs',
+        path: '/viewJobs',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
+        title: 'User Documents',
+        path: '/userDocuments',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
+        title: 'Job Applicants',
+        path: '/viewApplicants',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
+        title: 'Applicantion Track',
+        path: '/viewApplicationTrack',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
 ]

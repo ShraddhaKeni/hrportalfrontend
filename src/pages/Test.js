@@ -9,7 +9,7 @@ export default function App() {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm();
+  } = useForm(); //hooks to handle form
    
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

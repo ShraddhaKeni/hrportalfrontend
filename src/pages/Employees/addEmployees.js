@@ -85,6 +85,7 @@ export default class AddEmployees extends Component {
                 desig_id: parseInt(this.state.desig_id),
                 dept_id: parseInt(this.state.dept_id),
                 email: this.state.email,
+                status:true,
                 doj: this.state.doj,
                 signature: this.state.signature,
                 emp_code: this.state.emp_code,
@@ -108,6 +109,7 @@ export default class AddEmployees extends Component {
     }
 
     addEmployee(employee) {
+        console.log(employee)
         axios.post(`http://localhost:3000/employees/create`, employee,
             {
                 'Content-type': 'application/json'
@@ -124,11 +126,12 @@ export default class AddEmployees extends Component {
     }
 
     editEmployee(employee) {
+        console.log(employee)
         axios.patch(`http://localhost:3000/employees/` + this.state.employee, employee,
             {
                 'Content-type': 'application/json'
             }).then(res => {
-                window.location.reload()
+                
             }).catch((error) => {
                 if (error.request) {
                     var err2 = new Error(error.request.response)

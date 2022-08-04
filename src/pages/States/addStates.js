@@ -69,7 +69,12 @@ export default class AddStates extends Component {
     }
 
     editState(state){
-        axios.patch(`http://localhost:3000/states/`+this.state.state, state ,
+        const isBool = state.status.toString().toLowerCase()=='true'
+        const data = {
+            name:state.name,
+            status:isBool
+        }
+        axios.patch(`http://localhost:3000/states/`+this.state.state, data ,
         {
             'Content-type':'application/json'
         }).then(res => {
@@ -101,7 +106,7 @@ export default class AddStates extends Component {
                         </Form.Group> 
                     :
                         <Form.Group className="mb-3" >
-                            <Form.Control type="text" name="countryName" placeholder="Enter Country name" value={this.state.countryName} onChange={this.handleChange} disabled />
+                            <Form.Control type="text" name="countryName" placeholder="Enter Country name" value={this.state.countryName} onChange={this.handleChange} disabled/>
                         </Form.Group>
                     }
 

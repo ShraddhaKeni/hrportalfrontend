@@ -68,7 +68,7 @@ export default class AddUsers extends Component {
         user = {
             username: this.state.username,
             password: this.state.password,
-            role_id: this.state.role_id,
+            role_id: parseInt(this.state.role_id),
             dob: this.state.dob,
             contact_no: this.state.contact_no,
             email: this.state.email,
@@ -77,7 +77,7 @@ export default class AddUsers extends Component {
         : user = {
             username: this.state.username,
             password: this.state.password,
-            role_id: this.state.role_id,
+            role_id: parseInt(this.state.role_id),
             dob: this.state.dob,
             contact_no: this.state.contact_no,
             email: this.state.email,
@@ -92,6 +92,7 @@ export default class AddUsers extends Component {
     }
 
     addUser(user){
+        console.log(user)
         axios.post(`http://localhost:3000/users/signup`, user ,
         {
             'Content-type':'application/json'
@@ -101,7 +102,21 @@ export default class AddUsers extends Component {
     }
 
     editUser(user){
-        axios.patch(`http://localhost:3000/users/`+this.state.user, user ,
+        const isBool = user.status.toString().toLowerCase()=='true'
+        const data = {
+            contact_no: user.contact_no,
+            dob: user.dob,
+            email: user.email,
+            emergency_no1: user.emergency_no1,
+            emergency_no2: user.emergency_no2,
+            password: user.password,
+            profile_pic: ' ',
+            role_id: parseInt(user.role_id),
+            status: isBool,
+            username: user.username,
+        }
+        console.log(this.state.user)
+        axios.patch(`http://localhost:3000/users/`+this.state.user, data ,
         {
             'Content-type':'application/json'
         }).then(res => {
@@ -128,7 +143,7 @@ export default class AddUsers extends Component {
 
                     <label>Password:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="password" name="password" placeholder="Enter password" value={this.state.password} onChange={this.handleChange} required />
+                        <Form.Control type="password" name="password" placeholder="Enter password" defaultValue={this.state.password} onChange={this.handleChange}/>    
                     </Form.Group>
 
                     <br/>

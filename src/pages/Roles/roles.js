@@ -32,6 +32,16 @@ export default class Roles extends Component{
             editValue: id,
         })
     }
+    async deleteRole(id)
+    {
+        const data = {
+            status:false
+        }
+        const deleted = axios.patch(`http://localhost:3000/roles/${id}`,data,{
+            'Content-type':'application/json'
+        })
+        window.location.reload();
+    }
 
     render(){
         if(this.state.isEdit === true){
@@ -63,6 +73,9 @@ export default class Roles extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
+                                            <Button variant="danger" style={{marginRight:'10px'}} onClick={() => {this.deleteRole(role.id)}} >
+                                                Delete 
+                                            </Button> 
                                             <Button variant="info" onClick={() => {this.editClicked(role.id)}} >
                                                 Edit 
                                             </Button> 

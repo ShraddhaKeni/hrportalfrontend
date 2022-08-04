@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React,{Component,createRef} from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -13,12 +13,16 @@ export default class AddReportingto extends Component {
             EmployeeData: [],
             status: "true",
             erro: "",
+            emp_id:''
         }
+        
     }
-
+    employee_ref = React.createRef()
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
     }
+
+    
 
     componentDidMount() {
         if(this.state.reporting !== " "){
@@ -30,11 +34,13 @@ export default class AddReportingto extends Component {
             });
         }
 
-        axios.get('http://localhost:3000/employees').then(response => {
-            this.setState({
-                EmployeeData: response.data.data
-            });
-        });
+        this.getEmployeeDetails()
+    }
+    async getEmployeeDetails()
+    {
+        const {data} = await axios.get('http://localhost:3000/employees')
+        this.setState({EmployeeData:data.data})
+        //console.log(this.state.EmployeeData)
     }
 
     handleSubmit = event => {
@@ -52,6 +58,7 @@ export default class AddReportingto extends Component {
             reporting_emp_id: this.state.reportingto,
             }
         : reporting = {
+            emp_id:this.employee_ref.current.id,
             reporting_emp_id: this.state.reportingto,
             status: this.state.status,
         };
@@ -60,6 +67,8 @@ export default class AddReportingto extends Component {
     }
 
     addReporting(reporting){
+
+        
         axios.post(`http://localhost:3000/report-to`, reporting ,
         {
             'Content-type':'application/json'
@@ -72,20 +81,29 @@ export default class AddReportingto extends Component {
     }
 
     editReporting(reporting){
-        axios.patch(`http://localhost:3000/report-to/`+this.state.reporting, reporting ,
+      
+        const isBool = reporting.status.toString().toLowerCase()=='true';
+        const data = {
+            emp_id:reporting.emp_id,
+            reporting_emp_id:reporting.reporting_emp_id,
+            status:isBool
+        } 
+        axios.patch(`http://localhost:3000/report-to/`+this.state.reporting, data,
         {
             'Content-type':'application/json'
         }).then(res => {
+            
             window.location.reload()
         })
     }
-
+    
     getEmpName(id){
-        console.log(id)
+        
         var emp = this.state.EmployeeData.find(x => x.id === id)
         if(emp !== undefined){
             return emp.name
         }else{
+            
             return false
         }
     }
@@ -95,7 +113,7 @@ export default class AddReportingto extends Component {
     }
 
     render() {
-
+        
         return (
             <div className='main'>
             {this.state.reporting === " "? <h2>Add reporting details</h2> : <h2>Edit reporting details</h2>}
@@ -113,7 +131,7 @@ export default class AddReportingto extends Component {
                     </Form.Group>
                 :
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="employee" value={this.getEmpName(this.state.employee)} onChange={this.handleChange} disabled />
+                        <Form.Control type="text" name="employee" ref={this.employee_ref} id={this.state.employee} value={this.getEmpName(this.state.employee)} onChange={this.handleChange} disabled />
                     </Form.Group>
                 }
 

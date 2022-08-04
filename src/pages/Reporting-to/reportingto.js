@@ -24,11 +24,14 @@ export default class Reportingto extends Component{
                 reporting: response.data.data
             });
         });
-        axios.get('http://localhost:3000/employees').then(response => {
-            this.setState({
-                employees: response.data.data
-            });
-        });
+       this.getEmployeeDetails()
+    }
+
+    async getEmployeeDetails()
+    {
+        const {data} = await axios.get('http://localhost:3000/employees')
+        this.setState({employees:data.data})
+        //console.log(this.state.EmployeeData)
     }
 
     editClicked(id){
@@ -39,13 +42,23 @@ export default class Reportingto extends Component{
     }
 
     getEmpName(id){
-        console.log(id)
         var emp = this.state.employees.find(x => x.id === id)
         if(emp !== undefined){
             return emp.name
         }else{
             return false
         }
+    }
+    async statusChange(id,status)
+    {
+        const data = {
+            status:!status
+        }
+
+        const changeRequest = await axios.patch(`http://localhost:3000/report-to/${id}`,data,{
+            'Content-type':'application/json'
+        })
+        window.location.reload()
     }
 
     render(){
@@ -79,7 +92,13 @@ export default class Reportingto extends Component{
                                                 report.status === true? <td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
+                                       
                                         <td> 
+                                        {report.status===true?<Button variant="danger" onClick={() => {this.statusChange(report.id,report.status)}} >
+                                                Delete 
+                                            </Button> :<Button variant="primary" onClick={() => {this.statusChange(report.id,report.status)}} >
+                                                Activate
+                                            </Button> }
                                             <Button variant="info" onClick={() => {this.editClicked(report.id)}} >
                                                 Edit 
                                             </Button> 

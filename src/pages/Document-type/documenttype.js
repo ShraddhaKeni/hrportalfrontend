@@ -31,6 +31,17 @@ export default class Documenttype extends Component{
             editValue: id,
         })
     }
+    async changeStatus(id,status)
+    {
+        const tobool = status.toString().toLowerCase()=='true'
+        const data = {
+            status:!tobool
+        }
+        const requestChangeStatus = await axios.patch(`http://localhost:3000/document-type/update/${id}`,data,{
+            'Content-type':'application.json'
+        })
+        window.location.reload()
+    }
 
     render(){
         if(this.state.isEdit === true){
@@ -62,6 +73,11 @@ export default class Documenttype extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
+                                           {doc.status!=false?<Button variant="danger" onClick={() => {this.changeStatus(doc.id,doc.status)}} >
+                                                Delete 
+                                            </Button> :<Button variant="primary" onClick={() => {this.changeStatus(doc.id,doc.status)}} >
+                                                Activate 
+                                            </Button>} 
                                             <Button variant="info" onClick={() => {this.editClicked(doc.id)}} >
                                                 Edit 
                                             </Button> 

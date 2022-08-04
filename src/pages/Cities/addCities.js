@@ -70,7 +70,14 @@ export default class AddCities extends Component {
     }
 
     editCity(city){
-        axios.patch(`http://localhost:3000/cities/`+this.state.city, city ,
+        
+        var isBool = city.status.toString().toLowerCase()=='true'
+        const data = {
+            name:city.name,
+            status:isBool
+        }
+
+        axios.patch(`http://localhost:3000/cities/`+this.state.city, data ,
         {
             'Content-type':'application/json'
         }).then(res => {

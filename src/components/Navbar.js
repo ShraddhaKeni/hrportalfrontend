@@ -35,7 +35,7 @@ const SidebarNav = styled.nav`
      position: fixed;
      top: 0;
      left: ${({navbar}) => (navbar ? '0' : '-100%')};
-     transition: 350 ms;
+     transition: 350 ms ease-in;
      z-index: 10;
 `;
 
@@ -47,6 +47,8 @@ const Navbar = () =>{
     const [navbar, setNavbar] = useState(false)
 
     const showNavbar = () => setNavbar(!navbar)
+   
+
     return(
         <>
         <IconContext.Provider value={{ color : '#fff'}}>
@@ -55,7 +57,7 @@ const Navbar = () =>{
                     <FaIcons.FaBars onClick={showNavbar}/>
                 </NavIcon>
             </Nav>
-            <SidebarNav navbar={navbar}>
+            <SidebarNav className="side_nav_bar" navbar={navbar}>
                 <SidebarWrap>
                 <NavIcon to='#'>
                     <AiIcons.AiOutlineClose onClick={showNavbar}/>

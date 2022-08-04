@@ -3,12 +3,14 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+//Changed the status from String to Boolean as backend only takes status as boolean and frontend was passing String value
+//Due to which it was not getting updated in the Server.
 export default class AddRoles extends Component {
   constructor(props){
     super(props)
     this.state = {
       role: this.props.id? this.props.id : " ",
-      status: "true",
+      status: true,
       name: "",
     }
   }
@@ -58,7 +60,7 @@ export default class AddRoles extends Component {
 
   editRole(role){
     // axios.patch(`http://10.201.10.191:3000/roles/`+this.state.role, role ,
-    axios.patch(`http://localhost:3000/roles/`+this.state.role, role ,
+    axios.patch(`http://localhost:3000/roles/`+this.state.role,role,
     {
       'Content-type':'application/json'
     }).then(res => {
@@ -91,8 +93,8 @@ export default class AddRoles extends Component {
             <Form.Group className="mb-3">
                 <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
                     <option>Select</option>
-                    <option value={"true"}>True</option>
-                    <option value={"false"}>False</option>
+                    <option value={true}>True</option>
+                    <option value={false}>False</option>
                 </select>
             </Form.Group>
           :

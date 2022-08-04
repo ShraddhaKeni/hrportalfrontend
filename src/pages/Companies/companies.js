@@ -40,6 +40,17 @@ export default class Companies extends Component{
         })
     }
 
+    async changeStatus(id,status)
+    {
+        const data ={
+            status:!status
+        }
+        const requestChange = await axios.patch(`http://localhost:3000/companies/${id}`,data,{
+            'Content-type': 'application/json'
+        })
+        window.location.reload();
+    }
+
     render(){
         if(this.state.isEdit === true){
             return (
@@ -85,7 +96,12 @@ export default class Companies extends Component{
                                                 View 
                                             </Button> 
                                         </td>
-                                        <td> 
+                                        <td>
+                                           {company.status!=false?<Button variant="danger" style={{marginRight:'10px'}} onClick={() => {this.changeStatus(company.id,company.status)}} >
+                                                Delete 
+                                            </Button> : <Button variant="primary" onClick={() => {this.changeStatus(company.id,company.status)}} >
+                                                Activate 
+                                            </Button>} 
                                             <Button variant="info" onClick={() => {this.editClicked(company.id)}} >
                                                 Edit 
                                             </Button> 

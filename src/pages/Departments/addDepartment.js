@@ -9,7 +9,7 @@ export default class AddDesignation extends Component {
     super(props)
     this.state = {
       depart: this.props.id? this.props.id : " ",
-      status: "true",
+      status: true,
       name: "",
       nameError: "",
     }
@@ -68,18 +68,26 @@ export default class AddDesignation extends Component {
     {
       'Content-type':'application/json'
     }).then(res => {
+      
       window.location.reload()
     })
+    
   }
 
-  editDepartment(department){
-    console.log(department)
-    axios.patch(`http://localhost:3000/departments/`+this.state.depart, department ,
+  async editDepartment(department){
+
+    const bol =(department.status.toLowerCase()==='true')
+    const data = {
+        name:department.name,
+        status:bol
+    }
+    
+    const changeData = await axios.patch(`http://localhost:3000/departments/${this.state.depart}`, data,
     {
       'Content-type':'application/json'
-    }).then(res => {
-      window.location.reload()
     })
+    window.location.reload()
+    
   }
 
   cancel(){
@@ -87,7 +95,6 @@ export default class AddDesignation extends Component {
   }
 
   render() {
-  
     return (
       <div className='main'>
         {this.state.depart === " "? <h2>Add Department</h2> : <h2>Edit Department</h2>}
@@ -107,8 +114,8 @@ export default class AddDesignation extends Component {
             <Form.Group className="mb-3">
                 <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
                     <option>Select</option>
-                    <option value={"true"}>True</option>
-                    <option value={"false"}>False</option>
+                    <option value={true}>True</option>
+                    <option value={false}>False</option>
                 </select>
             </Form.Group>
           :

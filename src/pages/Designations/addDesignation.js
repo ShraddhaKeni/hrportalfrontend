@@ -9,7 +9,7 @@ export default class AddDesignation extends Component {
     super(props)
     this.state = {
       design: this.props.id? this.props.id : " ",
-      status: "true",
+      status: true,
       name: "",
       nameError: "",
     }
@@ -79,6 +79,7 @@ export default class AddDesignation extends Component {
     {
       'Content-type':'application/json'
     }).then(res => {
+      
       window.location.reload()
     })
   }
@@ -106,10 +107,10 @@ export default class AddDesignation extends Component {
           }
           {this.state.design !== " "?
             <Form.Group className="mb-3">
-                <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
-                    <option>Select</option>
-                    <option value={"true"}>True</option>
-                    <option value={"false"}>False</option>
+                <select className="form-control" name="status" placeholder='Select' value={this.state.status} onChange={this.handleChange}>
+                  <option disabled>Select</option>
+                    <option value={true}>True</option>
+                    <option value={false}>False</option>  
                 </select>
             </Form.Group>
           :

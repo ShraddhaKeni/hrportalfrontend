@@ -53,10 +53,17 @@ export default class AddCountries extends Component {
     }).then(res => {
       window.location.reload()
     })
+    window.location.reload()
   }
 
   editCountry(country){
-    axios.patch(`http://localhost:3000/countries/`+this.state.country, country ,
+    
+    var toBool = country.status.toString().toLowerCase()=='true';
+    const data = {
+      name:country.name,
+      status:toBool
+    }
+    axios.patch(`http://localhost:3000/countries/`+this.state.country, data ,
     {
       'Content-type':'application/json'
     }).then(res => {

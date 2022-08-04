@@ -83,7 +83,7 @@ export default class Address extends React.Component {
             pincode: this.state.pincode,
             type: this.state.addresstype,
         };
-        //console.log(user);
+        console.log(user);
         axios.post(`http://localhost:3000/address/create`, user,
             {
                 'Content-type': 'application/json'

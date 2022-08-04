@@ -66,6 +66,14 @@ export default class ViewSalary extends React.Component {
         }
     }
 
+    async changeStatus(id,status)
+    {
+        const data = {
+            status:!status
+        }
+        const changeRequest = await axios.patch('')
+    }
+
     render() {
         console.log(this.state.isView)
         if(this.state.isView === true){
@@ -83,7 +91,8 @@ export default class ViewSalary extends React.Component {
                                 <th>Sr no.</th>
                                 <th>Name</th>
                                 <th>Salary</th>
-                                <th colSpan={2}>Actions</th>
+                                <th>Status</th>
+                                <th colSpan={3}>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -93,10 +102,17 @@ export default class ViewSalary extends React.Component {
                                         <td>{salary.id}</td>
                                         <td>{this.getEmpName(salary.emp_id)}</td>
                                         <td>{salary.salary}</td>
+                                        {
+                                                salary.status === true? <td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
+                                                : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
+                                        }
                                         <td> 
                                             <Button variant="info" onClick={() => {this.editClicked(salary.emp_id)}} >
                                                 Edit 
                                             </Button> 
+                                        </td>
+                                        <td> 
+                                         
                                         </td>
                                         <td>
                                             <Button variant="info" onClick={() => {this.viewClicked(salary.emp_id)}}>

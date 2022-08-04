@@ -135,12 +135,12 @@ export default class AddCompanies extends Component {
     }
 
     editCompany(company){
-        console.log(JSON.stringify(company))
+        console.log(company)
         axios.patch(`http://localhost:3000/companies/`+this.state.company, company ,
         {
             'Content-type':'application/json'
         }).then(res => {
-            window.location.reload()
+            //window.location.reload()
         })
     }
 

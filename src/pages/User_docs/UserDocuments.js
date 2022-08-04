@@ -14,7 +14,7 @@ const UserDocuments = () => {
     const[change,setChange] = useState(false)
     var srno=1;
     const getDoctData = async()=>{
-        const {data} = await axios.get(`http://localhost:3000/user-docs/findAll`);
+        const {data} = await axios.get(`/user-docs/findAll`);
         setDocData(data.data)
         console.log(data)
     }
@@ -22,7 +22,7 @@ const UserDocuments = () => {
     const getUsers = async()=>{
 
         try {
-            const {data} =await axios.get(`http://localhost:3000/users/findAll`)
+            const {data} =await axios.get(`/users/findAll`)
             setUsers(data.data)
         } catch (error) {
             console.log(error)
@@ -30,7 +30,7 @@ const UserDocuments = () => {
     }
     const getDocType = async()=>{
         try {
-            const {data} = await axios.get(`http://localhost:3000/document-type/findAll`)
+            const {data} = await axios.get(`/document-type/findAll`)
             setDocType(data.data)
         } catch (error) {
             console.log(error)
@@ -73,7 +73,7 @@ const UserDocuments = () => {
             const data = {
                 status:!status
             }
-            const postRequest = await axios.patch(`http://localhost:3000/user-docs/update/${user_id}/${id}`,data)
+            const postRequest = await axios.patch(`/user-docs/update/${user_id}/${id}`,data)
             setChange(!change)
         } catch (error) {
             

@@ -15,7 +15,7 @@ const UpdateDocuments = ({updates}) => {
     const [users, setusers] = useState([]);
 
     const [file,setfile] = useState({})
-    const [uploadDoc,setUpload] = useState()
+    const [uploadDoc,setUpload] = useState(false)
 
     //Refs 
 
@@ -47,33 +47,49 @@ const UpdateDocuments = ({updates}) => {
 
     const handleSubmit =async(e)=>{
         e.preventDefault();
+        const isBool = documentsData.status.toString().toLowerCase() == 'true'
         try
         {
-            const isBool = documentsData.status.toString().toLowerCase() == 'true'
+            
             const fileData = {
                 'file':file,
                 'fileName':file.name
             }
             setUpload(fileData)
 
-           
-            let formData = new FormData()
+            if(uploadDoc==true)
+            {
+                let formData = new FormData()
             
-            formData.append('doc_type_id',parseInt(documentsData.doc_type_id))
-            formData.append('file',file,file.name)
-            formData.append('user_id',documentsData.user_id)
-            formData.append('status',false)
-            const data={
-                doc_path:file
+                formData.append('doc_type_id',parseInt(documentsData.doc_type_id))
+                formData.append('file',file,file.name)
+                formData.append('user_id',documentsData.user_id)
+                formData.append('status',isBool)
+                const data={
+                    doc_path:file
+                }
+                
+                
+                const postRequest = await axios.post(`/user-docs/create/${updates.id}`,formData,{
+                    'Content-type':'multipart/x-www-form-urlencoded'
+                })
+    
+                window.location.reload();
             }
-            
-            
-            const postRequest = await axios.post(`http://localhost:3000/user-docs/create/${updates.id}`,formData,{
-                'Content-type':'multipart/x-www-form-urlencoded'
-            })
+            else{
+                const data = {
+                    doc_type_id:parseInt(documentsData.doc_type_id),
+                    user_id:documentsData.user_id,
+                    status:isBool
+                }
+                const postRequest = await axios.patch(`/user-docs/update/${updates.user_id}/${updates.id}`,data,{
+                    'Content-type':'multipart/x-www-form-urlencoded'
+                })
+                window.location.reload()
+            }
 
-            console.log(postRequest)
-            //window.location.reload()
+           
+           
         }
         catch(error)
         {
@@ -82,6 +98,7 @@ const UpdateDocuments = ({updates}) => {
     }
     const loadFile = (e) =>{
         setfile(e.target.files[0])
+        setUpload(true)
         
     }
 
@@ -132,7 +149,7 @@ const UpdateDocuments = ({updates}) => {
                         <option value={false}>Inactive</option>
                     </select>
                 </lable>
-                <button type='submit'>Save</button>
+                <Button type='submit'>Save</Button>
             </div>
         </form>
     </div>

@@ -109,4 +109,9 @@ export const NavbarData = [
         path: '/viewApplicationTrack',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
+    {
+        title: 'Off Board',
+        path: '/offboard',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
 ]

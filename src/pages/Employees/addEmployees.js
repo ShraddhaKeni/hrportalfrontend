@@ -107,7 +107,7 @@ export default class AddEmployees extends Component {
             }
 
         this.state.employee === " " ? this.addEmployee(employee) : this.editEmployee(employee)
-
+  
     }
 
     addEmployee(employee) {

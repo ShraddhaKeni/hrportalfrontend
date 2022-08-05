@@ -4,12 +4,12 @@ import './styles/login.css'
 import image from './image.svg'
 import logo from './logo.svg'
 
-const Login = () => {
+const Login = () => {   
   return (
     <div className='login-page'>
-        <div className='top-part'>
+        
             <img className='banner_image' src={image}></img>
-        </div>
+        
         <div className='bottom-part'>
             <div className='form_part'>
               
@@ -20,11 +20,11 @@ const Login = () => {
                 <form onSubmit={(e)=>e.preventDefault()}>
                     <div className='username'>
                         <label>Username</label>
-                        <input type='text'></input>
+                        <input type='text' placeholder='Username'></input>
                     </div>
                     <div className='username'>
                         <label>Password</label>
-                        <input type='password'></input>
+                        <input type='password' placeholder='Password'></input>
                     </div>
                     <button className='login'>Login</button>
                 </form>

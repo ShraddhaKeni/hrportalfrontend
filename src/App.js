@@ -145,7 +145,7 @@ function App() {
           <Route path="/viewApplicationTrack" element={<ViewApplicationTrack/>}></Route>
           <Route path="/addApplicationTrack" element={<AddApplicationTrack/>}></Route>
         </Routes>
-        <Footer/>
+        
       </div>
   );
 }

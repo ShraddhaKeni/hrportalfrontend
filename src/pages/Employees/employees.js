@@ -73,6 +73,21 @@ export default class Employees extends Component{
         })
     }
 
+    async changeStatus(id,status)
+    {
+        try {
+            const statusChange = {
+                status:!status
+            }
+            const changeRequest = await axios.patch(`http://localhost:3000/employees/${id}`,statusChange)
+            window.location.reload();
+            
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     render(){
         if(this.state.isEdit === true){
             return (
@@ -115,11 +130,17 @@ export default class Employees extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
-                                            <Button variant="info" onClick={() => {this.editClicked(emp.id)}} >
-                                                Edit 
-                                            </Button> 
+                                            {emp.status===true?<Button variant="danger" onClick={() => {this.changeStatus(emp.id,emp.status)}} >
+                                                Delete 
+                                            </Button> : <Button variant="info" onClick={() => {this.changeStatus(emp.id,emp.status)}} >
+                                                Active 
+                                            </Button> }
+                                            
                                         </td> 
                                         <td> 
+                                             <Button variant="info" onClick={() => {this.editClicked(emp.id)}} >
+                                                Edit 
+                                            </Button> 
                                             <Button variant="info" onClick={() => {this.viewClicked(emp.id)}} >
                                                 View 
                                             </Button> 

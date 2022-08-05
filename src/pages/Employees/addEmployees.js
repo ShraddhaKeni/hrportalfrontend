@@ -44,6 +44,8 @@ export default class AddEmployees extends Component {
             });
         }
 
+       
+
         axios.get('http://localhost:3000/companies').then(response => {
             this.setState({
                 CompData: response.data.data
@@ -75,7 +77,7 @@ export default class AddEmployees extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-
+        const isBool = this.state.status.toString().toLowerCase()=='true'
         var employee = {}
         this.state.employee === " " ?
             employee = {
@@ -101,7 +103,7 @@ export default class AddEmployees extends Component {
                 doj: this.state.doj,
                 signature: this.state.signature,
                 emp_code: this.state.emp_code,
-                status: this.state.status,
+                status: isBool,
             }
 
         this.state.employee === " " ? this.addEmployee(employee) : this.editEmployee(employee)
@@ -131,7 +133,7 @@ export default class AddEmployees extends Component {
             {
                 'Content-type': 'application/json'
             }).then(res => {
-                
+            
             }).catch((error) => {
                 if (error.request) {
                     var err2 = new Error(error.request.response)

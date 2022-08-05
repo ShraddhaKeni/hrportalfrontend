@@ -5,17 +5,11 @@
     
 }
 
-.top-part
-{
-    width: 100%;
-    height: 20vh;
-    background-color: aqua;
-    
-}
+
 
 .banner_image
 {
-    width: 100%;
+    width:1920px;
     height: 20vh;
     margin: 0;
     padding: 0;
@@ -57,6 +51,10 @@
 .username input{
     width: 250px;
     margin-left: 130px;
+    background-color:#F1F1F1;
+    outline: none;
+    height: 30px;
+    border: none;
 }
 
 .username label{
@@ -98,4 +96,14 @@
     color: black;
     text-decoration: none;
     filter: drop-shadow(1px 1px 2px black);
+}
+
+input:focus
+{
+    outline: none;
+}
+
+input::placeholder
+{
+    font-size: 12px;
 }

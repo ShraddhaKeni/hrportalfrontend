@@ -10,7 +10,7 @@ const ViewOffboard = () => {
 
   const getEmployees = async ()=>{
     try {
-      const {data} = await axios.get(`/employees`)
+      const {data} = await axios.get(`/users/findAll`)
       setEmployee(data.data)
     } catch (error) {
       console.log(error)
@@ -32,7 +32,7 @@ const ViewOffboard = () => {
     const empName = employee.find(x=>x.id===id)
     if(empName)
     {
-      return empName.name
+      return empName.username
     }
     return empName;
   }
@@ -48,7 +48,7 @@ const ViewOffboard = () => {
       <div>
         {console.log(employee)}
       <div className='main'>
-                    <h2>Employees <span style={{float:'right'}}><Link to={{ pathname: "/" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
+                    <h2>Employees <span style={{float:'right'}}><Link to={{ pathname: "/addoffboard" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
                     <Table bordered striped>
                         <thead  >
                             <tr>
@@ -64,7 +64,7 @@ const ViewOffboard = () => {
                                 <td>{srno++}</td>
                                 <td>{getEmpName(item.emp_id)}</td>  
                                 <td>{item.offboard_date}</td>
-                                <td>{item.offBoard_reason}</td>
+                                <td>{item.offBoard_reason}</td> 
                               </tr>
 
                            })}

@@ -1,12 +1,19 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './styles/login.css'
 
 import image from './image.svg'
 import logo from './logo.svg'
 
 const Login = () => {   
+    const [login,setLogin] = useState(false);
+
+    const change = ()=>{
+        setLogin(!login)
+        
+    }
   return (
-    <div className='login-page'>
+    <>
+    <div className={login==true?'login-page':'login-page-none'}>
         
             <img className='banner_image' src={image}></img>
         
@@ -34,7 +41,8 @@ const Login = () => {
         
             
         </div>
-    
+       
+    </>
   )
 }
 

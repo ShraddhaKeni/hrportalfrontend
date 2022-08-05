@@ -28,11 +28,11 @@ const ViewOffboard = () => {
 
   function getEmpName(id)
   {
-    
+    console.log(id)
     const empName = employee.find(x=>x.id===id)
     if(empName)
     {
-      return empName
+      return empName.name
     }
     return empName;
   }
@@ -46,6 +46,7 @@ const ViewOffboard = () => {
   return (
     <>  
       <div>
+        {console.log(employee)}
       <div className='main'>
                     <h2>Employees <span style={{float:'right'}}><Link to={{ pathname: "/" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
                     <Table bordered striped>
@@ -61,7 +62,9 @@ const ViewOffboard = () => {
                            {offboardRecords.map((item)=>{
                              return<tr key={item.id}>
                                 <td>{srno++}</td>
-                                <td>{console.log(getEmpName(item.emp_id))}</td>
+                                <td>{getEmpName(item.emp_id)}</td>  
+                                <td>{item.offboard_date}</td>
+                                <td>{item.offBoard_reason}</td>
                               </tr>
 
                            })}

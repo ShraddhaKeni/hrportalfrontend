@@ -1,29 +1,29 @@
 import React from 'react'
-// import * as FaIcons from 'react-icons/fa'
+import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
+import * as BsIcons from 'react-icons/bs'
 import * as IoIcons from 'react-icons/io'
 import * as RiIcons from 'react-icons/ri'
+import * as ImIcons from 'react-icons/im'
+import * as HiIcons from 'react-icons/hi'
+import * as SiIcons from 'react-icons/si'
+import * as MdIcons from 'react-icons/md'
 
 export const NavbarData = [
     {
         title: 'Designation',
         path: '/designation',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+        icon: <BsIcons.BsPersonFill></BsIcons.BsPersonFill>,
     },
     {
         title: 'Roles',
         path: '/roles',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+        icon: <ImIcons.ImBriefcase></ImIcons.ImBriefcase>,
     },
     {
         title: 'Department',
         path: '/department',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
-    },
-    {
-        title: 'Test',
-        path: '/test',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+        icon: <RiIcons.RiBuilding2Fill></RiIcons.RiBuilding2Fill>,
     },
     {
         title: 'Document type',
@@ -33,41 +33,41 @@ export const NavbarData = [
     {
         title: 'Companies',
         path: '/companies',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+        icon: <FaIcons.FaBuilding></FaIcons.FaBuilding>,
     },
     {
         title: 'Add Data',
-        path: '',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+        path: '#',
+        icon: <AiIcons.AiOutlineDoubleRight></AiIcons.AiOutlineDoubleRight>,
         iconClosed: <RiIcons.RiArrowDownSFill></RiIcons.RiArrowDownSFill>,
         iconOpen: <RiIcons.RiArrowUpSFill></RiIcons.RiArrowUpSFill>,
         subNav: [
             {
                 title: 'Countries',
                 path: '/countries',
-                icon: <IoIcons.IoIosPaper></IoIcons.IoIosPaper>,
+                icon: <AiIcons.AiFillForward></AiIcons.AiFillForward>,
             },
             {
                 title: 'States',
                 path: '/states',
-                icon: <IoIcons.IoIosPaper></IoIcons.IoIosPaper>,
+                icon: <AiIcons.AiFillForward></AiIcons.AiFillForward>,
             },
             {
                 title: 'Cities',
                 path: '/cities',
-                icon: <IoIcons.IoIosPaper></IoIcons.IoIosPaper>,
+                icon: <AiIcons.AiFillForward></AiIcons.AiFillForward>,
             },
         ]
     },
     {
         title: 'Level types',
         path: '/leveltype',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+        icon: <SiIcons.SiDiagramsdotnet></SiIcons.SiDiagramsdotnet>,
     },
     {
         title: 'Users',
         path: '/users',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+        icon: <ImIcons.ImUser></ImIcons.ImUser>,
     },
     {
         title: 'Address',
@@ -77,7 +77,7 @@ export const NavbarData = [
     {
         title: 'Employees',
         path: '/employees',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+        icon: <HiIcons.HiOutlineUserGroup></HiIcons.HiOutlineUserGroup>,
     },
     {
         title: 'Salary',
@@ -87,12 +87,12 @@ export const NavbarData = [
     {
         title: 'Reporting',
         path: '/reporting',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+        icon: <IoIcons.IoIosContacts></IoIcons.IoIosContacts>,
     },
     {
         title: 'Jobs',
         path: '/viewJobs',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+        icon: <MdIcons.MdOutlineScreenSearchDesktop></MdIcons.MdOutlineScreenSearchDesktop>,
     },
     {
         title: 'User Documents',
@@ -102,7 +102,7 @@ export const NavbarData = [
     {
         title: 'Job Applicants',
         path: '/viewApplicants',
-        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+        icon: <BsIcons.BsPeopleFill></BsIcons.BsPeopleFill>,
     },
     {
         title: 'Applicantion Track',

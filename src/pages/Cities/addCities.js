@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './styles/Cities.css'
 
 export default class AddCities extends Component {
     constructor(props){
@@ -92,14 +93,14 @@ export default class AddCities extends Component {
     render() {
 
         return (
-
-            <div className='main'>
+        <div className='mainCities'>
+            <div className='mainAddCities'>
                 {this.state.city === " " ? <h2>Add City</h2> : <h2>Edit City</h2>}
                 <Form onSubmit={this.handleSubmit}>
-                    <label>Choose State:</label>
+                    <label style={{marginLeft:"80px"}}>Choose State:</label>
                     {this.state.city === " " ?
                         <Form.Group className="mb-3">
-                            <select className="form-control" name="stateName" onChange={this.handleChange}>
+                            <select style={{marginLeft:"80px",width:"80%"}} className="form-control" name="stateName" onChange={this.handleChange}>
                                 <option value="">Select</option>
                                 { this.state.state.map((e) => (
                                     <option value={e.id}>{e.name}</option>
@@ -114,9 +115,9 @@ export default class AddCities extends Component {
                     }
 
                     <br />
-                    <label>Enter city name:</label>
+                    <label style={{marginLeft:"80px"}}>Enter city name:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="cityName" placeholder="Enter city name" value={this.state.cityName} onChange={this.handleChange} required />
+                        <Form.Control type="text" name="cityName" style={{marginLeft:"80px",width:"80%"}} placeholder="Enter city name" value={this.state.cityName} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br />
@@ -139,19 +140,20 @@ export default class AddCities extends Component {
                     }
 
                     <br />
-                    <Button variant="success" type="submit">
+                    <Button className="saveButton" type="submit">
                         Save
                     </Button>&nbsp;&nbsp;
                     {this.state.city === " " ?
-                        <Link to={{ pathname: "/cities" }}><Button variant="danger" type="cancel">
+                        <Link to={{ pathname: "/cities" }}><Button className="cancelButton" type="cancel">
                             Cancel
                         </Button></Link>
-                        : <Button variant="danger" type="cancel" onClick={() => { this.cancel() }}>
+                        : <Button className="cancelButton" type="cancel" onClick={() => { this.cancel() }}>
                             Cancel
                         </Button>
                     }
                 </Form>
             </div>
+          </div>
         )
     }
 }

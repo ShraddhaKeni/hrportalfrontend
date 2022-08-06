@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './styles/States.css'
 
 export default class AddStates extends Component {
     constructor(props) {
@@ -89,14 +90,14 @@ export default class AddStates extends Component {
     render() {
 
         return (
-
-            <div className='main'>
+         <div className="mainState">
+            <div className="mainAddState">
                 {this.state.state === " " ? <h2>Add State</h2> : <h2>Edit State</h2>}
                 <Form onSubmit={this.handleSubmit}>
-                    <label>Choose Country:</label>
+                    <label style={{marginLeft:"80px"}}>Choose Country:</label>
                     {this.state.state === " " ?
                         <Form.Group className="mb-3">
-                            <select className="form-control" name="countryName" onChange={this.handleChange}>
+                            <select style={{marginLeft:"80px",width:"80%"}} className="form-control" name="countryName" onChange={this.handleChange}>
                                 <option value="">Select</option>
                                 { this.state.country.map((e) => (
                                     <option value={e.id}>{e.name}</option>
@@ -106,14 +107,14 @@ export default class AddStates extends Component {
                         </Form.Group> 
                     :
                         <Form.Group className="mb-3" >
-                            <Form.Control type="text" name="countryName" placeholder="Enter Country name" value={this.state.countryName} onChange={this.handleChange} disabled/>
+                            <Form.Control type="text" name="countryName" style={{marginLeft:"80px",width:"80%"}}  placeholder="Enter Country name" value={this.state.countryName} onChange={this.handleChange} disabled/>
                         </Form.Group>
                     }
 
                     <br />
-                    <label>Enter state name:</label>
+                    <label style={{marginLeft:"80px"}}>Enter state name:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="stateName" placeholder="Enter state name" value={this.state.stateName} onChange={this.handleChange} required />
+                        <Form.Control type="text" name="stateName" style={{marginLeft:"80px",width:"80%"}}  placeholder="Enter state name" value={this.state.stateName} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br />
@@ -136,19 +137,20 @@ export default class AddStates extends Component {
                     }
 
                     <br />
-                    <Button variant="success" type="submit">
+                    <Button className="saveButton" type="submit">
                         Save
                     </Button>&nbsp;&nbsp;
                     {this.state.state === " " ?
-                        <Link to={{ pathname: "/states" }}><Button variant="danger" type="cancel">
+                        <Link to={{ pathname: "/states" }}><Button className="cancelButton" type="cancel">
                             Cancel
                         </Button></Link>
-                        : <Button variant="danger" type="cancel" onClick={() => { this.cancel() }}>
+                        : <Button className="cancelButton" type="cancel" onClick={() => { this.cancel() }}>
                             Cancel
                         </Button>
                     }
                 </Form>
             </div>
+          </div>
         )
     }
 }

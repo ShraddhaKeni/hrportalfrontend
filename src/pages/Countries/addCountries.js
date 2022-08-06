@@ -2,6 +2,7 @@ import {Component} from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './styles/Countries.css'
 
 export default class AddCountries extends Component {
   constructor(props){
@@ -78,12 +79,13 @@ export default class AddCountries extends Component {
   render() {
   
     return (
-      <div className='main'>
+      <div className='mainCountry'>
+        <div className='mainAddCountry'>
         {this.state.country === " "? <h2>Add Country</h2> : <h2>Edit Country</h2>}
-        <label>Enter Country name:</label>
+        <label style={{marginLeft:"80px"}}>Enter Country name:</label>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" >
-              <Form.Control type="text" name="name" placeholder="Enter Country name" value={this.state.name} onChange={this.handleChange} required />
+              <Form.Control type="text" style={{marginLeft:"80px",width:"80%"}} name="name" placeholder="Enter Country name" value={this.state.name} onChange={this.handleChange} required />
           </Form.Group>
           
           <br />
@@ -106,19 +108,20 @@ export default class AddCountries extends Component {
           }
 
           <br/>
-          <Button variant="success" type="submit">
+          <Button type="submit" className="saveButton">
               Save
           </Button>&nbsp;&nbsp;
           {this.state.country === " "?
-              <Link to={{pathname: "/countries"}}><Button variant="danger" type="cancel">
+              <Link to={{pathname: "/countries"}}><Button className="cancelButton" type="cancel">
                   Cancel
               </Button></Link>
-            : <Button variant="danger" type="cancel" onClick={() => {this.cancel()}}>
+            : <Button className="cancelButton" type="cancel" onClick={() => {this.cancel()}}>
               Cancel
               </Button> 
           }
         </Form>
       </div>
+    </div>
     )
   }
 }

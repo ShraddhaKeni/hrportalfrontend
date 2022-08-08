@@ -1,5 +1,6 @@
 import React,{useState,useEffect, useRef} from 'react'
 import axios from 'axios';
+import './style/addApplicant.css'
 
 const AddApplicationTrack = () => {
 
@@ -80,24 +81,27 @@ const AddApplicationTrack = () => {
         getEmployeeData();
     },[])
   return (
-    <div>
-        {}
-        <form onSubmit={handleSubmit}>
+    <div className='main'>
+        
+        <form onSubmit={handleSubmit} className='add_applicant_form'>
             <div style={{display:'flex',flexDirection:'column'}}>
-                <lable style={{marginTop:'10px'}}>
+                <lable className='select_applicant_lable' style={{marginTop:'10px'}}>
                     Select Applicant:
-                    <select name='applicant_id' onChange={dataChange}>
+                </lable>
+                    <select className='applicant_select' name='applicant_id' onChange={dataChange}>
                         <option value={0}>Select Applicant</option>
                         {applicantData.map(item=>{
                             return <option key={item.id} value={item.id}>{item.name}</option>
                         })}
-                        </select>
-                </lable>
+                    </select>
+               
 
-                <lable style={{marginTop:'10px'}}>
+                <lable className='applicant_job_lable' style={{marginTop:'10px'}}>
+                    
                     Job:
-                    <text ref={jobRef} id={job.id}>{job.title}</text>
                 </lable>
+                    <text className='applicant_job' ref={jobRef} id={job.id}>{job.title}</text>
+               
                 <lable style={{marginTop:'10px'}}>
                     Comment:
                     <input type='text' name='comment' onChange={handleChange}></input>

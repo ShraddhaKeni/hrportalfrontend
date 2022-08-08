@@ -1,0 +1,86 @@
+.table_container_applicants
+{
+    background-color: white;
+    border-radius: 20px;
+    padding:0px;
+    position: absolute;
+    top:200px;
+    left:400px;
+    text-align: center;
+    min-width: 700px;
+    width: max-content;
+    min-height: 100px;
+    height: auto;
+    padding-bottom: 10px;   
+    width: 1100px;
+
+}
+
+.table_applicants
+{
+    table-layout: fixed;
+    margin-top: 20px;
+    margin-left: -25px;
+    width: 1000px;
+    position: relative;
+    left: 50px;
+    
+}
+.table_applicants th{
+    width: 10%;
+}
+
+
+
+button
+    {
+        width: 80px;
+        font-size: 15px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 100;
+        border-radius: 2px;
+        border: none;
+        outline: none;
+    }
+
+.action_applicant
+{
+    border: none;
+    outline: none;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background-color: #732B2B ;
+    font-size: 12px;
+}
+
+.edit_applicant
+{
+    border: none;
+    outline: none;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background-color: #552D59 ;
+    font-size: 12px;
+}
+
+.hr_tag
+{
+    width: 1100%;
+    margin-right: 20%;
+    margin-bottom: 2px;
+    margin-top:4px;
+}
+
+.add_applicant
+{
+    height: 40px;
+    width: 120px;
+    margin-right: 400px;
+    margin-top: 50px;
+    background-color:#552D59 ;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}

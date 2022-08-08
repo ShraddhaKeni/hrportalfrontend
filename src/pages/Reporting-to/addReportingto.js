@@ -2,6 +2,7 @@ import React,{Component,createRef} from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './style/addreport.css'
 
 export default class AddReportingto extends Component {
     constructor(props){
@@ -115,14 +116,15 @@ export default class AddReportingto extends Component {
     render() {
         
         return (
-            <div className='main'>
-            {this.state.reporting === " "? <h2>Add reporting details</h2> : <h2>Edit reporting details</h2>}
+            <div className='main_addReport'>
+            {this.state.reporting === " "? <h2>Add Reporting Details</h2> : <h2>Edit Reporting Details</h2>}
             
-            <Form onSubmit={this.handleSubmit} >
-                <label>Choose employee: <span className='req'>*</span> </label>
+            <form onSubmit={this.handleSubmit} className='addReport_form'>
+              {this.state.reporting===' '?<label className='lable_report_choose_Emp'>Choose employee: <span style={{color:'red'}} >*</span> </label>
+                :<label className='lable_report_choose_Emp_edit'>Choose employee: <span style={{color:'red'}} >*</span> </label>}  
                 {this.state.reporting === " "?
                     <Form.Group className="mb-3">
-                        <select className="form-control" name="employee" value={this.state.employee} onChange={this.handleChange} required>
+                        <select className="reporting_employee" name="employee" value={this.state.employee} onChange={this.handleChange} required>
                             <option>Select</option>
                             {this.state.EmployeeData.map((e)=>(
                                 <option value={e.id}>{e.name}</option>
@@ -131,15 +133,20 @@ export default class AddReportingto extends Component {
                     </Form.Group>
                 :
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="employee" ref={this.employee_ref} id={this.state.employee} value={this.getEmpName(this.state.employee)} onChange={this.handleChange} disabled />
+                        <Form.Control type="text" className='reporting_employee_edit' name="employee" ref={this.employee_ref} id={this.state.employee} value={this.getEmpName(this.state.employee)} onChange={this.handleChange} disabled />
                     </Form.Group>
                 }
 
                 <br />
 
-                <label>Reporting to: <span className='req'>*</span></label>
+                {
+                    this.state.reporting===' '? <label className='lable_report_choose_toEmp'>Reporting to: <span className='req'>*</span></label>
+                                              : <label className='lable_report_choose_toEmp_edit'>Reporting to: <span className='req'>*</span></label>
+                }
+
                 <Form.Group className="mb-3">
-                    <select className="form-control" name="reportingto" value={this.state.reportingto} onChange={this.handleChange} required>
+                    
+                    <select className={this.state.reporting===' '? 'to_employee':'to_employee_edit' } name="reportingto" value={this.state.reportingto} onChange={this.handleChange} required>
                         <option>Select</option>
                         {this.state.EmployeeData.map((e)=>(
                             <option value={e.id}>{e.name}</option>
@@ -149,11 +156,11 @@ export default class AddReportingto extends Component {
                 
                 {this.state.reporting !== " " ? <br /> : ""}
 
-                {this.state.reporting !== " " ? <label>Status:</label> : ""}
+                {this.state.reporting !== " " ? <label className='report_status'>Status:</label> : ""}
 
                 {this.state.reporting !== " " ?
                     <Form.Group className="mb-3">
-                        <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
+                        <select className="report_status_select" name="status" value={this.state.status} onChange={this.handleChange}>
                             <option>Select status</option>
                             <option value={"true"}>True</option>
                             <option value={"false"} >False</option>
@@ -164,21 +171,21 @@ export default class AddReportingto extends Component {
                 }
 
                 <br />
-
-                <Button variant="success" type="submit">
-                    Save
-                </Button>&nbsp;&nbsp;
-                {this.state.reporting === " " ?
-                    <Link to={{ pathname: "/reporting" }}><Button variant="danger" type="cancel">
-                        Cancel
-                    </Button></Link>
-                    : <Button variant="danger" type="cancel" onClick={() => { this.cancel() }}>
-                        Cancel
-                    </Button>
-                }
-                
-                
-            </Form>
+                <div className='report_button'>
+                    <button className='save_report' type="submit">
+                        Save
+                    </button>&nbsp;&nbsp;
+                    {this.state.reporting === " " ?
+                        <Link to={{ pathname: "/reporting" }}><button className='cancel_report' type="cancel">
+                            Cancel
+                        </button></Link>
+                        : <button className='cancel_report_edit' type="cancel" onClick={() => { this.cancel() }}>
+                            Cancel
+                        </button>
+                    }
+                    
+                </div> 
+            </form>
             </div>
         )
     }

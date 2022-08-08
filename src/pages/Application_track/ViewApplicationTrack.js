@@ -3,6 +3,8 @@ import {Table,Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import UpdateApplicationTrack from './UpdateApplicationTrack';
+import './style/viewApplicant.css';
+import {motion} from 'framer-motion'
 
 const ViewApplicationTrack = () => {
 var srno = 1;
@@ -114,10 +116,10 @@ if(isEdit==true)
 else
 {
     return (
-        <div>
-            <div className='main'>
-                          <h2>Applicants <span style={{float:'right'}}><Link to={{ pathname: "/addApplicationTrack" }}><Button variant='success'>Add track</Button></Link></span></h2>
-                          <Table bordered striped>
+        <div className='main_applicants'>
+            <h2><span style={{float:'right'}}><Link to={{ pathname: "/addApplicationTrack" }}><motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='add_applicant'>Add track</motion.button></Link></span></h2>
+            <div className='table_container_applicants'> 
+                          <table className='table_applicants'>
                               <thead  >
                                   <tr>
                                       <th>Sr no.</th>
@@ -127,8 +129,11 @@ else
                                       <th>Employee</th>
                                       <th>Level</th>
                                       <th>status</th>
-                                      <th>Action</th>
+                                      <th >Action</th>
                                   </tr>
+                                  <tr>
+                                    <hr className='hr_tag'/>
+                                </tr>
                               </thead>
                               <tbody>
                                   {trackData.map((item)=>{
@@ -139,18 +144,21 @@ else
                                         <td>{item.comment}</td>
                                         <td>{getEmployeesName(item.emp_id)}</td>
                                         <td>{item.level}</td>
+                                        
                                         {item.status==true?<td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
                                                       : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>}
-                                        {item.status!=false?<Button variant="danger" onClick={() => {changeStatus(item.id,item.status)}} >
+                                        <div style={{display:'flex'}}>
+                                        {item.status!=false?<motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='action_applicant'  onClick={() => {changeStatus(item.id,item.status)}} >
                                                           Delete 
-                                                      </Button> :<Button variant="primary" onClick={() => {changeStatus(item.id,item.status)}} >
+                                                      </motion.button> :<motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='action_applicant'  onClick={() => {changeStatus(item.id,item.status)}} >
                                                           Activate 
-                                                      </Button> }   
-                                          <Button style={{margin:'10px'}} onClick={()=>editClicked(item.id)}>Edit</Button>
+                                                      </motion.button> }   
+                                          <motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='edit_applicant' onClick={()=>editClicked(item.id)}>Edit</motion.button>
+                                        </div>
                                     </tr>)
                                   })}
                               </tbody>
-                          </Table>
+                          </table>
                       </div>
         </div>
       )

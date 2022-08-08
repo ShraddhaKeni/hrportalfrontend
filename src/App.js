@@ -76,7 +76,7 @@ function App() {
         <Routes>
 
           {/* home routes */}
-          <Route path="/" element={<Login />}></Route>
+          <Route path="/" element={<Login/>}></Route>
 
           {/* routes for designation */}
           <Route path="/designation" element={<Designation />}></Route>

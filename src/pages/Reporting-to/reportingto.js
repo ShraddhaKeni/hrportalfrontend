@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddReportingto from './addReportingto';
+import './style/reporting.css'
 
 
 const initialState = {
@@ -69,16 +70,21 @@ export default class Reportingto extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2>Reporting details <span style={{float:'right'}}><Link to={{ pathname: "/add-reporting" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
-                        <thead  >
+                <div className='main_reporting'>
+                    
+                    <h2><span style={{float:'right'}}><Link to={{ pathname: "/add-reporting" }}><button className='add_report'>Add Reporting</button></Link></span></h2>
+                    <div className='table_reporting_container'>
+                    <table className='table_reporting'>
+                        <thead>
                             <tr>
                                 <th>Sr no.</th>
-                                <th>Employee</th>
+                                <th>Employee</th>   
                                 <th>Reporting to</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th colSpan={2}>Action</th>
+                            </tr>
+                            <tr>
+                                    <hr className='hr_tag'/>
                             </tr>
                         </thead>
                         <tbody>
@@ -94,20 +100,21 @@ export default class Reportingto extends Component{
                                             }
                                        
                                         <td> 
-                                        {report.status===true?<Button variant="danger" onClick={() => {this.statusChange(report.id,report.status)}} >
+                                        {report.status===true?<button className='action_report' onClick={() => {this.statusChange(report.id,report.status)}} >
                                                 Delete 
-                                            </Button> :<Button variant="primary" onClick={() => {this.statusChange(report.id,report.status)}} >
+                                            </button> :<button  className='action_report' onClick={() => {this.statusChange(report.id,report.status)}} >
                                                 Activate
-                                            </Button> }
-                                            <Button variant="info" onClick={() => {this.editClicked(report.id)}} >
+                                            </button> }
+                                            <button className='edit_report' onClick={() => {this.editClicked(report.id)}} >
                                                 Edit 
-                                            </Button> 
+                                            </button> 
                                         </td>
                                     </tr>
                                     
                                 ))}
                         </tbody>
-                    </Table>
+                    </table>
+                    </div>
                 </div>
             )
         }

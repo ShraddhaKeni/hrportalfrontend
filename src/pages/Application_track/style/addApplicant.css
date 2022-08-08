@@ -1,0 +1,42 @@
+.add_applicant_form
+{
+    background-color: white;
+    position: absolute;
+    width: 800px;
+    height: 500px;
+    top: 250px;
+    left:500px;
+    border-radius: 45px;
+}
+
+.select_applicant_lable
+{
+    position: relative;
+    top:40px;
+    right: 300px;
+}
+
+.applicant_select
+{
+    width: 600px;
+    height: 30px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:50px;
+    left:50px;
+}
+
+.applicant_job_lable
+{
+    position: relative;
+    top:60px;
+    right:340px
+}
+
+.applicant_job
+{
+    position: relative;
+    top:40px;
+    right:250px
+}

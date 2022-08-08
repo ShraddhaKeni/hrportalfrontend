@@ -1,7 +1,7 @@
 {
   "name": "my-app-hr",
   "version": "0.1.0",
-  "proxy":"http://localhost:3000",
+  "proxy": "http://localhost:3000",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
@@ -10,6 +10,7 @@
     "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
     "dotenv": "^16.0.1",
+    "framer-motion": "^7.0.0",
     "http": "^0.0.1-security",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.0",

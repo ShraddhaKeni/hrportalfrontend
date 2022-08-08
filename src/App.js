@@ -65,6 +65,7 @@ import AddApplicationTrack from './pages/Application_track/AddApplicationTrack';
 import Login from './pages/Login/Login';
 import ViewOffboard from './pages/Offboard/ViewOffboard';
 import AddOffboard from './pages/Offboard/AddOffboard';
+import NavBarNew from './components/NavBarNew';
 
 function App() {
 

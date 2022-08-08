@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddLeveltype from './addLeveltype';
+import './styles/viewLevel.css'
+import {  } from 'react-icons/fa';
 
 const initialState = {
     levels: [],
@@ -51,21 +53,26 @@ export default class Leveltype extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2>Level types <span style={{float:'right'}}><Link to={{ pathname: "/add-leveltype" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
-                        <thead  >
-                            <tr>
+                <div className='main_levelTypes'>
+                    <h2><span style={{float:'right'}}><Link to={{ pathname: "/add-leveltype" }}><button className='add_level'>Add Level<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2>
+                    <div className='table_container_levelTypes'>
+                    <table className='table_levelTypes'>
+                        <thead className=''>
+                            <tr >
                                 <th>Sr no.</th>
                                 <th>Name</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th colSpan={2}>Action</th>
+                            </tr>
+                            <tr>
+                                    <hr className='hr_tag'/>
                             </tr>
                         </thead>
-                        <tbody>
+                        
+                        <tbody className='level_typeBody'>
                             {
                                 this.state.levels.map((level) => (
-                                    <tr key={level.id}>
+                                    <tr style={{paddingBottom:'10px'}} key={level.id}>
                                         <td>{srno++}</td>
                                         <td>{level.name}</td>
                                             {
@@ -73,20 +80,26 @@ export default class Leveltype extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
-                                            {level.status==true?<Button variant="danger" style={{marginRight:'10px'}} onClick={() => {this.changeStatus(level.id,level.status)}} >
+                                            {level.status==true?<button style={{marginRight:'10px',borderRadius:'0px',border:'none' ,background: '#732B2B',color:'white'}} onClick={() => {this.changeStatus(level.id,level.status)}} >
                                                 Delete 
-                                            </Button>:<Button variant="primary" style={{marginRight:'10px'}} onClick={() => {this.changeStatus(level.id,level.status)}} >
+                                            </button>:<button style={{marginRight:'10px',borderRadius:'0px',border:'none' ,background: '#732B2B',color:'white'}} onClick={() => {this.changeStatus(level.id,level.status)}} >
                                                 Activate 
-                                            </Button>  }
-                                            <Button variant="info" style={{marginRight:'10px'}} onClick={() => {this.editClicked(level.id)}} >
+                                            </button>  }
+                                            <button style={{marginRight:'10px',background: '#552D59',color:'white',borderRadius:'0px',border:'none'}} onClick={() => {this.editClicked(level.id)}} >
                                                 Edit 
-                                            </Button> 
+                                            </button> 
                                         </td>
                                     </tr>
                                     
                                 ))}
+                                
                         </tbody>
-                    </Table>
+                        
+                    </table>
+                    <div style={{marginLeft:'',color:'grey'}}>            
+                        1/12
+                        </div>
+                    </div>
                 </div>
             )
         }

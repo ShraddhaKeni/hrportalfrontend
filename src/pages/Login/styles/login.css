@@ -11,6 +11,7 @@
     height: 20vh;
     margin: 0;
     padding: 0;
+    object-fit: cover;
 }
 
 .bottom-part{
@@ -28,6 +29,7 @@
     left:685px;
     top:-100px;
     border-radius: 20px;
+    filter: drop-shadow(1px 1px 10px black);
 }
 
 .logo{
@@ -48,17 +50,20 @@
 
 .username input{
     width: 250px;
-    margin-left: 130px;
+    margin-left: 128px;
     background-color:#F1F1F1;
     outline: none;
-    height: 30px;
+    height: 40px;
     border: none;
+    display:inline-block;
 }
 
 .username label{
     margin-right: 185px;
     font-family: 'Poppins', sans-serif;
     font-weight: lighter;
+    margin-bottom: -1px;
+    padding: 2px;
 }
 
 .form_part h2{
@@ -93,7 +98,7 @@
 .forgotPass:hover{
     color: black;
     text-decoration: none;
-    filter: drop-shadow(1px 1px 2px black);
+    
 }
 
 input:focus
@@ -110,4 +115,10 @@ input::placeholder
 .login-page-none
 {
     background-color: black;
+}
+
+.username-input
+{
+    
+    text-indent: 10px; 
 }

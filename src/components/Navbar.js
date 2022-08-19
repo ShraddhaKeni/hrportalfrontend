@@ -43,6 +43,15 @@ const SidebarNav = styled.nav`
 const SidebarWrap = styled.nav`
      width: 100%;
 `;
+//login logout on navbar
+const UserIcon = styled(Link)`
+     margin-left: 86%;
+     font-size: 3rem;
+     height: 80px;
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+`;
 
 const Navbar = () =>{
     const [navbar, setNavbar] = useState(false)
@@ -57,11 +66,16 @@ const Navbar = () =>{
                 <NavIcon to='#'>
                     <FaIcons.FaBars onClick={showNavbar}/>
                 </NavIcon>
+                <img src="/images/axzorapvtltdLogo.png" alt=""/>
+                <UserIcon to='#'>
+                    <FaIcons.FaUserCircle onClick={showNavbar}/>
+                </UserIcon>
             </Nav>
             <SidebarNav className="side_nav_bar" navbar={navbar}>
                 <SidebarWrap>
                 <NavIcon to='#'>
                     <AiIcons.AiOutlineClose onClick={showNavbar}/>
+                    <img src="/images/axzorapvtltdLogo.png" alt=""/>
                 </NavIcon>
                 {NavbarData.map((item,index) =>{
                     return <Submenu item={item} key={index} />;

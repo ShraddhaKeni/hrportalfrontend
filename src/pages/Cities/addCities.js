@@ -100,7 +100,7 @@ export default class AddCities extends Component {
                     <label style={{marginLeft:"80px"}}>Choose State:</label>
                     {this.state.city === " " ?
                         <Form.Group className="mb-3">
-                            <select style={{marginLeft:"80px",width:"80%"}} className="form-control" name="stateName" onChange={this.handleChange}>
+                            <select  style={{marginLeft:"80px",width:"80%"}} className="form-control" name="stateName" onChange={this.handleChange}>
                                 <option value="">Select</option>
                                 { this.state.state.map((e) => (
                                     <option value={e.id}>{e.name}</option>
@@ -110,7 +110,7 @@ export default class AddCities extends Component {
                         </Form.Group> 
                     :
                         <Form.Group className="mb-3" >
-                            <Form.Control type="text" name="stateName" placeholder="Enter state name" value={this.state.stateName} onChange={this.handleChange} disabled />
+                            <Form.Control type="text"  style={{marginLeft:"80px",width:"80%"}} name="stateName" placeholder="Enter state name" value={this.state.stateName} onChange={this.handleChange} disabled />
                         </Form.Group>
                     }
 
@@ -123,13 +123,13 @@ export default class AddCities extends Component {
                     <br />
 
                     {this.state.city !== " " ?
-                        <label>Select status:</label>
+                        <label style={{marginLeft:"80px"}}>Select status:</label>
                     :
                         " "
                     }
                     {this.state.city !== " " ?
                         <Form.Group className="mb-3">
-                            <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
+                            <select className="form-control"  style={{marginLeft:"80px",width:"80%"}} name="status" value={this.state.status} onChange={this.handleChange}>
                                 <option>Select status</option>
                                 <option value={"true"}>True</option>
                                 <option value={"false"} >False</option>

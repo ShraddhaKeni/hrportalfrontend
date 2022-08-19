@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import './styles/Designation.css'
 
 export default class AddDesignation extends Component {
   constructor(props){
@@ -91,23 +91,24 @@ export default class AddDesignation extends Component {
   render() {
   
     return (
-      <div className='main'>
+      <div className='mainDesignation'>
+        <div className="mainAddDesignation">
         {this.state.design === " "? <h2>Add Designation</h2> : <h2>Edit Designation</h2>}
         <Form onSubmit={this.handleSubmit}>
-          <label>Enter designation name:</label>
+          <label style={{marginLeft:"80px"}}>Enter designation name:</label>
           <Form.Group className="mb-3" >
-              <Form.Control type="text" name="name" placeholder="Enter designation name" value={this.state.name} onChange={this.handleChange} required />
+              <Form.Control type="text" style={{marginLeft:"80px",width:"80%"}} name="name" placeholder="Enter designation name" value={this.state.name} onChange={this.handleChange} required />
           </Form.Group>
           
           <br />
           {this.state.design !== " "?
-            <label>Select status:</label>
+            <label style={{marginLeft:"80px"}}>Select status:</label>
           :
             ""
           }
           {this.state.design !== " "?
             <Form.Group className="mb-3">
-                <select className="form-control" name="status" placeholder='Select' value={this.state.status} onChange={this.handleChange}>
+                <select className="form-control" style={{marginLeft:"80px",width:"80%"}} name="status" placeholder='Select' value={this.state.status} onChange={this.handleChange}>
                   <option disabled>Select</option>
                     <option value={true}>True</option>
                     <option value={false}>False</option>  
@@ -118,18 +119,19 @@ export default class AddDesignation extends Component {
           }
 
           <br/>
-          <Button variant="success" type="submit">
+          <Button className="saveButton" type="submit">
               Save
           </Button>&nbsp;&nbsp;
           {this.state.design === " "?
-              <Link to={{pathname: "/designation"}}><Button variant="danger" type="cancel">
+              <Link to={{pathname: "/designation"}}><Button className="cancelButton" type="cancel">
                   Cancel
               </Button></Link>
-            : <Button variant="danger" type="cancel" onClick={() => {this.cancel()}}>
+            : <Button className="cancelButton" type="cancel" onClick={() => {this.cancel()}}>
               Cancel
               </Button> 
           }
         </Form>
+      </div>
       </div>
     )
   }

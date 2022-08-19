@@ -1,8 +1,9 @@
 import {Component} from 'react';
 import axios from 'axios';
-import { Table, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddDesignation from './addDesignation';
+import './styles/Designation.css'
 
 const initialState = {
     designations: [],
@@ -49,15 +50,19 @@ export default class Designation extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2>Designations <span style={{float:'right'}}><Link to={{ pathname: "/add-designation" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
-                        <thead  >
+                <div className='mainViewDesignation'>
+                    <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-designation" }}><button className='viewAddDesignationButton'>Add Designation<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2>
+                    <div className='viewDesignationContainer'>
+                    <table className='table_viewDesignation'>
+                        <thead>
                             <tr>
                                 <th>Sr no.</th>
                                 <th>Name</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                            </tr>
+                            <tr>
+                                    <hr className='hr_viewtagdesignation'/>
                             </tr>
                         </thead>
                         <tbody>
@@ -71,17 +76,18 @@ export default class Designation extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
-                                        <Button variant="danger" style={{marginRight:'10px'}} onClick={() => {this.deleteDesignation(design.id)}} >
+                                        <Button className='deleteButton' style={{marginRight:'10px'}} onClick={() => {this.deleteDesignation(design.id)}} >
                                                 Delete 
                                             </Button> 
-                                            <Button variant="info" onClick={() => {this.editClicked(design.id)}} >
+                                            <Button className='editButton' onClick={() => {this.editClicked(design.id)}} >
                                                 Edit 
                                             </Button> 
                                         </td>
                                     </tr>
                                 ))}
                         </tbody>
-                    </Table>
+                    </table>
+                </div>
                 </div>
             )
         }

@@ -64,6 +64,7 @@ import ViewApplicationTrack from './pages/Application_track/ViewApplicationTrack
 import AddApplicationTrack from './pages/Application_track/AddApplicationTrack';
 import Login from './pages/Login/Login';
 import ViewOffboard from './pages/Offboard/ViewOffboard';
+import Viewhrsupport from './pages/hrsupport/hrsupport';
 
 function App() {
 
@@ -146,6 +147,7 @@ function App() {
           <Route path="/viewApplicationTrack" element={<ViewApplicationTrack/>}></Route>
           <Route path="/addApplicationTrack" element={<AddApplicationTrack/>}></Route>
           <Route path="/offboard" element={<ViewOffboard/>}></Route>
+          <Route path="/hrsupport" element={<Viewhrsupport/>}></Route>
         </Routes>
         
       </div>

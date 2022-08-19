@@ -111,7 +111,7 @@ export default class Employees extends Component{
                                 <th>Username</th>
                                 <th>Email</th>
                                 <th>Employee code</th>
-                                <th>Status</th>
+                                <th>Onboarded</th>
                                 <th colSpan={2}>Action</th>
                             </tr>
                         </thead>

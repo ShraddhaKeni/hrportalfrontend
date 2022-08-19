@@ -90,7 +90,7 @@ export const NavbarData = [
         icon: <IoIcons.IoIosContacts></IoIcons.IoIosContacts>,
     },
     {
-        title: 'Jobs',
+        title: 'Job Openings',
         path: '/viewJobs',
         icon: <MdIcons.MdOutlineScreenSearchDesktop></MdIcons.MdOutlineScreenSearchDesktop>,
     },
@@ -105,13 +105,18 @@ export const NavbarData = [
         icon: <BsIcons.BsPeopleFill></BsIcons.BsPeopleFill>,
     },
     {
-        title: 'Applicantion Track',
+        title: 'Application Track',
         path: '/viewApplicationTrack',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
     {
         title: 'Off Board',
         path: '/offboard',
+        icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
+    },
+    {
+        title: 'HR Support',
+        path: '/hrsupport',
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
 ]

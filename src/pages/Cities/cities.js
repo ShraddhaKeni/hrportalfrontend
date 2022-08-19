@@ -67,9 +67,10 @@ export default class Cities extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2>Cities <span style={{float:'right'}}><Link to={{ pathname: "/add-city" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
+                <div className='mainViewCities'>
+                    <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-city" }}><button className='viewAddCitiesButton'>Add City<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2>
+                    <div className='viewCitiesContainer'>
+                    <table className='table_viewCities'>
                         <thead  >
                             <tr>
                                 <th>Sr no.</th>
@@ -77,6 +78,9 @@ export default class Cities extends Component{
                                 <th>City</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                            </tr>
+                            <tr>
+                                    <hr className='hr_viewtag'/>
                             </tr>
                         </thead>
                         <tbody>
@@ -91,12 +95,12 @@ export default class Cities extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
-                                            {city.status==true?<Button variant="danger" onClick={() => {this.changeStatus(city.id,city.status)}} >
+                                            {city.status==true?<Button className='deleteButton' onClick={() => {this.changeStatus(city.id,city.status)}} >
                                                 Delete 
-                                            </Button> :<Button variant="primary" onClick={() => {this.changeStatus(city.id,city.status)}} >
+                                            </Button> :<Button className='deleteButton' onClick={() => {this.changeStatus(city.id,city.status)}} >
                                                 Activate
                                             </Button> }
-                                            <Button variant="info" onClick={() => {this.editClicked(city.id, city.state_id)}} >
+                                            <Button className='editButton' onClick={() => {this.editClicked(city.id, city.state_id)}} >
                                                 Edit 
                                             </Button> 
                                         </td>
@@ -104,7 +108,8 @@ export default class Cities extends Component{
                                     
                                 ))}
                         </tbody>
-                    </Table>
+                    </table>
+                </div>
                 </div>
             )
         }

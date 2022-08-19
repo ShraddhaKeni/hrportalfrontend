@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddCountries from './addCountries';
+import './styles/Countries.css'
 
 const initialState = {
     countries: [],
@@ -51,15 +52,19 @@ export default class Countries extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2>Countries <span style={{float:'right'}}><Link to={{ pathname: "/add-country" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
-                        <thead  >
+                <div className='mainViewCountry'>
+                    <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-country" }}><button className='viewAddCountryButton'>Add Country<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2>
+                    <div className='viewCountryContainer'>
+                    <table className='table_viewcountry'>
+                        <thead >
                             <tr>
                                 <th>Sr no.</th>
                                 <th>Name</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                            </tr>
+                            <tr>
+                                    <hr className='hr_tag'/>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,12 +78,12 @@ export default class Countries extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td>
-                                            {country.status!=false?<Button variant="danger" onClick={() => {this.changeStatus(country.id,country.status)}} >
+                                            {country.status!=false?<Button className='deleteButton' onClick={() => {this.changeStatus(country.id,country.status)}} >
                                                 Delete 
-                                            </Button> :<Button variant="primary" onClick={() => {this.changeStatus(country.id,country.status)}} >
+                                            </Button> :<Button className='deleteButton' onClick={() => {this.changeStatus(country.id,country.status)}} >
                                                 Activate 
                                             </Button> }
-                                            <Button variant="info" onClick={() => {this.editClicked(country.id)}} >
+                                            <Button className='editButton' onClick={() => {this.editClicked(country.id)}} >
                                                 Edit 
                                             </Button> 
                                         </td>
@@ -86,7 +91,8 @@ export default class Countries extends Component{
                                     
                                 ))}
                         </tbody>
-                    </Table>
+                    </table>
+                </div>
                 </div>
             )
         }

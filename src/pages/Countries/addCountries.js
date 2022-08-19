@@ -91,13 +91,13 @@ export default class AddCountries extends Component {
           <br />
 
           {this.state.country !== " "?
-            <label>Select status:</label>
-          :
+            <label style={{marginLeft:"80px"}}>Select status:</label>
+          : 
             ""
           }
           {this.state.country !== " "?
             <Form.Group className="mb-3">
-                <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
+                <select className="form-control" style={{marginLeft:"80px",width:"80%"}} name="status" value={this.state.status} onChange={this.handleChange}>
                     <option>Select</option>
                     <option value={"true"}>True</option>
                     <option value={"false"}>False</option>

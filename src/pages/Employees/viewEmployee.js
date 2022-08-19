@@ -1,6 +1,8 @@
 import {Component} from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
+import './styles/viewEachEmployee.css'
+import {motion} from 'framer-motion'
 
 export default class ViewEmployees extends Component {
   constructor(props){
@@ -51,12 +53,13 @@ export default class ViewEmployees extends Component {
 
     return (
         <div className='main'>
-            <h2>
-                <span style={{float:"left"}}><Button variant='warning' onClick={() => {this.goBack()}}><b>Back</b></Button></span> 
-                User details
+            <h2 style={{}}>User details
+               
+                
             </h2>
-            
-            <Table bordered striped>
+            <button className='employee_back' onClick={() => {this.goBack()}}><b>Back</b></button>
+            <div className='viewEmployee_container'>
+            <table className='viewEmployee_table'>
                 <tbody>
                     <tr className='left'>
                         <th>Name: </th>
@@ -105,7 +108,8 @@ export default class ViewEmployees extends Component {
                         }
                     </tr>
                 </tbody>
-            </Table>
+            </table>
+            </div>
         </div>
     )
   }

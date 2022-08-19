@@ -35,7 +35,7 @@ const AddJobApplicants = () => {
       const postRequest = await axios.post(`http://localhost:3000/job-applicants/create`,postData,{
         'Content-type':'application/json'
       })
-     console.log(postRequest)
+     window.history.back()
     } catch (error) {
       console.log(error)
     }
@@ -47,38 +47,46 @@ const AddJobApplicants = () => {
     getJobsData();
   },[])
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className='main'>
+      <div className='add_applicant_form_container'>  
+      <form onSubmit={handleSubmit} className='add_applicant_form'>
         
-        <div className='form_div'>
-          <lable>
+        <div className='add_applicant_div' style={{display:'flex',flexDirection:'column',padding:'0px'}}>
+          <lable className='applicant_name_lable'>
             Add Name:
-              <input type='text' onChange={handleChange} name='name' placeholder='Enter Name here'></input>
           </lable>
-          <lable>
+              <input type='text' className='applicant_name' onChange={handleChange} name='name' placeholder='Enter Name here'></input>
+          
+          <lable className='contact_number_lable'>
             Contact Number:
-              <input type='number' onChange={handleChange} name='contact_no' placeholder='Enter Phone number here'></input>
-          </lable>
-          <lable>
+            </lable>
+              <input type='number' className='contact_number' onChange={handleChange} name='contact_no' placeholder='Enter Phone number here'></input>
+          
+          <lable className='applicant_email_lable'>
             Email:
-              <input type='email' onChange={handleChange} name='email_id' placeholder='Enter Email here'></input>
-          </lable>
-          <lable>
+            </lable>
+              <input className='applicant_email' type='email' onChange={handleChange} name='email_id' placeholder='Enter Email here'></input>
+          
+          <lable className='applicant_cv_lable'>
             CV:
-              <textarea name='cv' onChange={handleChange} placeholder='Paste Resume'></textarea>
-          </lable>
-          <lable>
-            Select Job
-            <select name='job_id' onChange={handleChange}>
+            </lable>
+              <textarea name='cv' className='applicant_cv' onChange={handleChange} placeholder='Paste Resume'></textarea>
+          
+          <lable className='select_job_lable'>
+            Select Job:
+            </lable>
+            <select className='applicant_select_job' name='job_id' onChange={handleChange}>
               <option>Select Job </option>
                 {jobs.map((item)=>{
                   return <option key={item.id} value={item.id}>{item.title}</option>
                 })}
             </select>
-          </lable>
-          <button type='submit'>Save</button>
+          
+          <button className='save_application' type='submit'>Save</button>
+          <button className='cancel_application' type='button' onClick={()=>window.history.back()}>Cancel</button>
         </div>
       </form>
+      </div>
     </div>
   )
 }

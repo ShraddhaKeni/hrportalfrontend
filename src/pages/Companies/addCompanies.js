@@ -2,6 +2,7 @@ import {Component} from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './styles/addCompany.css'
 
 
 export default class AddCompanies extends Component {
@@ -151,26 +152,27 @@ export default class AddCompanies extends Component {
     render() {
 
         return (
-            <div className='main'>
-                {this.state.company === " "? <h2>Add company details</h2> : <h2>Edit company details</h2>}
-                <Form onSubmit={this.handleSubmit}>
-                    <label>Company name:</label>
+            <div className='main_addCompany'>
+                
+                <form className='addCompany_form' onSubmit={this.handleSubmit}>
+                    <div className='form_container_addCompany'>
+                    <label className='company_name_lable'>Company name</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="name" placeholder="Enter company name" value={this.state.name} onChange={this.handleChange} required />
+                        <input className='company_name' type="text" name="name" placeholder="Enter company name" value={this.state.name} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br/>
 
-                    <label>Company address:</label>
+                    <label className='addCompany_address_lable'>Company address:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="address" placeholder="Enter company address" value={this.state.address} onChange={this.handleChange} required />
+                        <input type="text" className='addCompany_address' name="address" placeholder="Enter company address" value={this.state.address} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br/>
                     
-                    <label>Choose country:</label>
+                    <label className='addCompany_chooseContry_lable'>Choose country:</label>
                     <Form.Group className="mb-3">
-                        <select className="form-control" name="country_id" onChange={this.ChangeStates} value={this.state.country_id}>
+                        <select className="addCompany_chooseCountry" name="country_id" onChange={this.ChangeStates} value={this.state.country_id}>
                             <option value="">Select</option>
                             { this.state.CountryData.map((e) => (
                                 <option value={e.id} key={e.id}>{e.name}</option>
@@ -181,9 +183,9 @@ export default class AddCompanies extends Component {
 
                     <br/>
                     
-                    <label>Choose state:</label>
+                    <label className='addCompany_chooseState_lable'>Choose state:</label>
                     <Form.Group className="mb-3">
-                        <select className="form-control" name="state_id" onChange={this.ChangeCity} value={this.state.state_id}>
+                        <select className="addCompany_chooseState" name="state_id" onChange={this.ChangeCity} value={this.state.state_id}>
                             <option value="">Select</option>
                             { this.state.StatesData.map((e) => (
                                 <option value={e.id} key={e.id}>{e.name}</option>
@@ -194,9 +196,9 @@ export default class AddCompanies extends Component {
 
                     <br/>
                     
-                    <label>Choose city:</label>
+                    <label className='addCompany_chooseCity_lable'>Choose city:</label>
                     <Form.Group className="mb-3">
-                        <select className="form-control" name="city_id" onChange={this.handleChange} value={this.state.city_id}>
+                        <select className="addCompany_chooseCity" name="city_id" onChange={this.handleChange} value={this.state.city_id}>
                             <option value="">Select</option>
                             { this.state.CityData.map((e) => (
                                 <option value={e.id} key={e.id}>{e.name}</option>
@@ -207,69 +209,67 @@ export default class AddCompanies extends Component {
 
                     <br/>
 
-                    <label>Enter Pincode:</label>
+                    <label className='addCompany_pincode_lable'>Enter Pincode:
+                    </label>
+                        <input type="number" className='addCompany_pincode' placeholder="Enter pincode" name="pincode" value={this.state.pincode} onChange={this.handleChange} required />
+                    <br/>
+
+                    <label className='addCompany_companyWebsite_lable'>Company website:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="number" placeholder="Enter pincode" name="pincode" value={this.state.pincode} onChange={this.handleChange} required />
+                        <input className='addCompany_companyWebsite' type="text" name="website" placeholder="Enter company website" value={this.state.website} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br/>
 
-                    <label>Company website:</label>
+                    <label className='addCompany_companyEmail_lable'>Company email:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="website" placeholder="Enter company website" value={this.state.website} onChange={this.handleChange} required />
+                        <input type="email" className='addCompany_companyEmail' name="email" placeholder="Enter company email" value={this.state.email} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br/>
 
-                    <label>Company email:</label>
+                    <label className='addCompany_contactPerson_lable'>Contact person:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="email" name="email" placeholder="Enter company email" value={this.state.email} onChange={this.handleChange} required />
+                        <input type="text" className='addCompany_contactPerson' name="contact_person" placeholder="Contact person name" value={this.state.contact_person} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br/>
 
-                    <label>Contact person:</label>
+                    <label className='addCompany_contactNo_lable'>Contact number:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="contact_person" placeholder="Contact person name" value={this.state.contact_person} onChange={this.handleChange} required />
+                        <input type="number" className='addCompany_contactNo' name="contact_number" placeholder="Contact person number" value={this.state.contact_number} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br/>
 
-                    <label>Contact number:</label>
+                    <label className='addCompany_pancard_lable'>PAN card number:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="number" name="contact_number" placeholder="Contact person number" value={this.state.contact_number} onChange={this.handleChange} required />
+                        <input type="text" className='addCompany_pancard' name="pancard_number" placeholder="Company PAN card no." value={this.state.pancard_number} onChange={this.handleChange} />
                     </Form.Group>
 
                     <br/>
 
-                    <label>PAN card number:</label>
+                    <label className='addCompany_gst_lable'>GST number:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="pancard_number" placeholder="Company PAN card no." value={this.state.pancard_number} onChange={this.handleChange} />
+                        <input type="text" className='addCompany_gst' name="gst_number" placeholder="Company GST no." value={this.state.gst_number} onChange={this.handleChange} />
                     </Form.Group>
 
                     <br/>
 
-                    <label>GST number:</label>
+                    <label className={this.state.company!==' '?'addCompany_cin_lable_edit':'addCompany_cin_lable'}>CIN number:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="gst_number" placeholder="Company GST no." value={this.state.gst_number} onChange={this.handleChange} />
-                    </Form.Group>
-
-                    <br/>
-
-                    <label>CIN number:</label>
-                    <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="cin_number" placeholder="Company CIN no." value={this.state.cin_number} onChange={this.handleChange} required />
+                        <input className={this.state.company!==' '?'addCompany_cin_edit':'addCompany_cin'} type="text" name="cin_number" placeholder="Company CIN no." value={this.state.cin_number} onChange={this.handleChange} required />
                     </Form.Group>
                     
                     <br />
                     {this.state.company !== " "?
-                        <label>Select status:</label>
+                        <label className='addCompany_status_lable'>Select status:</label>
                     :
                         ""
                     }
                     {this.state.company !== " "?
                         <Form.Group className="mb-3">
-                            <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
+                            <select className="addCompany_status" name="status" value={this.state.status} onChange={this.handleChange}>
                                 <option>Select</option>
                                 <option value={"true"}>True</option>
                                 <option value={"false"}>False</option>
@@ -280,18 +280,21 @@ export default class AddCompanies extends Component {
                     }
 
                     <br/>
-                    <Button variant="success" type="submit">
-                        Save
-                    </Button>&nbsp;&nbsp;
-                    {this.state.company === " "?
-                        <Link to={{pathname: "/companies"}}><Button variant="danger" type="cancel">
+                    <div className={this.state.company===' '?'addCompany_buttons':'addCompany_buttons_edit'}>
+                        <button className='save_company' type="submit">
+                            Save
+                        </button>&nbsp;&nbsp;
+                        {this.state.company === " "?
+                            <Link to={{pathname: "/companies"}}><button className='cancel_company' type="cancel">
+                                Cancel
+                            </button></Link>
+                            : <button className='cancel_company' type="cancel" onClick={() => {this.cancel()}}>
                             Cancel
-                        </Button></Link>
-                        : <Button variant="danger" type="cancel" onClick={() => {this.cancel()}}>
-                        Cancel
-                        </Button> 
-                    }
-                </Form>
+                            </button> 
+                        }
+                    </div>
+                    </div>
+                </form>
             </div>
             
         )

@@ -1,0 +1,179 @@
+.form_div
+{
+    display: flex;
+    flex-direction: column;
+    column-gap: 10px;
+    margin-left: 20px;
+}
+
+
+.update_application_form
+{
+    background-color: white;
+    position: absolute;
+    width: 800px;
+    height: 550px;
+    top: 250px;
+    left:500px;
+    border-radius: 45px;
+}
+
+.update_applicant_name_lable
+{
+    position: relative;
+    top:20px;
+    right: 280px;
+}
+
+.update_applicant_name
+{
+    top:25px;
+    left:80px;
+    width: 600px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #F1F1F1;
+    position: relative;
+    text-indent: 10px;
+    border-radius: 4px;
+}
+
+.update_contact_lable
+{
+    position: relative;
+    top:40px;
+    right: 260px;
+}
+
+.update_contact
+{
+    top:45px;
+    left:78px;
+    width: 270px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #F1F1F1;
+    position: relative;
+    text-indent: 10px;
+    border-radius: 4px;
+}
+
+.update_email_lable
+{
+    position: relative;
+    top:-18px;
+    left:30px;
+}
+
+.update_email
+{
+    top:-14px;
+    left:410px;
+    width: 270px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #F1F1F1;
+    position: relative;
+    text-indent: 10px;
+    border-radius: 4px;
+}
+
+.update_cv_lable
+{
+    position: relative;
+    top:5px;
+    right: 305px;
+}
+
+.update_cv
+{
+    resize: none;
+    top:15px;
+    left:80px;
+    width: 600px;
+    height: 150px;
+    outline: none;
+    border: none;
+    background-color: #F1F1F1;
+    position: relative;
+    text-indent: 10px;
+    border-radius: 4px;
+}
+
+.update_job_application_lable
+{
+    position: relative;
+    top:25px;
+    right: 285px;
+}
+
+.update_job_application
+{
+    top:30px;
+    left:80px;
+    width: 270px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #F1F1F1;
+    position: relative;
+    text-indent: 10px;
+    border-radius: 4px; 
+}
+
+.update_status_lable
+{
+    position: relative;
+    top:-33px;
+    left:30px;
+}
+
+.update_application_status
+{
+    top:-30px;
+    left:410px;
+    width: 270px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #F1F1F1;
+    position: relative;
+    text-indent: 10px;
+    border-radius: 4px; 
+}
+
+.save_application_update
+{
+    position: relative;
+    top:5px;
+    left:260px;
+    font-size: 15px;
+    background-color: #552D59;
+    color: white;
+    height: 35px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+}
+
+.cancel_application_update
+{
+    position: relative;
+    top:-30px;
+    left:410px;
+    background-color: #732B2B ;
+    font-size: 15px;
+    color: white;
+    height: 35px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+}
+
+.application_form_update_container
+{
+    
+}

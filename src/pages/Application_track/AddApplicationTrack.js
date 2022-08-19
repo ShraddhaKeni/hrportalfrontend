@@ -1,6 +1,7 @@
 import React,{useState,useEffect, useRef} from 'react'
 import axios from 'axios';
-import './style/addApplicant.css'
+import './style/addApplicant.css';
+import {motion} from 'framer-motion'
 
 const AddApplicationTrack = () => {
 
@@ -68,7 +69,7 @@ const AddApplicationTrack = () => {
             const postData = await axios.post(`http://localhost:3000/application-track/create`,data,{
                 'Content-type':'application/json'
             })
-            window.location.reload()
+            window.history.go('/viewApplicationTrack')
         }
         catch(error)
         {
@@ -84,7 +85,7 @@ const AddApplicationTrack = () => {
     <div className='main'>
         
         <form onSubmit={handleSubmit} className='add_applicant_form'>
-            <div style={{display:'flex',flexDirection:'column'}}>
+            <div style={{display:'flex',flexDirection:'column',padding:'0px'}}>
                 <lable className='select_applicant_lable' style={{marginTop:'10px'}}>
                     Select Applicant:
                 </lable>
@@ -102,24 +103,28 @@ const AddApplicationTrack = () => {
                 </lable>
                     <text className='applicant_job' ref={jobRef} id={job.id}>{job.title}</text>
                
-                <lable style={{marginTop:'10px'}}>
+                <lable for='comment' className='applicant_comment_lable' style={{marginTop:'10px'}}>
                     Comment:
-                    <input type='text' name='comment' onChange={handleChange}></input>
                 </lable>
-                <lable style={{marginTop:'10px'}}>
+                    <textarea type='text' className='applicant_comment' name='comment' onChange={handleChange}></textarea>
+                
+                <lable className='applicant_employee_lable' style={{marginTop:'10px'}}>
                     Employee:
-                    <select name='emp_id' onChange={handleChange}>
+                </lable>
+                    <select name='emp_id' className='applicant_employee' onChange={handleChange}>
                         <option value={0}>Select Employee</option>
                         {employees.map(item=>{
                             return <option key={item.id} value={item.id}>{item.name}</option>
                         })}
                         </select>
+                
+                <lable className='applicant_level_lable' style={{marginTop:'10px'}}>
+                    Level:
                 </lable>
-                <lable style={{marginTop:'10px'}}>
-                    Leve:
-                    <input type='number' name='level' onChange={handleChange}></input>
-                </lable>
-                <button type='submit'>Save</button>
+                    <input type='number' className='applicant_level' name='level' onChange={handleChange}></input>
+                
+                <motion.button whileHover={{scale:1.1}} className='save_applicant' type='submit'>Save</motion.button>
+                <motion.button whileHover={{scale:1.1}} className='cancel_applicant' type='button' onClick={()=>window.history.back()} >Cancel</motion.button>
             </div>
         </form>
     </div>

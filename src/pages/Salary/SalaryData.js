@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
+import './styles/viewSalary.css'
 
 export default class SalaryInfo extends Component {
     constructor(props){
@@ -35,8 +36,9 @@ export default class SalaryInfo extends Component {
     render(){
         return(
             <div className='main'>
-                <h2><span style={{float:"left"}}><Button variant='warning' onClick={() => {this.goBack()}}><b>Back</b></Button></span>Employee details:  </h2>
-                <Table bordered striped>
+                <h2><span ><button className='back_salary' onClick={() => {this.goBack()}}><b>Back</b></button></span>Employee details:  </h2>
+                <div className='each_salary'>
+                <table className='salary_emp_table'>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -55,13 +57,16 @@ export default class SalaryInfo extends Component {
                             </tr>
                         }
                     </tbody>
-                </Table>
+                </table>
                 <h2>Salary details:  </h2>
-                <Table bordered striped>
+                <table className='salary_single_table'>
                     <thead>
                         <tr>
                             <th>Salary</th>
                             <th>Date</th>
+                        </tr>
+                        <tr>
+                            <div></div>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,7 +79,8 @@ export default class SalaryInfo extends Component {
                             ))
                         }
                     </tbody>
-                </Table>
+                </table>
+                </div>
             </div>
         );
     }

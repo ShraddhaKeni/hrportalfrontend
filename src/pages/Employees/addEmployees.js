@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import axios from 'axios';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './styles/addEmployee.css'
 
 export default class AddEmployees extends Component {
     constructor(props) {
@@ -151,17 +152,19 @@ export default class AddEmployees extends Component {
             <div className='main'>
                 {this.state.employee === " " ? <h2>Add employee details</h2> : <h2>Edit employee details</h2>}
                 <h4 className='errorMsg'>{this.state.error}</h4>
-                <Form onSubmit={this.handleSubmit}>
-                    <label>Name: <span className='req'>*</span></label>
+               
+                <form className={this.state.employee===' '?'addEmployee_form':'addEmployee_form_edit'} onSubmit={this.handleSubmit}>
+                    <div className='addEmployee_container'>
+                    <label className='addEmployee_name_lable'>Name: <span className='req'>*</span></label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="name" placeholder="Enter name" value={this.state.name} onChange={this.handleChange} required />
+                        <input className='addEmployee_name' type="text" name="name" placeholder="Enter name" value={this.state.name} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br />
 
-                    <label>Choose company: <span className='req'>*</span></label>
+                    <label className='addEmployee_company_lable'>Choose company: <span className='req'>*</span></label>
                     <Form.Group className="mb-3">
-                        <select className="form-control" name="comp_id" value={this.state.comp_id} onChange={this.handleChange} required>
+                        <select className="addEmployee_company" name="comp_id" value={this.state.comp_id} onChange={this.handleChange} required>
                             <option >Select company</option>
                             {this.state.CompData.map((e) => (
                                 <option value={e.id} key={e.id}>{e.name}</option>
@@ -172,9 +175,9 @@ export default class AddEmployees extends Component {
 
                     <br />
 
-                    <label>Choose user: <span className='req'>*</span></label>
+                    <label className='addEmployee_user_lable'>Choose user: <span className='req'>*</span></label>
                     <Form.Group className="mb-3">
-                        <select className="form-control" name="user_id" value={this.state.user_id} onChange={this.handleChange} required>
+                        <select className="addEmployee_user" name="user_id" value={this.state.user_id} onChange={this.handleChange} required>
                             <option >Select user</option>
                             {this.state.UserData.map((e) => (
                                 <option value={e.id} key={e.id}>{e.username}</option>
@@ -185,9 +188,9 @@ export default class AddEmployees extends Component {
 
                     <br />
 
-                    <label>Choose designation: <span className='req'>*</span></label>
+                    <label className='addEmployee_designation_lable'>Choose designation: <span className='req'>*</span></label>
                     <Form.Group className="mb-3">
-                        <select className="form-control" name="desig_id" value={this.state.desig_id} onChange={this.handleChange} required>
+                        <select className="addEmployee_designation" name="desig_id" value={this.state.desig_id} onChange={this.handleChange} required>
                             <option >Select</option>
                             {this.state.DesignData.map((e) => (
                                 <option value={e.id} key={e.id}>{e.name}</option>
@@ -198,9 +201,9 @@ export default class AddEmployees extends Component {
 
                     <br />
 
-                    <label>Choose department: <span className='req'>*</span></label>
+                    <label className='addEmployee_department_lable'>Choose department: <span className='req'>*</span></label>
                     <Form.Group className="mb-3">
-                        <select className="form-control" name="dept_id" value={this.state.dept_id} onChange={this.handleChange} required>
+                        <select className="addEmployee_department" name="dept_id" value={this.state.dept_id} onChange={this.handleChange} required>
                             <option >Select</option>
                             {this.state.DeptData.map((e) => (
                                 <option value={e.id} key={e.id}>{e.name}</option>
@@ -211,46 +214,43 @@ export default class AddEmployees extends Component {
 
                     <br />
 
-                    <label>Email: <span className='req'>*</span></label>
+                    <label className='addEmployee_email_lable'>Email: <span className='req'>*</span></label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="email" name="email" placeholder="Enter email" value={this.state.email} onChange={this.handleChange} required />
+                        <input className='addEmployee_email' type="email" name="email" placeholder="Enter email" value={this.state.email} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br />
 
-                    <label>Date of joining: <span className='req'>*</span></label>
+                    <label className='addEmployee_date_lable'>Date of joining: <span className='req'>*</span></label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="date" name="doj" placeholder="Enter date of joining" value={this.state.doj} onChange={this.handleChange} required />
+                        <input className='addEmployee_date' type="date" name="doj" placeholder="Enter date of joining" value={this.state.doj} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br />
 
-                    <label>Employee code: <span className='req'>*</span></label>
+                    <label className='addEmployee_employeeCode_lable'>Employee code: <span className='req'>*</span></label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="emp_code" placeholder="Enter employee code" value={this.state.emp_code} onChange={this.handleChange} required />
+                        <input className='addEmployee_employeeCode' type="text" name="emp_code" placeholder="Enter employee code" value={this.state.emp_code} onChange={this.handleChange} required />
                     </Form.Group>
 
                     {this.state.employee === " " ? " " : <br />}
 
-                    {this.state.employee === " " ? " " : <label>Signature:</label>}
+                  <div className={this.state.employee===' '?'':'signature_edit'}>            
+                 <label className='addCompany_signature_lable'>Signature:</label>
 
-                    {this.state.employee === " " ?
-                        " "
-                        :
                         <Form.Group className="mb-3" >
-                            <Form.Control type="file" name="signature" placeholder="Signature" value={this.state.signature} onChange={this.handleChange} />
+                            <input className='addCompany_signature' type="file" name="signature" placeholder="Signature" value={this.state.signature} onChange={this.handleChange} />
                         </Form.Group>
-
-                    }
+                        </div>  
 
 
                     {this.state.employee === " " ? " " : <br />}
 
-                    {this.state.employee === " " ? " " : <label>Status:</label>}
+                    {this.state.employee === " " ? " " : <label className='addEmployee_status_lable'>Status:</label>}
 
                     {this.state.employee !== " " ?
                         <Form.Group className="mb-3">
-                            <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
+                            <select className="addEmployee_status" name="status" value={this.state.status} onChange={this.handleChange}>
                                 <option>Select</option>
                                 <option value={"true"}>True</option>
                                 <option value={"false"}>False</option>
@@ -261,20 +261,23 @@ export default class AddEmployees extends Component {
                     }
 
                     <br />
-
-                    <Button variant="success" type="submit">
+                    <div className={this.state.employee===' '? 'addEmployee_buttons':'addEmployee_buttons_edit'}>
+                    <button className='save_employee' type="submit">
                         Save
-                    </Button>&nbsp;&nbsp;
+                    </button>   
                     {this.state.employee === " " ?
-                        <Link to={{ pathname: "/employees" }}><Button variant="danger" type="cancel">
+                        <button className='cancel_employee' onClick={()=>window.history.back()} type="cancel">
                             Cancel
-                        </Button></Link>
-                        : <Button variant="danger" type="cancel" onClick={() => { this.cancel() }}>
+                        </button>
+                        : <button className='cancel_employee' type="cancel" onClick={() => { this.cancel() }}>
                             Cancel
-                        </Button>
+                        </button>
                     }
-                </Form>
-            </div>
+                    </div>
+                    </div>
+                </form>
+                </div>
+           
         )
     }
 }

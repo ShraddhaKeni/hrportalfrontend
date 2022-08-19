@@ -4,6 +4,7 @@ import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddEmployees from './addEmployees';
 import ViewEmployees from './viewEmployee';
+import './styles/viewAllEmployees.css';
 
 const initialState = {
     employees: [],
@@ -101,18 +102,22 @@ export default class Employees extends Component{
             var srno = 1
             return(
                 <div className='main'>
-                    <h2>Employees <span style={{float:'right'}}><Link to={{ pathname: "/add-employees" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
-                        <thead  >
+                    <h2 style={{marginLeft:'150px'}}>Employees<span style={{float:'right'}}><Link to={{ pathname: "/add-employees" }}><button className='add_employee'>Add Employee</button></Link></span></h2>
+                    <div className='employee_table_container'>
+                    <table className='employee_table'>
+                        <thead >
                             <tr>
-                                <th>Sr no.</th>
+                                <th style={{width:'40px'}}>Sr no.</th>
                                 <th>Name</th>
                                 <th>Company name</th>
                                 <th>Username</th>
                                 <th>Email</th>
                                 <th>Employee code</th>
-                                <th>Status</th>
-                                <th colSpan={2}>Action</th>
+                                <th style={{width:'50px'}}>Status</th>
+                                <th style={{textIndent:'25px'}} colSpan={2}>Action</th>
+                            </tr>
+                            <tr className='margin_line'>
+                                <hr className='employee_hr_tag'></hr>
                             </tr>
                         </thead>
                         <tbody>
@@ -130,27 +135,30 @@ export default class Employees extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
-                                            {emp.status===true?<Button variant="danger" onClick={() => {this.changeStatus(emp.id,emp.status)}} >
+                                            {emp.status===true?<button className='action_employee' onClick={() => {this.changeStatus(emp.id,emp.status)}} >
                                                 Delete 
-                                            </Button> : <Button variant="info" onClick={() => {this.changeStatus(emp.id,emp.status)}} >
+                                            </button> : <button className='action_employee' onClick={() => {this.changeStatus(emp.id,emp.status)}} >
                                                 Active 
-                                            </Button> }
+                                            </button> }
                                             
                                         </td> 
                                         <td> 
-                                             <Button variant="info" onClick={() => {this.editClicked(emp.id)}} >
+                                            <div className='employee_buttons'>
+                                             <button className='edit_employee'  onClick={() => {this.editClicked(emp.id)}} >
                                                 Edit 
-                                            </Button> 
-                                            <Button variant="info" onClick={() => {this.viewClicked(emp.id)}} >
+                                            </button> 
+                                            <button className='edit_employee' onClick={() => {this.viewClicked(emp.id)}} >
                                                 View 
-                                            </Button> 
+                                            </button> 
+                                            </div>
                                         </td>
                                     </tr>
                                     
                                 ))}
                         </tbody>
-                    </Table>
+                    </table>
                 </div>
+            </div>
             )
         }
     }

@@ -1,0 +1,44 @@
+.user_container
+{
+    position: absolute;
+    width: 700px;
+    height: 800px;
+    background-color: white;
+    border-radius: 45px;
+    margin: 10px 100px;
+    right:500px;
+}
+
+.user_view_table
+{
+    width: 600px;
+    height: 600px;
+    position: relative;
+    border-radius: 45px;
+    padding: 10px 0px;
+    justify-content: center;
+    margin: 100px 50px;
+    text-align: center;
+}
+
+.user_view_table tr
+{
+    border: 1px solid black;
+}
+.user_view_table td
+{
+    border: 1px solid black;
+}
+
+.user_back
+{
+    float: right;
+    height: 40px;
+    width: 120px;
+    margin-right: 120px;
+    background-color:#7A4069 ;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}

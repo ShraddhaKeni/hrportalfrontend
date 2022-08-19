@@ -1,10 +1,10 @@
-.add_applicant_form
+.add_applicant_form_update
 {
     background-color: white;
     position: absolute;
     width: 800px;
-    height: 550px;
-    top: 250px;
+    height: 650px;
+    top: 200px;
     left:500px;
     border-radius: 45px;
 }
@@ -28,34 +28,37 @@
     text-indent:10px ;
 }
 
-.applicant_job_lable
-{
-    position: relative;
-    top:70px;
-    right:310px
-}
-
-.applicant_job
-{
-    position: relative;
-    top:48px;
-    right:220px;
-    font-weight: 400;
-    font-size: 15px;
-    
-}
-
-.applicant_comment_lable
+.applicant_job_lable_update
 {
     position: relative;
     top:60px;
-   left:-290px;
+    right:310px
 }
 
-.applicant_comment
+.applicant_job_update
 {
     position: relative;
     top:70px;
+    left:80px;
+    height: 40px;
+    width: 600px;
+    font-weight: 400;
+    font-size: 15px;
+    outline: none;
+    border: none;
+}
+
+.applicant_comment_lable_update
+{
+    position: relative;
+    top:80px;
+    left:-290px;
+}
+
+.applicant_comment_update
+{
+    position: relative;
+    top:90px;
     width: 600px;
     height: 70px;
     left: 83px;
@@ -63,40 +66,41 @@
     border: none;
     background: #F1F1F1;
     resize: none;
+    text-indent: 10px;
 }
 
-.applicant_employee_lable
+.applicant_employee_lable_update
 {
     position: relative;
-    top:70px;
+    top:90px;
     left:-290px
 }
 
-.applicant_employee
+.applicant_employee_update
 {
     width: 600px;
     height: 40px;
     outline: none;
     border: none;
     position: relative;
-    top:80px;
+    top:100px;
     left:80px;
     text-indent:10px ;
 }
 
-.applicant_level_lable
+.applicant_level_lable_update
 {
     position: relative;
-    top:80px;
+    top:100px;
     left:-300px 
 }
 
 
 
-.applicant_level
+.applicant_level_update
 {
     position: relative;
-    top:90px;
+    top:105px;
     width: 600px;
     height: 30px;
     left: 83px;
@@ -131,4 +135,23 @@
     border: none;
     outline: none;
     border-radius: 4px;
+}
+
+.applicant_status_lable
+{
+    position: relative;
+    top:110px;
+    left:-300px 
+}
+
+.applicant_status
+{
+    width: 600px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:115px;
+    left:80px;
+    text-indent:10px ;
 }

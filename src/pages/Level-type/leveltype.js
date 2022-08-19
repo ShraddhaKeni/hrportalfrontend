@@ -5,11 +5,15 @@ import { Link } from 'react-router-dom';
 import AddLeveltype from './addLeveltype';
 import './styles/viewLevel.css'
 import {  } from 'react-icons/fa';
+import Pagination from '../../components/paginate/Pagination';
 
 const initialState = {
     levels: [],
     isEdit: false,
     editValue: null,
+    currentPage:1,
+    postPerPage:12,
+    currentPosts:[],
 }
 
 export default class Leveltype extends Component{
@@ -24,6 +28,11 @@ export default class Leveltype extends Component{
             this.setState({
                 levels: response.data.data
             });
+
+        }).then(()=>{
+            const indexOfLast = (this.state.currentPage*this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({currentPosts:this.state.levels.slice(indexOfFirst,indexOfLast)});
         });
     }
 
@@ -45,6 +54,26 @@ export default class Leveltype extends Component{
         window.location.reload();
     }
 
+    paginate =(pageNumber)=>{
+           
+        const page = pageNumber;
+        console.log(page)
+        const totalPages = (this.state.companies.length/this.state.postPerPage)
+        if(page<1)
+        {
+            this.setState({currentPage:1})
+            const indexOfLast = (1*this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({currentPosts:this.state.levels.slice(indexOfFirst,indexOfLast)});
+        }
+        else{
+            this.setState({currentPage:page})
+            const indexOfLast = (page*this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({currentPosts:this.state.levels.slice(indexOfFirst,indexOfLast)});
+        }
+    }
+
     render(){
         if(this.state.isEdit === true){
             return (
@@ -54,7 +83,8 @@ export default class Leveltype extends Component{
             var srno = 1
             return(
                 <div className='main_levelTypes'>
-                    <h2><span style={{float:'right'}}><Link to={{ pathname: "/add-leveltype" }}><button className='add_level'>Add Level<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2>
+                    <h2 style={{marginLeft:'20px',marginTop:'20px'}}>Levels</h2>
+                    <Link to={{ pathname: "/add-leveltype" }}><button className='add_level'>Add Level</button></Link>
                     <div className='table_container_levelTypes'>
                     <table className='table_levelTypes'>
                         <thead className=''>
@@ -71,7 +101,7 @@ export default class Leveltype extends Component{
                         
                         <tbody className='level_typeBody'>
                             {
-                                this.state.levels.map((level) => (
+                                this.state.currentPosts.map((level) => (
                                     <tr style={{paddingBottom:'10px'}} key={level.id}>
                                         <td>{srno++}</td>
                                         <td>{level.name}</td>
@@ -96,9 +126,8 @@ export default class Leveltype extends Component{
                         </tbody>
                         
                     </table>
-                    <div style={{marginLeft:'',color:'grey'}}>            
-                        1/12
-                        </div>
+                    <Pagination postPerPage={this.state.postPerPage} totalPosts={this.state.levels.length} paginate={this.paginate} currentPage={this.state.currentPage}/>
+
                     </div>
                 </div>
             )

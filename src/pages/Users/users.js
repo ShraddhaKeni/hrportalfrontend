@@ -1,15 +1,20 @@
 import {Component} from 'react';
 import axios from 'axios';
-import { Table, Button } from 'react-bootstrap';
+import { Table, button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddUsers from './addUsers';
 import ViewUsers from './viewUsers';
+import './style/viewUsers.css'
+import Pagination from '../../components/paginate/Pagination';
 
 const initialState = {
     users: [],
     isEdit: false,
     isView: false,
     editValue: null,
+    currentPage:1,
+    postPerPage:12,
+    currentPosts:[],
 }
 
 export default class Users extends Component{
@@ -24,6 +29,11 @@ export default class Users extends Component{
             this.setState({
                 users: response.data.data
             });
+        }).then(()=>{
+            const indexOfLast = (this.state.currentPage*this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({currentPosts:this.state.users.slice(indexOfFirst,indexOfLast)});
+            
         });
     }
 
@@ -40,6 +50,25 @@ export default class Users extends Component{
             editValue: id,
         })
     }
+    paginate =(pageNumber)=>{
+           
+        const page = pageNumber;
+        console.log(page)
+        const totalPages = (this.state.users.length/this.state.postPerPage)
+        if(page<1)
+        {
+            this.setState({currentPage:1})
+            const indexOfLast = (1*this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({currentPosts:this.state.users.slice(indexOfFirst,indexOfLast)});
+        }
+        else{
+            this.setState({currentPage:page})
+            const indexOfLast = (page*this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({currentPosts:this.state.users.slice(indexOfFirst,indexOfLast)});
+        }
+    }
 
     render(){
         if(this.state.isEdit === true){
@@ -54,23 +83,27 @@ export default class Users extends Component{
             var srno = 1
             return(
                 <div className='main'>
-                    <h2>Users <span style={{float:'right'}}><Link to={{ pathname: "/add-users" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
+                    <h2 style={{marginLeft:'250px'}}>Users <span style={{float:'right'}}><Link to={{ pathname: "/add-users" }}><button className='add_user'>Add User</button></Link></span></h2>
+                    <div className='users_table_container'>
+                    <table className='users_table'>
                         <thead  >
                             <tr>
-                                <th>Sr no.</th>
+                                <th style={{width:'40px'}}>Sr no.</th>
                                 <th>Name</th>
-                                <th>Email</th>
+                                <th style={{width:'40px'}}>Email</th>
                                 <th>Contact no.</th>
-                                <th>Status</th>
+                                <th style={{width:'50px'}}>Status</th>
                                 <th colSpan={2}>Actions</th>
+                            </tr>
+                            <tr>
+                                <hr className='hr_users_tag'/>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                this.state.users.map((user) => (
+                                this.state.currentPosts.map((user,index) => (
                                     <tr key={user.id}>
-                                        <td>{srno++}</td>
+                                        <td style={{textAlign:'center'}}>{this.state.currentPage<=2?(this.state.currentPage-1)*12+(index+1):(this.state.currentPage-1+1)+(index+1)}</td>
                                         <td>{user.username}</td>
                                         <td>{user.email}</td>
                                         <td>{user.contact_no}</td>
@@ -79,20 +112,23 @@ export default class Users extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
-                                            <Button variant="info" onClick={() => {this.editClicked(user.id)}} >
+                                            <button className='users_edit' onClick={() => {this.editClicked(user.id)}} >
                                                 Edit 
-                                            </Button> 
+                                            </button> 
                                         </td>
                                         <td> 
-                                            <Button variant="info" onClick={() => {this.viewClicked(user.id)}} >
+                                            <button className='user_view'  onClick={() => {this.viewClicked(user.id)}} >
                                                 View 
-                                            </Button> 
+                                            </button> 
                                         </td>
                                     </tr>
                                     
                                 ))}
                         </tbody>
-                    </Table>
+                    </table>
+                    <Pagination postPerPage={this.state.postPerPage} totalPosts={this.state.users.length} paginate={this.paginate} currentPage={this.state.currentPage}/>
+
+                    </div>
                 </div>
             )
         }

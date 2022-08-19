@@ -3,9 +3,8 @@
     padding: 0px;
     margin: 0;
     position: relative;
-    width: 100%;
     background-color: #E5E5E5;
-    height: 100vh;
+    
 }
 
 .table_container_levelTypes
@@ -62,8 +61,11 @@ button
 {
     height: 40px;
     width: 120px;
-    margin-right: 500px;
-    margin-top: 70px;
+    float: right;
+    position: fixed;
+    bottom:780px;
+    right:550px;
+    z-index: 10;
     background-color:#552D59 ;
     color: white;
     border: none;

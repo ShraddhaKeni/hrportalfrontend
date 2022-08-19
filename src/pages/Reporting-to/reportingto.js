@@ -71,8 +71,8 @@ export default class Reportingto extends Component{
             var srno = 1
             return(
                 <div className='main_reporting'>
-                    
-                    <h2><span style={{float:'right'}}><Link to={{ pathname: "/add-reporting" }}><button className='add_report'>Add Reporting</button></Link></span></h2>
+                    <h2 style={{marginLeft:'-40px'}}>Reporting</h2>
+                    <h2><Link to={{ pathname: "/add-reporting" }}><button className='add_report'>Add Reporting</button></Link></h2>
                     <div className='table_reporting_container'>
                     <table className='table_reporting'>
                         <thead>

@@ -3,9 +3,11 @@ import {Table,Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import UpdateApplicationTrack from './UpdateApplicationTrack';
+import './style/viewApplicant.css';
+import {motion} from 'framer-motion'
+import Pagination from '../../components/paginate/Pagination';
 
 const ViewApplicationTrack = () => {
-var srno = 1;
 
 const[trackData, setTrack] = useState([]);
 const[applicant,setApplicant] = useState([]);
@@ -14,6 +16,10 @@ const [employee,setEmployees] = useState([]);
 const[isEdit,setEdit] = useState(false)
 const [edit,setEditData] = useState();
 const[change,setChange] = useState(false)
+const[currentPage,setCurrentPage] = useState(1)
+const[postPerPage] = useState(12);
+//const[postToDisplay,setPosts] = useState([])
+
 
 const getTrackData = async()=>{
     try {
@@ -105,7 +111,26 @@ useEffect(()=>{
     getApplicant();
     getJobs();
     getEmployees();
-},[change])
+},[change,currentPage])
+
+const paginate = number =>{
+
+    const pages = (trackData.length/postPerPage)
+    console.log(number)
+    if(number<1)
+    {
+        setCurrentPage(1)
+    }
+    else if(number>pages)
+    {
+        setCurrentPage(1)
+    }
+    else{
+        setCurrentPage(number)
+    }
+    
+}
+
 
 if(isEdit==true)
 {
@@ -113,11 +138,15 @@ if(isEdit==true)
 }
 else
 {
+    const indexOfLast = currentPage * postPerPage;
+    const indexofFirst = indexOfLast - postPerPage;
+    const currentPosts = trackData.slice(indexofFirst,indexOfLast)
     return (
-        <div>
-            <div className='main'>
-                          <h2>Applicants <span style={{float:'right'}}><Link to={{ pathname: "/addApplicationTrack" }}><Button variant='success'>Add track</Button></Link></span></h2>
-                          <Table bordered striped>
+        <div className='main_applicants'>
+           
+            <h2 style={{marginLeft:'500px'}}>Application Track<span style={{float:'right'}}><Link to={{ pathname: "/addApplicationTrack" }}><motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='add_applicant'>Add track</motion.button></Link></span></h2>
+            <div className='table_container_applicants'> 
+                          <table className='table_applicants'>
                               <thead  >
                                   <tr>
                                       <th>Sr no.</th>
@@ -127,30 +156,37 @@ else
                                       <th>Employee</th>
                                       <th>Level</th>
                                       <th>status</th>
-                                      <th>Action</th>
+                                      <th >Action</th>
                                   </tr>
+                                  <tr>
+                                    <hr className='hr_tag_applicationTrack'/>
+                                </tr>
                               </thead>
                               <tbody>
-                                  {trackData.map((item)=>{
+                                  {currentPosts.map((item,index)=>{
                                     return (<tr key={item.id}>
-                                        <td>{srno++}</td>
+                                        <td>{currentPage<=2?(currentPage-1)*12+(index+1):(currentPage+1)+(index+1)}</td>
                                         <td>{getApplicantName(item.applicant_id)}</td>
                                         <td>{getJobName(item.job_id)}</td>
                                         <td>{item.comment}</td>
                                         <td>{getEmployeesName(item.emp_id)}</td>
                                         <td>{item.level}</td>
+                                        
                                         {item.status==true?<td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
                                                       : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>}
-                                        {item.status!=false?<Button variant="danger" onClick={() => {changeStatus(item.id,item.status)}} >
+                                        <div style={{display:'flex'}}>
+                                        {item.status!=false?<motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='action_applicant'  onClick={() => {changeStatus(item.id,item.status)}} >
                                                           Delete 
-                                                      </Button> :<Button variant="primary" onClick={() => {changeStatus(item.id,item.status)}} >
+                                                      </motion.button> :<motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='action_applicant'  onClick={() => {changeStatus(item.id,item.status)}} >
                                                           Activate 
-                                                      </Button> }   
-                                          <Button style={{margin:'10px'}} onClick={()=>editClicked(item.id)}>Edit</Button>
+                                                      </motion.button> }   
+                                          <motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='edit_applicant' onClick={()=>editClicked(item.id)}>Edit</motion.button>
+                                        </div>
                                     </tr>)
                                   })}
                               </tbody>
-                          </Table>
+                          </table>
+                          <Pagination postPerPage={postPerPage} totalPosts={trackData.length}  paginate={paginate} currentPage={currentPage}/>
                       </div>
         </div>
       )

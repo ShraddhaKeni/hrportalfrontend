@@ -3,11 +3,17 @@ import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddLeveltype from './addLeveltype';
+import './styles/viewLevel.css'
+import {  } from 'react-icons/fa';
+import Pagination from '../../components/paginate/Pagination';
 
 const initialState = {
     levels: [],
     isEdit: false,
     editValue: null,
+    currentPage:1,
+    postPerPage:12,
+    currentPosts:[],
 }
 
 export default class Leveltype extends Component{
@@ -22,6 +28,11 @@ export default class Leveltype extends Component{
             this.setState({
                 levels: response.data.data
             });
+
+        }).then(()=>{
+            const indexOfLast = (this.state.currentPage*this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({currentPosts:this.state.levels.slice(indexOfFirst,indexOfLast)});
         });
     }
 
@@ -43,6 +54,26 @@ export default class Leveltype extends Component{
         window.location.reload();
     }
 
+    paginate =(pageNumber)=>{
+           
+        const page = pageNumber;
+        console.log(page)
+        const totalPages = (this.state.companies.length/this.state.postPerPage)
+        if(page<1)
+        {
+            this.setState({currentPage:1})
+            const indexOfLast = (1*this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({currentPosts:this.state.levels.slice(indexOfFirst,indexOfLast)});
+        }
+        else{
+            this.setState({currentPage:page})
+            const indexOfLast = (page*this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({currentPosts:this.state.levels.slice(indexOfFirst,indexOfLast)});
+        }
+    }
+
     render(){
         if(this.state.isEdit === true){
             return (
@@ -51,21 +82,27 @@ export default class Leveltype extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2>Level types <span style={{float:'right'}}><Link to={{ pathname: "/add-leveltype" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
-                        <thead  >
-                            <tr>
+                <div className='main_levelTypes'>
+                    <h2 style={{marginLeft:'20px',marginTop:'20px'}}>Levels</h2>
+                    <Link to={{ pathname: "/add-leveltype" }}><button className='add_level'>Add Level</button></Link>
+                    <div className='table_container_levelTypes'>
+                    <table className='table_levelTypes'>
+                        <thead className=''>
+                            <tr >
                                 <th>Sr no.</th>
                                 <th>Name</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th colSpan={2}>Action</th>
+                            </tr>
+                            <tr>
+                                    <hr className='hr_tag'/>
                             </tr>
                         </thead>
-                        <tbody>
+                        
+                        <tbody className='level_typeBody'>
                             {
-                                this.state.levels.map((level) => (
-                                    <tr key={level.id}>
+                                this.state.currentPosts.map((level) => (
+                                    <tr style={{paddingBottom:'10px'}} key={level.id}>
                                         <td>{srno++}</td>
                                         <td>{level.name}</td>
                                             {
@@ -73,20 +110,25 @@ export default class Leveltype extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
-                                            {level.status==true?<Button variant="danger" style={{marginRight:'10px'}} onClick={() => {this.changeStatus(level.id,level.status)}} >
+                                            {level.status==true?<button style={{marginRight:'10px',borderRadius:'0px',border:'none' ,background: '#732B2B',color:'white'}} onClick={() => {this.changeStatus(level.id,level.status)}} >
                                                 Delete 
-                                            </Button>:<Button variant="primary" style={{marginRight:'10px'}} onClick={() => {this.changeStatus(level.id,level.status)}} >
+                                            </button>:<button style={{marginRight:'10px',borderRadius:'0px',border:'none' ,background: '#732B2B',color:'white'}} onClick={() => {this.changeStatus(level.id,level.status)}} >
                                                 Activate 
-                                            </Button>  }
-                                            <Button variant="info" style={{marginRight:'10px'}} onClick={() => {this.editClicked(level.id)}} >
+                                            </button>  }
+                                            <button style={{marginRight:'10px',background: '#552D59',color:'white',borderRadius:'0px',border:'none'}} onClick={() => {this.editClicked(level.id)}} >
                                                 Edit 
-                                            </Button> 
+                                            </button> 
                                         </td>
                                     </tr>
                                     
                                 ))}
+                                
                         </tbody>
-                    </Table>
+                        
+                    </table>
+                    <Pagination postPerPage={this.state.postPerPage} totalPosts={this.state.levels.length} paginate={this.paginate} currentPage={this.state.currentPage}/>
+
+                    </div>
                 </div>
             )
         }

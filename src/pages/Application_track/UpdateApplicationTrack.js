@@ -1,5 +1,7 @@
 import React,{useState,useEffect, useRef} from 'react'
 import axios from 'axios';
+import './style/updateApplicant.css'
+import {motion} from 'framer-motion'
 
 const UpdateApplicationTrack = ({trackData}) => {
     const[applicantData,setApplicantData] = useState([trackData])
@@ -106,42 +108,48 @@ const UpdateApplicationTrack = ({trackData}) => {
   return (
     <div>
         {console.log(addTrack)}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='add_applicant_form_update'>
             <div style={{display:'flex',flexDirection:'column'}}>
-                <lable style={{marginTop:'10px'}}>
+                <lable className='select_applicant_lable' style={{marginTop:'10px'}}>
                     Select Applicant:
-                    <select name='applicant_id' onChange={dataChange} onLoad={dataChange} defaultValue={trackData.applicant_id}>
+                    </lable>
+
+                    <select className='applicant_select' name='applicant_id' onChange={dataChange} onLoad={dataChange} defaultValue={trackData.applicant_id}>
                         <option value={0}>Select Applicant</option>
                         {applicantData.map(item=>{
                             return <option key={item.id} value={item.id}>{item.name}</option>
                         })}
                         </select>
-                </lable>
-
-                <lable style={{marginTop:'10px'}}>
+                
+                <lable className='applicant_job_lable_update' style={{marginTop:'10px'}}>
                     Job:
-                    <input ref={jobRef} id={trackData.job_id} value={job.title} disabled></input>
-                </lable>
-                <lable style={{marginTop:'10px'}}>
+                    </lable>
+                    <input className='applicant_job_update' ref={jobRef} id={trackData.job_id} value={job.title} disabled></input>
+               
+                <lable className='applicant_comment_lable_update' style={{marginTop:'10px'}}>
                     Comment:
-                    <input type='text' name='comment' onChange={handleChange} defaultValue={trackData.comment}></input>
-                </lable>
-                <lable style={{marginTop:'10px'}}>
+                    </lable>
+                    <textarea type='text' className='applicant_comment_update' name='comment' onChange={handleChange} defaultValue={trackData.comment}></textarea>
+                
+                <lable className='applicant_employee_lable_update' style={{marginTop:'10px'}}>
                     Employee:
-                    <select name='emp_id' onChange={handleChange} defaultValue={trackData.emp_id}>
+                    </lable>
+                    <select className='applicant_employee_update' name='emp_id' onChange={handleChange} defaultValue={trackData.emp_id}>
                         <option value={0}>Select Employee</option>
                         {employees.map(item=>{
                             return <option key={item.id} value={item.id}>{item.name}</option>
                         })}
                         </select>
+                
+                <lable className='applicant_level_lable_update' style={{marginTop:'10px'}}>
+                    Level:
                 </lable>
-                <lable style={{marginTop:'10px'}}>
-                    Leve:
-                    <input type='number' name='level' onChange={handleChange} defaultValue={trackData.level}></input>
-                </lable>
-                <lable style={{marginTop:'10px'}}>
+                    <input type='number' className='applicant_level_update' name='level' onChange={handleChange} defaultValue={trackData.level}></input>
+                
+                <lable className='applicant_status_lable' style={{marginTop:'10px'}}>
                     Status:
-                    <select name='status' onChange={handleChange} defaultValue={trackData.status}>
+                </lable>
+                    <select name='status' className='applicant_status' onChange={handleChange} defaultValue={trackData.status}>
                         <option value={[true]}>
                             Active
                         </option>
@@ -149,8 +157,9 @@ const UpdateApplicationTrack = ({trackData}) => {
                             Inactive
                         </option>
                     </select>
-                </lable>
-                <button type='submit'>Save</button>
+                
+                    <motion.button whileHover={{scale:1.1}} className='save_applicant' type='submit'>Save</motion.button>
+                <motion.button whileHover={{scale:1.1}} className='cancel_applicant' type='button' onClick={()=>window.history.back()} >Cancel</motion.button>
             </div>
         </form>
     </div>

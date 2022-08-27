@@ -1,0 +1,44 @@
+.viewEmployee_container
+{
+    position: absolute;
+    width: 700px;
+    height: 800px;
+    background-color: white;
+    border-radius: 45px;
+    margin: 10px 100px;
+    right:450px;
+}
+
+.viewEmployee_table
+{
+    width: 600px;
+    height: 600px;
+    position: relative;
+    border-radius: 45px;
+    padding: 10px 0px;
+    justify-content: center;
+    margin: 100px 50px;
+    text-align: center;
+}
+
+.viewEmployee_table tr
+{
+    border: 1px solid black;
+}
+.viewEmployee_table td
+{
+    border: 1px solid black;
+}
+
+.employee_back
+{
+    float:left;
+    height: 40px;
+    width: 120px;
+
+    background-color:#7A4069 ;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}

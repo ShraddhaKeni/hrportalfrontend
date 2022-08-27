@@ -1,6 +1,10 @@
 import {Component} from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
+import './styles/viewEachCompany.css';
+import {motion} from 'framer-motion'
+
+import './styles/viewCompanies.css'
 
 export default class ViewCompanies extends Component {
   constructor(props){
@@ -46,13 +50,18 @@ export default class ViewCompanies extends Component {
     return (
         <div className='main'>
             <h2>
-                <span style={{float:"left"}}><Button variant='warning' onClick={() => {this.goBack()}}><b>Back</b></Button></span> Company details</h2>
-            <Table bordered striped>
+                <span style={{float:"left"}}><motion.button whileHover={{scale:1.1}} className='companies_back' onClick={() => {this.goBack()}}><b>Back</b></motion.button></span></h2>
+            <motion.div 
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }} className='companies_table_container'>
+            <table className='companies_table'>
                 <tbody>
                     <tr className='left'>
-                        <th>Name: </th>
+                        <th style={{textAlign:'left'}}>Name:</th>
                         <td>{this.state.company.name}</td>
                     </tr>
+                
                     <tr className='left'>
                         <th>Address: </th>
                         <td>{this.state.company.address}</td>
@@ -122,7 +131,8 @@ export default class ViewCompanies extends Component {
                         <td>{this.state.company.createdAt}</td>
                     </tr>
                 </tbody>
-            </Table>
+            </table>
+            </motion.div >
         </div>
     )
   }

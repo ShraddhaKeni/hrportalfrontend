@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Button } from 'react-bootstrap';
+import { Table, button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import SalaryInfo from './SalaryData';
 import EditSalary from './editSalary';
+import './styles/viewAllSalary.css'
 
 export default class ViewSalary extends React.Component {
     constructor(props) {
@@ -84,15 +85,19 @@ export default class ViewSalary extends React.Component {
             return (
                 
                 <div className='main'>
-                    <h2>Employee Salaries <span style={{float:'right'}}><Link to={{ pathname: "/add-salary" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
+                    <h2>Employee Salaries <span style={{float:'right'}}><Link to={{ pathname: "/add-salary" }}><button className='add_salary'>Add Salary</button></Link></span></h2>
+                    <div className='salary_table_container'>
+                    <table className='salary_table'>
                         <thead>
                             <tr>
-                                <th>Sr no.</th>
+                                <th style={{width:'40px'}}>Sr no.</th>
                                 <th>Name</th>
                                 <th>Salary</th>
                                 <th>Status</th>
-                                <th colSpan={3}>Actions</th>
+                            <th colSpan={2} style={{textIndent:'-200px'}}>Actions</th>
+                            </tr>
+                            <tr>
+                                <hr className='salary_line'></hr>
                             </tr>
                         </thead>
                         <tbody>
@@ -106,23 +111,22 @@ export default class ViewSalary extends React.Component {
                                                 salary.status === true? <td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                         }
-                                        <td> 
-                                            <Button variant="info" onClick={() => {this.editClicked(salary.emp_id)}} >
-                                                Edit 
-                                            </Button> 
-                                        </td>
-                                        <td> 
-                                         
-                                        </td>
-                                        <td>
-                                            <Button variant="info" onClick={() => {this.viewClicked(salary.emp_id)}}>
-                                                View
-                                            </Button>
+                                        <td > 
+                                           <div className='salary_table_buttons'> 
+                                                <button className='salary_edit' onClick={() => {this.editClicked(salary.emp_id)}} >
+                                                    Edit 
+                                                </button> 
+
+                                                <button className='salary_view' onClick={() => {this.viewClicked(salary.emp_id)}}>
+                                                    View
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))}
                         </tbody>
-                    </Table>
+                    </table>
+                    </div>
                 </div>
             )
         }

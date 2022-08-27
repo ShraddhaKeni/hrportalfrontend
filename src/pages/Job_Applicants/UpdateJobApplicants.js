@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './styles/updateApplication.css'
 const UpdateJobApplicants = ({applicant}) => {
 
   const [applicantDetails, setDetails] = useState()
@@ -61,45 +62,52 @@ const UpdateJobApplicants = ({applicant}) => {
   },[])
 
   return (
-    <div>
-        <div>
+    <div className='main'>
+        <div className='application_form_update_container'>
           {console.log(applicant.id)}
-      <form onSubmit={handleSubmit}> 
+      <form onSubmit={handleSubmit} className='update_application_form'> 
       
         <div className='form_div'>
-          <lable>
+          <lable className='update_applicant_name_lable'>
             Add Name:
-              <input type='text' onChange={handleChange} name='name' defaultValue={applicant.name} placeholder='Enter Name here'></input>
-          </lable>
-          <lable>
+            </lable>
+              <input type='text' className='update_applicant_name' onChange={handleChange} name='name' defaultValue={applicant.name} placeholder='Enter Name here'></input>
+          
+          <lable className='update_contact_lable'>
             Contact Number:
-              <input type='number' onChange={handleChange} name='contact_no' defaultValue={applicant.contact_no} placeholder='Enter Phone number here'></input>
-          </lable>
-          <lable>
+            </lable>
+              <input type='number' className='update_contact' onChange={handleChange} name='contact_no' defaultValue={applicant.contact_no} placeholder='Enter Phone number here'></input>
+          
+          <lable className='update_email_lable'>
             Email:
-              <input type='email' onChange={handleChange} name='email_id' defaultValue={applicant.email_id} placeholder='Enter Email here'></input>
-          </lable>
-          <lable>
+            </lable>
+              <input type='email' className='update_email' onChange={handleChange} name='email_id' defaultValue={applicant.email_id} placeholder='Enter Email here'></input>
+          
+          <lable className='update_cv_lable'>
             CV:
-              <textarea name='cv' onChange={handleChange} defaultValue={applicant.cv}  placeholder='Paste Resume'></textarea>
-          </lable>
-          <lable>
+          </lable> 
+              <textarea className='update_cv' name='cv' onChange={handleChange} defaultValue={applicant.cv}  placeholder='Paste Resume'></textarea>
+          
+          <lable className='update_job_application_lable'>
             Select Job
-            <select name='job_id' onChange={handleChange} defaultValue={applicant.job_id}>
+            </lable>
+            <select className='update_job_application' name='job_id' onChange={handleChange} defaultValue={applicant.job_id}>
               <option>Select Job </option>
                 {jobs.map((item)=>{
                   return <option key={item.id} value={item.id}>{item.title}</option>
                 })}
             </select>
-          </lable>
-          <lable>
-            Status: 
-            <select name='status' onChange={handleChange} defaultValue={applicant.status}>
+          
+          <lable className='update_status_lable'>
+            Status:
+            </lable> 
+            <select className='update_application_status' name='status' onChange={handleChange} defaultValue={applicant.status}>
               <option value={true}>Active</option>
               <option value={false}>Inactive</option>
             </select>
-          </lable>
-          <button type='submit'>Save</button>
+          
+          <button className='save_application_update' type='submit'>Save</button>
+          <button className='cancel_application_update' onClick={()=>window.history.back()} type='button'>cancel</button>
         </div>
       </form>
     </div>

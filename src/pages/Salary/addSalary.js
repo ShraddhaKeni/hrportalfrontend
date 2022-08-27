@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { Form, Button } from 'react-bootstrap';
+import { Form, button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './styles/addSalary.css'
 
 const initialState = {
     employee: "",
@@ -90,34 +91,37 @@ export default class Salary extends React.Component {
         return (
             <div className='main'>
                 <h2>Add salary</h2>
-
-                <Form onSubmit={this.handleSubmit}>
-                    <label>Select employee:</label>
+                <div className='addSalary_container'>
+                <form className='addSalary_form' onSubmit={this.handleSubmit}>
+                    <div className='addSalary_form_container'>
+                    <label className='addSalary_employee_lable'>Select employee:</label>
                     <Form.Group className="mb-3">
-                        <select className="form-control" name="employee" value={this.state.employee} onChange={this.handleChange}>
+                        <select className="addSalary_employee" name="employee" value={this.state.employee} onChange={this.handleChange}>
                             <option>Select employee</option>
                             {this.state.employeesData.map((e) => {
                                 if (!this.checkSalaryExist(e.id) || this.state.isEdit) {
                                     return <option value={e.id}>{e.name}</option>
                                 }else{
-                                    return ""
+                                    return <option value={e.id}>{e.name}</option>
                                 }
                             })}
                         </select>
                     </Form.Group>
                     <br/>
-                    <label>Enter salary:</label>
+                    <label className='addSalary_salary_label'>Enter salary:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="number" ref={this.salary_ref} placeholder="Enter Salary" defaultValue={this.state.salary} onChange={()=>{this.setState({salary:this.salary_ref.current.value})}} />
+                        <input className='addSalary_salary' type="number" ref={this.salary_ref} placeholder="Enter Salary" defaultValue={this.state.salary} onChange={()=>{this.setState({salary:this.salary_ref.current.value})}} />
                     </Form.Group>
                     <br/>
-                    <Button variant="success" type="submit">
+                    <button className='salary_save' type="submit">
                         Save
-                    </Button>&nbsp;&nbsp;
-                    <Link to={{pathname: "/salary"}}><Button variant="danger" type="cancel">
+                    </button>
+                    <Link to={{pathname: "/salary"}}><button className='salary_cancel' type="cancel">
                         Cancel
-                    </Button></Link>
-                </Form>
+                    </button></Link>
+                    </div>
+                </form>
+                </div>
             </div>
         )
     }   

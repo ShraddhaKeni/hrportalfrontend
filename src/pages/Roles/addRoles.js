@@ -1,7 +1,8 @@
 import {Component} from 'react';
 import axios from 'axios';
-import { Form, Button } from 'react-bootstrap';
+import { Form, button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './style/addRole.css'
 
 //Changed the status from String to Boolean as backend only takes status as boolean and frontend was passing String value
 //Due to which it was not getting updated in the Server.
@@ -74,24 +75,27 @@ export default class AddRoles extends Component {
 
   render() {
 
-    return (
+    return (  
       <div className='main'>
         {this.state.role === " "? <h2>Add Role</h2> : <h2>Edit Role</h2>}
-        <label>Enter role name:</label>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group className="mb-3" >
-              <Form.Control type="text" name="name" placeholder="Enter role name" value={this.state.name} onChange={this.handleChange} required />
-          </Form.Group>
-          
-          <br />
+        <div className='addRole_form_container'>
+        <form className='addRole_form' onSubmit={this.handleSubmit}>
+          <div className={this.state.role=== ' '? 'role_name_container':'role_name_container_edit'}>
+          <label className='role_name_lable'>Enter role name:</label>
+            <Form.Group className="mb-3" >
+                <input type="text" className='role_name' name="name" placeholder="Enter role name" value={this.state.name} onChange={this.handleChange} required />
+            </Form.Group>
+            
+            <br />
+          </div>
           {this.state.role !== " "?
-            <label>Select status:</label>
+            <label className='role_status_lable'>Select status:</label>
           :
             ""
           }
           {this.state.role !== " "?
             <Form.Group className="mb-3">
-                <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
+                <select className="role_status" name="status" value={this.state.status} onChange={this.handleChange}>
                     <option>Select</option>
                     <option value={true}>True</option>
                     <option value={false}>False</option>
@@ -102,18 +106,21 @@ export default class AddRoles extends Component {
           }
 
           <br/>
-          <Button variant="success" type="submit">
+          <div className='role_buttons'>
+          <button className='save_role' type="submit">
               Save
-          </Button>&nbsp;&nbsp;
+          </button>
           {this.state.role === " "?
-              <Link to={{pathname: "/roles"}}><Button variant="danger" type="cancel">
+              <Link to={{pathname: "/roles"}}><button className='cancel_role' type="cancel">
                   Cancel
-              </Button></Link>
-            : <Button variant="danger" type="cancel" onClick={() => {this.cancel()}}>
+              </button></Link>
+            : <button className='cancel_role' type="cancel" onClick={() => {this.cancel()}}>
               Cancel
-              </Button> 
+              </button> 
           }
-        </Form>
+          </div>
+        </form>
+        </div>
       </div>
     )
   }

@@ -64,6 +64,8 @@ import ViewApplicationTrack from './pages/Application_track/ViewApplicationTrack
 import AddApplicationTrack from './pages/Application_track/AddApplicationTrack';
 import Login from './pages/Login/Login';
 import ViewOffboard from './pages/Offboard/ViewOffboard';
+import AddOffboard from './pages/Offboard/AddOffboard';
+import NavBarNew from './components/NavBarNew';
 import Viewhrsupport from './pages/hrsupport/hrsupport';
 
 function App() {
@@ -75,7 +77,7 @@ function App() {
         <Routes>
 
           {/* home routes */}
-          <Route path="/" element={<Login />}></Route>
+          <Route path="/" element={<Login/>}></Route>
 
           {/* routes for designation */}
           <Route path="/designation" element={<Designation />}></Route>
@@ -147,6 +149,7 @@ function App() {
           <Route path="/viewApplicationTrack" element={<ViewApplicationTrack/>}></Route>
           <Route path="/addApplicationTrack" element={<AddApplicationTrack/>}></Route>
           <Route path="/offboard" element={<ViewOffboard/>}></Route>
+          <Route path="/addoffboard" element={<AddOffboard/>}></Route>
           <Route path="/hrsupport" element={<Viewhrsupport/>}></Route>
         </Routes>
         
@@ -154,10 +157,5 @@ function App() {
   );
 }
 
-const Home = () => (
-  <div>
-    <h1>Home page</h1>
-  </div>
-);
 
 export default App;

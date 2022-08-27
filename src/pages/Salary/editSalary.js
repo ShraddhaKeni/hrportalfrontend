@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
+import './styles/addSalary.css'
 
 export default class EditSalary extends Component{
     constructor(props){
@@ -73,29 +74,32 @@ export default class EditSalary extends Component{
         return(
             <div className='main'>
                 <h2>Edit salary</h2>
-
-                <Form onSubmit={this.handleSubmit}>
-                    <label>Select employee:</label>
+                <div className='addSalary_container'>
+                <form className='addSalary_form' onSubmit={this.handleSubmit}>
+                    <div className='addSalary_form_container'>
+                    <label className='addSalary_employee_lable'>Select employee:</label>
                     <Form.Group className="mb-3">
-                        <Form.Control type="text" className="form-control" name="employee" value={this.state.empName? this.state.empName:""} disabled/>
+                        <input className="addSalary_employee" type="text"  name="employee" value={this.state.empName? this.state.empName:""} disabled/>
                     </Form.Group>
 
                     <br/>
 
-                    <label>Enter salary:</label>
+                    <label className='addSalary_salary_label'>Enter salary:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="salary" placeholder="Enter Salary" value={this.state.salary} onChange={this.handleChange} />
+                        <input className='addSalary_salary' type="text" name="salary" placeholder="Enter Salary" value={this.state.salary} onChange={this.handleChange} />
                     </Form.Group>
 
                     <br/>
                     
-                    <Button variant="success" type="submit">
+                    <button className='salary_save' type="submit">
                         Save
-                    </Button>&nbsp;&nbsp;
-                    <Button variant="danger" type="cancel" onClick={() => {this.cancel()}}>
+                    </button>
+                    <button type="cancel" className='salary_cancel' onClick={() => {this.cancel()}}>
                         Cancel
-                    </Button>
-                </Form>
+                    </button>
+                    </div>
+                </form>
+                </div>
             </div>
         )
     }

@@ -1,0 +1,165 @@
+.main_addLevel
+{
+    position: absolute;
+    
+
+}
+
+.addLevel_form
+{
+    background-color: white;
+    width: 800px;
+    height: 350px;
+    position: relative;
+    left:500px;
+    top:150px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 45px;
+    justify-content: center;
+    
+}
+
+.main_lable
+{
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    left: 60px;
+    top:120px;
+    font-weight: 200;
+}
+
+.level_name
+{
+    margin-top: 5px;
+    position: relative;
+    top:125px;  
+    width: 650px;
+    right: 80px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: #E5E5E5;
+    text-indent:10px ;
+    left:-15px
+}
+
+.level_name::placeholder
+{
+    text-indent: 10px;
+}
+
+.save_level
+{
+    position: relative;
+    top: 120px;
+    right:30px;
+    background-color: #552D59;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    font-size: 12px;
+    height: 30px;
+}
+
+.cancel_level
+{
+    position: relative;
+    top: 120px;
+    right:20px;
+    background-color: #732B2B;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    font-size: 12px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.form-controls
+{
+    position: relative;
+    top: 135px;
+    width: 650px;
+    right:15px;
+    background-color: #E5E5E5;
+    font-size: 12px;
+    outline: none;
+    border: none;
+
+}
+
+.level_status
+{
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    left: 60px;
+    top: 110px;
+    font-weight: 200;
+}
+
+.save_level_edit
+{
+    position: relative;
+    top: 150px;
+    right:30px;
+    background-color: #552D59;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    font-size: 12px;
+    height: 30px;
+}
+
+.cancel_level_edit
+{
+    position: relative;
+    top: 150px;
+    right:20px;
+    background-color: #732B2B;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    font-size: 12px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.main_lable_edit
+{
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    left: 60px;
+    top:100px;
+    font-weight: 200;
+}
+
+.level_name_edit
+{
+    margin-top: 5px;
+    position: relative;
+    top:120px;  
+    width: 650px;
+    right: 80px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: #E5E5E5;
+    text-indent:10px ;
+    font-size: 12px;
+}
+
+.form-control:focus
+{
+    outline: none;
+    border: none;
+}

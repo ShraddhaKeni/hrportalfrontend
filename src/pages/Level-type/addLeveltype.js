@@ -2,6 +2,7 @@ import {Component} from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './styles/addlevel.css'
 
 export default class AddLeveltype extends Component {
   constructor(props){
@@ -49,7 +50,7 @@ export default class AddLeveltype extends Component {
     {
       'Content-type':'application/json'
     }).then(res => {
-      window.location.reload()
+      window.history.back()
     })
   }
 
@@ -74,17 +75,19 @@ export default class AddLeveltype extends Component {
   render() {
 
     return (
-      <div className='main'>
-        {this.state.level === " "? <h2>Add level type</h2> : <h2>Edit level type</h2>}
-        <label>Enter level type name:</label>
-        <Form onSubmit={this.handleSubmit}>
+      <div className='main_addLevel'>
+       
+        <form onSubmit={this.handleSubmit} className='addLevel_form'>
+
+       {this.state.level==" "?<label className='main_lable'>Enter level type name:</label>:<label className='main_lable_edit'>Enter level type name:</label>} 
           <Form.Group className="mb-3" >
-              <Form.Control type="text" name="name" placeholder="Enter level type name" value={this.state.name} onChange={this.handleChange} required />
+              {this.state.level==' '?<input type="text" name="name" className='level_name' placeholder="Enter level type name" value={this.state.name} onChange={this.handleChange} required />
+                :<input type="text" name="name" className='level_name_edit' placeholder="Enter level type name" value={this.state.name} onChange={this.handleChange} required />}
           </Form.Group>
           
           <br />
           {this.state.level !== " "?
-            <label>Select status:</label>
+            <label className='level_status'>Select status:</label>
           :
             ""
           }
@@ -101,18 +104,22 @@ export default class AddLeveltype extends Component {
           }
 
           <br/>
-          <Button variant="success" type="submit">
+          {this.state.level==' '?<button className='save_level'  type="submit">
               Save
-          </Button>&nbsp;&nbsp;
+          </button>:<button className='save_level_edit'  type="submit">
+              Save
+          </button>}
+          
           {this.state.level === " "?
-              <Link to={{pathname: "/leveltype"}}><Button variant="danger" type="cancel">
+              <Link to={{pathname: "/leveltype"}}><button variant="danger" className='cancel_level' type="cancel">
                   Cancel
-              </Button></Link>
-            : <Button variant="danger" type="cancel" onClick={() => {this.cancel()}}>
+              </button></Link>
+            : <button variant="danger" type="cancel" className='cancel_level_edit' onClick={() => {this.cancel()}}>
               Cancel
-              </Button> 
+              </button> 
           }
-        </Form>
+         
+        </form>
       </div>
     )
   }

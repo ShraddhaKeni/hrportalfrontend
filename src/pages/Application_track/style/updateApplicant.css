@@ -1,0 +1,157 @@
+.add_applicant_form_update
+{
+    background-color: white;
+    position: absolute;
+    width: 800px;
+    height: 650px;
+    top: 200px;
+    left:500px;
+    border-radius: 45px;
+}
+
+.select_applicant_lable
+{
+    position: relative;
+    top:40px;
+    right: 270px;
+}
+
+.applicant_select
+{
+    width: 600px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:50px;
+    left:80px;
+    text-indent:10px ;
+}
+
+.applicant_job_lable_update
+{
+    position: relative;
+    top:60px;
+    right:310px
+}
+
+.applicant_job_update
+{
+    position: relative;
+    top:70px;
+    left:80px;
+    height: 40px;
+    width: 600px;
+    font-weight: 400;
+    font-size: 15px;
+    outline: none;
+    border: none;
+}
+
+.applicant_comment_lable_update
+{
+    position: relative;
+    top:80px;
+    left:-290px;
+}
+
+.applicant_comment_update
+{
+    position: relative;
+    top:90px;
+    width: 600px;
+    height: 70px;
+    left: 83px;
+    outline: none;
+    border: none;
+    background: #F1F1F1;
+    resize: none;
+    text-indent: 10px;
+}
+
+.applicant_employee_lable_update
+{
+    position: relative;
+    top:90px;
+    left:-290px
+}
+
+.applicant_employee_update
+{
+    width: 600px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:100px;
+    left:80px;
+    text-indent:10px ;
+}
+
+.applicant_level_lable_update
+{
+    position: relative;
+    top:100px;
+    left:-300px 
+}
+
+
+
+.applicant_level_update
+{
+    position: relative;
+    top:105px;
+    width: 600px;
+    height: 30px;
+    left: 83px;
+    outline: none;
+    border: none;
+    background: #F1F1F1;
+}
+
+.save_applicant
+{
+    position: relative;
+    top:130px;
+    left:260px;
+    font-size: 15px;
+    background-color: #552D59;
+    color: white;
+    height: 35px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+}
+
+.cancel_applicant
+{
+    position: relative;
+    top:95px;
+    left:410px;
+    background-color: #732B2B ;
+    font-size: 15px;
+    color: white;
+    height: 35px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+}
+
+.applicant_status_lable
+{
+    position: relative;
+    top:110px;
+    left:-300px 
+}
+
+.applicant_status
+{
+    width: 600px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:115px;
+    left:80px;
+    text-indent:10px ;
+}

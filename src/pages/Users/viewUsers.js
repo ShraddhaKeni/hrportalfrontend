@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
+import './style/viewEachUser.css';
 
 export default class ViewUsers extends Component {
   constructor(props){
@@ -33,12 +34,15 @@ export default class ViewUsers extends Component {
 
     return (
         <div className='main'>
-            <h2>
-                <span style={{float:"left"}}><Button variant='warning' onClick={() => {this.goBack()}}><b>Back</b></Button></span> 
-                User details
+            <h2>User Details</h2>
+            <h2 >
+                <span style={{float:"left"}}><button className='user_back' onClick={() => {this.goBack()}}>Back</button></span> 
+                
             </h2>
+            
             {this.state.user.profile_pic !== null || this.state.user.profile_pic !== ""? <div className='profile_picture'> {this.state.user.profile_pic} </div>: ""}
-            <Table bordered striped>
+            <div className='user_container'>
+            <table className='user_view_table'>
                 <tbody>
                     <tr className='left'>
                         <th>Name: </th>
@@ -82,7 +86,8 @@ export default class ViewUsers extends Component {
                         }
                     </tr>
                 </tbody>
-            </Table>
+            </table>
+            </div>
         </div>
     )
   }

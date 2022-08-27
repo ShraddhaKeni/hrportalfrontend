@@ -1,98 +1,126 @@
-import {Component} from 'react';
+import { Component } from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddCountries from './addCountries';
 import './styles/Countries.css'
+import Pagination from '../../components/paginate/Pagination';
 
 const initialState = {
     countries: [],
     isEdit: false,
     editValue: null,
+    currentPage:1,
+    postPerPage:12,
+    currentPosts:[],
 }
 
-export default class Countries extends Component{
-    constructor(props){
+export default class Countries extends Component {
+    constructor(props) {
         super(props)
         this.state = initialState;
     }
 
-    componentDidMount(){
+    componentDidMount() {
         axios.get('http://localhost:3000/countries').then(response => {
             this.setState({
                 countries: response.data.data
             });
+        }).then(() => {
+            const indexOfLast = (this.state.currentPage * this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({ currentPosts: this.state.countries.slice(indexOfFirst, indexOfLast) });
+
         });
     }
 
-    editClicked(id){
+    editClicked(id) {
         this.setState({
             isEdit: true,
             editValue: id,
         })
     }
-    async changeStatus(id,status)
-    {
-        var statuscode = status.toString().toLowerCase()=='true'
+    async changeStatus(id, status) {
+        var statuscode = status.toString().toLowerCase() == 'true'
         const data = {
-            status:!statuscode
+            status: !statuscode
         }
         console.log(data)
-        const requestChangeStatus= await axios.patch(`http://localhost:3000/countries/${id}`,data,{
-            'Content-type':'application/json'
+        const requestChangeStatus = await axios.patch(`http://localhost:3000/countries/${id}`, data, {
+            'Content-type': 'application/json'
         })
         window.location.reload()
     }
 
-    render(){
-        if(this.state.isEdit === true){
+    paginate = (pageNumber) => {
+
+        const page = pageNumber;
+        console.log(page)
+        const totalPages = (this.state.countries.length / this.state.postPerPage)
+        if (page < 1) {
+            this.setState({ currentPage: 1 })
+            const indexOfLast = (1 * this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({ currentPosts: this.state.countries.slice(indexOfFirst, indexOfLast) });
+        }
+        else {
+            this.setState({ currentPage: page })
+            const indexOfLast = (page * this.state.postPerPage);
+            const indexOfFirst = (indexOfLast - this.state.postPerPage);
+            this.setState({ currentPosts: this.state.countries.slice(indexOfFirst, indexOfLast) });
+        }
+    }
+
+    render() {
+        if (this.state.isEdit === true) {
             return (
                 <AddCountries id={this.state.editValue} />
             )
-        }else{
+        } else {
             var srno = 1
-            return(
+            return (
                 <div className='mainViewCountry'>
-                    <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-country" }}><button className='viewAddCountryButton'>Add Country<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2>
+                    <h2> <span style={{ float: 'right' }}><Link to={{ pathname: "/add-country" }}><button className='viewAddCountryButton'>Add Country<span style={{ fontSize: 18, color: "white" }}></span></button></Link></span></h2>
                     <div className='viewCountryContainer'>
-                    <table className='table_viewcountry'>
-                        <thead >
-                            <tr>
-                                <th>Sr no.</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr>
-                                    <hr className='hr_tag'/>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                this.state.countries.map((country) => (
-                                    <tr key={country.id}>
-                                        <td>{srno++}</td>
-                                        <td>{country.name}</td>
+                        <table className='table_viewcountry'>
+                            <thead >
+                                <tr>
+                                    <th>Sr no.</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr>
+                                    <hr className='hr_tag' />
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                        this.state.currentPosts.map((country,index) => (
+                                        <tr key={country.id}>
+                                             <td>{this.state.currentPage<=2?(this.state.currentPage-1)*12+(index+1):(this.state.currentPage-1+1)+(index+1)}</td>
+                                            <td>{country.name}</td>
                                             {
-                                                country.status === true? <td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
-                                                : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
+                                                country.status === true ? <td><span style={{ fontSize: 24, color: "green" }}>&#10003;</span></td>
+                                                    : <td><span style={{ fontSize: 12, color: "red" }}>&#10060;</span></td>
                                             }
-                                        <td>
-                                            {country.status!=false?<Button className='deleteButton' onClick={() => {this.changeStatus(country.id,country.status)}} >
-                                                Delete 
-                                            </Button> :<Button className='deleteButton' onClick={() => {this.changeStatus(country.id,country.status)}} >
-                                                Activate 
-                                            </Button> }
-                                            <Button className='editButton' onClick={() => {this.editClicked(country.id)}} >
-                                                Edit 
-                                            </Button> 
-                                        </td>
-                                    </tr>
-                                    
-                                ))}
-                        </tbody>
-                    </table>
-                </div>
+                                            <td>
+                                                {country.status != false ? <Button className='deleteButton' onClick={() => { this.changeStatus(country.id, country.status) }} >
+                                                    Inactivate
+                                                </Button> : <Button className='deleteButton' onClick={() => { this.changeStatus(country.id, country.status) }} >
+                                                    Activate
+                                                </Button>}
+                                                <Button className='editButton' onClick={() => { this.editClicked(country.id) }} >
+                                                    Edit
+                                                </Button>
+                                            </td>
+                                        </tr>
+
+                                    ))}
+                            </tbody>
+                        </table>
+                        <Pagination postPerPage={this.state.postPerPage} totalPosts={this.state.countries.length} paginate={this.paginate} currentPage={this.state.currentPage} />
+                    </div>
                 </div>
             )
         }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddRoles from './addRoles';
-import {motion} from 'framer-motion'
+
 
 import './style/roles.css'
 import Pagination from '../../components/paginate/Pagination';
@@ -82,7 +82,7 @@ export default class Roles extends Component{
             return(
                 <div className='main'>
                     <h2 style={{marginLeft:'-40px'}}>Roles</h2>
-                    <h2><span><Link to={{ pathname: "/add-roles" }}><motion.button className='add_roles' variant='success'>Add Roles</motion.button></Link></span></h2>
+                    <h2><span><Link to={{ pathname: "/add-roles" }}><button className='add_roles' variant='success'>Add Roles</button></Link></span></h2>
                     <div className='roles_table_container'>
                     <table className='roles_table'>
                         <thead  >
@@ -107,14 +107,14 @@ export default class Roles extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
-                                          {role.status===true? <motion.button whileHover={{scale:1.1}} className='role_delete' style={{marginRight:'10px'}} onClick={() => {this.deleteRole(role.id,role.status)}} >
+                                          {role.status===true? <button whileHover={{scale:1.1}} className='role_delete' style={{marginRight:'10px'}} onClick={() => {this.deleteRole(role.id,role.status)}} >
                                                 Delete 
-                                            </motion.button> :<motion.button whileHover={{scale:1.1}} className='role_delete' style={{marginRight:'10px'}} onClick={() => {this.deleteRole(role.id,role.status)}} >
+                                            </button> :<button whileHover={{scale:1.1}} className='role_delete' style={{marginRight:'10px'}} onClick={() => {this.deleteRole(role.id,role.status)}} >
                                                 Activate 
-                                            </motion.button> }  
-                                            <motion.button whileHover={{scale:1.1}} className='role_edit' onClick={() => {this.editClicked(role.id)}} >
+                                            </button> }  
+                                            <button whileHover={{scale:1.1}} className='role_edit' onClick={() => {this.editClicked(role.id)}} >
                                                 Edit 
-                                            </motion.button> 
+                                            </button> 
                                         </td>
                                     </tr>
                                     

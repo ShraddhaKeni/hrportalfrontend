@@ -1,7 +1,6 @@
 import React,{useState,useEffect, useRef} from 'react'
 import axios from 'axios';
 import './style/addApplicant.css';
-import {motion} from 'framer-motion'
 
 const AddApplicationTrack = () => {
 
@@ -123,8 +122,8 @@ const AddApplicationTrack = () => {
                 </lable>
                     <input type='number' className='applicant_level' name='level' onChange={handleChange}></input>
                 
-                <motion.button whileHover={{scale:1.1}} className='save_applicant' type='submit'>Save</motion.button>
-                <motion.button whileHover={{scale:1.1}} className='cancel_applicant' type='button' onClick={()=>window.history.back()} >Cancel</motion.button>
+                <button whileHover={{scale:1.1}} className='save_applicant' type='submit'>Save</button>
+                <button whileHover={{scale:1.1}} className='cancel_applicant' type='button' onClick={()=>window.history.back()} >Cancel</button>
             </div>
         </form>
     </div>

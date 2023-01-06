@@ -2,7 +2,7 @@ import {Component} from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import './styles/viewEachCompany.css';
-import {motion} from 'framer-motion'
+
 
 import './styles/viewCompanies.css'
 
@@ -50,8 +50,8 @@ export default class ViewCompanies extends Component {
     return (
         <div className='main'>
             <h2>
-                <span style={{float:"left"}}><motion.button whileHover={{scale:1.1}} className='companies_back' onClick={() => {this.goBack()}}><b>Back</b></motion.button></span></h2>
-            <motion.div 
+                <span style={{float:"left"}}><button whileHover={{scale:1.1}} className='companies_back' onClick={() => {this.goBack()}}><b>Back</b></button></span></h2>
+            <div 
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }} className='companies_table_container'>
@@ -132,7 +132,7 @@ export default class ViewCompanies extends Component {
                     </tr>
                 </tbody>
             </table>
-            </motion.div >
+            </div >
         </div>
     )
   }

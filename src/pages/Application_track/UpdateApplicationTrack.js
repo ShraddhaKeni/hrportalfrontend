@@ -1,7 +1,7 @@
 import React,{useState,useEffect, useRef} from 'react'
 import axios from 'axios';
 import './style/updateApplicant.css'
-import {motion} from 'framer-motion'
+
 
 const UpdateApplicationTrack = ({trackData}) => {
     const[applicantData,setApplicantData] = useState([trackData])
@@ -158,8 +158,8 @@ const UpdateApplicationTrack = ({trackData}) => {
                         </option>
                     </select>
                 
-                    <motion.button whileHover={{scale:1.1}} className='save_applicant' type='submit'>Save</motion.button>
-                <motion.button whileHover={{scale:1.1}} className='cancel_applicant' type='button' onClick={()=>window.history.back()} >Cancel</motion.button>
+                    <button whileHover={{scale:1.1}} className='save_applicant' type='submit'>Save</button>
+                <button whileHover={{scale:1.1}} className='cancel_applicant' type='button' onClick={()=>window.history.back()} >Cancel</button>
             </div>
         </form>
     </div>

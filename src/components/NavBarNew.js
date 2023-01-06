@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { motion } from "framer-motion"
+//import { motion } from "framer-motion"
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { NavbarData } from "./NavbarData";
@@ -16,7 +16,7 @@ const NavBarNew = () => {
     const [isOpen, setIsOpen] = useState(false)
     
       return (
-        <motion.nav
+        <nav
           animate={isOpen ? "open" : "closed"}
           variants={variants}
         >
@@ -24,7 +24,7 @@ const NavBarNew = () => {
           <div>
             item
           </div>
-        </motion.nav>
+        </nav>
       )
     
 }

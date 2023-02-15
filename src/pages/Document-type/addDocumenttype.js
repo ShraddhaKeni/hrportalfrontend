@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar';
 
 export default class AddDocumenttype extends Component {
   constructor(props){
@@ -78,13 +79,15 @@ export default class AddDocumenttype extends Component {
   render() {
   
     return (
-
-      <div className='main'>
+      <>
+      <Navbar/>
+      <div className='mainDesignation'>
+      <div className="mainAddDesignation">
         {this.state.doctype === " "? <h2>Add document type</h2> : <h2>Edit document type</h2>}
-        <label>Enter document type name:</label>
+        <label className='EDNameLabel'>Enter Document Type Name :</label>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" >
-              <Form.Control type="text" name="name" placeholder="Enter document type name" value={this.state.name} onChange={this.handleChange} required />
+              <Form.Control type="text"  className='EDNInPut' name="name" placeholder="Enter Document Type Name" value={this.state.name} onChange={this.handleChange} required />
           </Form.Group>
           
           <br />
@@ -106,19 +109,21 @@ export default class AddDocumenttype extends Component {
           }
 
           <br/>
-          <Button variant="success" type="submit">
+          <Button className="SaveButton" type="submit">
               Save
           </Button>&nbsp;&nbsp;
           {this.state.doctype === " "?
-              <Link to={{pathname: "/documenttype"}}><Button variant="danger" type="cancel">
+              <Link to={{pathname: "/documenttype"}}><Button  className="CancelButton" type="cancel">
                   Cancel
               </Button></Link>
-            : <Button variant="danger" type="cancel" onClick={() => {this.cancel()}}>
+            : <Button type="cancel"  className="CancelButton" onClick={() => {this.cancel()}}>
               Cancel
               </Button> 
           }
         </Form>
       </div>
+      </div>
+      </>
     )
   }
 }

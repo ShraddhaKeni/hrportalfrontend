@@ -1,8 +1,9 @@
 import {Component} from 'react';
 import axios from 'axios';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddDocumenttype from './addDocumenttype';
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     documents: [],
@@ -51,15 +52,22 @@ export default class Documenttype extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2>Document types <span style={{float:'right'}}><Link to={{ pathname: "/add-documenttype" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
+                <>
+                <Navbar/>
+                <div className='mainViewDesignation'>
+                <span ><Link to={{ pathname: "/add-documenttype"}}><button className='viewAddDesignationButton'>Add Document</button></Link></span>
+                    {/* <h2>Document types <span style={{float:'right'}}><Link to={{ pathname: "/add-documenttype" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2> */}
+                    <div className='viewDesignationContainer'>
+                    <table className='table_viewDesignation'>
                         <thead  >
                             <tr>
                                 <th>Sr no.</th>
                                 <th>Name</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                            </tr>
+                            <tr>
+                                    <hr className='hr_viewtagdesignation'/>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,8 +94,10 @@ export default class Documenttype extends Component{
                                     
                                 ))}
                         </tbody>
-                    </Table>
+                    </table>
                 </div>
+                </div>
+                </>
             )
         }
     }

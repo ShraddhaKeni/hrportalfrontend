@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles/Designation.css'
+import Navbar from '../../components/Navbar';
 
 export default class AddDesignation extends Component {
   constructor(props){
@@ -91,13 +92,15 @@ export default class AddDesignation extends Component {
   render() {
   
     return (
+      <>
+      <Navbar/>
       <div className='mainDesignation'>
         <div className="mainAddDesignation">
         {this.state.design === " "? <h2>Add Designation</h2> : <h2>Edit Designation</h2>}
         <Form onSubmit={this.handleSubmit}>
-          <label style={{marginLeft:"80px"}}>Enter designation name:</label>
+          <label className='EDNameLabel'>Enter Designation Name :</label>
           <Form.Group className="mb-3" >
-              <Form.Control type="text" style={{marginLeft:"80px",width:"80%"}} name="name" placeholder="Enter designation name" value={this.state.name} onChange={this.handleChange} required />
+              <Form.Control type="text" className='EDNInPut' name="name" placeholder="Enter Designation Name" value={this.state.name} onChange={this.handleChange} required />
           </Form.Group>
           
           <br />
@@ -119,20 +122,21 @@ export default class AddDesignation extends Component {
           }
 
           <br/>
-          <Button className="saveButton" type="submit">
+          <Button className="SaveButton" type="submit">
               Save
           </Button>&nbsp;&nbsp;
           {this.state.design === " "?
-              <Link to={{pathname: "/designation"}}><Button className="cancelButton" type="cancel">
+              <Link to={{pathname: "/designation"}}><Button className="CancelButton" type="cancel">
                   Cancel
               </Button></Link>
-            : <Button className="cancelButton" type="cancel" onClick={() => {this.cancel()}}>
+            : <Button className="CancelButton" type="cancel" onClick={() => {this.cancel()}}>
               Cancel
               </Button> 
           }
         </Form>
       </div>
       </div>
+      </>
     )
   }
 }

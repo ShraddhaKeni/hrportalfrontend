@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 import UpdateApplicationTrack from './UpdateApplicationTrack';
 import './style/viewApplicant.css';
-import {motion} from 'framer-motion'
+// import {motion} from 'framer-motion'
 import Pagination from '../../components/paginate/Pagination';
 
 const ViewApplicationTrack = () => {
@@ -144,7 +144,7 @@ else
     return (
         <div className='main_applicants'>
            
-            <h2 style={{marginLeft:'500px'}}>Application Track<span style={{float:'right'}}><Link to={{ pathname: "/addApplicationTrack" }}><motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='add_applicant'>Add track</motion.button></Link></span></h2>
+            <h2 style={{marginLeft:'500px'}}>Application Track<span style={{float:'right'}}><Link to={{ pathname: "/addApplicationTrack" }}><button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='add_applicant'>Add track</button></Link></span></h2>
             <div className='table_container_applicants'> 
                           <table className='table_applicants'>
                               <thead  >
@@ -175,12 +175,12 @@ else
                                         {item.status==true?<td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
                                                       : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>}
                                         <div style={{display:'flex'}}>
-                                        {item.status!=false?<motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='action_applicant'  onClick={() => {changeStatus(item.id,item.status)}} >
+                                        {item.status!=false?<button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='action_applicant'  onClick={() => {changeStatus(item.id,item.status)}} >
                                                           Delete 
-                                                      </motion.button> :<motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='action_applicant'  onClick={() => {changeStatus(item.id,item.status)}} >
+                                                      </button> :<button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='action_applicant'  onClick={() => {changeStatus(item.id,item.status)}} >
                                                           Activate 
-                                                      </motion.button> }   
-                                          <motion.button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='edit_applicant' onClick={()=>editClicked(item.id)}>Edit</motion.button>
+                                                      </button> }   
+                                          <button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='edit_applicant' onClick={()=>editClicked(item.id)}>Edit</button>
                                         </div>
                                     </tr>)
                                   })}

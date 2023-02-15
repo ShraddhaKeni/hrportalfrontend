@@ -4,7 +4,7 @@ import './components/App.css';
 
 //Comment
 
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 
 import Roles from './pages/Roles/roles';
 import AddRoles from './pages/Roles/addRoles';
@@ -73,7 +73,7 @@ function App() {
 
   return (
       <div className="App">
-        <Navbar/>
+        {/* <Navbar/> */}
         <Routes>
 
           {/* home routes */}

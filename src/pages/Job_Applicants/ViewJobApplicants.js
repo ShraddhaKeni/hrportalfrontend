@@ -4,7 +4,7 @@ import {Table,Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import UpdateJobApplicants from './UpdateJobApplicants'
 import './styles/viewJobApplicants.css';
-import {motion} from 'framer-motion'
+// import {motion} from 'framer-motion'
 import Pagination from '../../components/paginate/Pagination';
 
 const ViewJobApplicants = () => {
@@ -142,15 +142,15 @@ const paginate = number =>{
                                                   : <td ><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>}
                                   
                                   <td>
-                                      {item.status!=false?<motion.button whileHover={{scale:1.1}} className='action_job_applicant'  onClick={() => {changeStatus(item.id,item.status)}} >
+                                      {item.status!=false?<button whileHover={{scale:1.1}} className='action_job_applicant'  onClick={() => {changeStatus(item.id,item.status)}} >
                                                       Delete 
-                                                  </motion.button> :<motion.button whileHover={{scale:1.1}} className='action_job_applicant' onClick={() => {changeStatus(item.id,item.status)}} >
+                                                  </button> :<button whileHover={{scale:1.1}} className='action_job_applicant' onClick={() => {changeStatus(item.id,item.status)}} >
                                                       Activate 
-                                                  </motion.button> }
+                                                  </button> }
                                       
                                   </td>
                                   <td>
-                                    <motion.button className='edit_job_applicant' whileHover={{scale:1.1}} onClick={()=>editClicked(item.id)}>Edit</motion.button>
+                                    <button className='edit_job_applicant' whileHover={{scale:1.1}} onClick={()=>editClicked(item.id)}>Edit</button>
                                   </td>
   
                                 </tr>

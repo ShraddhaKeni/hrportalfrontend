@@ -1,8 +1,9 @@
 import {Component} from 'react';
 import axios from 'axios';
-import { Table, Button } from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddDepartment from './addDepartment';
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     departments: [],
@@ -61,15 +62,23 @@ export default class Department extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2>Departments <span style={{float:'right'}}><Link to={{ pathname: "/add-department" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
+                <>
+                <Navbar/>
+                <div className='mainViewDesignation'>
+                <span ><Link to={{ pathname: "/add-department" }}><button className='viewAddDesignationButton'>Add Department</button></Link></span>
+                    {/* <h2>Departments <span style={{float:'right'}}><Link to={{ pathname: "/add-department" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2> */}
+                    
+                    <div className='viewDesignationContainer'>
+                    <table className='table_viewDesignation'>
                         <thead  >
                             <tr>
-                                <th>Sr no.</th>
+                                <th>Sr No.</th>
                                 <th>Name</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                            </tr>
+                            <tr>
+                                    <hr className='hr_viewtagdesignation'/>
                             </tr>
                         </thead>
                         <tbody>
@@ -95,8 +104,10 @@ export default class Department extends Component{
                                     </tr>
                                 ))}
                         </tbody>
-                    </Table>
+                    </table>
+                </div> 
                 </div>
+                </>
             )
         }
     }

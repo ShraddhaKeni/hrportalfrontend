@@ -228,33 +228,33 @@ export default class AddCompanies extends Component {
 
                     <br/>
 
-                    <label className='addCompany_contactPerson_lable'>Contact person:</label>
+                    <label className='addCompany_contactPerson_lable'>Contact number</label>
                     <Form.Group className="mb-3" >
-                        <input type="text" className='addCompany_contactPerson' name="contact_person" placeholder="Contact person name" value={this.state.contact_person} onChange={this.handleChange} required />
+                        <input type="text" className='addCompany_contactPerson' name="contact_person" placeholder="Contact person name" value={this.state.contact_number} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br/>
 
-                    <label className='addCompany_contactNo_lable'>Contact number:</label>
+                    <label className='addCompany_contactNo_lable'>PAN card number:</label>
                     <Form.Group className="mb-3" >
-                        <input type="number" className='addCompany_contactNo' name="contact_number" placeholder="Contact person number" value={this.state.contact_number} onChange={this.handleChange} required />
+                        <input type="number" className='addCompany_contactNo' name="contact_number" placeholder="Contact person number" value={this.state.pancard_number} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br/>
 
-                    <label className='addCompany_pancard_lable'>PAN card number:</label>
+                    <label className='addCompany_pancard_lable'>GST number:</label>
                     <Form.Group className="mb-3" >
                         <input type="text" className='addCompany_pancard' name="pancard_number" placeholder="Company PAN card no." value={this.state.pancard_number} onChange={this.handleChange} />
                     </Form.Group>
 
                     <br/>
 
-                    <label className='addCompany_gst_lable'>GST number:</label>
+                    {/* <label className='addCompany_gst_lable'>GST number:</label>
                     <Form.Group className="mb-3" >
                         <input type="text" className='addCompany_gst' name="gst_number" placeholder="Company GST no." value={this.state.gst_number} onChange={this.handleChange} />
                     </Form.Group>
 
-                    <br/>
+                    <br/> */}
 
                     <label className={this.state.company!==' '?'addCompany_cin_lable_edit':'addCompany_cin_lable'}>CIN number:</label>
                     <Form.Group className="mb-3" >

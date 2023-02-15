@@ -1,9 +1,10 @@
 import {Component} from 'react';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddDesignation from './addDesignation';
 import './styles/Designation.css'
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     designations: [],
@@ -50,13 +51,15 @@ export default class Designation extends Component{
         }else{
             var srno = 1
             return(
+                <>
+              <Navbar/>
                 <div className='mainViewDesignation'>
-                    <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-designation" }}><button className='viewAddDesignationButton'>Add Designation<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2>
+                    <span ><Link to={{ pathname: "/add-designation" }}><button className='viewAddDesignationButton'>Add Designation</button></Link></span>
                     <div className='viewDesignationContainer'>
                     <table className='table_viewDesignation'>
                         <thead>
                             <tr>
-                                <th>Sr no.</th>
+                                <th>Sr No.</th>
                                 <th>Name</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -89,6 +92,7 @@ export default class Designation extends Component{
                     </table>
                 </div>
                 </div>
+                </>
             )
         }
     }

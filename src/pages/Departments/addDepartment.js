@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar';
 
 
 export default class AddDesignation extends Component {
@@ -96,12 +97,15 @@ export default class AddDesignation extends Component {
 
   render() {
     return (
-      <div className='main'>
+      <>
+      <Navbar/>
+      <div className='mainDesignation'>
+      <div className="mainAddDesignation">
         {this.state.depart === " "? <h2>Add Department</h2> : <h2>Edit Department</h2>}
-        <label>Enter department name:</label>
+        <label  className='EDNameLabel'>Enter Department Name:</label>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" >
-              <Form.Control type="text" name="name" placeholder="Enter department name" value={this.state.name} onChange={this.handleChange} required />
+              <Form.Control type="text" className='EDNInPut' name="name" placeholder="Enter Department Name" value={this.state.name} onChange={this.handleChange} required />
           </Form.Group>
           
           <br />
@@ -123,19 +127,21 @@ export default class AddDesignation extends Component {
           }
 
           <br/>
-          <Button variant="success" type="submit">
+          <Button type="submit" className="SaveButton">
               Save
           </Button>&nbsp;&nbsp;
           {this.state.depart === " "?
-              <Link to={{pathname: "/department"}}><Button variant="danger" type="cancel">
+              <Link to={{pathname: "/department"}}><Button  className="CancelButton" type="cancel">
                   Cancel
               </Button></Link>
-            : <Button variant="danger" type="cancel" onClick={() => {this.cancel()}}>
+            : <Button  className="CancelButton" type="cancel" onClick={() => {this.cancel()}}>
               Cancel
               </Button> 
           }
         </Form>
       </div>
+      </div>
+      </>
     )
   }
 }

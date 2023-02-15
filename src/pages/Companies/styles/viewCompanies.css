@@ -25,12 +25,22 @@
     left: 50px;
     overflow: hidden;
 }
-.hr_tag
+.hr_viewtagcompanies
 {
-    width: 1100%;
-    margin-right: 20%;
+    width: 1110%;
+   
+    margin-right: 10%;
     margin-bottom: 2px;
     margin-top:4px;
+}
+.table_viewCompanies {
+    margin-top: 2%;
+    margin-left: 4%;
+    width: 49vw;
+    height: auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2vw;
+    text-align: center;
 }
 
 .companies_action

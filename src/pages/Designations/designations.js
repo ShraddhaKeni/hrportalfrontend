@@ -54,25 +54,22 @@ export default class Designation extends Component{
                 <>
               <Navbar/>
                 <div className='mainViewDesignation'>
-                    <span ><Link to={{ pathname: "/add-designation" }}><button className='viewAddDesignationButton'>Add Designation</button></Link></span>
+                    <span ><Link to={{ pathname: "/add-designation" }}><button className='viewAddDesignationButton btn btn-primary'>Add Designation</button></Link></span>
                     <div className='viewDesignationContainer'>
-                    <table className='table_viewDesignation'>
+                    <table className='table table-sm'>
                         <thead>
                             <tr>
-                                <th>Sr No.</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr>
-                                    <hr className='hr_viewtagdesignation'/>
+                                <th scope="col">Sr No.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 this.state.designations.map((design) => (
                                     <tr key={design.id}>
-                                        <td>{srno++}</td>
+                                        <td scope="row">{srno++}</td>
                                         <td>{design.name}</td>
                                             {
                                                 design.status === true? <td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 

@@ -99,7 +99,6 @@ export default class AddDesignation extends Component {
     return (
       <>
       <Navbar/>
-      <div className='mainDesignation'>
       <div className="mainAddDesignation">
         {this.state.depart === " "? <h2>Add Department</h2> : <h2>Edit Department</h2>}
         <label  className='EDNameLabel'>Enter Department Name:</label>
@@ -110,7 +109,7 @@ export default class AddDesignation extends Component {
           
           <br />
           {this.state.depart !== " "?
-            <label>Select status:</label>
+            <label style={{marginLeft:"80px"}}>Select status:</label>
           :
             ""
           }
@@ -140,7 +139,7 @@ export default class AddDesignation extends Component {
           }
         </Form>
       </div>
-      </div>
+
       </>
     )
   }

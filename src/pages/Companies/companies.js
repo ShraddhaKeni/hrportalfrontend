@@ -108,21 +108,18 @@ export default class Companies extends Component{
                 <Navbar/>
                 <div className='mainViewDesignation'>
                     {console.log(this.state.currentPosts)}
-                    <span ><Link to={{ pathname: "/add-companies"}}><button className='viewAddDesignationButton'>Add Companies</button></Link></span>
+                    <span ><Link to={{ pathname: "/add-companies"}}><button className='viewAddDesignationButton btn btn-primary'>Add Companies</button></Link></span>
                     {/* <h2 style={{marginLeft:'280px'}}>Companies<span style={{float:'right'}}><Link to={{ pathname: "/add-companies" }}><button className='add_company'>Add Company</button></Link></span></h2> */}
                     <div className='viewDesignationContainer'>
-                    <table className='table_viewCompanies'>
+                    <table className='table table-sm'>
                         <thead  >
                             <tr>
-                                <th style={{width:'4.5vw'}}>Sr No.</th>
-                                <th>Company Name</th>
-                                <th>Address</th>
-                                <th>Webiste</th>
-                                <th >Status</th>
-                                <th colSpan={2}>Actions</th>
-                            </tr>
-                            <tr>
-                            <hr className='hr_viewtagcompanies'/>
+                                <th scope="col">Sr No.</th>
+                                <th scope="col">Company Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Webiste</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" >Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -131,7 +128,7 @@ export default class Companies extends Component{
                                    
                                    
                                     <tr key={company.id}>
-                                        <td>{this.state.currentPage<=2?(this.state.currentPage-1)*12+(index+1):(this.state.currentPage-1+1)+(index+1)}</td>
+                                        <td scope="row" >{this.state.currentPage<=2?(this.state.currentPage-1)*12+(index+1):(this.state.currentPage-1+1)+(index+1)}</td>
                                         <td>{company.name}</td>
                                         <td>{company.address}</td>
                                         {

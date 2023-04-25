@@ -58,23 +58,20 @@ export default class Documenttype extends Component{
                 <span ><Link to={{ pathname: "/add-documenttype"}}><button className='viewAddDesignationButton'>Add Document</button></Link></span>
                     {/* <h2>Document types <span style={{float:'right'}}><Link to={{ pathname: "/add-documenttype" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2> */}
                     <div className='viewDesignationContainer'>
-                    <table className='table_viewDesignation'>
+                    <table className='table table-sm'>
                         <thead  >
                             <tr>
-                                <th>Sr no.</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr>
-                                    <hr className='hr_viewtagdesignation'/>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 this.state.documents.map((doc) => (
                                     <tr key={doc.id}>
-                                        <td>{srno++}</td>
+                                        <td scope="row">{srno++}</td>
                                         <td>{doc.name}</td>
                                             {
                                                 doc.status === true? <td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 

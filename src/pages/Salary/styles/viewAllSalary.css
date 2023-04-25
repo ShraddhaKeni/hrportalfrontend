@@ -51,9 +51,10 @@
 
 .salary_line
 {
-    width: 2300%;
-    margin-left: -66px;
-
+    width: 620%;
+    margin-left: 10%;
+    margin-bottom: 2px;
+    margin-top: 4px;
 }
 
 .salary_table_buttons

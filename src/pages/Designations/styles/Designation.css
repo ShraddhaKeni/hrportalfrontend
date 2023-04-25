@@ -88,7 +88,6 @@
     width: 53vw;
 }
 
-
 .table_viewDesignation td{   
     width:20%;
 }
@@ -104,15 +103,15 @@
     text-align: center;
 }
 
-.hr_viewtagdesignation
+/* .hr_viewtagdesignation
 {
     width: 452%;
     margin-left: 8%;
     margin-bottom: 2px;
     margin-top:4px;
     color: #732B2B;
-    left: 50%;
-}   
+   
+}    */
 
 button
 {

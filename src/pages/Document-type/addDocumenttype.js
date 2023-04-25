@@ -81,7 +81,7 @@ export default class AddDocumenttype extends Component {
     return (
       <>
       <Navbar/>
-      <div className='mainDesignation'>
+   
       <div className="mainAddDesignation">
         {this.state.doctype === " "? <h2>Add document type</h2> : <h2>Edit document type</h2>}
         <label className='EDNameLabel'>Enter Document Type Name :</label>
@@ -92,7 +92,7 @@ export default class AddDocumenttype extends Component {
           
           <br />
           {this.state.doctype !== " "?
-            <label>Select status:</label>
+            <label style={{marginLeft:"80px"}}>Select status:</label>
           :
             ""
           }
@@ -122,7 +122,7 @@ export default class AddDocumenttype extends Component {
           }
         </Form>
       </div>
-      </div>
+ 
       </>
     )
   }

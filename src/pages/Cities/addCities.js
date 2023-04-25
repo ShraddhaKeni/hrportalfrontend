@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles/Cities.css'
+import Navbar from '../../components/Navbar';
 
 export default class AddCities extends Component {
     constructor(props){
@@ -93,14 +94,15 @@ export default class AddCities extends Component {
     render() {
 
         return (
-        <div className='mainCities'>
-            <div className='mainAddCities'>
+            <>
+            <Navbar/>
+            <div className='mainAddDesignation'>
                 {this.state.city === " " ? <h2>Add City</h2> : <h2>Edit City</h2>}
                 <Form onSubmit={this.handleSubmit}>
-                    <label style={{marginLeft:"80px"}}>Choose State:</label>
+                    <label className='EDNameLabel'>Choose State:</label>
                     {this.state.city === " " ?
                         <Form.Group className="mb-3">
-                            <select  style={{marginLeft:"80px",width:"80%"}} className="form-control" name="stateName" onChange={this.handleChange}>
+                            <select   className="form-control EDNInPut" name="stateName" onChange={this.handleChange}>
                                 <option value="">Select</option>
                                 { this.state.state.map((e) => (
                                     <option value={e.id}>{e.name}</option>
@@ -110,14 +112,14 @@ export default class AddCities extends Component {
                         </Form.Group> 
                     :
                         <Form.Group className="mb-3" >
-                            <Form.Control type="text"  style={{marginLeft:"80px",width:"80%"}} name="stateName" placeholder="Enter state name" value={this.state.stateName} onChange={this.handleChange} disabled />
+                            <Form.Control type="text" className='EDNInPut' name="stateName" placeholder="Enter state name" value={this.state.stateName} onChange={this.handleChange} disabled />
                         </Form.Group>
                     }
 
                     <br />
-                    <label style={{marginLeft:"80px"}}>Enter city name:</label>
+                    <label className='EDNameLabel'>Enter city name:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="cityName" style={{marginLeft:"80px",width:"80%"}} placeholder="Enter city name" value={this.state.cityName} onChange={this.handleChange} required />
+                        <Form.Control type="text" name="cityName" className='EDNInPut' placeholder="Enter city name" value={this.state.cityName} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br />
@@ -129,7 +131,7 @@ export default class AddCities extends Component {
                     }
                     {this.state.city !== " " ?
                         <Form.Group className="mb-3">
-                            <select className="form-control"  style={{marginLeft:"80px",width:"80%"}} name="status" value={this.state.status} onChange={this.handleChange}>
+                            <select className="form-control"   name="status" value={this.state.status} onChange={this.handleChange}>
                                 <option>Select status</option>
                                 <option value={"true"}>True</option>
                                 <option value={"false"} >False</option>
@@ -153,7 +155,8 @@ export default class AddCities extends Component {
                     }
                 </Form>
             </div>
-          </div>
+     
+          </>
         )
     }
 }

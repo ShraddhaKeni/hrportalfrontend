@@ -4,6 +4,7 @@ import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddReportingto from './addReportingto';
 import './style/reporting.css'
+import Navbar from '../../components/Navbar';
 
 
 const initialState = {
@@ -70,28 +71,29 @@ export default class Reportingto extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main_reporting'>
-                    <h2 style={{marginLeft:'-40px'}}>Reporting</h2>
-                    <h2><Link to={{ pathname: "/add-reporting" }}><button className='add_report'>Add Reporting</button></Link></h2>
-                    <div className='table_reporting_container'>
-                    <table className='table_reporting'>
+                <>
+                <Navbar/>
+                <div className='mainViewDesignation'>
+                <span ><Link to={{ pathname: "/add-reporting" }}><button className='viewAddDesignationButton btn btn-primary'>Add Reporting</button></Link></span>
+                    {/* <h2 style={{marginLeft:'-40px'}}>Reporting</h2>
+                    <h2><Link to={{ pathname: "/add-reporting" }}><button className='add_report'>Add Reporting</button></Link></h2> */}
+                    <div className='viewDesignationContainer'>
+                    <table className='table table-sm'>
                         <thead>
                             <tr>
-                                <th>Sr no.</th>
-                                <th>Employee</th>   
-                                <th>Reporting to</th>
-                                <th>Status</th>
-                                <th colSpan={2}>Action</th>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">Employee</th>   
+                                <th scope="col">Reporting to</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
-                            <tr>
-                                    <hr className='hr_tag'/>
-                            </tr>
+            
                         </thead>
                         <tbody>
                             {
                                 this.state.reporting.map((report) => (
                                     <tr key={report.id}>
-                                        <td>{srno++}</td>
+                                        <td  scope="row">{srno++}</td>
                                         <td>{this.getEmpName(report.emp_id)}</td>
                                         <td>{this.getEmpName(report.reporting_emp_id)}</td>
                                             {
@@ -116,6 +118,7 @@ export default class Reportingto extends Component{
                     </table>
                     </div>
                 </div>
+                </>
             )
         }
     }

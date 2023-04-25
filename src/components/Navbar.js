@@ -80,7 +80,7 @@ const Navbar = () =>{
                 </UserIcon>
                 <label className="UserNameLabel">User Name</label>
                 <div className="LogOutBuTTon">
-                <button>Logout</button>
+                <button className="btn btn-primary">Logout</button>
             </div>
             </Nav>
             <div className="lowerborder"></div>

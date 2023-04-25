@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import SalaryInfo from './SalaryData';
 import EditSalary from './editSalary';
 import './styles/viewAllSalary.css'
+import Navbar from '../../components/Navbar';
 
 export default class ViewSalary extends React.Component {
     constructor(props) {
@@ -83,22 +84,22 @@ export default class ViewSalary extends React.Component {
             return(<EditSalary id={this.state.viewValue} />)
         }else{
             return (
-                
-                <div className='main'>
-                    <h2>Employee Salaries <span style={{float:'right'}}><Link to={{ pathname: "/add-salary" }}><button className='add_salary'>Add Salary</button></Link></span></h2>
-                    <div className='salary_table_container'>
-                    <table className='salary_table'>
+                <>      
+                <Navbar/>        
+                  <div className='mainViewDesignation'>
+                  <span ><Link to={{ pathname: "/add-salary" }}><button className='viewAddDesignationButton btn btn-primary'>Add Salary</button></Link></span>
+                    {/* <h2>Employee Salaries <span style={{float:'right'}}><Link to={{ pathname: "/add-salary" }}><button className='add_salary'>Add Salary</button></Link></span></h2> */}
+                    <div className='viewDesignationContainer'>
+                    <table className='table table-sm'>
                         <thead>
                             <tr>
-                                <th style={{width:'40px'}}>Sr no.</th>
-                                <th>Name</th>
-                                <th>Salary</th>
-                                <th>Status</th>
-                            <th colSpan={2} style={{textIndent:'-200px'}}>Actions</th>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Salary</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
                             </tr>
-                            <tr>
-                                <hr className='salary_line'></hr>
-                            </tr>
+                         
                         </thead>
                         <tbody>
                             {
@@ -128,6 +129,8 @@ export default class ViewSalary extends React.Component {
                     </table>
                     </div>
                 </div>
+                </>
+
             )
         }
     }   

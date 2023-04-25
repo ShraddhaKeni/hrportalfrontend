@@ -3,6 +3,7 @@ import React, { useEffect,useState } from 'react';
 import {Table, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import UpdateAddress from './UpdateAddress';
+import Navbar from '../../components/Navbar';
 
 const ViewAddress = () => {
 
@@ -108,28 +109,35 @@ const ViewAddress = () => {
   else
   {
     return (
-      <div className='main'>
+      <>
+      <Navbar/>
+      <div className='mainViewDesignation'>
+      <span ><Link to={{ pathname: "/address" }}><button className='viewAddDesignationButton btn btn-primary'>Add Address</button></Link></span>
+                    {/* <h2>Jobs <span style={{float:'right'}}><Link to={{ pathname: "/jobs" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2> */}
+                    <div className='viewDesignationContainer'>
+                  
+                    <table className='table table-sm '>
       
-                      <h2>View Address <span style={{float:'right'}}><Link to={{ pathname: "/address" }}><Button variant='success'>Add</Button></Link></span></h2>
-                      <Table bordered striped>
+                      {/* <h2>View Address <span style={{float:'right'}}><Link to={{ pathname: "/address" }}><Button variant='success'>Add</Button></Link></span></h2>
+                      <Table bordered striped> */}
                           <thead  >
                               <tr>
-                                  <th>Sr no.</th>
-                                  <th>Company Address</th>
-                                  <th>Country</th>
-                                  <th>State</th>
-                                  <th>City</th>
-                                  <th>Pincode</th>
-                                  <th>Address type</th>
-                                  <th>status</th>
-                                  <th>Actions</th>
+                                  <th scope="col">Sr no.</th>
+                                  <th scope="col">Company Address</th>
+                                  <th scope="col">Country</th>
+                                  <th scope="col">State</th>
+                                  <th scope="col">City</th>
+                                  <th scope="col">Pincode</th>
+                                  <th scope="col">Address type</th>
+                                  <th scope="col">status</th>
+                                  <th scope="col">Actions</th>
                               </tr>
                           </thead>
                           <tbody>
                                 {addressDetails.map((address)=>{
                                  return( 
                                     <tr key={address.id}>
-                                    <td>{srno++}</td>
+                                    <td scope="row">{srno++}</td>
                                     <td>{address.address}</td>
                                     <td>{getCountryName(address.country_id)}</td>
                                     <td>{getStateName(address.state_id)}</td>
@@ -154,8 +162,10 @@ const ViewAddress = () => {
                                 })}
                               
                           </tbody>
-                      </Table>
+                      </table>
                   </div>
+                  </div>
+                  </>
     )
   }
   

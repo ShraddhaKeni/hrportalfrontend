@@ -33,15 +33,27 @@
 
 .addUser_password_lable
 {
-
-    position: relative;
-    top:35px;
-    left:40px; 
-    font-weight: 800;
+font-size: 1.1vw;
+margin-left: 10%;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
 }
 
+.InpuTContainer{
+    display: flex;
+}
 .addUser_password
 {
+    /* background: #F1F1F1;
+    width: 35%;
+    margin-right: 45%;
+    background-color: #f1f1f1;
+    outline: none;
+    height: 4.5vh;
+    border: none;
+    display: inline-block;
+    margin-top: 0%;
+    font-size: 0.9vw; */
     position: relative;
     width: 300px;
     background: #F1F1F1;

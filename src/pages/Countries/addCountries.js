@@ -1,8 +1,9 @@
 import {Component} from 'react';
 import axios from 'axios';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles/Countries.css'
+import Navbar from '../../components/Navbar';
 
 export default class AddCountries extends Component {
   constructor(props){
@@ -79,13 +80,14 @@ export default class AddCountries extends Component {
   render() {
   
     return (
-      <div className='mainCountry'>
-        <div className='mainAddCountry'>
+      <>
+      <Navbar/>
+        <div className='mainAddDesignation'>
         {this.state.country === " "? <h2>Add Country</h2> : <h2>Edit Country</h2>}
-        <label style={{marginLeft:"80px"}}>Enter Country name:</label>
         <Form onSubmit={this.handleSubmit}>
+        <label className='EDNameLabel'>Enter Country name:</label>
           <Form.Group className="mb-3" >
-              <Form.Control type="text" style={{marginLeft:"80px",width:"80%"}} name="name" placeholder="Enter Country name" value={this.state.name} onChange={this.handleChange} required />
+              <Form.Control type="text" className='EDNInPut'  name="name" placeholder="Enter Country name" value={this.state.name} onChange={this.handleChange} required />
           </Form.Group>
           
           <br />
@@ -97,7 +99,7 @@ export default class AddCountries extends Component {
           }
           {this.state.country !== " "?
             <Form.Group className="mb-3">
-                <select className="form-control" style={{marginLeft:"80px",width:"80%"}} name="status" value={this.state.status} onChange={this.handleChange}>
+                <select className="form-control" name="status" value={this.state.status} onChange={this.handleChange}>
                     <option>Select</option>
                     <option value={"true"}>True</option>
                     <option value={"false"}>False</option>
@@ -121,7 +123,7 @@ export default class AddCountries extends Component {
           }
         </Form>
       </div>
-    </div>
+    </>
     )
   }
 }

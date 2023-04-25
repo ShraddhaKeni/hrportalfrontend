@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './style/addreport.css'
+import Navbar from '../../components/Navbar';
 
 export default class AddReportingto extends Component {
     constructor(props){
@@ -116,15 +117,18 @@ export default class AddReportingto extends Component {
     render() {
         
         return (
-            <div className='main_addReport'>
+            <>
+            <Navbar/>
+       
+        <div className="mainAddDesignation">
             {this.state.reporting === " "? <h2>Add Reporting Details</h2> : <h2>Edit Reporting Details</h2>}
             
-            <form onSubmit={this.handleSubmit} className='addReport_form'>
-              {this.state.reporting===' '?<label className='lable_report_choose_Emp'>Choose employee: <span style={{color:'red'}} >*</span> </label>
-                :<label className='lable_report_choose_Emp_edit'>Choose employee: <span style={{color:'red'}} >*</span> </label>}  
+            <Form onSubmit={this.handleSubmit} >
+              {this.state.reporting===' '?<label className=' EDNameLabel'>Choose employee: <span style={{color:'red'}} >*</span> </label>
+                :<label className=' EDNameLabel'>Choose employee: <span style={{color:'red'}} >*</span> </label>}  
                 {this.state.reporting === " "?
                     <Form.Group className="mb-3">
-                        <select className="reporting_employee" name="employee" value={this.state.employee} onChange={this.handleChange} required>
+                        <select className="EDNInPut" name="employee" value={this.state.employee} onChange={this.handleChange} required>
                             <option>Select</option>
                             {this.state.EmployeeData.map((e)=>(
                                 <option value={e.id}>{e.name}</option>
@@ -133,20 +137,20 @@ export default class AddReportingto extends Component {
                     </Form.Group>
                 :
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" className='reporting_employee_edit' name="employee" ref={this.employee_ref} id={this.state.employee} value={this.getEmpName(this.state.employee)} onChange={this.handleChange} disabled />
+                        <Form.Control type="text" className='EDNInPut' name="employee" ref={this.employee_ref} id={this.state.employee} value={this.getEmpName(this.state.employee)} onChange={this.handleChange} disabled />
                     </Form.Group>
                 }
 
                 <br />
 
                 {
-                    this.state.reporting===' '? <label className='lable_report_choose_toEmp'>Reporting to: <span className='req'>*</span></label>
-                                              : <label className='lable_report_choose_toEmp_edit'>Reporting to: <span className='req'>*</span></label>
+                    this.state.reporting===' '? <label className='EDNameLabel'>Reporting to: <span className='req'>*</span></label>
+                                              : <label className='EDNameLabel'>Reporting to: <span className='req'>*</span></label>
                 }
 
                 <Form.Group className="mb-3">
                     
-                    <select className={this.state.reporting===' '? 'to_employee':'to_employee_edit' } name="reportingto" value={this.state.reportingto} onChange={this.handleChange} required>
+                    <select className={this.state.reporting===' '? 'to_employee':'to_employee_edit' } class="EDNInPut " name="reportingto" value={this.state.reportingto} onChange={this.handleChange} required>
                         <option>Select</option>
                         {this.state.EmployeeData.map((e)=>(
                             <option value={e.id}>{e.name}</option>
@@ -156,11 +160,11 @@ export default class AddReportingto extends Component {
                 
                 {this.state.reporting !== " " ? <br /> : ""}
 
-                {this.state.reporting !== " " ? <label className='report_status'>Status:</label> : ""}
+                {this.state.reporting !== " " ? <label style={{marginLeft:"80px"}}>Status:</label> : ""}
 
                 {this.state.reporting !== " " ?
                     <Form.Group className="mb-3">
-                        <select className="report_status_select" name="status" value={this.state.status} onChange={this.handleChange}>
+                        <select className="EDNInPut" name="status" value={this.state.status} onChange={this.handleChange}>
                             <option>Select status</option>
                             <option value={"true"}>True</option>
                             <option value={"false"} >False</option>
@@ -171,22 +175,24 @@ export default class AddReportingto extends Component {
                 }
 
                 <br />
-                <div className='report_button'>
-                    <button className='save_report' type="submit">
+                
+                    <Button className='SaveButton' type="submit">
                         Save
-                    </button>&nbsp;&nbsp;
+                    </Button>&nbsp;&nbsp;
                     {this.state.reporting === " " ?
-                        <Link to={{ pathname: "/reporting" }}><button className='cancel_report' type="cancel">
+                        <Link to={{ pathname: "/reporting" }}><Button className='CancelButton' type="cancel">
                             Cancel
-                        </button></Link>
-                        : <button className='cancel_report_edit' type="cancel" onClick={() => { this.cancel() }}>
+                        </Button></Link>
+                        : <Button className='CancelButton' type="cancel" onClick={() => { this.cancel() }}>
                             Cancel
-                        </button>
+                        </Button>
                     }
                     
-                </div> 
-            </form>
+              
+            </Form>
             </div>
+      
+            </>
         )
     }
 }

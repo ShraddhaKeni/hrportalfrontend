@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddCities from './addCities';
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     statesData: [],
@@ -67,27 +68,27 @@ export default class Cities extends Component{
         }else{
             var srno = 1
             return(
-                <div className='mainViewCities'>
-                    <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-city" }}><button className='viewAddCitiesButton'>Add City<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2>
-                    <div className='viewCitiesContainer'>
-                    <table className='table_viewCities'>
+                <>  
+                <Navbar/>      
+                    <div className='mainViewDesignation'>
+                    <span ><Link to={{ pathname: "/add-city" }}><button className='viewAddDesignationButton btn btn-primary'>Add City</button></Link></span>
+                    {/* <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-city" }}><button className='viewAddCitiesButton'>Add City<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2> */}
+                    <div className='viewDesignationContainer'>
+                    <table className='table table-sm'>
                         <thead  >
                             <tr>
-                                <th>Sr no.</th>
-                                <th>State</th>
-                                <th>City</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr>
-                                    <hr className='hr_viewtag'/>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">State</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 this.state.cities.map((city) => (
                                     <tr key={city.id}>
-                                        <td>{srno++}</td>
+                                        <td scope="row">{srno++}</td>
                                         <td>{this.getState(city.state_id)}</td>
                                         <td>{city.name}</td>
                                             {
@@ -111,6 +112,8 @@ export default class Cities extends Component{
                     </table>
                 </div>
                 </div>
+                </>
+
             )
         }
     }

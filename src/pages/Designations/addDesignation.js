@@ -94,7 +94,6 @@ export default class AddDesignation extends Component {
     return (
       <>
       <Navbar/>
-      <div className='mainDesignation'>
         <div className="mainAddDesignation">
         {this.state.design === " "? <h2>Add Designation</h2> : <h2>Edit Designation</h2>}
         <Form onSubmit={this.handleSubmit}>
@@ -111,7 +110,7 @@ export default class AddDesignation extends Component {
           }
           {this.state.design !== " "?
             <Form.Group className="mb-3">
-                <select className="form-control" style={{marginLeft:"80px",width:"80%"}} name="status" placeholder='Select' value={this.state.status} onChange={this.handleChange}>
+                <select className="form-control"  name="status" placeholder='Select' value={this.state.status} onChange={this.handleChange}>
                   <option disabled>Select</option>
                     <option value={true}>True</option>
                     <option value={false}>False</option>  
@@ -135,7 +134,7 @@ export default class AddDesignation extends Component {
           }
         </Form>
       </div>
-      </div>
+     
       </>
     )
   }

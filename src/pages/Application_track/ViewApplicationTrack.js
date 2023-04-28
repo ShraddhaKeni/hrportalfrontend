@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 import UpdateApplicationTrack from './UpdateApplicationTrack';
 import './style/viewApplicant.css';
-<<<<<<< HEAD
 // import {motion} from 'framer-motion'
-=======
-//import {motion} from 'framer-motion'
->>>>>>> shraddha_ui_april
 import Pagination from '../../components/paginate/Pagination';
 import Navbar from '../../components/Navbar';
 

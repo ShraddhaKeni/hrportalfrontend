@@ -1,7 +1,6 @@
 import React,{useState,useEffect, useRef} from 'react'
 import axios from 'axios';
 import './style/updateApplicant.css'
-// import {motion} from 'framer-motion'
 
 const UpdateApplicationTrack = ({trackData}) => {
     const[applicantData,setApplicantData] = useState([trackData])

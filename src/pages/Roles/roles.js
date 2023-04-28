@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddRoles from './addRoles';
-
 import './style/roles.css'
 import Pagination from '../../components/paginate/Pagination';
 import Navbar from '../../components/Navbar';

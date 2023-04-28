@@ -2,8 +2,6 @@ import {Component} from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import './styles/viewEachCompany.css';
-// import {motion} from 'framer-motion'
-
 import './styles/viewCompanies.css'
 import Navbar from '../../components/Navbar';
 

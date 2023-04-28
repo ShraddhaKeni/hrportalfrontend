@@ -67,6 +67,7 @@ import ViewOffboard from './pages/Offboard/ViewOffboard';
 import AddOffboard from './pages/Offboard/AddOffboard';
 import NavBarNew from './components/NavBarNew';
 import Viewhrsupport from './pages/hrsupport/hrsupport';
+import Countrystatecity from './components/Countrystatecity';
 
 function App() {
 
@@ -92,7 +93,7 @@ function App() {
           <Route path="/add-department" element={<AddDepartment />}></Route>
 
           {/* routes for countries */}
-          <Route path="/countries" element={<Countries />}></Route>
+          <Route path="/Countrystatecity" element={<Countrystatecity />}></Route>
           <Route path="/add-country" element={<AddCountries />}></Route>
 
           {/* routes for states */}

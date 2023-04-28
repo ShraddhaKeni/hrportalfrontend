@@ -44,7 +44,7 @@ export const NavbarData = [
         subNav: [
             {
                 title: 'Countries',
-                path: '/countries',
+                path: '/Countrystatecity',
                 icon: <AiIcons.AiFillForward></AiIcons.AiFillForward>,
             },
             {

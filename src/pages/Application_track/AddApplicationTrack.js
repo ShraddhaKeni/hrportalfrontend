@@ -121,11 +121,11 @@ const AddApplicationTrack = () => {
                 </div>
                 <br/>
                 <div style={{marginTop: '10%', marginBottom: '2%'}}>
-                    <Button className="SaveButton" type="submit">
+                    <Button className="SaveButton" type="submit" whileHover={{scale:1.1}} >
                         Save
                     </Button>&nbsp;&nbsp;
                        
-                            <Link to={{pathname: "/viewApplicationTrack"}}><Button className='CancelButton' type="cancel">
+                            <Link to={{pathname: "/viewApplicationTrack"}}><Button whileHover={{scale:1.1}} className='CancelButton' type="cancel">
                                 Cancel
                             </Button></Link>
                            

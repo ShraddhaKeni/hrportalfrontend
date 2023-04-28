@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-// import { motion } from "framer-motion"
+//import { motion } from "framer-motion"
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { NavbarData } from "./NavbarData";

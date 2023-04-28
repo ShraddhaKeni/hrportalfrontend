@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import './styles/viewSalary.css'
+import Navbar from '../../components/Navbar';
 
 export default class SalaryInfo extends Component {
     constructor(props){
@@ -35,38 +36,40 @@ export default class SalaryInfo extends Component {
 
     render(){
         return(
-            <div className='main'>
-                <h2><span ><button className='back_salary' onClick={() => {this.goBack()}}><b>Back</b></button></span>Employee details:  </h2>
-                <div className='each_salary'>
-                <table className='salary_emp_table'>
+            <>
+            <Navbar/>
+            <div className='mainViewDesignation'>
+                <button className='viewAddDesignationButton btn btn-primary' style={{marginLeft:'59%'}} onClick={() => {this.goBack()}}>Back</button>
+                
+                <div className='viewDesignationContainer table-responsive'>
+                <div><b><h1>Employee Details</h1></b></div>
+                    <table className='table table-sm table-hover' responsive>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Date of Joining</th>
-                            <th>Employee code</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Date of Joining</th>
+                            <th scope="col">Employee code</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            <tr>
-                                <td>{this.state.empDetails.name}</td>
-                                <td>{this.state.empDetails.email}</td>
-                                <td>{this.state.empDetails.doj}</td>
-                                <td>{this.state.empDetails.emp_code}</td>
-                            </tr>
-                        }
+
+                             <tr>
+                                 <td scope="row">{this.state.empDetails.name}</td>
+                                 <td>{this.state.empDetails.email}</td>
+                                 <td>{this.state.empDetails.doj}</td>
+                                 <td>{this.state.empDetails.emp_code}</td>
+                             </tr>
+                        
                     </tbody>
                 </table>
-                <h2>Salary details:  </h2>
-                <table className='salary_single_table'>
+                <hr/>
+                <div><b><h1>Salary Details</h1></b></div>
+                <table className='table table-sm table-hover'>
                     <thead>
                         <tr>
-                            <th>Salary</th>
-                            <th>Date</th>
-                        </tr>
-                        <tr>
-                            <div></div>
+                            <th scope="col">Salary</th>
+                            <th scope="col">Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,6 +85,7 @@ export default class SalaryInfo extends Component {
                 </table>
                 </div>
             </div>
+          </>
         );
     }
 }

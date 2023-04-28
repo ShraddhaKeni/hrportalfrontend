@@ -86,11 +86,15 @@ export default class Leveltype extends Component{
                 <>
                 <Navbar/>
                 <div className='mainViewDesignation'>
-                <span ><Link to={{ pathname: "/add-leveltype" }}><button className='viewAddDesignationButton btn btn-primary'>Add Level</button></Link></span>
-                    {/* <h2 style={{marginLeft:'20px',marginTop:'20px'}}>Levels</h2> */}
-                    {/* <Link to={{ pathname: "/add-leveltype" }}><button className='add_level'>Add Level</button></Link> */}
-                    <div className='viewDesignationContainer'>
-                    <table className='table table-sm'>
+                <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Level Types</h1></b></div>
+                    <div style={{marginLeft: '1%'}}><Link to={{ pathname: "/add-leveltype" }}><button className='viewAddDesignationButton btn btn-primary'>Add Level</button></Link></div>
+                    </div>
+               
+                
+                 
+                    <div className='viewDesignationContainer table-responsive'>
+                    <table className='table table-sm table-hover' responsive>
                         <thead>
                             <tr >
                                 <th scope="col">Sr no.</th>

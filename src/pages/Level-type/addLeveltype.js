@@ -80,7 +80,7 @@ export default class AddLeveltype extends Component {
       <Navbar/>
      
       <div className="mainAddDesignation">
-      {/* {this.state.design === " "? <h2>Add Level type</h2> : <h2>Edit Level type</h2>} */}
+      {this.state.design === " "? <h2>Add Level type</h2> : <h2>Edit Level type</h2>}
         <Form onSubmit={this.handleSubmit}>
 
        {this.state.level==" "?<label  className='EDNameLabel'>Enter level type name:</label>:<label  className='EDNameLabel'>Enter level type name:</label>} 

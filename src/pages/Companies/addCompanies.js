@@ -156,7 +156,7 @@ export default class AddCompanies extends Component {
             <>
             <Navbar/>
             <div className='mainAddCompanies'>
-                
+            <h2>Add Company</h2>
                 <form class="row g-3" onSubmit={this.handleSubmit}>
                 <div class="col-12">
                     <label for="company_name" class="form-label InputLabel" >Company Name</label>
@@ -245,7 +245,7 @@ export default class AddCompanies extends Component {
                     }
 
                     <br/>
-                 <div style={{marginTop: '39%'}}>
+                 <div style={{marginTop: '39%', marginBottom: '2%'}}>
                     <Button className="SaveButton" type="submit">
                         Save
                     </Button>&nbsp;&nbsp;

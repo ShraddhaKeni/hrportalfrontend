@@ -73,10 +73,15 @@ export default class States extends Component{
                 <>
                 <Navbar/>
                 <div className='mainViewDesignation'>
-                <span ><Link to={{ pathname: "/add-state" }}><button className='viewAddDesignationButton btn btn-primary'>Add State</button></Link></span>
+                <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>States</h1></b></div>
+                    <div style={{marginLeft: '25%'}}><Link to={{ pathname: "/add-state" }}><button className='viewAddDesignationButton btn btn-primary'>Add State</button></Link></div>
+                    </div>
+               
+             
                     {/* <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-state" }}><button className='viewAddStateButton'>Add State<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2> */}
-                    <div className='viewDesignationContainer'>
-                    <table className='table table-sm'>
+                    <div className='viewDesignationContainer table-responsive' style={{width:'60vw'}}>
+                    <table className='table table-sm table-hover' responsive>
                         <thead  >
                             <tr>
                                 <th scope="col">Sr no.</th>

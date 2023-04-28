@@ -152,8 +152,8 @@ export default class AddEmployees extends Component {
         return (
             <>
             <Navbar/>
-            <div className='mainAddCompanies' style={{width: '45vw'}}>
-                {this.state.employee === " " ? <h2>Add employee details</h2> : <h2>Edit employee details</h2>}
+            <div className='mainAddCompanies' style={{width: '45vw', marginTop: '8%'}}>
+                {this.state.employee === " " ? <h2>Add Employee Details</h2> : <h2>Edit Employee Details</h2>}
                 <h4 className='errorMsg'>{this.state.error}</h4>
                
                 <form class="row g-3" onSubmit={this.handleSubmit}>
@@ -207,7 +207,7 @@ export default class AddEmployees extends Component {
                 </div>
                 <div class="col-md-6">
                     <label for="date" class="form-label InputLabel">Date of joining: <span className='req'>*</span></label>
-                    <input type="date" class="form-control SelectField" style={{marginLeft: '5%' , padding: '2%'}}  id="date" name="doj" placeholder="Enter date of joining" value={this.state.doj} onChange={this.handleChange} required  />
+                    <input type="date" class="form-control SelectField" style={{marginLeft: '5%' , padding: '0%'}}  id="date" name="doj" placeholder="Enter date of joining" value={this.state.doj} onChange={this.handleChange} required  />
                 </div>
                 <div class="col-md-6">
                     <label for="code" class="form-label SelectLabel">Employee code: <span className='req'>*</span></label>
@@ -254,12 +254,12 @@ export default class AddEmployees extends Component {
                     }
 
                     <br />
-                    <div style={{marginTop: '39%'}}>
+                    <div style={{marginTop: '36%'}}>
                     <Button className="SaveButton" type="submit">
                         Save
                     </Button>&nbsp;&nbsp;
                         {this.state.company === " "?
-                            <Link to={{pathname: "/companies"}}><Button className='CancelButton' type="cancel">
+                            <Link to={{pathname: "/employees"}}><Button className='CancelButton' type="cancel">
                                 Cancel
                             </Button></Link>
                             : <Button className='CancelButton' type="cancel" onClick={() => {this.cancel()}}>

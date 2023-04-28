@@ -58,7 +58,7 @@ export default class ViewEmployees extends Component {
                 
             </h2>
             <button className='employee_back' onClick={() => {this.goBack()}}><b>Back</b></button>
-            <div className='viewEmployee_container'>
+            <div className='viewEmployee_container  table-responsive'>
             <table className='viewEmployee_table'>
                 <tbody>
                     <tr className='left'>

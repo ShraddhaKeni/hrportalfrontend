@@ -65,11 +65,15 @@ export default class Department extends Component{
                 <>
                 <Navbar/>
                 <div className='mainViewDesignation'>
-                <span ><Link to={{ pathname: "/add-department" }}><button className='viewAddDesignationButton btn btn-primary'>Add Department</button></Link></span>
+                <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Department</h1></b></div>
+                    <div><Link to={{ pathname: "/add-department" }}><button className='viewAddDesignationButton btn btn-primary'>Add Department</button></Link></div>
+                    </div>
+              
                     {/* <h2>Departments <span style={{float:'right'}}><Link to={{ pathname: "/add-department" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2> */}
                     
-                    <div className='viewDesignationContainer'>
-                    <table className='table table-sm'>
+                    <div className='viewDesignationContainer table-responsive'>
+                    <table className='table table-sm table-hover' responsive>
                         <thead  >
                             <tr>
                                 <th scope="col">Sr No.</th>

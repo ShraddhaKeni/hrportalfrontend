@@ -74,11 +74,13 @@ export default class Reportingto extends Component{
                 <>
                 <Navbar/>
                 <div className='mainViewDesignation'>
-                <span ><Link to={{ pathname: "/add-reporting" }}><button className='viewAddDesignationButton btn btn-primary'>Add Reporting</button></Link></span>
-                    {/* <h2 style={{marginLeft:'-40px'}}>Reporting</h2>
-                    <h2><Link to={{ pathname: "/add-reporting" }}><button className='add_report'>Add Reporting</button></Link></h2> */}
-                    <div className='viewDesignationContainer'>
-                    <table className='table table-sm'>
+                <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Reports</h1></b></div>
+                    <div style={{marginLeft: '8%'}}><Link to={{ pathname: "/add-reporting" }}><button className='viewAddDesignationButton btn btn-primary'>Add Reporting</button></Link></div>
+                    </div>
+              
+                    <div className='viewDesignationContainer table-responsive'>
+                    <table className='table table-sm table-hover' responsive>
                         <thead>
                             <tr>
                                 <th scope="col">Sr no.</th>

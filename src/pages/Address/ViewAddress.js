@@ -112,14 +112,18 @@ const ViewAddress = () => {
       <>
       <Navbar/>
       <div className='mainViewDesignation'>
-      <span ><Link to={{ pathname: "/address" }}><button className='viewAddDesignationButton btn btn-primary'>Add Address</button></Link></span>
-                    {/* <h2>Jobs <span style={{float:'right'}}><Link to={{ pathname: "/jobs" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2> */}
-                    <div className='viewDesignationContainer'>
+     
+           <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>View Address</h1></b></div>
+                    <div style={{marginLeft: '17%'}}><Link to={{ pathname: "/address" }}><button className='viewAddDesignationButton btn btn-primary'>Add Address</button></Link></div>
+                    </div>
+
                   
-                    <table className='table table-sm '>
+                    <div className='viewDesignationContainer table-responsive' style={{width:'70vw', marginLeft:'26%'}}>
+                  
+                    <table className='table table-sm table-hover' responsive>
       
-                      {/* <h2>View Address <span style={{float:'right'}}><Link to={{ pathname: "/address" }}><Button variant='success'>Add</Button></Link></span></h2>
-                      <Table bordered striped> */}
+                      
                           <thead  >
                               <tr>
                                   <th scope="col">Sr no.</th>

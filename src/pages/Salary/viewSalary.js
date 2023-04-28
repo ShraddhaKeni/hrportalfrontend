@@ -87,10 +87,14 @@ export default class ViewSalary extends React.Component {
                 <>      
                 <Navbar/>        
                   <div className='mainViewDesignation'>
-                  <span ><Link to={{ pathname: "/add-salary" }}><button className='viewAddDesignationButton btn btn-primary'>Add Salary</button></Link></span>
-                    {/* <h2>Employee Salaries <span style={{float:'right'}}><Link to={{ pathname: "/add-salary" }}><button className='add_salary'>Add Salary</button></Link></span></h2> */}
-                    <div className='viewDesignationContainer'>
-                    <table className='table table-sm'>
+                  
+                  <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Salaries</h1></b></div>
+                    <div style={{marginLeft: '7%'}}><Link to={{ pathname: "/add-salary" }}><button className='viewAddDesignationButton btn btn-primary'>Add Salary</button></Link></div>
+                    </div>
+             
+                    <div className='viewDesignationContainer table-responsive'>
+                    <table className='table table-sm table-hover' responsive>
                         <thead>
                             <tr>
                                 <th scope="col">Sr no.</th>

@@ -2,24 +2,22 @@
 .companies_table_container
 {
     position: absolute;
-    width: 700px;
-    height: 800px;
+    width: 36vw;
+    height: 70vh;
     background-color: white;
     border-radius: 45px;
-    margin: 10px 100px;
-    right:450px;
+    margin: 1% 0% 0% 42%;
 }
 
 .companies_table
 {
-    
-    width: 600px;
-    height: 600px;
+    width: 31vw;
+    height: 62vh;
     position: relative;
     border-radius: 45px;
     padding: 10px 0px;
     justify-content: center;
-    margin: 100px 50px;
+    margin: 7% 0% 0% 7%;
     text-align: center;
   
 }

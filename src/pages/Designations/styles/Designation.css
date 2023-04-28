@@ -1,3 +1,15 @@
+/* H1 universal fontsize */
+
+h1{
+    font-size: 2.1vw;
+}
+
+
+
+
+
+
+
 /* Add Designation CSS */
 .mainDesignation{
     width: 100vw;
@@ -123,10 +135,9 @@ button
 }
 
 .viewAddDesignationButton
-{   margin-left: 60%;
+{   margin-left: 82%;
     height: 5.5vh;
     width: 12vw;
-    /* margin-right: 70%; */
     margin-top: 3%;
     background-color:#552D59 ;
     color: white;

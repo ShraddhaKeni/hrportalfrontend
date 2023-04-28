@@ -1,8 +1,9 @@
 import {Component} from 'react';
 import axios from 'axios';
-import { Form, button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './style/addRole.css'
+import Navbar from '../../components/Navbar';
 
 //Changed the status from String to Boolean as backend only takes status as boolean and frontend was passing String value
 //Due to which it was not getting updated in the Server.
@@ -76,18 +77,19 @@ export default class AddRoles extends Component {
   render() {
 
     return (  
-      <div className='main'>
+      <>
+      <Navbar/>
+      <div className="mainAddDesignation">
         {this.state.role === " "? <h2>Add Role</h2> : <h2>Edit Role</h2>}
-        <div className='addRole_form_container'>
-        <form className='addRole_form' onSubmit={this.handleSubmit}>
-          <div className={this.state.role=== ' '? 'role_name_container':'role_name_container_edit'}>
-          <label className='role_name_lable'>Enter role name:</label>
+        <Form  onSubmit={this.handleSubmit}>
+          {/* <div className={this.state.role=== ' '? 'role_name_container':'role_name_container_edit'}> */}
+          <label className='EDNameLabel'>Enter role name:</label>
             <Form.Group className="mb-3" >
-                <input type="text" className='role_name' name="name" placeholder="Enter role name" value={this.state.name} onChange={this.handleChange} required />
+                <input type="text" className='EDNInPut' name="name" placeholder="Enter role name" value={this.state.name} onChange={this.handleChange} required />
             </Form.Group>
             
             <br />
-          </div>
+          {/* </div> */}
           {this.state.role !== " "?
             <label className='role_status_lable'>Select status:</label>
           :
@@ -106,22 +108,23 @@ export default class AddRoles extends Component {
           }
 
           <br/>
-          <div className='role_buttons'>
-          <button className='save_role' type="submit">
+         
+          <Button className="SaveButton" type="submit">
               Save
-          </button>
+          </Button>&nbsp;&nbsp;
           {this.state.role === " "?
-              <Link to={{pathname: "/roles"}}><button className='cancel_role' type="cancel">
+              <Link to={{pathname: "/roles"}}><Button className='CancelButton' type="cancel">
                   Cancel
-              </button></Link>
-            : <button className='cancel_role' type="cancel" onClick={() => {this.cancel()}}>
+              </Button></Link>
+            : <Button className='CancelButton' type="cancel" onClick={() => {this.cancel()}}>
               Cancel
-              </button> 
+              </Button> 
           }
-          </div>
-        </form>
+     
+        </Form>
         </div>
-      </div>
+
+      </>
     )
   }
 }

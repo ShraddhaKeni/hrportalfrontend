@@ -37,12 +37,10 @@
 
 .applicant_job
 {
-    position: relative;
-    top:48px;
-    right:220px;
-    font-weight: 400;
-    font-size: 15px;
-    
+
+    margin-top:2%;
+   
+
 }
 
 .applicant_comment_lable

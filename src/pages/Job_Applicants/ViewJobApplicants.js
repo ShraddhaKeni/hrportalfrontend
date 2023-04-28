@@ -117,11 +117,15 @@ const paginate = number =>{
       <Navbar/>
       <div className='mainViewDesignation'>
         {console.log(applicants)}
-        <span ><Link to={{ pathname: "/addApplicants" }}><button className='viewAddDesignationButton btn btn-primary'>Add Applicant</button></Link></span>
+        <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Job Applicants</h1></b></div>
+                    <div style={{marginLeft: '-4%'}}><Link to={{ pathname: "/addApplicants" }}><button className='viewAddDesignationButton btn btn-primary'>Add Applicant</button></Link></div>
+                    </div>
+       
         {/* <h2 style={{marginLeft:'250px'}}>Job Applicants<span style={{float:'right'}}><Link to={{ pathname: "/addApplicants" }}><button className='add_job_applicant' >Add Applicant</button></Link></span></h2> */}
 
-          <div className='viewDesignationContainer'>
-                      <table className='table table-sm'>
+          <div className='viewDesignationContainer table-responsive'style={{width:'55vw'}}>
+          <table className='table table-sm table-hover' responsive>
                           <thead  >
                               <tr>
                                   <th scope="col">Sr no.</th>

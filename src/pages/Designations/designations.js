@@ -54,9 +54,12 @@ export default class Designation extends Component{
                 <>
               <Navbar/>
                 <div className='mainViewDesignation'>
-                    <span ><Link to={{ pathname: "/add-designation" }}><button className='viewAddDesignationButton btn btn-primary'>Add Designation</button></Link></span>
-                    <div className='viewDesignationContainer'>
-                    <table className='table table-sm'>
+                    <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Designation</h1></b></div>
+                    <div><Link to={{ pathname: "/add-designation" }}><button className='viewAddDesignationButton btn btn-primary'>Add Designation</button></Link></div>
+                    </div>
+                    <div className='viewDesignationContainer table-responsive'>
+                    <table className='table table-sm table-hover' responsive>
                         <thead>
                             <tr>
                                 <th scope="col">Sr No.</th>

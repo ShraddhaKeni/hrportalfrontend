@@ -99,10 +99,14 @@ else{
 
         {/* {console.log(docData)} */}
         <div className='mainViewDesignation'>
-      <span ><Link to={{ pathname: "/addUserDocuments" }}><button className='viewAddDesignationButton btn btn-primary'>Add Documents</button></Link></span>
+        <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>User Documents</h1></b></div>
+                    <div style={{marginLeft: '-5%'}}><Link to={{ pathname: "/addUserDocuments" }}><button className='viewAddDesignationButton btn btn-primary'>Add Documents</button></Link></div>
+                    </div>
+   
         {/* <h2>User Documents <span style={{float:'right'}}><Link to={{ pathname: "/addUserDocuments" }}><Button variant='success'>Add</Button></Link></span></h2> */}
-        <div className='viewDesignationContainer'>
-                      <table className='table table-sm '>
+        <div className='viewDesignationContainer table-responsive' style={{width:'55vw'}}>
+                     <table className='table table-sm table-hover' responsive>
                           <thead>
                               <tr>
                                   <th scope="col">Sr no.</th>

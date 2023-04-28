@@ -71,10 +71,15 @@ export default class Cities extends Component{
                 <>  
                 <Navbar/>      
                     <div className='mainViewDesignation'>
-                    <span ><Link to={{ pathname: "/add-city" }}><button className='viewAddDesignationButton btn btn-primary'>Add City</button></Link></span>
+                    <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Cities</h1></b></div>
+                    <div style={{marginLeft: '27%'}}><Link to={{ pathname: "/add-city" }}><button className='viewAddDesignationButton btn btn-primary'>Add City</button></Link></div>
+                    </div>
+               
+                    
                     {/* <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-city" }}><button className='viewAddCitiesButton'>Add City<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2> */}
-                    <div className='viewDesignationContainer'>
-                    <table className='table table-sm'>
+                    <div className='viewDesignationContainer table-responsive' style={{width:'60vw'}}>
+                    <table className='table table-sm  table-hover' responsive>
                         <thead  >
                             <tr>
                                 <th scope="col">Sr no.</th>

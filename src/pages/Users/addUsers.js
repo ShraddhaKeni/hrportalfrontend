@@ -1,6 +1,6 @@
 import {Component} from 'react';
 import axios from 'axios';
-import { Form, button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './style/addUsers.css'
 import Navbar from '../../components/Navbar';
@@ -136,7 +136,7 @@ export default class AddUsers extends Component {
             <>
             <Navbar/>
           
-            <div className="mainAddCompanies" style={{marginTop: '8%'}}>
+            <div className="mainAddCompanies" style={{marginTop: '10%', width: '38vw', marginLeft: '40%'}}>
                 {this.state.user === " "? <h2>Add user details</h2> : <h2>Edit user details</h2>}
                 <form class="row g-3" onSubmit={this.handleSubmit}>
                 <div class="col-12">
@@ -157,23 +157,19 @@ export default class AddUsers extends Component {
                             }
                         </select>
                 </div>
-             
-                {/* <div class="col-md-6">
-                    <label for="password" class="form-label SelectLabel">Password:</label>
-                    <input class="form-control SelectField" style={{marginLeft: '8%' , padding: '2%'}} id="password" type="password" name="password" placeholder="Enter password" defaultValue={this.state.password} onChange={this.handleChange} />
+                <div class="col-md-6">
+                    <label for="email" class="form-label SelectLabel">Email:</label>
+                    <input class="form-control SelectField" style={{marginLeft: '8%' , padding: '2%'}} id="email" type="email"  name="email" value={this.state.email} placeholder="Enter email "  onChange={this.handleChange} required />
                 </div>
                 <div class="col-md-6">
-                    <label for="role" class="form-label InputLabel">Choose Role:</label>
-                    <select class="form-select SelectField" style={{width: '87%', marginLeft: '-2%'}} id="role" name="role_id" value={this.state.role_id} onChange={this.handleChange}>
-                    <option value="">Select role</option>
-                            { this.state.RoleData.map((e) => (
-                                <option value={e.id} key={e.id}>{e.name}</option>
-                            ))
-                            }
-                        </select>
-                </div> */}
+                    <label for="file" class="form-label InputLabel">Upload profile picture:</label>
+                    <input class="form-select SelectField" style={{width: '87%', marginLeft: '6%'}} id="file"  type="file" name="uploadpic" value={this.state.uploadpic} onChange={this.onFileChange}/>
+                
+                </div>
              
-
+           
+             
+{/* 
 
                     <label className='addUser_email_lable'>Email:</label>
                     <Form.Group className="mb-3" >
@@ -185,8 +181,8 @@ export default class AddUsers extends Component {
                     <label className='addUser_profile_lable'>Upload profile picture:</label>
                     <Form.Group className="mb-3" >
                         <input className='addUser_profile' type="file" name="uploadpic" value={this.state.uploadpic} onChange={this.onFileChange} />
-                    </Form.Group>
-                    
+                    </Form.Group> 
+                     */}
                     {this.state.user === " "? " " : <br/> }
 
                     {this.state.user === " "? " " : <label className='addUser_emergency1_lable'>Emergency no. 1:</label>}
@@ -229,17 +225,17 @@ export default class AddUsers extends Component {
                     }
 
                     <br/>
-                        <div className={this.state.user===" "?'user_buttons':'user_buttons_edit'}>
-                            <button className='save_User' type="submit">
+                        <div className={this.state.user===" "?'user_buttons':'user_buttons_edit'} style={{marginTop: '20%'}}>
+                            <Button className='SaveButton' type="submit">
                                 Save
-                            </button>
+                            </Button>&nbsp;&nbsp;
                             {this.state.user === " "?
-                                <Link to={{pathname: "/users"}}><button className='cancel_User' type="cancel">
+                                <Link to={{pathname: "/users"}}><Button className='CancelButton' type="cancel">
                                     Cancel
-                                </button></Link>
-                                : <button className='cancel_User' type="cancel" onClick={() => {this.cancel()}}>
+                                </Button></Link>
+                                : <Button className='CancelButton' type="cancel" onClick={() => {this.cancel()}}>
                                 Cancel
-                                </button> 
+                                </Button> 
                             }
                         </div>
                   

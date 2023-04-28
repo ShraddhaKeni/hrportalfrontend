@@ -146,9 +146,13 @@ else
         <>
         <Navbar/>
         <div className='mainViewDesignation'>
-        <span ><Link to={{ pathname: "/addApplicationTrack" }}><button className='viewAddDesignationButton btn btn-primary'>Add track</button></Link></span>
-                    <div className='viewDesignationContainer'>
-                    <table className='table w-auto table-sm' responsive>
+        <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Applicantion Tracks</h1></b></div>
+                    <div style={{marginLeft: '-5%'}}><Link to={{ pathname: "/addApplicationTrack" }}><button className='viewAddDesignationButton btn btn-primary'>Add track</button></Link></div>
+                    </div>
+       
+                    <div className='viewDesignationContainer table-responsive'  style={{width: '64vw', marginLeft:'28%'}}>
+                    <table className='table w-auto table-sm table-hover' responsive>
           
                               <thead  >
                                   <tr>

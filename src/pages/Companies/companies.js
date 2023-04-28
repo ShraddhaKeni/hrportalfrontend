@@ -108,10 +108,13 @@ export default class Companies extends Component{
                 <Navbar/>
                 <div className='mainViewDesignation'>
                     {console.log(this.state.currentPosts)}
-                    <span ><Link to={{ pathname: "/add-companies"}}><button className='viewAddDesignationButton btn btn-primary'>Add Companies</button></Link></span>
-                    {/* <h2 style={{marginLeft:'280px'}}>Companies<span style={{float:'right'}}><Link to={{ pathname: "/add-companies" }}><button className='add_company'>Add Company</button></Link></span></h2> */}
-                    <div className='viewDesignationContainer'>
-                    <table className='table table-sm'>
+                    <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Companies</h1></b></div>
+                    <div style={{marginLeft:'15%'}}><Link to={{ pathname: "/add-companies"}}><button className='viewAddDesignationButton btn btn-primary'>Add Company</button></Link></div>
+                    </div>
+
+                    <div className='viewDesignationContainer table-responsive' style={{width:'60vw'}}>
+                    <table className='table table-sm table-hover' responsive >
                         <thead  >
                             <tr>
                                 <th scope="col">Sr No.</th>

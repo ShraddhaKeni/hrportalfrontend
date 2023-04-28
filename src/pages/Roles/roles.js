@@ -6,6 +6,7 @@ import AddRoles from './addRoles';
 
 import './style/roles.css'
 import Pagination from '../../components/paginate/Pagination';
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     roles: [],
@@ -79,27 +80,30 @@ export default class Roles extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2 style={{marginLeft:'-40px'}}>Roles</h2>
-                    <h2><span><Link to={{ pathname: "/add-roles" }}><button className='add_roles' variant='success'>Add Roles</button></Link></span></h2>
-                    <div className='roles_table_container'>
-                    <table className='roles_table'>
+                <>
+              <Navbar/>
+              <div className='mainViewDesignation'>
+                    <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Roles</h1></b></div>
+                    <div style={{marginLeft: '14%'}}><Link to={{ pathname: "/add-roles" }}><button className='viewAddDesignationButton btn btn-primary'>Add Roles</button></Link></div>
+                    </div>
+                 
+                  
+                    <div className='viewDesignationContainer table-responsive'>
+                    <table className='table table-sm table-hover' responsive>
                         <thead  >
                             <tr>
-                                <th style={{width:'40px'}}>Sr no.</th>
-                                <th >Name</th>
-                                <th style={{width:'40px'}}>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr>
-                                <hr className='role_line'/>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 this.state.currentPosts.map((role) => (
                                     <tr key={role.id}>
-                                        <td>{srno++}</td>
+                                        <td scope="row">{srno++}</td>
                                         <td>{role.name}</td>
                                             {
                                                 role.status === true? <td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
@@ -125,6 +129,7 @@ export default class Roles extends Component{
 
                     </div>
                 </div>
+                </>
             )
         }
     }

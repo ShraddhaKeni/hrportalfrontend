@@ -17,7 +17,7 @@ export default class AddCountries extends Component {
 
   componentDidMount(){
     if(this.state.country !== " "){
-      axios.get('http://localhost:3000/countries/'+this.state.country).then(response => {
+      axios.get('http://localhost:3001/countries/'+this.state.country).then(response => {
           this.setState({
               name: response.data.data.name
           });
@@ -48,7 +48,7 @@ export default class AddCountries extends Component {
   }
 
   addCountry(country){
-    axios.post(`http://localhost:3000/countries/create`, country ,
+    axios.post(`http://localhost:3001/countries/create`, country ,
     {
       'Content-type':'application/json'
     }).then(res => {
@@ -64,7 +64,7 @@ export default class AddCountries extends Component {
       name:country.name,
       status:toBool
     }
-    axios.patch(`http://localhost:3000/countries/`+this.state.country, data ,
+    axios.patch(`http://localhost:3001/countries/`+this.state.country, data ,
     {
       'Content-type':'application/json'
     }).then(res => {

@@ -20,7 +20,7 @@ export default class Reportingto extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:3000/report-to').then(response => {
+        axios.get('http://localhost:3001/report-to').then(response => {
             this.setState({
                 reporting: response.data.data
             });
@@ -30,7 +30,7 @@ export default class Reportingto extends Component{
 
     async getEmployeeDetails()
     {
-        const {data} = await axios.get('http://localhost:3000/employees')
+        const {data} = await axios.get('http://localhost:3001/employees')
         this.setState({employees:data.data})
         //console.log(this.state.EmployeeData)
     }
@@ -56,7 +56,7 @@ export default class Reportingto extends Component{
             status:!status
         }
 
-        const changeRequest = await axios.patch(`http://localhost:3000/report-to/${id}`,data,{
+        const changeRequest = await axios.patch(`http://localhost:3001/report-to/${id}`,data,{
             'Content-type':'application/json'
         })
         window.location.reload()

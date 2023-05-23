@@ -10,7 +10,7 @@ const AddJobApplicants = () => {
 
   const getJobsData = async () =>{
     try {
-      const {data}= await axios.get(`http://localhost:3000/jobs/findAll`)
+      const {data}= await axios.get(`http://localhost:3001/jobs/findAll`)
       setjobs(data.data)
     } catch (error) {
       console.log(error)
@@ -32,7 +32,7 @@ const AddJobApplicants = () => {
         name: createData.name,
         status:true
       }
-      const postRequest = await axios.post(`http://localhost:3000/job-applicants/create`,postData,{
+      const postRequest = await axios.post(`http://localhost:3001/job-applicants/create`,postData,{
         'Content-type':'application/json'
       })
      window.history.back()

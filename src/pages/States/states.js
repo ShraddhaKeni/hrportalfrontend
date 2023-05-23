@@ -20,13 +20,13 @@ export default class States extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:3000/states').then(response => {
+        axios.get('http://localhost:3001/states').then(response => {
             this.setState({
                 statesData: response.data.data
             });
         });
 
-        axios.get('http://localhost:3000/countries').then(response => {
+        axios.get('http://localhost:3001/countries').then(response => {
             this.setState({
                 countries: response.data.data
             });
@@ -55,7 +55,7 @@ export default class States extends Component{
             status:!status
         }
         console.log(change)
-        const requestStatusChange = await axios.patch(`http://localhost:3000/states/${id}`,change,{
+        const requestStatusChange = await axios.patch(`http://localhost:3001/states/${id}`,change,{
             'Content-type':'application/json'
         })
         window.location.reload();

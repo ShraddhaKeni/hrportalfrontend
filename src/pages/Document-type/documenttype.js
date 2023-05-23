@@ -18,7 +18,7 @@ export default class Documenttype extends Component{
 
     componentDidMount(){
         
-        axios.get('http://localhost:3000/document-type/findAll').then(response => {
+        axios.get('http://localhost:3001/document-type/findAll').then(response => {
             this.setState({
                 documents: response.data.data
             });
@@ -37,7 +37,7 @@ export default class Documenttype extends Component{
         const data = {
             status:!tobool
         }
-        const requestChangeStatus = await axios.patch(`http://localhost:3000/document-type/update/${id}`,data,{
+        const requestChangeStatus = await axios.patch(`http://localhost:3001/document-type/update/${id}`,data,{
             'Content-type':'application.json'
         })
         window.location.reload()

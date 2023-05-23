@@ -24,7 +24,7 @@ export default class Leveltype extends Component{
 
     componentDidMount(){
         
-        axios.get('http://localhost:3000/level-types').then(response => {
+        axios.get('http://localhost:3001/level-types').then(response => {
             this.setState({
                 levels: response.data.data
             });
@@ -48,7 +48,7 @@ export default class Leveltype extends Component{
             status:!status
         }
         //console.log(change)
-        const requestStatusChange = await axios.patch(`http://localhost:3000/level-types/${id}`,change,{
+        const requestStatusChange = await axios.patch(`http://localhost:3001/level-types/${id}`,change,{
             'Content-type':'application/json'
         })
         window.location.reload();

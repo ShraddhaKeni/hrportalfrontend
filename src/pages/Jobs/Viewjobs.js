@@ -19,7 +19,7 @@ export default class Viewjobs extends Component {
     fetchJobData()
     {
        
-        axios.get('http://localhost:3000/jobs/findAll')
+        axios.get('http://localhost:3001/jobs/findAll')
              .then(response=>{
                 this.setState({jobData:response.data.data})
              })
@@ -30,7 +30,7 @@ export default class Viewjobs extends Component {
 
     fetchRoleData()
     {
-        axios.get('http://localhost:3000/roles')
+        axios.get('http://localhost:3001/roles')
              .then(response=>{
                 this.setState({roleData:response.data.data})
                 
@@ -38,7 +38,7 @@ export default class Viewjobs extends Component {
     }
     fetchEmployeeData()
     {
-        axios.get('http://localhost:3000/employees')
+        axios.get('http://localhost:3001/employees')
              .then(response=>{
                 this.setState({employeeData:response.data.data});
              })
@@ -88,7 +88,7 @@ export default class Viewjobs extends Component {
                 raised_by_emp:data.raised_by_emp,
                 status:false
             }
-            axios.patch(`http://localhost:3000/jobs/update/${id}`,patchData)
+            axios.patch(`http://localhost:3001/jobs/update/${id}`,patchData)
                 .then(window.location.reload())
                 .catch(err=>console.log(err))
         }

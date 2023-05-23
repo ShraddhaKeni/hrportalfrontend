@@ -20,19 +20,19 @@ export default class AddCities extends Component {
     componentDidMount() {
 
         if (this.state.city !== " ") {
-            axios.get('http://localhost:3000/cities/' + this.state.city).then(response => {
+            axios.get('http://localhost:3001/cities/' + this.state.city).then(response => {
                 this.setState({
                     cityName: response.data.data.name
                 });
             });
 
-            axios.get('http://localhost:3000/states/' + this.state.state).then(response => {
+            axios.get('http://localhost:3001/states/' + this.state.state).then(response => {
                 this.setState({
                     stateName: response.data.data.name
                 });
             });
         } else {
-            axios.get('http://localhost:3000/states').then(response => {
+            axios.get('http://localhost:3001/states').then(response => {
                 this.setState({
                     state: response.data.data
                 });
@@ -62,7 +62,7 @@ export default class AddCities extends Component {
     }
 
     addCity(city){
-        axios.post(`http://localhost:3000/cities/create`, city ,
+        axios.post(`http://localhost:3001/cities/create`, city ,
         {
             'Content-type':'application/json'
         }).then(res => {
@@ -78,7 +78,7 @@ export default class AddCities extends Component {
             status:isBool
         }
 
-        axios.patch(`http://localhost:3000/cities/`+this.state.city, data ,
+        axios.patch(`http://localhost:3001/cities/`+this.state.city, data ,
         {
             'Content-type':'application/json'
         }).then(res => {

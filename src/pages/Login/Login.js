@@ -23,7 +23,7 @@ const Login = () => {
                 username:details.username,
                 password:details.password
             }
-            const res = await axios.post(`http://localhost:3000/auth/signin`,datas)
+            const res = await axios.post(`http://localhost:3001/auth/signin`,datas)
             localStorage.setItem('accessToken',res.data.data.accessToken)
             setCookie('accessToken',res.data.data.accessToken)
             const {payload} = decodeToken(res.data.data.accessToken)

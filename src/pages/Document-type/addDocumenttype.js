@@ -15,7 +15,7 @@ export default class AddDocumenttype extends Component {
 
   componentDidMount(){
     if(this.state.doctype !== " "){
-        axios.get('http://localhost:3000/document-type/find/'+this.state.doctype).then(response => {
+        axios.get('http://localhost:3001/document-type/find/'+this.state.doctype).then(response => {
           this.setState({
               name: response.data.data.name
           });
@@ -46,7 +46,7 @@ export default class AddDocumenttype extends Component {
   }
 
   addDoctype(type){
-    axios.post(`http://localhost:3000/document-type/create`, type ,
+    axios.post(`http://localhost:3001/document-type/create`, type ,
     {
       'Content-type':'application/json'
     }).then(res => {
@@ -62,7 +62,7 @@ export default class AddDocumenttype extends Component {
       status:toBool
     }
     console.log(data)
-    axios.patch(`http://localhost:3000/document-type/update/${this.state.doctype}`, data ,
+    axios.patch(`http://localhost:3001/document-type/update/${this.state.doctype}`, data ,
     {
       'Content-type':'application/json'
     }).then(res => {

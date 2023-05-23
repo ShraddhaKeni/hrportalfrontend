@@ -16,7 +16,7 @@ export default class AddLeveltype extends Component {
 
   componentDidMount(){
     if(this.state.level !== " "){
-        axios.get(`http://localhost:3000/level-types/${this.state.level}`).then(response => {
+        axios.get(`http://localhost:3001/level-types/${this.state.level}`).then(response => {
           this.setState({
               name: response.data.data.name
           });
@@ -46,7 +46,7 @@ export default class AddLeveltype extends Component {
   }
 
   addLeveltype(level){
-    axios.post(`http://localhost:3000/level-types/add`, level ,
+    axios.post(`http://localhost:3001/level-types/add`, level ,
     {
       'Content-type':'application/json'
     }).then(res => {
@@ -60,7 +60,7 @@ export default class AddLeveltype extends Component {
             name:level.name,
             status:isBool
         }
-    axios.patch(`http://localhost:3000/level-types/`+this.state.level, data ,
+    axios.patch(`http://localhost:3001/level-types/`+this.state.level, data ,
     {
       'Content-type':'application/json'
     }).then(res => {

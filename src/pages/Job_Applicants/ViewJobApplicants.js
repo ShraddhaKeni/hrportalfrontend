@@ -22,7 +22,7 @@ const[postPerPage] = useState(12);
 const getApplicants = async() =>{
 
   try {
-    const {data} = await axios.get(`http://localhost:3000/job-applicants/findAll`);
+    const {data} = await axios.get(`http://localhost:3001/job-applicants/findAll`);
     setApplicants(data.data)
   } catch (error) {
     console.log(error)
@@ -32,7 +32,7 @@ const getApplicants = async() =>{
 
 const getJobDetails = async() =>{
   try {
-    const {data} = await axios.get(`http://localhost:3000/jobs/findAll`)
+    const {data} = await axios.get(`http://localhost:3001/jobs/findAll`)
     setJobs(data.data)
   } 
   catch (error) {
@@ -66,7 +66,7 @@ const changeStatus = async(id,status) =>{
     const patchData = {
       status:!status
     }
-    const patchReqeust = await axios.patch(`http://localhost:3000/job-applicants/update/${id}`,patchData,{
+    const patchReqeust = await axios.patch(`http://localhost:3001/job-applicants/update/${id}`,patchData,{
           'Content-type':'application/json'
         })
         setChange(!change)

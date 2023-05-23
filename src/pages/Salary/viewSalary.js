@@ -22,13 +22,13 @@ export default class ViewSalary extends React.Component {
 
     componentDidMount() {
 
-        axios.get('http://localhost:3000/salary/findAll').then(response => {
+        axios.get('http://localhost:3001/salary/findAll').then(response => {
             this.setState({
                 salaryData: response.data.data
             });
         });
 
-        axios.get('http://localhost:3000/employees').then(response => {
+        axios.get('http://localhost:3001/employees').then(response => {
             this.setState({
                 employeesData: response.data.data
             });

@@ -32,7 +32,7 @@ export default class AddCompanies extends Component {
 
     componentDidMount(){
         if(this.state.company !== " "){
-          axios.get('http://localhost:3000/companies/'+this.state.company).then(response => {
+          axios.get('http://localhost:3001/companies/'+this.state.company).then(response => {
               this.setState({
                   name: response.data.data.name,
                   address: response.data.data.address,
@@ -52,7 +52,7 @@ export default class AddCompanies extends Component {
           });
         }
 
-        axios.get('http://localhost:3000/countries').then(response => {
+        axios.get('http://localhost:3001/countries').then(response => {
             this.setState({
                 CountryData: response.data.data
             });
@@ -63,7 +63,7 @@ export default class AddCompanies extends Component {
         this.setState({
             country_id: e.target.value
         });
-        axios.get('http://localhost:3000/states/list/' + e.target.value).then(response => {
+        axios.get('http://localhost:3001/states/list/' + e.target.value).then(response => {
         this.setState({
                 StatesData: response.data.data
             });
@@ -74,7 +74,7 @@ export default class AddCompanies extends Component {
         this.setState({
             state_id: e.target.value
         });
-        axios.get('http://localhost:3000/cities/list/' + e.target.value).then(response => {
+        axios.get('http://localhost:3001/cities/list/' + e.target.value).then(response => {
             this.setState({
                 CityData: response.data.data
             });
@@ -89,6 +89,7 @@ export default class AddCompanies extends Component {
         event.preventDefault();
         
         var company = {}
+        console.log(this.state.company)
         this.state.company === " "?
         company = {
             name: this.state.name,
@@ -127,7 +128,7 @@ export default class AddCompanies extends Component {
     }
 
     addCompany(company){
-        axios.post(`http://localhost:3000/companies/add`, company ,
+        axios.post(`http://localhost:3001/companies/add`, company ,
         {
             'Content-type':'application/json'
         }).then(res => {
@@ -137,11 +138,11 @@ export default class AddCompanies extends Component {
 
     editCompany(company){
         console.log(company)
-        axios.patch(`http://localhost:3000/companies/`+this.state.company, company ,
+        axios.patch(`http://localhost:3001/companies/`+this.state.company, company ,
         {
             'Content-type':'application/json'
         }).then(res => {
-            //window.location.reload()
+            window.location.reload()
         })
     }
 

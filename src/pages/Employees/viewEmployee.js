@@ -18,26 +18,26 @@ export default class ViewEmployees extends Component {
   }  
 
   componentDidMount(){
-    axios.get('http://localhost:3000/employees/'+this.state.emp_id).then(response => {
+    axios.get('http://localhost:3001/employees/'+this.state.emp_id).then(response => {
         this.setState({
             employee: response.data.data
         });
-        axios.get('http://localhost:3000/companies/'+this.state.employee.comp_id).then(comp_res =>{
+        axios.get('http://localhost:3001/companies/'+this.state.employee.comp_id).then(comp_res =>{
             this.setState({
                 company: comp_res.data.data.name
             });
         });
-        axios.get('http://localhost:3000/users/'+this.state.employee.user_id).then(user_res =>{
+        axios.get('http://localhost:3001/users/'+this.state.employee.user_id).then(user_res =>{
             this.setState({
                 username: user_res.data.data.username
             });
         }); 
-        axios.get('http://localhost:3000/designation/find/'+this.state.employee.desig_id).then(design_res =>{
+        axios.get('http://localhost:3001/designation/find/'+this.state.employee.desig_id).then(design_res =>{
             this.setState({
                 designation: design_res.data.data.name
             });
         }); 
-        axios.get('http://localhost:3000/departments/'+this.state.employee.dept_id).then(dept_res =>{
+        axios.get('http://localhost:3001/departments/'+this.state.employee.dept_id).then(dept_res =>{
             this.setState({
                 department: dept_res.data.data.name
             });

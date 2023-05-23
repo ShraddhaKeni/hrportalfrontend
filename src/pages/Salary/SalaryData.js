@@ -15,13 +15,13 @@ export default class SalaryInfo extends Component {
 
     componentDidMount(){
 
-        axios.get('http://localhost:3000/salary/find/'+this.state.emp_id).then(response => {
+        axios.get('http://localhost:3001/salary/find/'+this.state.emp_id).then(response => {
             this.setState({
                 salaries: response.data.data
             });
         });
 
-        axios.get('http://localhost:3000/employees/'+this.state.emp_id).then(response => {
+        axios.get('http://localhost:3001/employees/'+this.state.emp_id).then(response => {
             this.setState({
                 empDetails: response.data.data
             });

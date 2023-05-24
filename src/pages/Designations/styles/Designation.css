@@ -192,11 +192,11 @@ button
     }
     .EDNInPut {
         background: #F1F1F1;
-        width: 80%;
+        width: 38vw;
         margin-left: 0%;
         background-color: #f1f1f1;
         outline: none;
-        height: 5.5vh;
+        height: 5vh;
         border: none;
         display: inline-block;
         margin-top: 1%;
@@ -207,7 +207,7 @@ button
         font-weight: 400;
         font-size: 1.2vw;
         width: 6.5vw;
-        height: 5.5vh;
+        height: auto;
         font-family: 'Poppins', sans-serif;
         padding: 1%;
     }
@@ -216,7 +216,7 @@ button
         font-weight: 400;
         font-size: 1.2vw;
         width: 6.5vw;
-        height: 5.5vh;
+        height: auto;
         font-family: 'Poppins', sans-serif;
         padding: 1%;
     }

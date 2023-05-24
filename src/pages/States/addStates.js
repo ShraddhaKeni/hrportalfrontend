@@ -140,14 +140,14 @@ export default class AddStates extends Component {
                     }
 
                     <br />
-                    <Button className="saveButton" type="submit">
+                    <Button className="SaveButton" type="submit">
                         Save
                     </Button>&nbsp;&nbsp;
                     {this.state.state === " " ?
-                        <Link to={{ pathname: "/states" }}><Button className="cancelButton" type="cancel">
+                        <Link to={{ pathname: "/states" }}><Button className="CancelButton" type="cancel">
                             Cancel
                         </Button></Link>
-                        : <Button className="cancelButton" type="cancel" onClick={() => { this.cancel() }}>
+                        : <Button className="CancelButton" type="cancel" onClick={() => { this.cancel() }}>
                             Cancel
                         </Button>
                     }

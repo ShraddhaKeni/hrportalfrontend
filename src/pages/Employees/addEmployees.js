@@ -152,7 +152,7 @@ export default class AddEmployees extends Component {
         return (
             <>
             <Navbar/>
-            <div className='mainAddCompanies' style={{width: '45vw', marginTop: '8%'}}>
+            <div className='mainAddCompanies' style={{width: '45vw', marginTop: '8%', marginLeft:'34%'}}>
                 {this.state.employee === " " ? <h2>Add Employee Details</h2> : <h2>Edit Employee Details</h2>}
                 <h4 className='errorMsg'>{this.state.error}</h4>
                
@@ -225,7 +225,7 @@ export default class AddEmployees extends Component {
 
 
 
-
+                <br />
 
 {/* 
                   <div className={this.state.employee===' '?'':'signature_edit'}>            
@@ -253,6 +253,7 @@ export default class AddEmployees extends Component {
                         " "
                     }
 
+                   
                     <br />
                     <div style={{marginTop: '36%'}}>
                     <Button className="SaveButton" type="submit">

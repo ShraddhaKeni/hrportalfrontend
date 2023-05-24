@@ -110,11 +110,11 @@ export default class Viewjobs extends Component {
       <div className='mainViewDesignation'>
       <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
                     <div><b><h1>Job Openings</h1></b></div>
-                    <div style={{marginLeft: '15%'}}><Link to={{ pathname: "/jobs" }}><button className='viewAddDesignationButton btn btn-primary'>Add Jobs</button></Link></div>
+                    <div style={{marginLeft: '2%'}}><Link to={{ pathname: "/jobs" }}><button className='viewAddDesignationButton btn btn-primary'>Add Jobs</button></Link></div>
                     </div>
    
                     {/* <h2>Jobs <span style={{float:'right'}}><Link to={{ pathname: "/jobs" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2> */}
-                    <div className='viewDesignationContainer table-responsive' style={{width:'62vw'}}>
+                    <div className='viewDesignationContainer table-responsive' style={{width:'62vw', marginLeft:'27%'}}>
                   
                     <table className='table table-sm table-hover' responsive>
                         <thead  >

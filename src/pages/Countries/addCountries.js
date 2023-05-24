@@ -110,14 +110,14 @@ export default class AddCountries extends Component {
           }
 
           <br/>
-          <Button type="submit" className="saveButton">
+          <Button type="submit" className="SaveButton">
               Save
           </Button>&nbsp;&nbsp;
           {this.state.country === " "?
-              <Link to={{pathname: "/countries"}}><Button className="cancelButton" type="cancel">
+              <Link to={{pathname: "/countries"}}><Button className="CancelButton" type="cancel">
                   Cancel
               </Button></Link>
-            : <Button className="cancelButton" type="cancel" onClick={() => {this.cancel()}}>
+            : <Button className="CancelButton" type="cancel" onClick={() => {this.cancel()}}>
               Cancel
               </Button> 
           }

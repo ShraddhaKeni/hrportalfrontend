@@ -88,10 +88,10 @@ export default class Users extends Component{
                 <div className='mainViewDesignation'>
                 <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
                     <div><b><h1>Users</h1></b></div>
-                    <div style={{marginLeft: '27%'}}><Link to={{ pathname: "/add-users" }}><button className='viewAddDesignationButton btn btn-primary'>Add User</button></Link></div>
+                    <div style={{marginLeft: '18%'}}><Link to={{ pathname: "/add-users" }}><button className='viewAddDesignationButton btn btn-primary'>Add User</button></Link></div>
                     </div>
 
-                    <div className='viewDesignationContainer table-responsive' style={{width:'60vw'}}>
+                    <div className='viewDesignationContainer table-responsive' style={{width:'60vw', marginLeft:'28%'}}>
                     <table className='table table-sm table-hover' responsive>
                         <thead  >
                             <tr>

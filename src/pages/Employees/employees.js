@@ -108,11 +108,11 @@ export default class Employees extends Component{
                 <div className='mainViewDesignation'>
                 <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
                     <div><b><h1>Employees</h1></b></div>
-                    <div style={{marginLeft: '20%'}}><Link to={{ pathname: "/add-employees" }}><button className='viewAddDesignationButton btn btn-primary'>Add Employee</button></Link></div>
+                    <div style={{marginLeft: '16%'}}><Link to={{ pathname: "/add-employees" }}><button className='viewAddDesignationButton btn btn-primary'>Add Employee</button></Link></div>
                     </div>
              
                   
-                    <div className='employee_table_container  table-responsive' style={{marginLeft: '30%', width: '65vw'}}>
+                    <div className='employee_table_container  table-responsive' style={{marginLeft: '26%', width: '67vw'}}>
                     <table className='table table-sm table-hover' responsive>
                         <thead >
                             <tr>

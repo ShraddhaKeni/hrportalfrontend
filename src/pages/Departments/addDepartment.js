@@ -125,7 +125,7 @@ export default class AddDesignation extends Component {
             " "
           }
 
-          <br/>
+    
           <Button type="submit" className="SaveButton">
               Save
           </Button>&nbsp;&nbsp;

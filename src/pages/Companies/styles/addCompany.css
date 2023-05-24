@@ -13,7 +13,7 @@
     width: 50vw;
     height: auto;
     margin-left: 33%;
-    margin-top: 4%;
+    margin-top: 3%;
     background: #FFFFFF;
     border-radius: 45px;
     padding: 1%;
@@ -417,4 +417,22 @@
     position: relative;
     left:-20px;
     top:-50px;
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .mainAddCompanies {
+        position: absolute;
+        width: 70vw;
+        height: auto;
+        margin-left: 27%;
+        margin-top: 2%;
+        background: #FFFFFF;
+        border-radius: 45px;
+        padding: 1%;
+    }
+
+
+
+
+
 }

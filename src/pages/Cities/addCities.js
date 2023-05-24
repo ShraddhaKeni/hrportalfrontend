@@ -142,14 +142,14 @@ export default class AddCities extends Component {
                     }
 
                     <br />
-                    <Button className="saveButton" type="submit">
+                    <Button className="SaveButton" type="submit">
                         Save
                     </Button>&nbsp;&nbsp;
                     {this.state.city === " " ?
-                        <Link to={{ pathname: "/cities" }}><Button className="cancelButton" type="cancel">
+                        <Link to={{ pathname: "/cities" }}><Button className="CancelButton" type="cancel">
                             Cancel
                         </Button></Link>
-                        : <Button className="cancelButton" type="cancel" onClick={() => { this.cancel() }}>
+                        : <Button className="CancelButton" type="cancel" onClick={() => { this.cancel() }}>
                             Cancel
                         </Button>
                     }

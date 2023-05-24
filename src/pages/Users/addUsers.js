@@ -136,7 +136,7 @@ export default class AddUsers extends Component {
             <>
             <Navbar/>
           
-            <div className="mainAddCompanies" style={{marginTop: '10%', width: '38vw', marginLeft: '40%'}}>
+            <div className="mainAddCompanies" style={{marginTop: '10%', width: '42vw', marginLeft: '40%'}}>
                 {this.state.user === " "? <h2>Add user details</h2> : <h2>Edit user details</h2>}
                 <form class="row g-3" onSubmit={this.handleSubmit}>
                 <div class="col-12">
@@ -225,7 +225,9 @@ export default class AddUsers extends Component {
                     }
 
                     <br/>
-                        <div className={this.state.user===" "?'user_buttons':'user_buttons_edit'} style={{marginTop: '20%'}}>
+                    <br/>
+
+                        <div className={this.state.user===" "?'user_buttons':'user_buttons_edit'} style={{marginTop: '20%', marginLeft:'10%'}}>
                             <Button className='SaveButton' type="submit">
                                 Save
                             </Button>&nbsp;&nbsp;

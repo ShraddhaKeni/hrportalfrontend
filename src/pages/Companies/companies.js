@@ -110,10 +110,10 @@ export default class Companies extends Component{
                     {console.log(this.state.currentPosts)}
                     <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
                     <div><b><h1>Companies</h1></b></div>
-                    <div style={{marginLeft:'15%'}}><Link to={{ pathname: "/add-companies"}}><button className='viewAddDesignationButton btn btn-primary'>Add Company</button></Link></div>
+                    <div style={{marginLeft:'9%'}}><Link to={{ pathname: "/add-companies"}}><button className='viewAddDesignationButton btn btn-primary'>Add Company</button></Link></div>
                     </div>
 
-                    <div className='viewDesignationContainer table-responsive' style={{width:'60vw'}}>
+                    <div className='viewDesignationContainer table-responsive' style={{width:'60vw', marginLeft:'30%'}}>
                     <table className='table table-sm table-hover' responsive >
                         <thead  >
                             <tr>

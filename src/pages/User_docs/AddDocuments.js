@@ -28,7 +28,7 @@ const AddDocuments = () => {
 
     const getDocumentTypeData = async()=>{
         try {
-            const {data} = await axios.get(`http://localhost:3000/document-type/findAll`)
+            const {data} = await axios.get(`http://localhost:3001/document-type/findAll`)
             setDocTypes(data.data)
             
         } catch (error) {
@@ -38,7 +38,7 @@ const AddDocuments = () => {
     }
     const getUserDetails = async()=>{
         try {
-            const {data} = await axios.get(`http://localhost:3000/users/findAll`)
+            const {data} = await axios.get(`http://localhost:3001/users/findAll`)
             setusers(data.data)
         } catch (error) {
             console.log(error)
@@ -74,7 +74,7 @@ const AddDocuments = () => {
                 status:isBool
             }
             console.log(formData)
-            const postRequest = await axios.post(`http://localhost:3000/user-docs/create`,formData,{
+            const postRequest = await axios.post(`http://localhost:3001/user-docs/create`,formData,{
                 'Content-type':'multipart/mixed'
             })
             console.log(postRequest)

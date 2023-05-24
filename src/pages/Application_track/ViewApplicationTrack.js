@@ -24,7 +24,7 @@ const[postPerPage] = useState(12);
 
 const getTrackData = async()=>{
     try {
-        const {data} = await axios.get(`http://localhost:3000/application-track/findAll`)
+        const {data} = await axios.get(`http://localhost:3001/application-track/findAll`)
         setTrack(data.data)
     } catch (error) {
         console.log(error)
@@ -32,7 +32,7 @@ const getTrackData = async()=>{
 }
 const  getApplicant=async()=>{
     try{
-        const {data} = await axios.get(`http://localhost:3000/job-applicants/findAll`)
+        const {data} = await axios.get(`http://localhost:3001/job-applicants/findAll`)
         setApplicant(data.data)
     }
     catch(error)
@@ -43,7 +43,7 @@ const  getApplicant=async()=>{
 
 const getJobs = async()=>{
     try {
-        const {data} = await axios.get(`http://localhost:3000/jobs/findAll`)
+        const {data} = await axios.get(`http://localhost:3001/jobs/findAll`)
         setjob(data.data)
     } catch (error) {
         console.log(error)
@@ -52,7 +52,7 @@ const getJobs = async()=>{
 
 const getEmployees = async()=>{
     try {
-        const {data} = await axios.get(`http://localhost:3000/employees`)
+        const {data} = await axios.get(`http://localhost:3001/employees`)
         setEmployees(data.data)
     } catch (error) {
         
@@ -98,7 +98,7 @@ const changeStatus = async(id,status)=>{
         status:!status
     }
     try {
-        const updateReqeust = await axios.patch(`http://localhost:3000/application-track/update/${id}`,statusChange,{
+        const updateReqeust = await axios.patch(`http://localhost:3001/application-track/update/${id}`,statusChange,{
                 'Content-type':'application/json'
             })
         setChange(!change)

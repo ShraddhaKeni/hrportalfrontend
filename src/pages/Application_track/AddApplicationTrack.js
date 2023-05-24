@@ -15,7 +15,7 @@ const AddApplicationTrack = () => {
 
     const getApplicants = async()=>{
         try {
-            const {data} = await axios.get(`http://localhost:3000/job-applicants/findAll`)
+            const {data} = await axios.get(`http://localhost:3001/job-applicants/findAll`)
             setApplicantData(data.data)
         } catch (error) {
             console.log(error)
@@ -24,7 +24,7 @@ const AddApplicationTrack = () => {
 
     const getEmployeeData = async()=>{
         try {
-            const {data} = await axios.get(`http://localhost:3000/employees`)
+            const {data} = await axios.get(`http://localhost:3001/employees`)
             setEmployees(data.data)
         } catch (error) {
             console.log(error)
@@ -39,7 +39,7 @@ const AddApplicationTrack = () => {
             try {
                 setTrack({...addTrack,[e.target.name]:e.target.value})
                 const Applicat = applicantData.find(x=>x.id==id)
-                const {data} = await axios.get(`http://localhost:3000/jobs/find/${Applicat.job_id}`)
+                const {data} = await axios.get(`http://localhost:3001/jobs/find/${Applicat.job_id}`)
                 setJob(data.data)    
             } catch (error) {
                 console.log(error)
@@ -68,7 +68,7 @@ const AddApplicationTrack = () => {
                 emp_id:addTrack.emp_id,
                 level:parseInt(addTrack.level)
             }
-            const postData = await axios.post(`http://localhost:3000/application-track/create`,data,{
+            const postData = await axios.post(`http://localhost:3001/application-track/create`,data,{
                 'Content-type':'application/json'
             })
             window.history.go('/viewApplicationTrack')

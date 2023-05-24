@@ -18,7 +18,7 @@ export default class AddDesignation extends Component {
 
   componentDidMount(){
     if(this.state.design !== " "){
-      axios.get('http://localhost:3000/designation/find/'+this.state.design).then(response => {
+      axios.get('http://localhost:3001/designation/find/'+this.state.design).then(response => {
           this.setState({
               name: response.data.data.name
           });
@@ -66,7 +66,7 @@ export default class AddDesignation extends Component {
   }
 
   addDesignation(designation){
-    axios.post(`http://localhost:3000/designation/create`, designation ,
+    axios.post(`http://localhost:3001/designation/create`, designation ,
     {
       'Content-type':'application/json'
     }).then(res => {
@@ -76,7 +76,7 @@ export default class AddDesignation extends Component {
 
   editDesignation(designation){
     console.log(designation)
-    axios.patch(`http://localhost:3000/designation/update/`+this.state.design, designation ,
+    axios.patch(`http://localhost:3001/designation/update/`+this.state.design, designation ,
     {
       'Content-type':'application/json'
     }).then(res => {

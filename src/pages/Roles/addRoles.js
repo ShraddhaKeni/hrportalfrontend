@@ -20,7 +20,7 @@ export default class AddRoles extends Component {
   componentDidMount(){
     if(this.state.role !== " "){
       // axios.get('http://10.201.10.191:3000/roles/'+this.state.role).then(response => {
-        axios.get('http://localhost:3000/roles/'+this.state.role).then(response => {
+        axios.get('http://localhost:3001/roles/'+this.state.role).then(response => {
           this.setState({
               name: response.data.data.name
           });
@@ -52,7 +52,7 @@ export default class AddRoles extends Component {
 
   addRole(role){
     // axios.post(`http://10.201.10.191:3000/roles/add`, role ,
-    axios.post(`http://localhost:3000/roles/add`, role ,
+    axios.post(`http://localhost:3001/roles/add`, role ,
     {
       'Content-type':'application/json'
     }).then(res => {
@@ -62,7 +62,7 @@ export default class AddRoles extends Component {
 
   editRole(role){
     // axios.patch(`http://10.201.10.191:3000/roles/`+this.state.role, role ,
-    axios.patch(`http://localhost:3000/roles/`+this.state.role,role,
+    axios.patch(`http://localhost:3001/roles/`+this.state.role,role,
     {
       'Content-type':'application/json'
     }).then(res => {

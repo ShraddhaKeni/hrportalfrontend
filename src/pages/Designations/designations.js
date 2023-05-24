@@ -19,14 +19,15 @@ export default class Designation extends Component{
 
     componentDidMount(){
         
-        axios.get('http://localhost:3000/designation/findAll').then(response => {
+       var res = axios.get('http://localhost:3001/designation/findAll').then(response => {
+        console.log(response);
             this.setState({
                 designations: response.data.data
             });
         });
-
+        
     }
-
+   
     editClicked(id){
         this.setState({
             isEdit: true,
@@ -37,7 +38,7 @@ export default class Designation extends Component{
         const status = {
             status:false
         }
-        const deleted = await axios.patch(`http://localhost:3000/designation/update/${id}`,status,{
+        const deleted = await axios.patch(`http://localhost:3001/designation/update/${id}`,status,{
             'Content-type':'application/json'
         })
         window.location.reload();

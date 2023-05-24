@@ -30,7 +30,7 @@ export default class AddEmployees extends Component {
 
     componentDidMount() {
         if (this.state.employee !== " ") {
-            axios.get('http://localhost:3000/employees/' + this.state.employee).then(response => {
+            axios.get('http://localhost:3001/employees/' + this.state.employee).then(response => {
                 this.setState({
                     name: response.data.data.name,
                     comp_id: response.data.data.comp_id,
@@ -48,25 +48,25 @@ export default class AddEmployees extends Component {
 
        
 
-        axios.get('http://localhost:3000/companies').then(response => {
+        axios.get('http://localhost:3001/companies').then(response => {
             this.setState({
                 CompData: response.data.data
             });
         });
 
-        axios.get('http://localhost:3000/users/findAll').then(response => {
+        axios.get('http://localhost:3001/users/findAll').then(response => {
             this.setState({
                 UserData: response.data.data
             });
         });
 
-        axios.get('http://localhost:3000/departments/viewall').then(response => {
+        axios.get('http://localhost:3001/departments/viewall').then(response => {
             this.setState({
                 DeptData: response.data.data
             });
         });
 
-        axios.get('http://localhost:3000/designation/findAll').then(response => {
+        axios.get('http://localhost:3001/designation/findAll').then(response => {
             this.setState({
                 DesignData: response.data.data
             });
@@ -114,7 +114,7 @@ export default class AddEmployees extends Component {
 
     addEmployee(employee) {
         console.log(employee)
-        axios.post(`http://localhost:3000/employees/create`, employee,
+        axios.post(`http://localhost:3001/employees/create`, employee,
             {
                 'Content-type': 'application/json'
             }).then(res => {
@@ -131,7 +131,7 @@ export default class AddEmployees extends Component {
 
     editEmployee(employee) {
         console.log(employee)
-        axios.patch(`http://localhost:3000/employees/` + this.state.employee, employee,
+        axios.patch(`http://localhost:3001/employees/` + this.state.employee, employee,
             {
                 'Content-type': 'application/json'
             }).then(res => {

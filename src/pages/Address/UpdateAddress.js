@@ -35,7 +35,7 @@ const UpdateAddress = ({addressDetails,id}) => {
       const getCountryData = async()=>{
 
         try {
-            const {data} = await axios.get(`http://localhost:3000/countries`)
+            const {data} = await axios.get(`http://localhost:3001/countries`)
             setCountry(data.data)
         } 
         catch (error) {
@@ -47,7 +47,7 @@ const UpdateAddress = ({addressDetails,id}) => {
       const getStateData = async()=>{
 
         try {
-            const {data} = await axios.get(`http://localhost:3000/states`)
+            const {data} = await axios.get(`http://localhost:3001/states`)
             setStateData(data.data)
         } catch (error) {
             console.log(error)
@@ -56,7 +56,7 @@ const UpdateAddress = ({addressDetails,id}) => {
       }
       const getCityData = async ()=>{
         try {
-          const {data} = await axios.get(`http://localhost:3000/cities`)
+          const {data} = await axios.get(`http://localhost:3001/cities`)
           setCity(data.data)
         } catch (error) {
           console.log(error)
@@ -68,7 +68,7 @@ const UpdateAddress = ({addressDetails,id}) => {
          
           setUpdate({...updateData,country_id:parseInt(e.target.value)});
           const id = e.target.value;
-          const {data} = await axios.get(`http://localhost:3000/states/list/${id}`)
+          const {data} = await axios.get(`http://localhost:3001/states/list/${id}`)
           setStateData(data.data);
         } catch (error) {
           
@@ -80,7 +80,7 @@ const UpdateAddress = ({addressDetails,id}) => {
 
         setUpdate({...updateData,state_id:parseInt(e.target.value)});
         const id = e.target.value;
-        const {data} = await axios.get(`http://localhost:3000/cities/list/${id}`)
+        const {data} = await axios.get(`http://localhost:3001/cities/list/${id}`)
         setCity(data.data);
         
       }
@@ -92,7 +92,7 @@ const UpdateAddress = ({addressDetails,id}) => {
         e.preventDefault();
         console.log(updateData)
         try {
-          const updateRequest = await axios.patch(`http://localhost:3000/address/update/${id}`,updateData,{
+          const updateRequest = await axios.patch(`http://localhost:3001/address/update/${id}`,updateData,{
             'Content-type':'application/json'
           })
           window.location.reload()

@@ -31,14 +31,14 @@ export default class Address extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/countries').then(response => {
+        axios.get('http://localhost:3001/countries').then(response => {
             console.log(response.data);
             this.setState({
                 CountryData: response.data.data
             });
         });
 
-        axios.get('http://localhost:3000/users/findAll').then(response => {
+        axios.get('http://localhost:3001/users/findAll').then(response => {
             console.log(response.data);
             this.setState({
                 UserData: response.data.data
@@ -51,7 +51,7 @@ export default class Address extends React.Component {
             country: e.target.value
         });
 
-        axios.get('http://localhost:3000/states/list/' + e.target.value).then(response => {
+        axios.get('http://localhost:3001/states/list/' + e.target.value).then(response => {
             console.log(response.data);
             //  if(response.status)
             this.setState({
@@ -64,7 +64,7 @@ export default class Address extends React.Component {
         this.setState({
             stateid: e.target.value
         });
-        axios.get('http://localhost:3000/cities/list/' + e.target.value).then(response => {
+        axios.get('http://localhost:3001/cities/list/' + e.target.value).then(response => {
             console.log(response.data);
             this.setState({
                 CityData: response.data.data
@@ -87,7 +87,7 @@ export default class Address extends React.Component {
             type: this.state.addresstype,
         };
         console.log(user);
-        axios.post(`http://localhost:3000/address/create`, user,
+        axios.post(`http://localhost:3001/address/create`, user,
             {
                 'Content-type': 'application/json'
             })

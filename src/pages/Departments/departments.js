@@ -19,7 +19,7 @@ export default class Department extends Component{
 
     componentDidMount(){
         
-        axios.get('http://localhost:3000/departments/viewall').then(response => {
+        axios.get('http://localhost:3001/departments/viewall').then(response => {
             this.setState({
                 departments: response.data.data
             });
@@ -38,7 +38,7 @@ export default class Department extends Component{
         const status = {
             status:false
         }
-        const data = await axios.patch(`http://localhost:3000/departments/${id}`,status,{
+        const data = await axios.patch(`http://localhost:3001/departments/${id}`,status,{
             'Content-type':'application/json'
         })
         window.location.reload()
@@ -48,7 +48,7 @@ export default class Department extends Component{
         const status = {
             status:true
         }
-        const data = await axios.patch(`http://localhost:3000/departments/${id}`,status,{
+        const data = await axios.patch(`http://localhost:3001/departments/${id}`,status,{
             'Content-type':'application/json'
         })
         window.location.reload()

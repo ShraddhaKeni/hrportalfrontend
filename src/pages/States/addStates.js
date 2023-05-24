@@ -20,19 +20,19 @@ export default class AddStates extends Component {
 
     componentDidMount() {
         if (this.state.state !== " ") {
-            axios.get('http://localhost:3000/states/' + this.state.state).then(response => {
+            axios.get('http://localhost:3001/states/' + this.state.state).then(response => {
                 this.setState({
                     stateName: response.data.data.name
                 });
             });
 
-            axios.get('http://localhost:3000/countries/' + this.state.country).then(response => {
+            axios.get('http://localhost:3001/countries/' + this.state.country).then(response => {
                 this.setState({
                     countryName: response.data.data.name
                 });
             });
         } else {
-            axios.get('http://localhost:3000/countries').then(response => {
+            axios.get('http://localhost:3001/countries').then(response => {
                 this.setState({
                     country: response.data.data
                 });
@@ -62,7 +62,7 @@ export default class AddStates extends Component {
     }
 
     addState(state){
-        axios.post(`http://localhost:3000/states/create`, state ,
+        axios.post(`http://localhost:3001/states/create`, state ,
         {
             'Content-type':'application/json'
         }).then(res => {
@@ -76,7 +76,7 @@ export default class AddStates extends Component {
             name:state.name,
             status:isBool
         }
-        axios.patch(`http://localhost:3000/states/`+this.state.state, data ,
+        axios.patch(`http://localhost:3001/states/`+this.state.state, data ,
         {
             'Content-type':'application/json'
         }).then(res => {

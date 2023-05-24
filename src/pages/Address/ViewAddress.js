@@ -25,22 +25,22 @@ const ViewAddress = () => {
     },[])
 
     const getAddressData = async ()=>{
-      const {data} = await axios.get(`http://localhost:3000/address`)
+      const {data} = await axios.get(`http://localhost:3001/address`)
       setAddressDetails(data.data)
     }
 
     const getCountryData = async()=>{
-      const {data} = await axios.get(`http://localhost:3000/countries`)
+      const {data} = await axios.get(`http://localhost:3001/countries`)
       setCountry(data.data)
     }  
 
     const getStateData = async()=>{
-      const {data} = await axios.get(`http://localhost:3000/states`)
+      const {data} = await axios.get(`http://localhost:3001/states`)
       setStateData(data.data)
     }
     const getCityData = async ()=>{
       try {
-        const {data} = await axios.get(`http://localhost:3000/cities`)
+        const {data} = await axios.get(`http://localhost:3001/cities`)
         setCity(data.data)
       } catch (error) {
         console.log(error)
@@ -92,7 +92,7 @@ const ViewAddress = () => {
         status:!status
       }
       try {
-        const changeStatusRequest = await axios.patch(`http://localhost:3000/address/update/${id}`,currentStatus,{
+        const changeStatusRequest = await axios.patch(`http://localhost:3001/address/update/${id}`,currentStatus,{
           'Content-type':'application/json'
         })
         window.location.reload();

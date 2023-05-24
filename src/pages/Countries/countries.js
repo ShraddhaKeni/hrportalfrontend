@@ -23,7 +23,7 @@ export default class Countries extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/countries').then(response => {
+        axios.get('http://localhost:3001/countries').then(response => {
             this.setState({
                 countries: response.data.data
             });
@@ -47,7 +47,7 @@ export default class Countries extends Component {
             status: !statuscode
         }
         console.log(data)
-        const requestChangeStatus = await axios.patch(`http://localhost:3000/countries/${id}`, data, {
+        const requestChangeStatus = await axios.patch(`http://localhost:3001/countries/${id}`, data, {
             'Content-type': 'application/json'
         })
         window.location.reload()

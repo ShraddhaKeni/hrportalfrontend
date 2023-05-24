@@ -4,7 +4,7 @@ import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddCompanies from './addCompanies';
 import ViewCompanies from './viewCompany';
-
+import Navbar from '../../components/Navbar';
 import Pagination from '../../components/paginate/Pagination';
 
 const initialState = {
@@ -104,23 +104,25 @@ export default class Companies extends Component{
         }else{
             
             return(
-               
-                <div className='main'>
+                <>
+                <Navbar/>
+                <div className='mainViewDesignation'>
                     {console.log(this.state.currentPosts)}
-                    <h2 style={{marginLeft:'280px'}}>Companies<span style={{float:'right'}}><Link to={{ pathname: "/add-companies" }}><button className='add_company'>Add Company</button></Link></span></h2>
-                     <div className='company_table_container'>   
-                    <table className='company_table'>
+                    <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Companies</h1></b></div>
+                    <div style={{marginLeft:'9%'}}><Link to={{ pathname: "/add-companies"}}><button className='viewAddDesignationButton btn btn-primary'>Add Company</button></Link></div>
+                    </div>
+
+                    <div className='viewDesignationContainer table-responsive' style={{width:'60vw', marginLeft:'30%'}}>
+                    <table className='table table-sm table-hover' responsive >
                         <thead  >
                             <tr>
-                                <th style={{width:'40px'}}>Sr no.</th>
-                                <th>Company name</th>
-                                <th>Address</th>
-                                <th>Webiste</th>
-                                <th style={{width:'40px'}}>Status</th>
-                                <th colSpan={2}>Actions</th>
-                            </tr>
-                            <tr>
-                                <hr className='hr_tag'/>
+                                <th scope="col">Sr No.</th>
+                                <th scope="col">Company Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Webiste</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" >Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -129,7 +131,7 @@ export default class Companies extends Component{
                                    
                                    
                                     <tr key={company.id}>
-                                        <td>{this.state.currentPage<=2?(this.state.currentPage-1)*12+(index+1):(this.state.currentPage-1+1)+(index+1)}</td>
+                                        <td scope="row" >{this.state.currentPage<=2?(this.state.currentPage-1)*12+(index+1):(this.state.currentPage-1+1)+(index+1)}</td>
                                         <td>{company.name}</td>
                                         <td>{company.address}</td>
                                         {
@@ -168,6 +170,7 @@ export default class Companies extends Component{
                     <Pagination postPerPage={this.state.postPerPage} totalPosts={this.state.companies.length} paginate={this.paginate} currentPage={this.state.currentPage}/>
                     </div>
                 </div>
+                </>
             )
         }
     }

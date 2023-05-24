@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './styles/addApplicants.css'
 import axios from 'axios';
+import Navbar from '../../components/Navbar';
+import { Form, Button } from 'react-bootstrap';
 const AddJobApplicants = () => {
 
   const [createData,setData] = useState({});
@@ -47,47 +49,50 @@ const AddJobApplicants = () => {
     getJobsData();
   },[])
   return (
-    <div className='main'>
-      <div className='add_applicant_form_container'>  
-      <form onSubmit={handleSubmit} className='add_applicant_form'>
-        
-        <div className='add_applicant_div' style={{display:'flex',flexDirection:'column',padding:'0px'}}>
-          <lable className='applicant_name_lable'>
-            Add Name:
-          </lable>
-              <input type='text' className='applicant_name' onChange={handleChange} name='name' placeholder='Enter Name here'></input>
-          
-          <lable className='contact_number_lable'>
-            Contact Number:
-            </lable>
-              <input type='number' className='contact_number' onChange={handleChange} name='contact_no' placeholder='Enter Phone number here'></input>
-          
-          <lable className='applicant_email_lable'>
-            Email:
-            </lable>
-              <input className='applicant_email' type='email' onChange={handleChange} name='email_id' placeholder='Enter Email here'></input>
-          
-          <lable className='applicant_cv_lable'>
-            CV:
-            </lable>
-              <textarea name='cv' className='applicant_cv' onChange={handleChange} placeholder='Paste Resume'></textarea>
-          
-          <lable className='select_job_lable'>
-            Select Job:
-            </lable>
-            <select className='applicant_select_job' name='job_id' onChange={handleChange}>
-              <option>Select Job </option>
+
+    <>
+    <Navbar/>
+      <div className='mainAddDesignation' style={{marginTop: '8%'}}>
+      <h2>Add Job Applicant</h2> 
+      <form onSubmit={handleSubmit} class="row g-3" >
+      <div class="col-12">
+                    <label for="name" class="form-label InputLabel">Add Name:</label>
+                    <input type="text" class="form-control InputField" id="name" onChange={handleChange} name='name' placeholder='Enter Name here' required />
+      </div>
+      <div class="col-md-6">
+                    <label for="contactno" class="form-label SelectLabel" style={{marginLeft: '7%'}}>Contact Number:</label>
+                    <input class="form-control SelectField" style={{marginLeft: '7%' , padding: '2%'}} id="contactno" type='number'  nonChange={handleChange} name='contact_no' placeholder='Enter Phone number here' required />
+      </div>
+      <div class="col-md-6">
+                    <label for="email" class="form-label InputLabel">Email:</label>
+                    <input type="email" class="form-control SelectField" style={{marginLeft: '5%' , padding: '2%'}}  id="email" onChange={handleChange} name='email_id' placeholder='Enter Email here' required />
+      </div>
+      <div class="col-12">
+                    <label for="name" class="form-label InputLabel">CV:</label>
+                    <textarea class="form-control InputField" rows={3} id="cv"  onChange={handleChange} placeholder='Paste Resume' name='cv'  required />
+      </div>
+      <div class="col-12">
+                    <label for="selectjob" class="form-label InputLabel">Select Job:</label>
+                    <select class="form-select InputField" id="selectjob" style={{marginLeft: '0%'}}  name='job_id' onChange={handleChange}>
+                    <option>Select Job </option>
                 {jobs.map((item)=>{
                   return <option key={item.id} value={item.id}>{item.title}</option>
                 })}
-            </select>
-          
-          <button className='save_application' type='submit'>Save</button>
-          <button className='cancel_application' type='button' onClick={()=>window.history.back()}>Cancel</button>
-        </div>
+                        </select>
+                </div>
+                <div style={{marginTop: '5%'}}>
+                <Button className="SaveButton" type="submit">
+                        Save
+                </Button>&nbsp;&nbsp;
+          <Button className='CancelButton' type='button' onClick={()=>window.history.back()}>Cancel</Button>
+          </div>
+
+       
       </form>
       </div>
-    </div>
+
+    </>
+
   )
 }
 export default AddJobApplicants

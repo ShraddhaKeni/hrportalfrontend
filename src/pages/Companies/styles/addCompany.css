@@ -8,7 +8,38 @@
     border-radius: 45px;
     top:100px
 }
-
+.mainAddCompanies{
+    position: absolute;
+    width: 50vw;
+    height: auto;
+    margin-left: 33%;
+    margin-top: 3%;
+    background: #FFFFFF;
+    border-radius: 45px;
+    padding: 1%;
+}
+.InputLabel{
+    margin: 2% 5% 1% 5%;
+}
+.SelectLabel{
+    margin: 2% 5% 1% 8%;
+}
+.InputField{
+    width: 90%;
+    height: auto;
+    padding: 1%;
+    background-color: #f1f1f1;
+    border: none;
+    margin-left: 5%;
+}
+.SelectField{
+    width: 87%;
+    height: auto;
+    padding: 1.7%;
+    background-color: #f1f1f1;
+    border: none;
+    margin-left: 3%;
+}
 .company_name_lable
 {
     position: relative;
@@ -386,4 +417,22 @@
     position: relative;
     left:-20px;
     top:-50px;
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .mainAddCompanies {
+        position: absolute;
+        width: 70vw;
+        height: auto;
+        margin-left: 27%;
+        margin-top: 2%;
+        background: #FFFFFF;
+        border-radius: 45px;
+        padding: 1%;
+    }
+
+
+
+
+
 }

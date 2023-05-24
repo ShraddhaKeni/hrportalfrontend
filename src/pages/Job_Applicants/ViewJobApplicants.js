@@ -4,8 +4,9 @@ import {Table,Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import UpdateJobApplicants from './UpdateJobApplicants'
 import './styles/viewJobApplicants.css';
-//import {motion} from 'framer-motion'
+// import {motion} from 'framer-motion'
 import Pagination from '../../components/paginate/Pagination';
+import Navbar from '../../components/Navbar';
 
 const ViewJobApplicants = () => {
 var srno = 1;
@@ -112,27 +113,35 @@ const paginate = number =>{
     const indexofFirst = indexOfLast - postPerPage;
     const currentPosts = applicants.slice(indexofFirst,indexOfLast)
     return (
-      <div className='main'>
+      <>
+      <Navbar/>
+      <div className='mainViewDesignation'>
         {console.log(applicants)}
-        <h2 style={{marginLeft:'250px'}}>Job Applicants<span style={{float:'right'}}><Link to={{ pathname: "/addApplicants" }}><button className='add_job_applicant' >Add Applicant</button></Link></span></h2>
+        <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Job Applicants</h1></b></div>
+                    <div style={{marginLeft: '-4%'}}><Link to={{ pathname: "/addApplicants" }}><button className='viewAddDesignationButton btn btn-primary'>Add Applicant</button></Link></div>
+                    </div>
+       
+        {/* <h2 style={{marginLeft:'250px'}}>Job Applicants<span style={{float:'right'}}><Link to={{ pathname: "/addApplicants" }}><button className='add_job_applicant' >Add Applicant</button></Link></span></h2> */}
 
-          <div className='job_applicant_table_container'>
-                      <table className='job_applicant_table'>
+          <div className='viewDesignationContainer table-responsive'style={{width:'55vw'}}>
+          <table className='table table-sm table-hover' responsive>
                           <thead  >
                               <tr>
-                                  <th>Sr no.</th>
-                                  <th>Name</th>
-                                  <th>Contact</th>
-                                  <th>Email</th>
-                                  <th>Job Name</th>
-                                  <th>Status</th>
-                                  <th colSpan={2}>Action</th>
+                                  <th scope="col">Sr no.</th>
+                                  <th scope="col">Name</th>
+                                  <th scope="col">Contact</th>
+                                  <th scope="col">Email</th>
+                                  <th scope="col">Job Name</th>
+                                  <th scope="col">Status</th>
+                                  <th scope="col">Action</th>
                               </tr>
+                             
                           </thead>
                           <tbody>
                               {currentPosts.map((item)=>{
                                 return <tr key={item.id}>
-                                  <td>{srno++}</td>
+                                  <td  scope="row">{srno++}</td>
                                   <td>{item.name}</td>
                                   <td>{item.contact_no}</td>
                                   <td>{item.email_id}</td>
@@ -160,6 +169,7 @@ const paginate = number =>{
                       <Pagination postPerPage={postPerPage} totalPosts={applicants.length}  paginate={paginate} currentPage={currentPage}/>
                   </div>
         </div>
+        </>
     )
   }
   

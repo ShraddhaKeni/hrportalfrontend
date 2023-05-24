@@ -1,10 +1,11 @@
 import { Component } from 'react';
 import axios from 'axios';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddCountries from './addCountries';
 import './styles/Countries.css'
 import Pagination from '../../components/paginate/Pagination';
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     countries: [],
@@ -79,26 +80,30 @@ export default class Countries extends Component {
         } else {
             var srno = 1
             return (
+                <>
+                <Navbar/>
                 <div className='mainViewCountry'>
-                    <h2> <span style={{ float: 'right' }}><Link to={{ pathname: "/add-country" }}><button className='viewAddCountryButton'>Add Country<span style={{ fontSize: 18, color: "white" }}></span></button></Link></span></h2>
-                    <div className='viewCountryContainer'>
-                        <table className='table_viewcountry'>
+                <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Countries</h1></b></div>
+                    <div style={{marginLeft: '4%'}}><Link to={{ pathname: "/add-country" }}><button className='viewAddDesignationButton btn btn-primary'>Add Country</button></Link></div>
+                    </div>
+               
+                    {/* <h2> <span style={{ float: 'right' }}><Link to={{ pathname: "/add-country" }}><button className='viewAddCountryButton'>Add Country<span style={{ fontSize: 18, color: "white" }}></span></button></Link></span></h2> */}
+                    <div className='viewDesignationContainer table-responsive'>
+                        <table className='table table-sm table-hover' responsive>
                             <thead >
                                 <tr>
-                                    <th>Sr no.</th>
-                                    <th>Name</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                                <tr>
-                                    <hr className='hr_tag' />
+                                    <th scope="col">Sr no.</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
                                         this.state.currentPosts.map((country,index) => (
                                         <tr key={country.id}>
-                                             <td>{this.state.currentPage<=2?(this.state.currentPage-1)*12+(index+1):(this.state.currentPage-1+1)+(index+1)}</td>
+                                             <td scope="row">{this.state.currentPage<=2?(this.state.currentPage-1)*12+(index+1):(this.state.currentPage-1+1)+(index+1)}</td>
                                             <td>{country.name}</td>
                                             {
                                                 country.status === true ? <td><span style={{ fontSize: 24, color: "green" }}>&#10003;</span></td>
@@ -122,6 +127,7 @@ export default class Countries extends Component {
                         <Pagination postPerPage={this.state.postPerPage} totalPosts={this.state.countries.length} paginate={this.paginate} currentPage={this.state.currentPage} />
                     </div>
                 </div>
+                </>
             )
         }
     }

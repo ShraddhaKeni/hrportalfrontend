@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Table, Button, } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import UpdateJobs from './UpdateJobs'
+import Navbar from '../../components/Navbar';
 
 
 const initialState = {
@@ -104,25 +105,33 @@ export default class Viewjobs extends Component {
     else
     {
     return (
-      <div>
-        <div className='main'>
-                    <h2>Jobs <span style={{float:'right'}}><Link to={{ pathname: "/jobs" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
+        <>
+      <Navbar/>
+      <div className='mainViewDesignation'>
+      <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Job Openings</h1></b></div>
+                    <div style={{marginLeft: '2%'}}><Link to={{ pathname: "/jobs" }}><button className='viewAddDesignationButton btn btn-primary'>Add Jobs</button></Link></div>
+                    </div>
+   
+                    {/* <h2>Jobs <span style={{float:'right'}}><Link to={{ pathname: "/jobs" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2> */}
+                    <div className='viewDesignationContainer table-responsive' style={{width:'62vw', marginLeft:'27%'}}>
+                  
+                    <table className='table table-sm table-hover' responsive>
                         <thead  >
                             <tr>
-                                <th>Sr no.</th>
-                                <th>Title</th>
-                                <th>Role</th>
-                                <th>Salary</th>
-                                <th>Employee</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Salary</th>
+                                <th scope="col">Employee</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                             <tbody>
                                 {this.state.jobData.map((item,index)=>{
                                            return( <tr key={item.id}>
-                                                <td>{srno++}</td>
+                                                <td scope="row">{srno++}</td>
                                                 <td>{item.title}</td>
                                                 <td>{this.getRoleName(item.role_id)}</td>
                                                 <td>{item.salary}</td>
@@ -139,12 +148,13 @@ export default class Viewjobs extends Component {
                                 
                             </tbody>
                         
-                        <tbody>
-                            
-                        </tbody>
-                    </Table>
+                       
+                    </table>
                 </div>
-      </div>
+                </div>
+               
+
+      </>
     )
     }
   }

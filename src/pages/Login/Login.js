@@ -50,7 +50,7 @@ const Login = () => {
                 <div  className='div_logo'>
                    <img className='logo' src={logo}></img>
                 </div>  
-                <h2>LOG IN</h2>
+                <h2 className='LogInLabelSize'>LOG IN</h2>
                 <form onSubmit={handleSubmit}>
                     <div className='username'
                         
@@ -64,13 +64,17 @@ const Login = () => {
                         <label>Password</label>
                         <input type='password' className='username-input' placeholder='Password' name='password' onChange={handleChange}></input>
                     </div>
+                    <div className='ForGotPassLabel'>
+                    <a className='forgotPass' href='/'>Forgot password?</a>
+                    <p className='error'></p>
+                    </div>
+                   
                     <div>
-                        <button className='login'>Login</button>
+                        <button className='login btn btn-primary'>Login</button>
                     </div>
                     
                 </form>
-                <a className='forgotPass' href='/'>Forgot password?</a>
-                <p className='error'></p>
+             
                 
             </div>
         </div>

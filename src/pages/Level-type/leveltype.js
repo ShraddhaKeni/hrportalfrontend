@@ -6,6 +6,7 @@ import AddLeveltype from './addLeveltype';
 import './styles/viewLevel.css'
 import {  } from 'react-icons/fa';
 import Pagination from '../../components/paginate/Pagination';
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     levels: [],
@@ -82,28 +83,33 @@ export default class Leveltype extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main_levelTypes'>
-                    <h2 style={{marginLeft:'20px',marginTop:'20px'}}>Levels</h2>
-                    <Link to={{ pathname: "/add-leveltype" }}><button className='add_level'>Add Level</button></Link>
-                    <div className='table_container_levelTypes'>
-                    <table className='table_levelTypes'>
-                        <thead className=''>
+                <>
+                <Navbar/>
+                <div className='mainViewDesignation'>
+                <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Level Types</h1></b></div>
+                    <div style={{marginLeft: '1%'}}><Link to={{ pathname: "/add-leveltype" }}><button className='viewAddDesignationButton btn btn-primary'>Add Level</button></Link></div>
+                    </div>
+               
+                
+                 
+                    <div className='viewDesignationContainer table-responsive'>
+                    <table className='table table-sm table-hover' responsive>
+                        <thead>
                             <tr >
-                                <th>Sr no.</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th colSpan={2}>Action</th>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
-                            <tr>
-                                    <hr className='hr_tag'/>
-                            </tr>
+                          
                         </thead>
                         
                         <tbody className='level_typeBody'>
                             {
                                 this.state.currentPosts.map((level) => (
                                     <tr style={{paddingBottom:'10px'}} key={level.id}>
-                                        <td>{srno++}</td>
+                                        <td scope="row">{srno++}</td>
                                         <td>{level.name}</td>
                                             {
                                                 level.status === true? <td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
@@ -130,6 +136,7 @@ export default class Leveltype extends Component{
 
                     </div>
                 </div>
+                </>
             )
         }
     }

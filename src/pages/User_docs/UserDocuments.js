@@ -3,6 +3,7 @@ import {Table,Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import axios from 'axios'       
 import UpdateDocuments from './UpdateDocuments';
+import Navbar from '../../components/Navbar';
 
 const UserDocuments = () => {
 
@@ -93,24 +94,32 @@ const UserDocuments = () => {
     }
 else{
         return (
-    <div >
-        {console.log(docData)}
-        <div className='main'>
-        <h2>User Documents <span style={{float:'right'}}><Link to={{ pathname: "/addUserDocuments" }}><Button variant='success'>Add</Button></Link></span></h2>
-                      <Table bordered striped style={{width:'800px', alignItems:'center', position:'absolute'}}>
+            <>
+            <Navbar/>
+
+        {/* {console.log(docData)} */}
+        <div className='mainViewDesignation'>
+        <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>User Documents</h1></b></div>
+                    <div style={{marginLeft: '-5%'}}><Link to={{ pathname: "/addUserDocuments" }}><button className='viewAddDesignationButton btn btn-primary'>Add Documents</button></Link></div>
+                    </div>
+   
+        {/* <h2>User Documents <span style={{float:'right'}}><Link to={{ pathname: "/addUserDocuments" }}><Button variant='success'>Add</Button></Link></span></h2> */}
+        <div className='viewDesignationContainer table-responsive' style={{width:'55vw'}}>
+                     <table className='table table-sm table-hover' responsive>
                           <thead>
                               <tr>
-                                  <th>Sr no.</th>
-                                  <th>Document Name</th>
-                                  <th>User</th>
-                                  <th>Status</th>
-                                  <th>Actions</th>
+                                  <th scope="col">Sr no.</th>
+                                  <th scope="col">Document Name</th>
+                                  <th scope="col">User</th>
+                                  <th scope="col">Status</th>
+                                  <th scope="col">Actions</th>
                               </tr>
                           </thead>
                           <tbody>
                               {docData.map((item)=>{
                                return <tr key={item.id}>
-                                    <td>
+                                    <td scope="row">
                                         {srno++}
                                     </td>
                                     <td>{getDocName(item.doc_type_id)}</td>
@@ -132,9 +141,10 @@ else{
                                 </tr>
                               })}
                           </tbody>
-                      </Table>
+                      </table>
                       </div>
-    </div>
+                      </div>
+                      </>
   )
 }
 }

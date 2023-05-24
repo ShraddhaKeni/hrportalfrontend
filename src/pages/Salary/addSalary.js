@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { Form, button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles/addSalary.css'
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     employee: "",
@@ -89,14 +90,17 @@ export default class Salary extends React.Component {
     render() {
 
         return (
-            <div className='main'>
-                <h2>Add salary</h2>
-                <div className='addSalary_container'>
-                <form className='addSalary_form' onSubmit={this.handleSubmit}>
-                    <div className='addSalary_form_container'>
-                    <label className='addSalary_employee_lable'>Select employee:</label>
+            <>
+            <Navbar/>
+            
+                {/* <h2>Add salary</h2> */}
+                <div className='mainAddDesignation'>
+                {this.state.design === " "? <h2>Add Salary</h2> : <h2>Edit Salary</h2>}
+                <Form onSubmit={this.handleSubmit}>
+                {/* {this.state.design === " "? <h2>Add Salary</h2> : <h2>Edit Salary</h2>} */}
+                    <label className='EDNameLabel'>Select employee:</label>
                     <Form.Group className="mb-3">
-                        <select className="addSalary_employee" name="employee" value={this.state.employee} onChange={this.handleChange}>
+                        <select className="EDNInPut" name="employee" value={this.state.employee} onChange={this.handleChange}>
                             <option>Select employee</option>
                             {this.state.employeesData.map((e) => {
                                 if (!this.checkSalaryExist(e.id) || this.state.isEdit) {
@@ -108,21 +112,22 @@ export default class Salary extends React.Component {
                         </select>
                     </Form.Group>
                     <br/>
-                    <label className='addSalary_salary_label'>Enter salary:</label>
+                    <label className='EDNameLabel'>Enter salary:</label>
                     <Form.Group className="mb-3" >
-                        <input className='addSalary_salary' type="number" ref={this.salary_ref} placeholder="Enter Salary" defaultValue={this.state.salary} onChange={()=>{this.setState({salary:this.salary_ref.current.value})}} />
+                        <input className='EDNInPut' type="number" ref={this.salary_ref} placeholder="Enter Salary" defaultValue={this.state.salary} onChange={()=>{this.setState({salary:this.salary_ref.current.value})}} />
                     </Form.Group>
                     <br/>
-                    <button className='salary_save' type="submit">
+                    <Button className='SaveButton' type="submit">
                         Save
-                    </button>
-                    <Link to={{pathname: "/salary"}}><button className='salary_cancel' type="cancel">
+                    </Button>&nbsp;&nbsp;
+                    <Link to={{pathname: "/salary"}}><Button className='CancelButton' type="cancel">
                         Cancel
-                    </button></Link>
-                    </div>
-                </form>
+                    </Button></Link>
+               
+                </Form>
                 </div>
-            </div>
+         
+            </>
         )
     }   
 }

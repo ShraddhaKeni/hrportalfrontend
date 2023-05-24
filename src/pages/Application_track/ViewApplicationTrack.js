@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 import UpdateApplicationTrack from './UpdateApplicationTrack';
 import './style/viewApplicant.css';
-//import {motion} from 'framer-motion'
+// import {motion} from 'framer-motion'
 import Pagination from '../../components/paginate/Pagination';
+import Navbar from '../../components/Navbar';
 
 const ViewApplicationTrack = () => {
 
@@ -142,30 +143,33 @@ else
     const indexofFirst = indexOfLast - postPerPage;
     const currentPosts = trackData.slice(indexofFirst,indexOfLast)
     return (
-        <div className='main_applicants'>
-           
-            <h2 style={{marginLeft:'500px'}}>Application Track<span style={{float:'right'}}><Link to={{ pathname: "/addApplicationTrack" }}><button whileHover={{scale:1.1}} whileTap={{scale:0.8}} className='add_applicant'>Add track</button></Link></span></h2>
-            <div className='table_container_applicants'> 
-                          <table className='table_applicants'>
+        <>
+        <Navbar/>
+        <div className='mainViewDesignation'>
+        <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Applicantion Tracks</h1></b></div>
+                    <div style={{marginLeft: '-5%'}}><Link to={{ pathname: "/addApplicationTrack" }}><button className='viewAddDesignationButton btn btn-primary'>Add track</button></Link></div>
+                    </div>
+       
+                    <div className='viewDesignationContainer table-responsive'  style={{width: '64vw', marginLeft:'28%'}}>
+                    <table className='table w-auto table-sm table-hover' responsive>
+          
                               <thead  >
                                   <tr>
-                                      <th>Sr no.</th>
-                                      <th>Name</th>
-                                      <th>Job Name</th>
-                                      <th>Comment</th>
-                                      <th>Employee</th>
-                                      <th>Level</th>
-                                      <th>status</th>
-                                      <th >Action</th>
+                                      <th scope="col">Sr no.</th>
+                                      <th scope="col">Name</th>
+                                      <th scope="col">Job Name</th>
+                                      <th scope="col">Comment</th>
+                                      <th scope="col">Employee</th>
+                                      <th scope="col">Level</th>
+                                      <th scope="col">status</th>
+                                      <th scope="col">Action</th>
                                   </tr>
-                                  <tr>
-                                    <hr className='hr_tag_applicationTrack'/>
-                                </tr>
                               </thead>
                               <tbody>
                                   {currentPosts.map((item,index)=>{
                                     return (<tr key={item.id}>
-                                        <td>{currentPage<=2?(currentPage-1)*12+(index+1):(currentPage+1)+(index+1)}</td>
+                                        <td scope="row">{currentPage<=2?(currentPage-1)*12+(index+1):(currentPage+1)+(index+1)}</td>
                                         <td>{getApplicantName(item.applicant_id)}</td>
                                         <td>{getJobName(item.job_id)}</td>
                                         <td>{item.comment}</td>
@@ -189,6 +193,7 @@ else
                           <Pagination postPerPage={postPerPage} totalPosts={trackData.length}  paginate={paginate} currentPage={currentPage}/>
                       </div>
         </div>
+        </>
       )
 }
   

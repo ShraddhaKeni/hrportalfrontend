@@ -1,9 +1,10 @@
 import {Component} from 'react';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddDesignation from './addDesignation';
 import './styles/Designation.css'
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     designations: [],
@@ -51,26 +52,28 @@ export default class Designation extends Component{
         }else{
             var srno = 1
             return(
+                <>
+              <Navbar/>
                 <div className='mainViewDesignation'>
-                    <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-designation" }}><button className='viewAddDesignationButton'>Add Designation<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2>
-                    <div className='viewDesignationContainer'>
-                    <table className='table_viewDesignation'>
+                    <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Designation</h1></b></div>
+                    <div><Link to={{ pathname: "/add-designation" }}><button className='viewAddDesignationButton btn btn-primary'>Add Designation</button></Link></div>
+                    </div>
+                    <div className='viewDesignationContainer table-responsive'>
+                    <table className='table table-sm table-hover' responsive>
                         <thead>
                             <tr>
-                                <th>Sr no.</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr>
-                                    <hr className='hr_viewtagdesignation'/>
+                                <th scope="col">Sr No.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 this.state.designations.map((design) => (
                                     <tr key={design.id}>
-                                        <td>{srno++}</td>
+                                        <td scope="row">{srno++}</td>
                                         <td>{design.name}</td>
                                             {
                                                 design.status === true? <td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
@@ -90,6 +93,7 @@ export default class Designation extends Component{
                     </table>
                 </div>
                 </div>
+                </>
             )
         }
     }

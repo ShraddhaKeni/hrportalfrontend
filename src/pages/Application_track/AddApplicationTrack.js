@@ -1,7 +1,10 @@
 import React,{useState,useEffect, useRef} from 'react'
 import axios from 'axios';
 import './style/addApplicant.css';
-
+import Navbar from '../../components/Navbar';
+// import {motion} from 'framer-motion'
+import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 const AddApplicationTrack = () => {
 
     const[applicantData,setApplicantData] = useState([])
@@ -81,52 +84,66 @@ const AddApplicationTrack = () => {
         getEmployeeData();
     },[])
   return (
-    <div className='main'>
-        
-        <form onSubmit={handleSubmit} className='add_applicant_form'>
-            <div style={{display:'flex',flexDirection:'column',padding:'0px'}}>
-                <lable className='select_applicant_lable' style={{marginTop:'10px'}}>
-                    Select Applicant:
-                </lable>
-                    <select className='applicant_select' name='applicant_id' onChange={dataChange}>
-                        <option value={0}>Select Applicant</option>
+    <>
+    <Navbar/>
+    <div className='mainAddCompanies' style={{marginTop:'8%'}}>
+    <h2>Add Application Track</h2>
+        <form onSubmit={handleSubmit} class="row g-3">
+        <div class="col-12">
+                    <label for="applicant" class="form-label InputLabel" >Select Applicant:</label>
+                    <select class="form-control InputField" id="applicant"  name='applicant_id' onChange={dataChange} required>
+                    <option value={0}>Select Applicant</option>
                         {applicantData.map(item=>{
                             return <option key={item.id} value={item.id}>{item.name}</option>
                         })}
-                    </select>
-               
-
-                <lable className='applicant_job_lable' style={{marginTop:'10px'}}>
-                    
-                    Job:
-                </lable>
-                    <text className='applicant_job' ref={jobRef} id={job.id}>{job.title}</text>
-               
-                <lable for='comment' className='applicant_comment_lable' style={{marginTop:'10px'}}>
-                    Comment:
-                </lable>
-                    <textarea type='text' className='applicant_comment' name='comment' onChange={handleChange}></textarea>
-                
-                <lable className='applicant_employee_lable' style={{marginTop:'10px'}}>
-                    Employee:
-                </lable>
-                    <select name='emp_id' className='applicant_employee' onChange={handleChange}>
-                        <option value={0}>Select Employee</option>
+                            </select>
+                </div>
+                <div class="col-12">
+                    <label for="job" class="form-label InputLabel">Job:</label>
+                    <input type="text" class="form-control InputField" id="job" placeholder="Enter job"required />
+                </div>
+                <div class="col-12">
+                    <label for="comment" class="form-label InputLabel">Comment:</label>
+                    <textarea class="form-control InputField" rows={3} id="comment"  name='comment' onChange={handleChange} placeholder='Comment here' required />
+      </div>
+      <div class="col-md-6">
+                    <label for="employee" class="form-label SelectLabel">Employee:</label>
+                    <select class="form-select SelectField" id="employee" name='emp_id' onChange={handleChange} required>
+                    <option value={0}>Select Employee</option>
                         {employees.map(item=>{
                             return <option key={item.id} value={item.id}>{item.name}</option>
                         })}
                         </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="level" class="form-label InputLabel">Level:</label>
+                    <input type="number" class="form-control SelectField" style={{marginLeft: '5%' , padding: '2%'}}  id="level" placeholder="Enter Level" name='level' onChange={handleChange} required />
+                </div>
+                <br/>
+                <div style={{marginTop: '10%', marginBottom: '2%'}}>
+                    <Button className="SaveButton" type="submit" whileHover={{scale:1.1}} >
+                        Save
+                    </Button>&nbsp;&nbsp;
+                       
+                            <Link to={{pathname: "/viewApplicationTrack"}}><Button whileHover={{scale:1.1}} className='CancelButton' type="cancel">
+                                Cancel
+                            </Button></Link>
+                           
+             
+                   
+                    </div>
+
+{/* OLD JOB CODE */}
+
+                {/* <lable className='applicant_job_lable' style={{marginTop:'10px'}}> Job:</lable>
+                <text className='applicant_job' ref={jobRef} id={job.id}>{job.title}</text> */}
+            
                 
-                <lable className='applicant_level_lable' style={{marginTop:'10px'}}>
-                    Level:
-                </lable>
-                    <input type='number' className='applicant_level' name='level' onChange={handleChange}></input>
-                
-                <button whileHover={{scale:1.1}} className='save_applicant' type='submit'>Save</button>
-                <button whileHover={{scale:1.1}} className='cancel_applicant' type='button' onClick={()=>window.history.back()} >Cancel</button>
-            </div>
+               
         </form>
     </div>
+    </>
+
   )
 }
 

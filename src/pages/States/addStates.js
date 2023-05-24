@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles/States.css'
+import Navbar from '../../components/Navbar';
 
 export default class AddStates extends Component {
     constructor(props) {
@@ -90,14 +91,16 @@ export default class AddStates extends Component {
     render() {
 
         return (
-         <div className="mainState">
-            <div className="mainAddState">
+            <>      
+            <Navbar/>   
+      
+            <div className="mainAddDesignation">
                 {this.state.state === " " ? <h2>Add State</h2> : <h2>Edit State</h2>}
                 <Form onSubmit={this.handleSubmit}>
-                    <label style={{marginLeft:"80px"}}>Choose Country:</label>
+                    <label className='EDNameLabel'>Choose Country:</label>
                     {this.state.state === " " ?
                         <Form.Group className="mb-3">
-                            <select style={{marginLeft:"80px",width:"80%"}} className="form-control" name="countryName" onChange={this.handleChange}>
+                            <select  className="form-control EDNInPut" name="countryName" onChange={this.handleChange}>
                                 <option value="">Select</option>
                                 { this.state.country.map((e) => (
                                     <option value={e.id}>{e.name}</option>
@@ -107,14 +110,14 @@ export default class AddStates extends Component {
                         </Form.Group> 
                     :
                         <Form.Group className="mb-3" >
-                            <Form.Control type="text" name="countryName" style={{marginLeft:"80px",width:"80%"}}  placeholder="Enter Country name" value={this.state.countryName} onChange={this.handleChange} disabled/>
+                            <Form.Control type="text" name="countryName" className='EDNInPut' placeholder="Enter Country name" value={this.state.countryName} onChange={this.handleChange} disabled/>
                         </Form.Group>
                     }
 
                     <br />
-                    <label style={{marginLeft:"80px"}}>Enter state name:</label>
+                    <label className='EDNameLabel'>Enter state name:</label>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" name="stateName" style={{marginLeft:"80px",width:"80%"}}  placeholder="Enter state name" value={this.state.stateName} onChange={this.handleChange} required />
+                        <Form.Control type="text" name="stateName" className='EDNInPut'  placeholder="Enter state name" value={this.state.stateName} onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br />
@@ -126,7 +129,7 @@ export default class AddStates extends Component {
                     }
                     {this.state.state !== " " ?
                         <Form.Group className="mb-3">
-                            <select className="form-control" style={{marginLeft:"80px",width:"80%"}} name="status" value={this.state.status} onChange={this.handleChange}>
+                            <select className="form-control"  name="status" value={this.state.status} onChange={this.handleChange}>
                                 <option>Select status</option>
                                 <option value={"true"}>True</option>
                                 <option value={"false"} >False</option>
@@ -137,20 +140,22 @@ export default class AddStates extends Component {
                     }
 
                     <br />
-                    <Button className="saveButton" type="submit">
+                    <Button className="SaveButton" type="submit">
                         Save
                     </Button>&nbsp;&nbsp;
                     {this.state.state === " " ?
-                        <Link to={{ pathname: "/states" }}><Button className="cancelButton" type="cancel">
+                        <Link to={{ pathname: "/states" }}><Button className="CancelButton" type="cancel">
                             Cancel
                         </Button></Link>
-                        : <Button className="cancelButton" type="cancel" onClick={() => { this.cancel() }}>
+                        : <Button className="CancelButton" type="cancel" onClick={() => { this.cancel() }}>
                             Cancel
                         </Button>
                     }
                 </Form>
             </div>
-          </div>
+     
+          </>
+
         )
     }
 }

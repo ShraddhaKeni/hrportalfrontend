@@ -3,6 +3,7 @@ import {Table,Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './styles/addDocuments.css'
+import Navbar from '../../components/Navbar';
 
 const AddDocuments = () => {
     const [documentsData , setData] = useState({
@@ -97,48 +98,55 @@ const AddDocuments = () => {
    
 
   return (
-    
-    <div style={{margin:'0px',justifyContent:'center'}}>
-        <form onSubmit={handleSubmit} className='form'>
-            <div className='form-div'>
-                <lable>
-                     {console.log(file)}
-                    Document Type: 
-                    <select name='doc_type_id' ref={docTypeRef} onChange={()=>setData({...documentsData,doc_type_id:docTypeRef.current.value})} defaultValue={documentsData.doc_type_id}>
-                        <option>Select Doc Type</option>
+    <>
+    <Navbar/>
+    <div className="mainAddDesignation">
+    <h2>Add Document</h2>
+                <form class="row g-3"  onSubmit={handleSubmit}>
+                <div class="col-md-6">
+                    <label for="Document" class="form-label SelectLabel" >Document Type:</label>
+                    <select class="form-select SelectField" id="Document" name='doc_type_id' ref={docTypeRef} onChange={()=>setData({...documentsData,doc_type_id:docTypeRef.current.value})} defaultValue={documentsData.doc_type_id} required>
+                    <option>Select Doc Type</option>
                         {docTypes.map((item)=>{
                            return <option key={item.id} value={item.id}>{item.name}</option>
                         })}
-                    </select>
-                </lable>
-                <br/>
-
-                <lable>
-                    Choose Document: 
-                        <input ref={docPathRef} type='file' accept='application/png'  onChange={loadFile}></input>
-                </lable>
-                <lable>
-                    
-                    Select User: 
-                    <select name='user_id' ref={userRef} onChange={()=>setData({...documentsData,user_id:userRef.current.value})} defaultValue={documentsData.user_id}>
-                        <option>Select User</option>
+                            </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="document" class="form-label InputLabel">Choose Document:</label>
+                    <input type="file" class="form-control SelectField"  ref={docPathRef} style={{marginLeft: '5%' , padding: '2%'}}  id="document" name="document" accept='application/png'  onChange={loadFile} required  />
+                </div>
+                <div class="col-md-6">
+                    <label for="selectuser" class="form-label SelectLabel">Select User:</label>
+                    <select  name='user_id' ref={userRef}  class="form-select SelectField" id="selectuser" onChange={()=>setData({...documentsData,user_id:userRef.current.value})} defaultValue={documentsData.user_id} required>
+                    <option>Select User</option>
                         {users.map((item)=>{
                            return <option key={item.id} value={item.id}>{item.username}</option>
                         })}
-                    </select>
-                </lable>
-                <lable>
-                    
-                    Status: 
-                    <select name='status' ref={statusRef} onChange={()=>setData({...documentsData,status:statusRef.current.value})} defaultValue={documentsData.status}>
+                        </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="status" class="form-label InputLabel">Status:</label>
+                    <select class="form-select SelectField" style={{width: '87%', marginLeft: '-2%'}} id="status" name='status' ref={statusRef} onChange={()=>setData({...documentsData,status:statusRef.current.value})} defaultValue={documentsData.status} required>
                         <option value={true}>Active</option>
                         <option value={false}>Inactive</option>
                     </select>
-                </lable>
-                <button type='submit'>Save</button>
-            </div>
+                </div>
+                <br/>
+                <div style={{marginTop: '18%', marginBottom: '1%'}}>
+                    <Button className="SaveButton" type="submit">
+                        Save
+                    </Button>&nbsp;&nbsp;
+                            <Link to={{pathname: "/userDocuments"}}><Button className='CancelButton' type="cancel">
+                                Cancel
+                            </Button></Link>
+                    </div>
+
+
+              
         </form>
     </div>
+    </>
   )
 }
 

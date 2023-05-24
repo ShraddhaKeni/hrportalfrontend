@@ -1,5 +1,6 @@
 import React, { useEffect, useState,useRef } from 'react';
 import axios from 'axios'
+import Navbar from '../../components/Navbar';
 
 const UpdateAddress = ({addressDetails,id}) => {
     
@@ -108,7 +109,9 @@ const UpdateAddress = ({addressDetails,id}) => {
     
 
   return (
-    <div>
+    <>
+    <Navbar/>  
+      <div>
       {console.log(updateData)}
         <form onSubmit={handleSubmit}>
             <div>
@@ -172,6 +175,8 @@ const UpdateAddress = ({addressDetails,id}) => {
             </div>
         </form>
     </div>
+    </>
+
   )
 }
 

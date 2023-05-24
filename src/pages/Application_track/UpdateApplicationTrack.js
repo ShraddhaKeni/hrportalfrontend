@@ -2,7 +2,6 @@ import React,{useState,useEffect, useRef} from 'react'
 import axios from 'axios';
 import './style/updateApplicant.css'
 
-
 const UpdateApplicationTrack = ({trackData}) => {
     const[applicantData,setApplicantData] = useState([trackData])
     const [addTrack,setTrack] = useState({

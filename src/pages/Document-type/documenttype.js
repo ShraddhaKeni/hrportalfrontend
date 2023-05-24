@@ -1,8 +1,9 @@
 import {Component} from 'react';
 import axios from 'axios';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddDocumenttype from './addDocumenttype';
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     documents: [],
@@ -51,22 +52,30 @@ export default class Documenttype extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2>Document types <span style={{float:'right'}}><Link to={{ pathname: "/add-documenttype" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
+                <>
+                <Navbar/>
+                <div className='mainViewDesignation'>
+                <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Document</h1></b></div>
+                    <div style={{marginLeft:'3%'}}><Link to={{ pathname: "/add-documenttype"}}><button className='viewAddDesignationButton btn btn-primary'>Add Document</button></Link></div>
+                    </div>
+               
+                    {/* <h2>Document types <span style={{float:'right'}}><Link to={{ pathname: "/add-documenttype" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2> */}
+                    <div className='viewDesignationContainer table-responsive'>
+                    <table className='table table-sm table-hover' responsive>
                         <thead  >
                             <tr>
-                                <th>Sr no.</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 this.state.documents.map((doc) => (
                                     <tr key={doc.id}>
-                                        <td>{srno++}</td>
+                                        <td scope="row">{srno++}</td>
                                         <td>{doc.name}</td>
                                             {
                                                 doc.status === true? <td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
@@ -86,8 +95,10 @@ export default class Documenttype extends Component{
                                     
                                 ))}
                         </tbody>
-                    </Table>
+                    </table>
                 </div>
+                </div>
+                </>
             )
         }
     }

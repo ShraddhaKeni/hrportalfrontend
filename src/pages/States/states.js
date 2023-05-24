@@ -4,6 +4,7 @@ import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AddStates from './addStates';
 import './styles/States.css'
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     statesData: [],
@@ -69,27 +70,32 @@ export default class States extends Component{
         }else{
             var srno = 1
             return(
-                <div className='mainViewState'>
-                    <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-state" }}><button className='viewAddStateButton'>Add State<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2>
-                    <div className='viewStateContainer'>
-                    <table className='table_viewState'>
+                <>
+                <Navbar/>
+                <div className='mainViewDesignation'>
+                <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>States</h1></b></div>
+                    <div style={{marginLeft: '20%'}}><Link to={{ pathname: "/add-state" }}><button className='viewAddDesignationButton btn btn-primary'>Add State</button></Link></div>
+                    </div>
+               
+             
+                    {/* <h2> <span style={{float:'right'}}><Link to={{ pathname: "/add-state" }}><button className='viewAddStateButton'>Add State<span style={{fontSize:18, color:"white"}}></span></button></Link></span></h2> */}
+                    <div className='viewDesignationContainer table-responsive' style={{width:'60vw', marginLeft:'30%'}}>
+                    <table className='table table-sm table-hover' responsive>
                         <thead  >
                             <tr>
-                                <th>Sr no.</th>
-                                <th>Country</th>
-                                <th>State</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr>
-                                    <hr className='hr_viewtag'/>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">State</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 this.state.statesData.map((state) => (
                                     <tr key={state.id}>
-                                        <td>{srno++}</td>
+                                        <td scope="row">{srno++}</td>
                                         <td>{this.getCountry(state.country_id)}</td>
                                         <td>{state.name}</td>
                                             {
@@ -113,6 +119,7 @@ export default class States extends Component{
                     </table>
                 </div>
                 </div>
+                </>
             )
         }
     }

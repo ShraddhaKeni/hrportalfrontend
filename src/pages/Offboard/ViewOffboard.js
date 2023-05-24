@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Table,Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Navbar from '../../components/Navbar';
 
 const ViewOffboard = () => {
 
@@ -45,23 +46,31 @@ const ViewOffboard = () => {
   var srno = 1;
   return (
     <>  
-      <div>
+    <Navbar/>
+
         {console.log(employee)}
-      <div className='main'>
-                    <h2>Employees <span style={{float:'right'}}><Link to={{ pathname: "/addoffboard" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2>
-                    <Table bordered striped>
+        <div className='mainViewDesignation'>
+     
+     <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+              <div><b><h1>View Address</h1></b></div>
+              <div style={{marginLeft: '-4%'}}><Link to={{ pathname: "/addoffboard" }}><button className='viewAddDesignationButton btn btn-primary'>Add Offboard</button></Link></div>
+              </div>
+                    {/* <h2>Employees <span style={{float:'right'}}><Link to={{ pathname: "/addoffboard" }}><Button variant='success'><span style={{fontSize:18, color:"white"}}>&#43;</span></Button></Link></span></h2> */}
+                    <div className='viewDesignationContainer table-responsive'>
+                  
+                    <table className='table table-sm table-hover' responsive>
                         <thead  >
                             <tr>
-                                <th>Sr no.</th>
-                                <th>Employee Name</th>
-                                <th>OffBoard Date</th>
-                                <th>OffBoard Reason</th>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">Employee Name</th>
+                                <th scope="col">OffBoard Date</th>
+                                <th scope="col">OffBoard Reason</th>
                             </tr>
                         </thead>
                         <tbody>
                            {offboardRecords.map((item)=>{
                              return<tr key={item.id}>
-                                <td>{srno++}</td>
+                                <td scope="row">{srno++}</td>
                                 <td>{getEmpName(item.emp_id)}</td>  
                                 <td>{item.offboard_date}</td>
                                 <td>{item.offBoard_reason}</td> 
@@ -69,9 +78,10 @@ const ViewOffboard = () => {
 
                            })}
                         </tbody>
-                    </Table>
+                    </table>
                 </div>
-      </div>
+                </div>
+    
     </>
   )
 }

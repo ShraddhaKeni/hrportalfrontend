@@ -1,7 +1,9 @@
 import React, { Component} from 'react'
 import axios from 'axios';
 import './updateJobs.css';
-
+import Navbar from '../../components/Navbar';
+import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 const initialState = {
     DepartmentData: [],
     title: "",
@@ -116,11 +118,73 @@ export default class UpdateJobs extends Component {
   render() {
     
     return (
-        <div>
+        <>
+        <Navbar/>        
+          <div className="mainAddCompanies" style={{marginTop:'7%'}}>
+            <h2>Update Job</h2>
+        <form class="row g-3" onSubmit={this.handleSubmit}>
+        <div class="col-12 mb-3">
+                    <label for="title" class="form-label InputLabel">Title:</label>
+                    <input type="text" class="form-control InputField" id='title' name='title' defaultValue={this.state.job_details.title} onChange={(event=>{this.setState({[event.target.name]:event.target.value})})} placeholder='Enter Title' required />
+                </div>
+        <div class="col-md-6 mb-3">
+                    <label for="department" class="form-label SelectLabel">Choose Department:</label>
+                    <select class="form-select SelectField" style={{width: '87%', marginLeft: '0%'}} id="department" name='department' value={this.state.department} onChange={(event)=>{this.setState({[event.target.name]:event.target.value})}}>
+                    <option value=''>Select Department</option>
+                        {this.state.DepartmentData.map((item)=>{
+                            return <option key={item.id} value={item.id}>{item.name}</option>
+                        })}
+                        </select>
+                </div>
+                <text id='dept_error' style={{color:'red'}}></text>
+                <div class="col-md-6 mb-3">
+                    <label for="role" class="form-label InputLabel">Choose Role:</label>
+                    <select class="form-select SelectField" style={{width: '87%', marginLeft: '-2%'}} id='role' name='role' value={this.state.role_details.role_id} onChange={(event)=>{this.setState({[event.target.name]:event.target.value})}}>
+                    <option value=''>Select Role</option>
+                        {this.state.RoleData.map((item)=>{
+                            return <option key={item.id} value={item.id}>{item.name}</option>
+                        })}
+                        </select>
+                </div>
+                <div class="col-12">
+                    <label for="descp" class="form-label InputLabel">Description:</label>
+                    <textarea class="form-control InputField" rows={3} id="descp" ref={this.description_ref} name='description' defaultValue={this.state.job_details.description} onChange={(event)=>{this.setState({[event.target.name]:event.target.value})}} placeholder='Describe here' required />
+      </div>
+      <div class="col-12 mb-3">
+                    <label for="salary" class="form-label InputLabel">Salary:</label>
+                    <input id='salary' class="form-control InputField" ref={this.salary_ref} type="number" name="salary" defaultValue={this.state.job_details.salary} placeholder="Enter salary" onChange={(event)=>{this.setState({[event.target.name]:event.target.value})}} required />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="empl" class="form-label SelectLabel">Choose Employee:</label>
+                    <select class="form-select SelectField" style={{width: '87%', marginLeft: '0%'}} id='empl' type='select' name='employee' defaultValue={this.state.employee} onChange={(event)=>{this.setState({[event.target.name]:event.target.value})}}>
+                    <option>Select Employee</option>
+                        {
+                            this.state.EmployeeData.map((item)=>{
+                               return <option key={item.id} value={item.id}>{item.name}</option>
+                            })
+                        }
+                        </select>
+                </div>
+                <text id='dept_error' style={{color:'red'}}></text>
+                <div class="col-md-6 mb-3">
+                    <label for="role" class="form-label InputLabel">Status:</label>
+                    <select class="form-select SelectField" style={{width: '87%', marginLeft: '-2%'}}  id='empl' type='select' name='employee' defaultValue={this.state.employee} onChange={(event)=>{this.setState({[event.target.name]:event.target.value})}}>
+                        <option disabled>Select</option>
+                        <option value={true}>Active</option>
+                        <option value={false}>Inactive</option>
+                    </select>
+                </div>
+                <div style={{marginTop: '11%', marginBottom: '2%'}}>
+                    <Button className="SaveButton" type="submit">
+                        Submit
+                    </Button>&nbsp;&nbsp;
             
-        <form onSubmit={this.handleSubmit}>
-            <div className='update_jobs_form' style={{display:'flex',flexDirection:'column',padding:'10px'}}>
-            <lable>Choose Department:
+                </div>
+{/* OLD CODE */}
+
+           
+           
+            {/* <lable>Choose Department:
                     <select id='dept' name='department' value={this.state.department} onChange={(event)=>{this.setState({[event.target.name]:event.target.value})}}>
                         <option value=''>Select Department</option>
                         {this.state.DepartmentData.map((item)=>{
@@ -167,11 +231,13 @@ export default class UpdateJobs extends Component {
                         <option value={false}>Inactive</option>
             </select>
             </lable>
-            <button type="submit" style={{width:'100px',alignItems:'center',marginLeft:'900px',marginTop:'20px'}}>Submit</button>
-            </div>
+            <button type="submit" style={{width:'100px',alignItems:'center',marginLeft:'900px',marginTop:'20px'}}>Submit</button> */}
+         
         </form>
         
     </div>
+    </>
+
     )
   }
 }

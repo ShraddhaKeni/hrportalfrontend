@@ -18,3 +18,12 @@
     margin-left: 420px;
     margin-top: -20px;
 }
+.SubMitButn{
+    background: #552D59;
+    font-weight: 500;
+    font-size: 1.1vw;
+    width: 6vw;
+    height: 3.6vh;
+    font-family: 'Poppins', sans-serif;
+    padding: 1%;
+}

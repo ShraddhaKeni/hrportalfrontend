@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles/addlevel.css'
+import Navbar from '../../components/Navbar';
 
 export default class AddLeveltype extends Component {
   constructor(props){
@@ -75,19 +76,22 @@ export default class AddLeveltype extends Component {
   render() {
 
     return (
-      <div className='main_addLevel'>
-       
-        <form onSubmit={this.handleSubmit} className='addLevel_form'>
+      <>
+      <Navbar/>
+     
+      <div className="mainAddDesignation">
+      {this.state.design === " "? <h2>Add Level type</h2> : <h2>Edit Level type</h2>}
+        <Form onSubmit={this.handleSubmit}>
 
-       {this.state.level==" "?<label className='main_lable'>Enter level type name:</label>:<label className='main_lable_edit'>Enter level type name:</label>} 
+       {this.state.level==" "?<label  className='EDNameLabel'>Enter level type name:</label>:<label  className='EDNameLabel'>Enter level type name:</label>} 
           <Form.Group className="mb-3" >
-              {this.state.level==' '?<input type="text" name="name" className='level_name' placeholder="Enter level type name" value={this.state.name} onChange={this.handleChange} required />
-                :<input type="text" name="name" className='level_name_edit' placeholder="Enter level type name" value={this.state.name} onChange={this.handleChange} required />}
+              {this.state.level==' '?<input type="text" name="name"  className='EDNInPut' placeholder="Enter level type name" value={this.state.name} onChange={this.handleChange} required />
+                :<input type="text" name="name"  className='EDNInPut' placeholder="Enter level type name" value={this.state.name} onChange={this.handleChange} required />}
           </Form.Group>
           
           <br />
           {this.state.level !== " "?
-            <label className='level_status'>Select status:</label>
+            <label style={{marginLeft:"80px"}}>Select status:</label>
           :
             ""
           }
@@ -104,23 +108,25 @@ export default class AddLeveltype extends Component {
           }
 
           <br/>
-          {this.state.level==' '?<button className='save_level'  type="submit">
+          {this.state.level==' '?<Button className='SaveButton'  type="submit">
               Save
-          </button>:<button className='save_level_edit'  type="submit">
+          </Button>:<Button className='SaveButton'  type="submit">
               Save
-          </button>}
-          
+          </Button>}
+          &nbsp;&nbsp;
           {this.state.level === " "?
-              <Link to={{pathname: "/leveltype"}}><button variant="danger" className='cancel_level' type="cancel">
+              <Link to={{pathname: "/leveltype"}}><Button  className='CancelButton' type="cancel">
                   Cancel
-              </button></Link>
-            : <button variant="danger" type="cancel" className='cancel_level_edit' onClick={() => {this.cancel()}}>
+              </Button></Link>
+            : <Button  type="cancel" className='CancelButton' onClick={() => {this.cancel()}}>
               Cancel
-              </button> 
+              </Button> 
           }
-         
-        </form>
+         <br/>
+        </Form>
       </div>
+
+      </>
     )
   }
 }

@@ -2,9 +2,8 @@ import {Component} from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import './styles/viewEachCompany.css';
-
-
 import './styles/viewCompanies.css'
+import Navbar from '../../components/Navbar';
 
 export default class ViewCompanies extends Component {
   constructor(props){
@@ -48,9 +47,14 @@ export default class ViewCompanies extends Component {
   render() {
 
     return (
-        <div className='main'>
-            <h2>
-                <span style={{float:"left"}}><button whileHover={{scale:1.1}} className='companies_back' onClick={() => {this.goBack()}}><b>Back</b></button></span></h2>
+        <>
+        <Navbar/>
+        <div className='mainViewDesignation'>
+        <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>View Companies</h1></b></div>
+                    <div style={{marginLeft:'2%'}}><button className='viewAddDesignationButton btn btn-primary' onClick={() => {this.goBack()}}>Back</button></div>
+                    </div>
+        
             <div 
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -134,6 +138,7 @@ export default class ViewCompanies extends Component {
             </table>
             </div >
         </div>
+        </>
     )
   }
 }

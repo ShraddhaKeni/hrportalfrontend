@@ -6,6 +6,7 @@ import AddUsers from './addUsers';
 import ViewUsers from './viewUsers';
 import './style/viewUsers.css'
 import Pagination from '../../components/paginate/Pagination';
+import Navbar from '../../components/Navbar';
 
 const initialState = {
     users: [],
@@ -82,28 +83,32 @@ export default class Users extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2 style={{marginLeft:'250px'}}>Users <span style={{float:'right'}}><Link to={{ pathname: "/add-users" }}><button className='add_user'>Add User</button></Link></span></h2>
-                    <div className='users_table_container'>
-                    <table className='users_table'>
+                <>
+                <Navbar/>
+                <div className='mainViewDesignation'>
+                <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Users</h1></b></div>
+                    <div style={{marginLeft: '18%'}}><Link to={{ pathname: "/add-users" }}><button className='viewAddDesignationButton btn btn-primary'>Add User</button></Link></div>
+                    </div>
+
+                    <div className='viewDesignationContainer table-responsive' style={{width:'60vw', marginLeft:'28%'}}>
+                    <table className='table table-sm table-hover' responsive>
                         <thead  >
                             <tr>
-                                <th style={{width:'40px'}}>Sr no.</th>
-                                <th>Name</th>
-                                <th style={{width:'40px'}}>Email</th>
-                                <th>Contact no.</th>
-                                <th style={{width:'50px'}}>Status</th>
-                                <th colSpan={2}>Actions</th>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Contact no.</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
                             </tr>
-                            <tr>
-                                <hr className='hr_users_tag'/>
-                            </tr>
+                            
                         </thead>
                         <tbody>
                             {
                                 this.state.currentPosts.map((user,index) => (
                                     <tr key={user.id}>
-                                        <td style={{textAlign:'center'}}>{this.state.currentPage<=2?(this.state.currentPage-1)*12+(index+1):(this.state.currentPage-1+1)+(index+1)}</td>
+                                        <td scope="row">{this.state.currentPage<=2?(this.state.currentPage-1)*12+(index+1):(this.state.currentPage-1+1)+(index+1)}</td>
                                         <td>{user.username}</td>
                                         <td>{user.email}</td>
                                         <td>{user.contact_no}</td>
@@ -130,6 +135,7 @@ export default class Users extends Component{
 
                     </div>
                 </div>
+                </>
             )
         }
     }

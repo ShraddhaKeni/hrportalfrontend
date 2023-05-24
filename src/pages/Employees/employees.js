@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import AddEmployees from './addEmployees';
 import ViewEmployees from './viewEmployee';
 import './styles/viewAllEmployees.css';
+import Navbar from '../../components/Navbar';
 
 
 const initialState = {
@@ -102,30 +103,34 @@ export default class Employees extends Component{
         }else{
             var srno = 1
             return(
-                <div className='main'>
-                    <h2 style={{marginLeft:'150px'}}>Employees<span style={{float:'right'}}><Link to={{ pathname: "/add-employees" }}><button className='add_employee'>Add Employee</button></Link></span></h2>
-                    <div className='employee_table_container'>
-                    <table className='employee_table'>
+                <>
+                <Navbar/>
+                <div className='mainViewDesignation'>
+                <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
+                    <div><b><h1>Employees</h1></b></div>
+                    <div style={{marginLeft: '16%'}}><Link to={{ pathname: "/add-employees" }}><button className='viewAddDesignationButton btn btn-primary'>Add Employee</button></Link></div>
+                    </div>
+             
+                  
+                    <div className='employee_table_container  table-responsive' style={{marginLeft: '26%', width: '67vw'}}>
+                    <table className='table table-sm table-hover' responsive>
                         <thead >
                             <tr>
-                                <th style={{width:'40px'}}>Sr no.</th>
-                                <th>Name</th>
-                                <th>Company name</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Employee code</th>
-                                <th style={{width:'50px'}}>Status</th>
-                                <th style={{textIndent:'25px'}} colSpan={2}>Action</th>
-                            </tr>
-                            <tr className='margin_line'>
-                                <hr className='employee_hr_tag'></hr>
+                                <th scope="col">Sr no.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Company name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Employee code</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 this.state.employees.map((emp) => (
                                     <tr key={emp.id}>
-                                        <td>{srno++}</td>
+                                        <td scope="row">{srno++}</td>
                                         <td>{emp.name}</td>
                                         <td>{this.getCompanyName(emp.comp_id)}</td>
                                         <td>{this.getUsername(emp.user_id)}</td>
@@ -160,6 +165,7 @@ export default class Employees extends Component{
                     </table>
                 </div>
             </div>
+            </>
             )
         }
     }

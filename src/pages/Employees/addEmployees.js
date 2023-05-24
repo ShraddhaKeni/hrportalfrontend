@@ -112,13 +112,14 @@ export default class AddEmployees extends Component {
     }
 
     addEmployee(employee) {
-        console.log(employee)
+        //console.log(employee)
         axios.post(`http://localhost:3001/employees/create`, employee,
             {
                 'Content-type': 'application/json'
             }).then(res => {
                 console.log("printing result: ")
                 console.log(res)
+                window.location.reload()
             }).catch((error) => {
                 if (error.request) {
                     var err2 = new Error(error.request.response)

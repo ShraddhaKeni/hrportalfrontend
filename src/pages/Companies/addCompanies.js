@@ -199,7 +199,7 @@ export default class AddCompanies extends Component {
                 </div>
                 <div class="col-md-6">
                     <label for="pincode" class="form-label InputLabel">Enter Pincode:</label>
-                    <input type="number" class="form-control SelectField" style={{marginLeft: '5%' , padding: '2%'}}  id="pincode" placeholder="Enter Pincode" value={this.state.pincode} onChange={this.handleChange} required />
+                    <input type="number" class="form-control SelectField" style={{marginLeft: '5%' , padding: '2%'}}  id="pincode" name="pincode" placeholder="Enter Pincode" value={this.state.pincode} onChange={this.handleChange} required />
                 </div>
                 <div class="col-md-6">
                     <label for="companywebsite" class="form-label SelectLabel">Company Website:</label>
@@ -211,12 +211,12 @@ export default class AddCompanies extends Component {
                 </div>
                 {/* differ */}
                 <div class="col-md-6">
-                    <label for="contactnumber" class="form-label SelectLabel">Company Number:</label>
-                    <input class="form-control SelectField" style={{marginLeft: '8%' , padding: '2%'}} id="contactnumber" type="number" name="contact_person" placeholder="Contact person name" value={this.state.contact_number} onChange={this.handleChange} required />
+                    <label for="contactnumber" class="form-label SelectLabel">Company Contact Number:</label>
+                    <input type="number" class="form-control SelectField" style={{marginLeft: '8%' , padding: '2%'}} id="contactnumber"  name="contact_number" placeholder="Contact person name" value={this.state.contact_number} onChange={this.handleChange} required />
                 </div>
                 <div class="col-md-6">
                     <label for="pancardno" class="form-label InputLabel">PAN Card Number:</label>
-                    <input type="text" class="form-control SelectField" style={{marginLeft: '5%' , padding: '2%'}}  id="pancardno" name="pan_card_no" placeholder="Enter Pan Card Number" value={this.state.pancard_number} onChange={this.handleChange} required />
+                    <input type="text" class="form-control SelectField" style={{marginLeft: '5%' , padding: '2%'}}  id="pancardno" name="pancard_number" placeholder="Enter Pan Card Number" value={this.state.pancard_number} onChange={this.handleChange} required />
                 </div>
                 <div class="col-md-6">
                     <label for="gstnumber" class="form-label SelectLabel">GST Number:</label>

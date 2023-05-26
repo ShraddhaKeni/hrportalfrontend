@@ -1,9 +1,8 @@
 import { Component } from 'react';
 import axios from 'axios';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles/addEmployee.css'
-import Navbar from '../../components/Navbar';
 
 export default class AddEmployees extends Component {
     constructor(props) {
@@ -136,7 +135,7 @@ export default class AddEmployees extends Component {
             {
                 'Content-type': 'application/json'
             }).then(res => {
-            
+                window.location.reload()
             }).catch((error) => {
                 if (error.request) {
                     var err2 = new Error(error.request.response)
@@ -151,91 +150,99 @@ export default class AddEmployees extends Component {
 
     render() {
         return (
-            <>
-            <Navbar/>
-            <div className='mainAddCompanies' style={{width: '45vw', marginTop: '8%', marginLeft:'34%'}}>
-                {this.state.employee === " " ? <h2>Add Employee Details</h2> : <h2>Edit Employee Details</h2>}
+            <div className='main'>
+                {this.state.employee === " " ? <h2>Add employee details</h2> : <h2>Edit employee details</h2>}
                 <h4 className='errorMsg'>{this.state.error}</h4>
                
-                <form class="row g-3" onSubmit={this.handleSubmit}>
-                <div class="col-12">
-                    <label for="name" class="form-label InputLabel" >Name: <span className='req'>*</span></label>
-                    <input type="text" class="form-control InputField" id="name" name="name" placeholder="Enter name" value={this.state.name} onChange={this.handleChange} required  />
-                </div>
-                <div class="col-md-6">
-                    <label for="choosecompany" class="form-label SelectLabel">Choose company: <span className='req'>*</span></label>
-                    <select class="form-select SelectField" id="choosecompany" name="comp_id" value={this.state.comp_id} onChange={this.handleChange} required>
-                    <option value="">Select</option>
-                    {this.state.CompData.map((e) => (
+                <form className={this.state.employee===' '?'addEmployee_form':'addEmployee_form_edit'} onSubmit={this.handleSubmit}>
+                    <div className='addEmployee_container'>
+                    <label className='addEmployee_name_lable'>Name: <span className='req'>*</span></label>
+                    <Form.Group className="mb-3" >
+                        <input className='addEmployee_name' type="text" name="name" placeholder="Enter name" value={this.state.name} onChange={this.handleChange} required />
+                    </Form.Group>
+
+                    <br />
+
+                    <label className='addEmployee_company_lable'>Choose company: <span className='req'>*</span></label>
+                    <Form.Group className="mb-3">
+                        <select className="addEmployee_company" name="comp_id" value={this.state.comp_id} onChange={this.handleChange} required>
+                            <option >Select company</option>
+                            {this.state.CompData.map((e) => (
                                 <option value={e.id} key={e.id}>{e.name}</option>
                             ))
                             }
                         </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="chooseuser" class="form-label InputLabel">Choose user: <span className='req'>*</span></label>
-                    <select class="form-select SelectField" style={{width: '87%', marginLeft: '-2%'}} id="chooseuser" name="user_id" value={this.state.user_id} onChange={this.handleChange} required>
-                    <option value="">Select</option>
-                    {this.state.UserData.map((e) => (
+                    </Form.Group>
+
+                    <br />
+
+                    <label className='addEmployee_user_lable'>Choose user: <span className='req'>*</span></label>
+                    <Form.Group className="mb-3">
+                        <select className="addEmployee_user" name="user_id" value={this.state.user_id} onChange={this.handleChange} required>
+                            <option >Select user</option>
+                            {this.state.UserData.map((e) => (
                                 <option value={e.id} key={e.id}>{e.username}</option>
                             ))
                             }
                         </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="choosedesignation" class="form-label SelectLabel">Choose designation: <span className='req'>*</span></label>
-                    <select class="form-select SelectField" id="choosedesignation" name="desig_id" value={this.state.desig_id} onChange={this.handleChange} required>
-                    <option value="">Select</option>
-                    {this.state.DesignData.map((e) => (
+                    </Form.Group>
+
+                    <br />
+
+                    <label className='addEmployee_designation_lable'>Choose designation: <span className='req'>*</span></label>
+                    <Form.Group className="mb-3">
+                        <select className="addEmployee_designation" name="desig_id" value={this.state.desig_id} onChange={this.handleChange} required>
+                            <option >Select</option>
+                            {this.state.DesignData.map((e) => (
                                 <option value={e.id} key={e.id}>{e.name}</option>
                             ))
                             }
                         </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="choosedepartment" class="form-label InputLabel">Choose department: <span className='req'>*</span></label>
-                    <select class="form-select SelectField" style={{width: '87%', marginLeft: '-2%'}} id="choosedepartment"  name="dept_id" value={this.state.dept_id} onChange={this.handleChange} required>
-                    <option value="">Select</option>
-                    {this.state.UserData.map((e) => (
-                                <option value={e.id} key={e.id}>{e.username}</option>
+                    </Form.Group>
+
+                    <br />
+
+                    <label className='addEmployee_department_lable'>Choose department: <span className='req'>*</span></label>
+                    <Form.Group className="mb-3">
+                        <select className="addEmployee_department" name="dept_id" value={this.state.dept_id} onChange={this.handleChange} required>
+                            <option >Select</option>
+                            {this.state.DeptData.map((e) => (
+                                <option value={e.id} key={e.id}>{e.name}</option>
                             ))
                             }
                         </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="email" class="form-label SelectLabel">Email: <span className='req'>*</span></label>
-                    <input class="form-control SelectField" style={{marginLeft: '8%' , padding: '2%'}} id="email" type="email" name="email" placeholder="Enter email" value={this.state.email} onChange={this.handleChange} required/>
-                </div>
-                <div class="col-md-6">
-                    <label for="date" class="form-label InputLabel">Date of joining: <span className='req'>*</span></label>
-                    <input type="date" class="form-control SelectField" style={{marginLeft: '5%' , padding: '0%'}}  id="date" name="doj" placeholder="Enter date of joining" value={this.state.doj} onChange={this.handleChange} required  />
-                </div>
-                <div class="col-md-6">
-                    <label for="code" class="form-label SelectLabel">Employee code: <span className='req'>*</span></label>
-                    <input class="form-control SelectField" style={{marginLeft: '8%' , padding: '2%'}} id="code" type="text" name="emp_code" placeholder="Enter employee code" value={this.state.emp_code} onChange={this.handleChange} required />
-                </div>
-                {this.state.employee === " " ? " " : <br />}
-                <div class="col-md-6">
-                    <label for="Signature" class="form-label InputLabel">Signature:<span className='req'>*</span></label>
-                    <input type="file" class="form-control SelectField" style={{marginLeft: '5%' , padding: '2%'}}  id="Signature" name="doj" placeholder="Enter date of joining" value={this.state.doj} onChange={this.handleChange} required  />
-                </div>
-          
+                    </Form.Group>
 
+                    <br />
 
+                    <label className='addEmployee_email_lable'>Email: <span className='req'>*</span></label>
+                    <Form.Group className="mb-3" >
+                        <input className='addEmployee_email' type="email" name="email" placeholder="Enter email" value={this.state.email} onChange={this.handleChange} required />
+                    </Form.Group>
 
+                    <br />
 
+                    <label className='addEmployee_date_lable'>Date of joining: <span className='req'>*</span></label>
+                    <Form.Group className="mb-3" >
+                        <input className='addEmployee_date' type="date" name="doj" placeholder="Enter date of joining" value={this.state.doj} onChange={this.handleChange} required />
+                    </Form.Group>
 
+                    <br />
 
-                <br />
+                    <label className='addEmployee_employeeCode_lable'>Employee code: <span className='req'>*</span></label>
+                    <Form.Group className="mb-3" >
+                        <input className='addEmployee_employeeCode' type="text" name="emp_code" placeholder="Enter employee code" value={this.state.emp_code} onChange={this.handleChange} required />
+                    </Form.Group>
 
-{/* 
+                    {this.state.employee === " " ? " " : <br />}
+
                   <div className={this.state.employee===' '?'':'signature_edit'}>            
                  <label className='addCompany_signature_lable'>Signature:</label>
 
                         <Form.Group className="mb-3" >
                             <input className='addCompany_signature' type="file" name="signature" placeholder="Signature" value={this.state.signature} onChange={this.handleChange} />
                         </Form.Group>
-                        </div>   */}
+                        </div>  
 
 
                     {this.state.employee === " " ? " " : <br />}
@@ -254,23 +261,8 @@ export default class AddEmployees extends Component {
                         " "
                     }
 
-                   
                     <br />
-                    <div style={{marginTop: '36%'}}>
-                    <Button className="SaveButton" type="submit">
-                        Save
-                    </Button>&nbsp;&nbsp;
-                        {this.state.company === " "?
-                            <Link to={{pathname: "/employees"}}><Button className='CancelButton' type="cancel">
-                                Cancel
-                            </Button></Link>
-                            : <Button className='CancelButton' type="cancel" onClick={() => {this.cancel()}}>
-                            Cancel
-                            </Button> 
-                        }
-                   
-                    </div>
-                    {/* <div className={this.state.employee===' '? 'addEmployee_buttons':'addEmployee_buttons_edit'}>
+                    <div className={this.state.employee===' '? 'addEmployee_buttons':'addEmployee_buttons_edit'}>
                     <button className='save_employee' type="submit">
                         Save
                     </button>   
@@ -282,11 +274,11 @@ export default class AddEmployees extends Component {
                             Cancel
                         </button>
                     }
-                    </div> */}
-                
+                    </div>
+                    </div>
                 </form>
                 </div>
-                </>
+           
         )
     }
 }

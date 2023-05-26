@@ -94,12 +94,12 @@ export default class Department extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
-                                            {depart.status==true?<Button variant="danger" onClick={() => {this.deleteClicked(depart.id)}} >
+                                            {depart.status==true?<Button className='role_delete' onClick={() => {this.deleteClicked(depart.id)}} >
                                                 Delete
-                                            </Button> :<Button variant="primary" onClick={() => {this.activateClicked(depart.id)}} >
+                                            </Button> :<Button className='role_edit' onClick={() => {this.activateClicked(depart.id)}} >
                                                 Activate
                                             </Button>}
-                                            <Button variant="info" onClick={() => {this.editClicked(depart.id)}} >
+                                            <Button className='role_edit' onClick={() => {this.editClicked(depart.id)}} >
                                                 Edit 
                                             </Button> 
                                         </td>

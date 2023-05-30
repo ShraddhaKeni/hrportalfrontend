@@ -17,7 +17,7 @@ const UserDocuments = () => {
     const getDoctData = async()=>{
         const {data} = await axios.get(`/user-docs/findAll`);
         setDocData(data.data)
-        console.log(data)
+        
     }
 
     const getUsers = async()=>{

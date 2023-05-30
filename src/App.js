@@ -68,8 +68,11 @@ import AddOffboard from './pages/Offboard/AddOffboard';
 import NavBarNew from './components/NavBarNew';
 import Viewhrsupport from './pages/hrsupport/hrsupport';
 import Countrystatecity from './components/Countrystatecity';
+import Home from './pages/Home/Home';
+import { checkAccess } from './pages/Helper/Auth';
 
 function App() {
+
 
 
   return (
@@ -81,7 +84,7 @@ function App() {
           <Route path="/" element={<Login/>}></Route>
 
           {/* routes for designation */}
-          <Route path="/designation" element={<Designation />}></Route>
+          <Route path="/designation" element={<Designation/>}></Route>
           <Route path="/add-designation" element={<AddDesignation />}></Route>
 
           {/* routes for roles */}
@@ -111,7 +114,7 @@ function App() {
           {/* routes for salary */}
           <Route exact path="/add-salary" element={<Salary />}></Route>
           <Route exact path="/salary" element={<ViewSalary />}></Route>
-          <Route path="/salary-info/:id" render={(props) => <SalaryInfo {...props} />} element={<SalaryInfo />} />  
+          <Route path="/salary-info/:id" render={(props) => <SalaryInfo {...props} />} element={<SalaryInfo />} />
 
           {/* routes for level-type */}
           <Route path="/leveltype" element={<Leveltype />}></Route>
@@ -152,6 +155,8 @@ function App() {
           <Route path="/offboard" element={<ViewOffboard/>}></Route>
           <Route path="/addoffboard" element={<AddOffboard/>}></Route>
           <Route path="/hrsupport" element={<Viewhrsupport/>}></Route>
+          <Route path="/home" element={<Home/>}></Route>
+         
         </Routes>
         
       </div>

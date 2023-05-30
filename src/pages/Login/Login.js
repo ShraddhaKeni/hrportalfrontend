@@ -7,7 +7,7 @@ import logo from './logo.svg'
 import {useCookies} from 'react-cookie'
 import{decodeToken , isExpired} from 'react-jwt'
 import {useNavigate} from 'react-router-dom'
-import {LoginCheck} from '../Helper/Auth'
+import { checkRole, loginCheck} from '../Helper/Auth'
 
 const Login = () => {   
     const [login,setLogin] = useState(false);
@@ -15,7 +15,8 @@ const Login = () => {
     let history = useNavigate()
    
 
-    const [cookie,setCookie] = useCookies(['accessToken'])
+    const [cookie,setCookie] = useCookies(['accessToken']);
+
     const handleSubmit = async(e)=>{
         e.preventDefault()
         try {
@@ -27,8 +28,13 @@ const Login = () => {
             localStorage.setItem('accessToken',res.data.data.accessToken)
             setCookie('accessToken',res.data.data.accessToken)
             const {payload} = decodeToken(res.data.data.accessToken)
-            const User = LoginCheck(payload)
-            console.log(User)
+            const User = await loginCheck(payload)
+            setCookie('login_type',res.data.data.role)
+           
+            if(User)
+            {
+                window.location.href='/home'
+            }
         } catch (error) {
             console.log(error)
         }

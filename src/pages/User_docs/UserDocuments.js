@@ -15,7 +15,7 @@ const UserDocuments = () => {
     const[change,setChange] = useState(false)
     var srno=1;
     const getDoctData = async()=>{
-        const {data} = await axios.get(`/user-docs/findAll`);
+        const {data} = await axios.get(`http://localhost:3001/user-docs/findAll`);
         setDocData(data.data)
         console.log(data)
     }
@@ -23,7 +23,7 @@ const UserDocuments = () => {
     const getUsers = async()=>{
 
         try {
-            const {data} =await axios.get(`/users/findAll`)
+            const {data} =await axios.get(`http://localhost:3001/users/findAll`)
             setUsers(data.data)
         } catch (error) {
             console.log(error)
@@ -31,7 +31,7 @@ const UserDocuments = () => {
     }
     const getDocType = async()=>{
         try {
-            const {data} = await axios.get(`/document-type/findAll`)
+            const {data} = await axios.get(`http://localhost:3001/document-type/findAll`)
             setDocType(data.data)
         } catch (error) {
             console.log(error)
@@ -74,7 +74,7 @@ const UserDocuments = () => {
             const data = {
                 status:!status
             }
-            const postRequest = await axios.patch(`/user-docs/update/${user_id}/${id}`,data)
+            const postRequest = await axios.patch(`http://localhost:3001/user-docs/update/${user_id}/${id}`,data)
             setChange(!change)
         } catch (error) {
             
@@ -110,7 +110,7 @@ else{
                           <thead>
                               <tr>
                                   <th scope="col">Sr no.</th>
-                                  <th scope="col">Document Name</th>
+                                  <th scope="col">Document Type</th>
                                   <th scope="col">User</th>
                                   <th scope="col">Status</th>
                                   <th scope="col">Actions</th>

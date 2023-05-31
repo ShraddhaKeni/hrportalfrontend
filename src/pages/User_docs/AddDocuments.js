@@ -39,6 +39,8 @@ const AddDocuments = () => {
     const getUserDetails = async()=>{
         try {
             const {data} = await axios.get(`http://localhost:3001/users/findAll`)
+
+            console.log(data)
             setusers(data.data)
         } catch (error) {
             console.log(error)
@@ -58,7 +60,7 @@ const AddDocuments = () => {
 
            
             let formData = new FormData()
-            console.log(formData)
+            // console.log(formData)
             formData.append('doc_type_id',parseInt(documentsData.doc_type_id))
             formData.append('file',file,file.name)
             formData.append('user_id',documentsData.user_id)
@@ -73,11 +75,12 @@ const AddDocuments = () => {
                 user_id: documentsData.user_id,
                 status:isBool
             }
-            console.log(formData)
+            // console.log(formData)
             const postRequest = await axios.post(`http://localhost:3001/user-docs/create`,formData,{
                 'Content-type':'multipart/mixed'
             })
             console.log(postRequest)
+            window.location.reload()
         }
         catch(error)
         {

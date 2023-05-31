@@ -37,6 +37,8 @@ const AddJobApplicants = () => {
       const postRequest = await axios.post(`http://localhost:3001/job-applicants/create`,postData,{
         'Content-type':'application/json'
       })
+
+      console.log(postData)
      window.history.back()
     } catch (error) {
       console.log(error)

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import './styles/login.css'
 import axios from 'axios'
 import image from './image.svg'
@@ -8,13 +8,15 @@ import {useCookies} from 'react-cookie'
 import{decodeToken , isExpired} from 'react-jwt'
 import {useNavigate} from 'react-router-dom'
 import { checkRole, loginCheck} from '../Helper/Auth'
+import useAuth from '../Helper/useAuth'
+
 
 const Login = () => {   
     const [login,setLogin] = useState(false);
     const [details,setDetails] = useState({})
     let history = useNavigate()
-   
-
+    const {user,setUser} = useAuth()
+    const navigate = useNavigate()
     const [cookie,setCookie] = useCookies(['accessToken']);
 
     const handleSubmit = async(e)=>{
@@ -29,11 +31,24 @@ const Login = () => {
             setCookie('accessToken',res.data.data.accessToken)
             const {payload} = decodeToken(res.data.data.accessToken)
             const User = await loginCheck(payload)
+            setUser(User)
             setCookie('login_type',res.data.data.role)
-           
+            
             if(User)
             {
-                window.location.href='/home'
+                if(res.data.data.role===9)
+                {
+                    navigate('/adminDash')
+                }
+                else if(res.data.data.role===10)
+                {
+                    navigate('/hrDash')
+                }
+                else if(res.data.data.role===11)
+                {
+                    navigate('/empDash')
+                }
+               
             }
         } catch (error) {
             console.log(error)

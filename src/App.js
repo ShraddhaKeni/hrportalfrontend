@@ -69,7 +69,9 @@ import NavBarNew from './components/NavBarNew';
 import Viewhrsupport from './pages/hrsupport/hrsupport';
 import Countrystatecity from './components/Countrystatecity';
 import Home from './pages/Home/Home';
-import { checkAccess } from './pages/Helper/Auth';
+import { checkAccess, checkCookies } from './pages/Helper/Auth';
+import  RequireAuth  from './pages/Helper/RequireAuth';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
 
@@ -81,13 +83,16 @@ function App() {
         <Routes>
 
           {/* home routes */}
+         
+            {/* routes for designation */}
           <Route path="/" element={<Login/>}></Route>
 
-          {/* routes for designation */}
+
+      {/* Admin Routes */}
+
+        <Route element={<RequireAuth allowedRole={[9]}/>}>
           <Route path="/designation" element={<Designation/>}></Route>
           <Route path="/add-designation" element={<AddDesignation />}></Route>
-
-          {/* routes for roles */}
           <Route path="/roles" element={<Roles />}></Route>
           <Route path="/add-roles" element={<AddRoles />}></Route>
 
@@ -136,32 +141,64 @@ function App() {
           {/* routes for reporting */}
           <Route path="/reporting" element={<Reportingto />}></Route> 
           <Route path="/add-reporting" element={<AddReportingto />}></Route> 
-
-
-
           <Route path="/test" element={<Test />}></Route>
           <Route path="/address" element={<Address />}></Route>
-          <Route path="/jobs" element={<Jobs />}></Route> 
+          <Route path="/jobs" element={<Jobs />}></Route>
           <Route path="/Updatejobs" element={<UpdateJobs />}></Route>
           <Route path="/viewJobs" element={<Viewjobs />}></Route>
-          <Route path="/viewAddress" element={<ViewAddress />}></Route>
-          <Route path="/userDocuments" element={<UserDocuments />}></Route>
-          <Route path="/addUserDocuments" element={<AddDocuments />}></Route>
           <Route path="/viewApplicants" element={<ViewJobApplicants/>}></Route>
           <Route path="/addApplicants" element={<AddJobApplicants/>}></Route>
           <Route path="/updateApplicants" element={<UpdateJobApplicants/>}></Route>
           <Route path="/viewApplicationTrack" element={<ViewApplicationTrack/>}></Route>
           <Route path="/addApplicationTrack" element={<AddApplicationTrack/>}></Route>
-          <Route path="/offboard" element={<ViewOffboard/>}></Route>
-          <Route path="/addoffboard" element={<AddOffboard/>}></Route>
-          <Route path="/hrsupport" element={<Viewhrsupport/>}></Route>
-          <Route path="/home" element={<Home/>}></Route>
+        </Route>
+
+          
+        <Route path='/error' element={<ErrorPage></ErrorPage>}></Route>
          
+
+          {/* HR Routes */}
+          <Route element={<RequireAuth allowedRole={[10,9]}/>}>  
+            <Route path="/jobs" element={<Jobs />}></Route>
+            <Route path="/Updatejobs" element={<UpdateJobs />}></Route>
+            <Route path="/viewJobs" element={<Viewjobs />}></Route>
+            <Route path="/viewApplicants" element={<ViewJobApplicants/>}></Route>
+            <Route path="/addApplicants" element={<AddJobApplicants/>}></Route>
+            <Route path="/updateApplicants" element={<UpdateJobApplicants/>}></Route>
+            <Route path="/viewApplicationTrack" element={<ViewApplicationTrack/>}></Route>
+            <Route path="/employees" element={<Employees />}></Route>
+            <Route path="/add-employees" element={<AddEmployees />}></Route>
+            <Route path="/addApplicationTrack" element={<AddApplicationTrack/>}></Route>
+            <Route path="/viewAddress" element={<ViewAddress />}></Route>
+            <Route path="/userDocuments" element={<UserDocuments />}></Route>
+            <Route path="/addUserDocuments" element={<AddDocuments />}></Route>
+            <Route path="/offboard" element={<ViewOffboard/>}></Route>
+            <Route path="/addoffboard" element={<AddOffboard/>}></Route>
+            <Route path="/hrsupport" element={<Viewhrsupport/>}></Route>
+          </Route>
+          
+         
+          <Route element={<RequireAuth allowedRole={[9]}/>}>  
+            <Route path="/adminDash" element={<Home/>}></Route>
+          </Route>
+          <Route element={<RequireAuth allowedRole={[10]}/>}>  
+            <Route path="/hrDash" element={<Home/>}></Route>
+          </Route>
+          <Route element={<RequireAuth allowedRole={[11]}/>}>  
+            <Route path="/empDash" element={<Home/>}></Route>
+            <Route path="/jobs" element={<Jobs />}></Route>
+          </Route>
         </Routes>
         
       </div>
   );
 }
 
+
+export const Main=()=>{
+  return <h1>
+    Home
+  </h1>
+}
 
 export default App;

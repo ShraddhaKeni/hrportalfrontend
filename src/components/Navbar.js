@@ -1,14 +1,16 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styled from 'styled-components';
 import './App.css';
 import {Link} from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 // import { AiOutlineConsoleSql } from "react-icons/ai";
 import * as AiIcons from 'react-icons/ai';
-import { NavbarData } from "./NavbarData";
+import  NavbarData  from "./NavbarData";
 import Submenu from "./Submenu";
 import { IconContext } from "react-icons/lib";
 import './navbar.css'
+import useAuth from "../pages/Helper/useAuth";
+import { checkCookies } from "../pages/Helper/Auth";
 
 const Nav = styled.div`
      background: #E5E5E5;
@@ -62,9 +64,15 @@ const UserIcon = styled(Link)`
 
 const Navbar = () =>{
     const [navbar, setNavbar] = useState(false)
-
+    const [navbarData,setData] = useState([])
+    const {user,setUser} = useAuth()
     const showNavbar = () => setNavbar(!navbar)
-   
+    
+    useEffect(()=>{
+      filterArr(NavbarData).then(resp=>{
+        setData(resp)
+      })
+    },[])
 
     return(
         <>
@@ -78,9 +86,9 @@ const Navbar = () =>{
                     <FaIcons.FaUserCircle onClick={showNavbar} className="FaUserCircleSize"/>
                    
                 </UserIcon>
-                <label className="UserNameLabel">User Name</label>
+                <label className="UserNameLabel">{user.username}</label>
                 <div className="LogOutBuTTon">
-                <button className="btn btn-primary">Logout</button>
+                <button onClick={()=>setUser(null)} className="btn btn-primary">Logout</button>
             </div>
             </Nav>
             <div className="lowerborder"></div>
@@ -91,7 +99,7 @@ const Navbar = () =>{
                     <AiIcons.AiOutlineClose onClick={showNavbar}/>
                     <img src="/images/axzorapvtltdLogo.png" alt="" className="SideBarLogo"/>
                 </NavIcon>
-                {NavbarData.map((item,index) =>{
+                {navbarData.map((item,index) =>{
                     return <Submenu item={item} key={index} />;
                 }) 
                 }
@@ -101,6 +109,22 @@ const Navbar = () =>{
         </>
     );
 };     
+
+
+const filterArr = async(menuItems)=>{
+    let role = await checkCookies('login_type')
+    if(role==10)
+    {
+        return menuItems.filter(item=>item.title!=='Designation'&&item.title!=='Roles'&&item.title!=='Add Data'&&item.title!=='Document type'&&item.title!=='Companies'&&item.title!=='Department'&&item.title!=='Level types')
+    }
+    else
+    {
+        return menuItems
+    }
+
+    
+   
+}
 
 
 // function Navbar(){

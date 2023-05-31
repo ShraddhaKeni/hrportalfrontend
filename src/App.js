@@ -166,8 +166,6 @@ function App() {
             <Route path="/addApplicants" element={<AddJobApplicants/>}></Route>
             <Route path="/updateApplicants" element={<UpdateJobApplicants/>}></Route>
             <Route path="/viewApplicationTrack" element={<ViewApplicationTrack/>}></Route>
-            <Route path="/employees" element={<Employees />}></Route>
-            <Route path="/add-employees" element={<AddEmployees />}></Route>
             <Route path="/addApplicationTrack" element={<AddApplicationTrack/>}></Route>
             <Route path="/viewAddress" element={<ViewAddress />}></Route>
             <Route path="/userDocuments" element={<UserDocuments />}></Route>

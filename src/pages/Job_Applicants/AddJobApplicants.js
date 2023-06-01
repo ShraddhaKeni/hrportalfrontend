@@ -12,7 +12,7 @@ const AddJobApplicants = () => {
 
   const getJobsData = async () =>{
     try {
-      const {data}= await axios.get(`http://localhost:3001/jobs/findAll`)
+      const {data}= await axios.get(`/jobs/findAll`)
       setjobs(data.data)
     } catch (error) {
       console.log(error)
@@ -26,15 +26,17 @@ const AddJobApplicants = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault()
     try {
+   
       const postData = {
-        contact_no: createData.contact_no,
+        contact_no: document.getElementById('contactno').value.toString(),
         cv: createData.cv,
         email_id: createData.email_id,
         job_id: parseInt(createData.job_id),
         name: createData.name,
         status:true
       }
-      const postRequest = await axios.post(`http://localhost:3001/job-applicants/create`,postData,{
+      
+      const postRequest = await axios.post(`http://localhost:3000/job-applicants/create`,postData,{
         'Content-type':'application/json'
       })
      window.history.back()
@@ -61,7 +63,7 @@ const AddJobApplicants = () => {
       </div>
       <div class="col-md-6">
                     <label for="contactno" class="form-label SelectLabel" style={{marginLeft: '7%'}}>Contact Number:</label>
-                    <input class="form-control SelectField" style={{marginLeft: '7%' , padding: '2%'}} id="contactno" type='number'  nonChange={handleChange} name='contact_no' placeholder='Enter Phone number here' required />
+                    <input class="form-control SelectField" style={{marginLeft: '7%' , padding: '2%'}} id="contactno" type='number'  onChange={handleChange} name='contact_no' placeholder='Enter Phone number here' required />
       </div>
       <div class="col-md-6">
                     <label for="email" class="form-label InputLabel">Email:</label>

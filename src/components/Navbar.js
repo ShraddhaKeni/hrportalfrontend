@@ -74,6 +74,17 @@ const Navbar = () =>{
       })
     },[])
 
+    const logOutUser=async()=>{
+        try {
+            document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; Max-Age=-99999";
+            document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;Max-Age=-99999";
+            document.cookie = "login_type=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;Max-Age=-99999";
+            setUser(null)
+        } catch (error) {
+            
+        }
+    }
+
     return(
         <>
         <IconContext.Provider value={{ color : '#fff'}}>
@@ -88,7 +99,7 @@ const Navbar = () =>{
                 </UserIcon>
                 <label className="UserNameLabel">{user.username}</label>
                 <div className="LogOutBuTTon">
-                <button onClick={()=>setUser(null)} className="btn btn-primary">Logout</button>
+                <button onClick={()=>logOutUser()} className="btn btn-primary">Logout</button>
             </div>
             </Nav>
             <div className="lowerborder"></div>

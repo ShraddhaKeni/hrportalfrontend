@@ -9,8 +9,7 @@ const RequireAuth = ({allowedRole})=>{
     let role = user!=null?[user.role_id]:[0]
     return(
        
-      allowedRole.find(x=>role.includes(x))?<Outlet/>
-            :<Navigate to={'/'} state={{from:location}} replace />
+      allowedRole.find(x=>role.includes(x))?<Outlet/>:user?<Navigate to={'/error'} state={{from:location}} replace/>:<Navigate to={'/'} state={{from:location}} replace />
     )
 }
 

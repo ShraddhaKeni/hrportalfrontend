@@ -92,7 +92,7 @@ const UserDocuments = () => {
     {
         return <UpdateDocuments updates={toUpdate}></UpdateDocuments>
     }
-else{
+    else{
         return (
             <>
             <Navbar/>

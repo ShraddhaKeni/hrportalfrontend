@@ -30,7 +30,8 @@ const UpdateDocuments = ({updates}) => {
         try {
             const {data} = await axios.get(`http://localhost:3001/document-type/findAll`)
             setDocTypes(data.data)
-            
+            document.getElementById('doc_type').value=documentsData.doc_type_id
+         
         } catch (error) {
             console.log(error)
         }
@@ -118,7 +119,7 @@ const UpdateDocuments = ({updates}) => {
                 <lable>
                      {console.log(file)}
                     Document Type: 
-                    <select name='doc_type_id' ref={docTypeRef} onChange={()=>setData({...documentsData,doc_type_id:docTypeRef.current.value})} defaultValue={updates.doc_type_id}>
+                    <select name='doc_type_id' ref={docTypeRef} id='doc_type'  onChange={()=>setData({...documentsData,doc_type_id:docTypeRef.current.value})} defaultValue={updates.doc_type_id}>
                         <option>Select Doc Type</option>
                         {docTypes.map((item)=>{
                            return <option key={item.id} value={item.id}>{item.name}</option>

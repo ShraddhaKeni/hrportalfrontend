@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import axios from 'axios'
 import EmpCards from './EmpCards'
@@ -7,6 +7,7 @@ import './styles/hrdash.css'
 const HRDash = () => {
 
     const [employees,setEmp] = useState([])
+    const sigCanvas = useRef([])
 
     useEffect(()=>{
         getEmployees()
@@ -20,6 +21,8 @@ const HRDash = () => {
             
         }
     }
+    const [openModel, setOpenModal] = useState(false);
+
 
 
   return (
@@ -27,11 +30,17 @@ const HRDash = () => {
         <Navbar/>
        
         <div className='hrdash-block'>
-            {employees.map(emp=>{
+        
+        
+        
+      
+
+
+            {/* {employees.map(emp=>{
                 return (
                     <EmpCards name={emp.name} emp_code={emp.emp_code} email={emp.email} doj={emp.doj}></EmpCards>
                 )
-            })}
+            })} */}
         </div>
     </div>
   )

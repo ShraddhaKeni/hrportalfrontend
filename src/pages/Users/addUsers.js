@@ -58,7 +58,7 @@ export default class AddUsers extends Component {
     };
 
     handleChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({...this.state, [event.target.name]: event.target.value });
     }
 
     handleSubmit = event => {
@@ -71,7 +71,7 @@ export default class AddUsers extends Component {
             password: this.state.password,
             role_id: parseInt(this.state.role_id),
             dob: this.state.dob,
-            contact_no: this.state.contact_no,
+            contact_no: this.state.contactno,
             email: this.state.email,
             profile_pic: this.state.selectedFile,
         }
@@ -80,7 +80,7 @@ export default class AddUsers extends Component {
             password: this.state.password,
             role_id: parseInt(this.state.role_id),
             dob: this.state.dob,
-            contact_no: this.state.contact_no,
+            contact_no: this.state.contactno,
             email: this.state.email,
             profile_pic: this.state.selectedFile,
             emergency_no1: this.state.emergency_no1,
@@ -93,10 +93,15 @@ export default class AddUsers extends Component {
     }
 
     addUser(user){
-        console.log(user)
-        axios.post(`http://localhost:3001/users/signup`, user ,
+        let formData = new FormData()
+        for(let input of Object.keys(user))
         {
-            'Content-type':'application/json'
+            formData.append(input,user[input])
+        }
+
+        axios.post(`http://localhost:3001/users/signup`, formData ,
+        {
+            'Content-type':'multipart/form-data'
         }).then(res => {
             window.location.reload()
         })
@@ -172,7 +177,7 @@ export default class AddUsers extends Component {
 
                     <label className='addUser_contact_lable'>Contact no.:</label>
                     <Form.Group className="mb-3" >
-                        <input type="number" className='addUser_contact' name="contact_no" value={this.state.contact_no} placeholder="Enter contact no" maxLength="10" onChange={this.handleChange} required />
+                        <input type="number" className='addUser_contact' name="contact_no" value={this.state.contactno} placeholder="Enter contact no" maxLength="10" onChange={this.handleChange} required />
                     </Form.Group>
 
                     <br/>

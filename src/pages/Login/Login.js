@@ -15,7 +15,7 @@ const Login = () => {
     const [login,setLogin] = useState(false);
     const [details,setDetails] = useState({})
     let history = useNavigate()
-    const {user,setUser} = useAuth()
+    const {user,setUser,setLogged} = useAuth()
     const navigate = useNavigate()
     const [cookie,setCookie] = useCookies(['accessToken']);
 
@@ -31,7 +31,9 @@ const Login = () => {
             setCookie('accessToken',res.data.data.accessToken)
             const {payload} = decodeToken(res.data.data.accessToken)
             const User = await loginCheck(payload)
+            setCookie('logged',true)
             setUser(User)
+            setLogged(true)
             setCookie('login_type',res.data.data.role)
             
             if(User)

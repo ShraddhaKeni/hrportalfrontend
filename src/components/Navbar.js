@@ -65,7 +65,7 @@ const UserIcon = styled(Link)`
 const Navbar = () =>{
     const [navbar, setNavbar] = useState(false)
     const [navbarData,setData] = useState([])
-    const {user,setUser} = useAuth()
+    const {user,setUser,setLogged} = useAuth()
     const showNavbar = () => setNavbar(!navbar)
     
     useEffect(()=>{
@@ -79,7 +79,10 @@ const Navbar = () =>{
             document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; Max-Age=-99999";
             document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;Max-Age=-99999";
             document.cookie = "login_type=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;Max-Age=-99999";
+            document.cookie = "logged=false; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;Max-Age=-99999";
             setUser(null)
+            setLogged(false)
+            localStorage.clear()
         } catch (error) {
             
         }

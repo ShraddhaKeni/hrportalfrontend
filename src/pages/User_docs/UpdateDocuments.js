@@ -5,6 +5,7 @@ import axios from 'axios';
 import './styles/addDocuments.css'
 
 const UpdateDocuments = ({updates}) => {
+    //console.log(updates)
     const [documentsData , setData] = useState({
         doc_type_id:parseInt(updates.doc_type_id),
         doc_path:'',
@@ -30,6 +31,7 @@ const UpdateDocuments = ({updates}) => {
         try {
             const {data} = await axios.get(`http://localhost:3001/document-type/findAll`)
             setDocTypes(data.data)
+            document.getElementById('doc_type').value=documentsData.doc_type_id
             
         } catch (error) {
             console.log(error)
@@ -40,6 +42,8 @@ const UpdateDocuments = ({updates}) => {
         try {
             const {data} = await axios.get(`http://localhost:3001/users/findAll`)
             setusers(data.data)
+            console.log(documentsData.user_id)
+            document.getElementById('user_id').value = documentsData.user_id
         } catch (error) {
             console.log(error)
         }
@@ -70,7 +74,7 @@ const UpdateDocuments = ({updates}) => {
                 }
                 
                 
-                const postRequest = await axios.post(`/user-docs/create/${updates.id}`,formData,{
+                const postRequest = await axios.post(`http://localhost:3001/user-docs/create/${updates.id}`,formData,{
                     'Content-type':'multipart/x-www-form-urlencoded'
                 })
     
@@ -82,7 +86,7 @@ const UpdateDocuments = ({updates}) => {
                     user_id:documentsData.user_id,
                     status:isBool
                 }
-                const postRequest = await axios.patch(`/user-docs/update/${updates.user_id}/${updates.id}`,data,{
+                const postRequest = await axios.patch(`http://localhost:3001/user-docs/update/${updates.user_id}/${updates.id}`,data,{
                     'Content-type':'multipart/x-www-form-urlencoded'
                 })
                 window.location.reload()
@@ -116,9 +120,9 @@ const UpdateDocuments = ({updates}) => {
         <form onSubmit={handleSubmit}>
             <div className='form-div'>
                 <lable>
-                     {console.log(file)}
+                     {/* {console.log(updates.doc_type_id)} */}
                     Document Type: 
-                    <select name='doc_type_id' ref={docTypeRef} onChange={()=>setData({...documentsData,doc_type_id:docTypeRef.current.value})} defaultValue={updates.doc_type_id}>
+                    <select name='doc_type_id' id='doc_type' ref={docTypeRef} onChange={()=>setData({...documentsData,doc_type_id:docTypeRef.current.value})} defaultValue={updates.doc_type_id}>
                         <option>Select Doc Type</option>
                         {docTypes.map((item)=>{
                            return <option key={item.id} value={item.id}>{item.name}</option>
@@ -134,7 +138,7 @@ const UpdateDocuments = ({updates}) => {
                 <lable>
                     
                     Select User: 
-                    <select name='user_id' ref={userRef} onChange={()=>setData({...documentsData,user_id:userRef.current.value})} defaultValue={updates.user_id}>
+                    <select name='user_id' id='user_id' ref={userRef} onChange={()=>setData({...documentsData,user_id:userRef.current.value})} defaultValue={updates.user_id}>
                         <option>Select User</option>
                         {users.map((item)=>{
                            return <option key={item.id} value={item.id}>{item.username}</option>

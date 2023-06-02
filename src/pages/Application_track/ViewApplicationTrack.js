@@ -147,7 +147,7 @@ else
         <Navbar/>
         <div className='mainViewDesignation'>
         <div style={{display:'flex', margin: '3% 0% 0% 51%'}}>
-                    <div><b><h1>Applicantion Tracks</h1></b></div>
+                    <div><b><h1>Application Track</h1></b></div>
                     <div style={{marginLeft: '-5%'}}><Link to={{ pathname: "/addApplicationTrack" }}><button className='viewAddDesignationButton btn btn-primary'>Add track</button></Link></div>
                     </div>
        

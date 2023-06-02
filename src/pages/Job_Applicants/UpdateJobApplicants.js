@@ -23,6 +23,8 @@ const UpdateJobApplicants = ({applicant}) => {
     try {
       const {data} = await axios.get(`http://localhost:3001/jobs/findAll`);
       setJobs(data.data)
+      //console.log(applicant.job_id)
+      document.getElementById('job_id').value= applicant.job_id
     } catch (error) {
       console.log(error)
     }
@@ -64,7 +66,7 @@ const UpdateJobApplicants = ({applicant}) => {
   return (
     <div className='main'>
         <div className='application_form_update_container'>
-          {console.log(applicant.id)}
+          {/* {console.log(applicant.id)} */}
       <form onSubmit={handleSubmit} className='update_application_form'> 
       
         <div className='form_div'>
@@ -91,7 +93,7 @@ const UpdateJobApplicants = ({applicant}) => {
           <lable className='update_job_application_lable'>
             Select Job
             </lable>
-            <select className='update_job_application' name='job_id' onChange={handleChange} defaultValue={applicant.job_id}>
+            <select className='update_job_application' id='job_id' name='job_id' onChange={handleChange} defaultValue={applicant.job_id}>
               <option>Select Job </option>
                 {jobs.map((item)=>{
                   return <option key={item.id} value={item.id}>{item.title}</option>

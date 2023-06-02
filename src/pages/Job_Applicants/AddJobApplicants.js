@@ -25,19 +25,20 @@ const AddJobApplicants = () => {
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
+    // console.log(createData)
     try {
       const postData = {
-        contact_no: createData.contact_no,
+        contact_no: document.getElementById('contactno').value.toString(),
         cv: createData.cv,
         email_id: createData.email_id,
         job_id: parseInt(createData.job_id),
         name: createData.name,
         status:true
       }
+      // console.log(postData)
       const postRequest = await axios.post(`http://localhost:3001/job-applicants/create`,postData,{
         'Content-type':'application/json'
       })
-
       console.log(postData)
      window.history.back()
     } catch (error) {
@@ -61,10 +62,10 @@ const AddJobApplicants = () => {
                     <label for="name" class="form-label InputLabel">Add Name:</label>
                     <input type="text" class="form-control InputField" id="name" onChange={handleChange} name='name' placeholder='Enter Name here' required />
       </div>
-      <div class="col-md-6">
+       <div class="col-md-6">
                     <label for="contactno" class="form-label SelectLabel" style={{marginLeft: '7%'}}>Contact Number:</label>
                     <input class="form-control SelectField" style={{marginLeft: '7%' , padding: '2%'}} id="contactno" type='number'  nonChange={handleChange} name='contact_no' placeholder='Enter Phone number here' required />
-      </div>
+      </div> 
       <div class="col-md-6">
                     <label for="email" class="form-label InputLabel">Email:</label>
                     <input type="email" class="form-control SelectField" style={{marginLeft: '5%' , padding: '2%'}}  id="email" onChange={handleChange} name='email_id' placeholder='Enter Email here' required />

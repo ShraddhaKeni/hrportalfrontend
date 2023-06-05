@@ -23,6 +23,9 @@ const UpdateApplicationTrack = ({trackData}) => {
             const {data} = await axios.get(`http://localhost:3001/job-applicants/findAll`)
             setApplicantData(data.data)
             setDefaultApplicant(applicantData.find(x=>x.id==trackData.applicant_id))
+            //console.log(addTrack.applicant_id)
+            document.getElementById('applicant_id').value = addTrack.applicant_id
+
         } catch (error) {
             console.log(error)
         }
@@ -32,6 +35,7 @@ const UpdateApplicationTrack = ({trackData}) => {
         try {
             const {data} = await axios.get(`http://localhost:3001/employees`)
             setEmployees(data.data)
+            document.getElementById('emp_id').value = addTrack.emp_id
         } catch (error) {
             console.log(error)
         }
@@ -113,7 +117,7 @@ const UpdateApplicationTrack = ({trackData}) => {
                     Select Applicant:
                     </lable>
 
-                    <select className='applicant_select' name='applicant_id' onChange={dataChange} onLoad={dataChange} defaultValue={trackData.applicant_id}>
+                    <select className='applicant_select' id='applicant_id' name='applicant_id' onChange={dataChange} onLoad={dataChange} defaultValue={trackData.applicant_id}>
                         <option value={0}>Select Applicant</option>
                         {applicantData.map(item=>{
                             return <option key={item.id} value={item.id}>{item.name}</option>
@@ -133,7 +137,7 @@ const UpdateApplicationTrack = ({trackData}) => {
                 <lable className='applicant_employee_lable_update' style={{marginTop:'10px'}}>
                     Employee:
                     </lable>
-                    <select className='applicant_employee_update' name='emp_id' onChange={handleChange} defaultValue={trackData.emp_id}>
+                    <select className='applicant_employee_update' id='emp_id' name='emp_id' onChange={handleChange} defaultValue={trackData.emp_id}>
                         <option value={0}>Select Employee</option>
                         {employees.map(item=>{
                             return <option key={item.id} value={item.id}>{item.name}</option>

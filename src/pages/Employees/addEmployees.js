@@ -24,7 +24,10 @@ export default class AddEmployees extends Component {
             DesignData: [],
             status: "true",
             error: "",
-            openCanvas:false
+            openCanvas:false,
+            upload:false,
+            sign_status:false,
+            blob:null,
         }
     }
 
@@ -98,9 +101,9 @@ export default class AddEmployees extends Component {
 
             }
             : employee = {
-                name: this.state.name,
-                comp_id: this.state.comp_id,
-                user_id: this.state.user_id,
+                name: String(this.state.name),
+                comp_id: String(this.state.comp_id),
+                user_id: String(this.state.user_id),
                 desig_id: parseInt(this.state.desig_id),
                 dept_id: parseInt(this.state.dept_id),
                 email: this.state.email,
@@ -115,26 +118,37 @@ export default class AddEmployees extends Component {
     }
 
     addEmployee(employee) {
-        console.log(employee)
-        const isBool = employee.status.toString().toLowerCase() == 'true'
         let formData= new FormData()
-        formData.append('name',this.state.name)
-        formData.append('comp_id',this.state.comp_id)
-        formData.append('user_id',this.state.user_id)
-        formData.append('email',this.state.email)
-        formData.append('desig_id',(this.state.desig_id))
-        formData.append('dept_id',(this.state.dept_id))
-        formData.append('status',isBool)
-        formData.append('doj',this.state.doj)
-        formData.append('signature',this.state.signature,this.state.signature.name)
-        formData.append('emp_code',this.state.emp_code)
+        for(let input of Object.keys(employee))
+            {
+                if(input=='status'||input=='signature')
+                {
+                    continue;
+                }
+                else
+                {
+                   formData.append(input,employee[input]);
+                }
+              
+            }
+        formData.append('status',this.state.status===true?'true':'false');
+        if(this.state.sign_status)
+        {
+            formData.append('signature',this.state.blob,`${this.state.name}-signature.png`);
+        }
+        else
+        {
+            formData.append('signature',this.state.signature,this.state.signature.name);
+        }
+       
+       
         const config = {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         }
 
-        axios.post(`/employees/create`, formData,
+        axios.post(`http://localhost:3000/employees/create`, formData,
            config).then(res => {
                 console.log("printing result: ")
                 console.log(res)
@@ -149,8 +163,53 @@ export default class AddEmployees extends Component {
     }
 
     editEmployee(employee) {
-        console.log(employee)
-        axios.patch(`http://localhost:3001/employees/` + this.state.employee, employee,
+       
+        if(this.state.upload)
+        {
+           
+            let formData= new FormData()
+            for(let input of Object.keys(employee))
+            {
+                if(input=='status'||input=='signature')
+                {
+                    continue;
+                }
+                else
+                {
+                   formData.append(input,employee[input]);
+                }
+              
+            }
+            if(this.state.sign_status)
+            {
+                formData.append('signature',this.state.blob,`${this.state.name}-signature.png`)
+            }
+            else
+            {
+                formData.append('signature',this.state.signature,this.state.signature.name)
+            }
+            formData.append('status',this.state.status===true?'true':'false')
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+           
+            
+            axios.post(`http://localhost:3001/employees/update/${this.state.employee}`,formData,config)
+                .then(res=>{
+                    alert('Employee Updated')
+                    window.location.reload()
+                })
+                .catch(err=>{
+                    alert(err)
+                })
+    
+        }
+
+        else
+        {
+            axios.patch(`http://localhost:3001/employees/` + this.state.employee, employee,
             {
                 'Content-type': 'application/json'
             }).then(res => {
@@ -161,6 +220,12 @@ export default class AddEmployees extends Component {
                     alert(JSON.parse(err2.message).message[0])
                 }
             });
+        }
+
+
+
+
+        
     }
 
     cancel() {
@@ -176,9 +241,7 @@ export default class AddEmployees extends Component {
                     <button type='button' onClick={()=>this.setState({openCanvas:false})}>Cancel</button>
                     <button type='button' onClick={()=>this.sigCanvas.current.clear()}>Clear</button>
                     <button type='button' onClick={()=>this.saveCanvas()}>Save</button>
-                  </div>
-
-                  
+                  </div>                  
                   <SignatureCanvas ref={this.sigCanvas} penColor="black" canvasProps={{ className: "sigCanvas" }} />
                 </div>
               </div>
@@ -190,13 +253,20 @@ export default class AddEmployees extends Component {
        let image = e.target.files[0]
        if(image.type=='image/png'||image.type=='image/jpg')
        {
+        this.setState({sign_status:false})
+        this.setState({upload:true})
         this.setState({signature:image})
        }
     }
 
     saveCanvas=()=>{
-        let url = this.sigCanvas.current.getTrimmedCanvas().toDataURL("image/png");
-        console.log(url)
+        let url = this.sigCanvas.current.getTrimmedCanvas().toDataURL("image/png"); //for json
+        let canvas = this.sigCanvas.current.getCanvas() //for formdata
+        this.setState({sign_status:true})
+        canvas.toBlob(blob=>{
+            this.setState({blob:blob})
+            this.setState({openCanvas:false})
+        })
     }
 
     render() {
@@ -294,7 +364,7 @@ export default class AddEmployees extends Component {
                             <input className='addCompany_signature' type="file" name="signature" placeholder="Signature" value={''} defaultValue={this.state.signature} onChange={(e)=>this.handleFile(e)} />
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <button type='button' onClick={()=>this.setState({openCanvas:!this.state.openCanvas})}>Add Signature</button>
+                            <button type='button' className='signature-canvas-button' onClick={()=>this.setState({openCanvas:!this.state.openCanvas})}>Add Signature</button>
                         </Form.Group>
                         </div>  
 

@@ -12,7 +12,7 @@ const RequireAuth = ({allowedRole})=>{
     let login_type = checkCookies('login_type')
 
     let role = [parseInt(login_type)]
-    if(allowedRole.find(x=>role.includes(x)))
+    if(allowedRole.find(x=>role.includes(x))&&cookie)
     {
       return <Outlet/>
     }
@@ -24,10 +24,6 @@ const RequireAuth = ({allowedRole})=>{
     {
       return <Navigate to={'/'} state={{from:location}} replace />
     }
-    // return(
-       
-    //   allowedRole.find(x=>role.includes(x))?<Outlet/>:isLogged?<Navigate to={'/error'} state={{from:location}} replace/>:<Navigate to={'/'} state={{from:location}} replace />
-    // )
 }
 
 const checkCookies=(name)=>{
@@ -39,8 +35,5 @@ const checkCookies=(name)=>{
   }
   
 }
-
-
-
 
 export default RequireAuth

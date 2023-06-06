@@ -361,7 +361,7 @@ export default class AddEmployees extends Component {
                  <label className='addCompany_signature_lable'>Signature:</label>
 
                         <Form.Group className="mb-3" >
-                            <input className='addCompany_signature' type="file" name="signature" placeholder="Signature" value={''} defaultValue={this.state.signature} onChange={(e)=>this.handleFile(e)} />
+                            <input className='addCompany_signature' type="file" name="signature" placeholder="Signature" defaultValue={this.state.signature} onChange={(e)=>this.handleFile(e)} />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <button type='button' className='signature-canvas-button' onClick={()=>this.setState({openCanvas:!this.state.openCanvas})}>Add Signature</button>

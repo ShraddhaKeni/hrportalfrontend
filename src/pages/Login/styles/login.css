@@ -189,3 +189,36 @@ input::placeholder {
 }
 
 }
+
+
+.wrong-input-animation
+{
+  border: 1px solid red;
+  transition: 0.1s ease-in-out all;
+  animation: shakeAnimation 1.5s ease-in-out;
+  
+}
+
+
+@keyframes shakeAnimation {
+    0%{
+      transform: translateX(0px);
+      border: 1px solid red;
+      }
+    20%{
+      transform: translateX(20px);
+      border: 1px solid red;
+    }
+    50%{
+      transform: translateX(-20px);
+      border: 1px solid red;
+    }
+    75%{
+      transform: translateX(20px);
+      border: 1px solid red;
+    }
+    100%{
+      transform: translateX(0px);
+      border: 1px solid red;
+    }
+}

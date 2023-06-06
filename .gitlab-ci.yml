@@ -1,0 +1,29 @@
+stages:
+    - build
+    - deploy
+build:
+    stage: build
+    tags: 
+        - axr-hr-portal
+    script:
+        - echo "Building deploy package"
+        - yarn install
+        - yarn build
+        - echo "Build successful"
+    artifacts:
+        expire_in: 1 hour
+        paths:
+            - build
+deploy_production:
+    stage: deploy
+    tags: 
+      - axr-hr-portal
+    script:
+        - echo "Deploying to server"
+        - cp -rv build/* /var/www/hr-portal.axzora.in/
+        - echo "Deployed"
+    environment:
+        name: production
+        url: http://hr-portal.axzora.in/
+    only:
+        - develop

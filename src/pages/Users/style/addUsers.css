@@ -1,0 +1,310 @@
+.addUser_form
+{
+    position: absolute;
+    background-color: white;
+    width: 800px;
+    left:550px;
+    min-height: 500px;
+    border-radius: 45px;
+    top:200px
+}
+
+.addUser_name_label
+{
+    position: relative;
+    top:20px;
+    left:40px; 
+    font-weight: 800;
+}
+
+.addUser_name
+{
+    position: relative;
+    width: 700px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    top:45px;
+    outline: none;
+    border: none;
+    right: 50px;
+}
+
+.addUser_password_lable
+{
+font-size: 1.1vw;
+margin-left: 10%;
+font-family: 'Poppins', sans-serif;
+font-style: normal;
+}
+
+.InpuTContainer{
+    display: flex;
+}
+.addUser_password
+{
+    /* background: #F1F1F1;
+    width: 35%;
+    margin-right: 45%;
+    background-color: #f1f1f1;
+    outline: none;
+    height: 4.5vh;
+    border: none;
+    display: inline-block;
+    margin-top: 0%;
+    font-size: 0.9vw; */
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    top:58px;
+    left:-245px;
+    outline: none;
+    border: none;
+}
+
+.addUser_role_lable
+{
+    position: relative;
+    top:-22px;
+    left:385px; 
+    font-weight: 800;
+}
+
+.addUser_role
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    top:3px;
+    left:90px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.addUser_dob_lable
+{
+    position: relative;
+    top:-10px;
+    left:40px; 
+    font-weight: 800;
+}
+
+.addUser_dob
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    top:15px;
+    left:-227px;
+    outline: none;
+    border: none;
+    font-size: 12px;
+   
+}
+
+
+.addUser_contact_lable
+{
+    position: relative;
+    top:-65px;
+    left:385px; 
+    font-weight: 800;
+}
+
+.addUser_contact
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-39px;
+    left:90px;
+}
+
+.addUser_email_lable
+{
+    position: relative;
+    top:-40px;
+    left:40px; 
+    font-weight: 800;
+
+}
+
+.addUser_email
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-12px;
+    left:-232px;
+}
+.addUser_profile_lable
+{
+    position: relative;
+    top:-95px;
+    left:385px; 
+    font-weight: 800;
+}
+
+.addUser_profile
+{
+    position: relative;
+    width: 300px;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-65px;
+    left:230px;
+}
+
+.save_User
+{
+    border: none;
+    outline: none;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background-color: #732B2B ;
+    font-size: 12px;
+    position: relative;
+    bottom: 60px;
+}
+
+.cancel_User
+{
+    border: none;
+    outline: none;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background-color: #552D59 ;
+    font-size: 12px;
+    position: relative;
+    bottom: 60px;
+    margin-left: 30px;
+    right: 10px;
+}
+
+.user_buttons
+{
+    position: relative;
+    left:-30px;
+    top:0px;
+}
+
+.form_container_addUser
+{
+    position: relative;
+    top:50px
+}
+
+.user_buttons_edit
+{
+    position: relative;
+    left:-30px;
+    top:0px;
+}
+
+.addUser_form_edit
+{
+    position: absolute;
+    background-color: white;
+    width: 800px;
+    left:550px;
+    min-height: 700px;
+    border-radius: 45px;
+    top:200px;
+}
+
+.addUser_emergency1_lable
+{
+    position: relative;
+    top:-70px;
+    left:40px; 
+    font-weight: 800;   
+}
+.addUser_emergency1
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-40px;
+    left:-265px;
+}
+
+.addUser_emergency2_lable
+{
+    position: relative;
+    top:-125px;
+    left:385px; 
+    font-weight: 800;
+}
+.addUser_emergency2
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-95px;
+    left: 75px;
+}
+
+.addUser_status_lable
+{
+    position: relative;
+    top:-90px;
+    left:340px; 
+    font-weight:800; 
+}
+.addUser_status
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    top:-60px;
+    left:-50px;
+    text-align: center;
+}
+
+.user_buttons_edit
+{
+    position: relative;
+    top:30px;
+}

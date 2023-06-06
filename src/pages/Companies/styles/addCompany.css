@@ -1,0 +1,438 @@
+.addCompany_form
+{
+    position: absolute;
+    background-color: white;
+    width: 800px;
+    left:550px;
+    height: 800px;
+    border-radius: 45px;
+    top:100px
+}
+.mainAddCompanies{
+    position: absolute;
+    width: 50vw;
+    height: auto;
+    margin-left: 33%;
+    margin-top: 3%;
+    background: #FFFFFF;
+    border-radius: 45px;
+    padding: 1%;
+}
+.InputLabel{
+    margin: 2% 5% 1% 5%;
+}
+.SelectLabel{
+    margin: 2% 5% 1% 8%;
+}
+.InputField{
+    width: 90%;
+    height: auto;
+    padding: 1%;
+    background-color: #f1f1f1;
+    border: none;
+    margin-left: 5%;
+}
+.SelectField{
+    width: 87%;
+    height: auto;
+    padding: 1.7%;
+    background-color: #f1f1f1;
+    border: none;
+    margin-left: 3%;
+}
+.company_name_lable
+{
+    position: relative;
+    top:20px;
+    left:40px; 
+    font-weight: 800;
+}
+
+.company_name
+{
+    position: relative;
+    width: 700px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    top:25px;
+    outline: none;
+    border: none;
+    right: 9px;
+}
+
+.addCompany_address_lable
+{
+    position: relative;
+    top:20px;
+    left:40px; 
+    font-weight: 800;
+}
+
+.addCompany_address
+{
+    position: relative;
+    width: 700px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    top:25px;
+    outline: none;
+    border: none;
+    right: 9px;
+}
+
+.addCompany_chooseContry_lable
+{
+    position: relative;
+    top:20px;
+    left:40px; 
+    font-weight: 800;
+}
+
+.addCompany_chooseCountry
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    top:47px;
+    left:-264px;
+    outline: none;
+    border: none;
+}
+
+.addCompany_chooseState_lable
+{
+    position: relative;
+    top:-35px;
+    left:385px; 
+    font-weight: 800;
+}
+
+.addCompany_chooseState
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    top:-8px;
+    left:90px;
+    outline: none;
+    border: none;
+}
+
+.addCompany_chooseCity_lable
+{
+    position: relative;
+    top:-10px;
+    left:40px; 
+    font-weight: 800;
+}
+.addCompany_chooseCity
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    top:15px;
+    left:-249px;
+    outline: none;
+    border: none;
+   
+}
+
+.addCompany_pincode_lable
+{
+    position: relative;
+    top:-65px;
+    left:385px; 
+    font-weight: 800;
+}
+
+.addCompany_pincode{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-39px;
+    left:90px;
+}
+
+.addCompany_companyWebsite_lable
+{
+    position: relative;
+    top:-20px;
+    left:40px; 
+    font-weight: 800;
+}
+
+.addCompany_companyWebsite{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:5px;
+    left:-272px;
+}
+
+.addCompany_companyEmail_lable
+{
+    position: relative;
+    top:-75px;
+    left:385px; 
+    font-weight: 800;   
+}
+
+.addCompany_companyEmail{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-50px;
+    left:80px;   
+}
+
+.addCompany_contactPerson_lable
+{
+    position: relative;
+    top:-55px;
+    left:40px; 
+    font-weight: 800;   
+}
+
+.addCompany_contactPerson{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-28px;
+    left:-265px;
+}
+
+.addCompany_contactNo_lable
+{
+    position: relative;
+    top:-110px;
+    left:385px; 
+    font-weight: 800;   
+}
+.addCompany_contactNo
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-85px;
+    left:80px;
+}
+
+.addCompany_pancard_lable
+{
+    position: relative;
+    top:-90px;
+    left:40px; 
+    font-weight: 800;   
+}
+
+.addCompany_pancard
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-65px;
+    left:-270px;
+}
+
+.addCompany_gst_lable
+{
+    position: relative;
+    top:-142px;
+    left:385px; 
+    font-weight: 800; 
+}
+
+.addCompany_gst
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-119px;
+    left:95px;
+}
+
+.addCompany_cin_lable
+{
+    position: relative;
+    top:-120px;
+    left:340px; 
+    font-weight:800; 
+}
+
+.addCompany_cin
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+   text-indent: -20px;
+    border: none;
+    outline: none;
+    top:-90px;
+    left:-50px;
+    text-align: center;
+}
+
+.save_company
+{
+    border: none;
+    outline: none;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background-color: #732B2B ;
+    font-size: 12px;
+    position: relative;
+    bottom: 60px;
+}
+
+.cancel_company
+{
+    border: none;
+    outline: none;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background-color: #552D59 ;
+    font-size: 12px;
+    position: relative;
+    bottom: 60px;
+    margin-left: 30px;
+    right: 10px;
+}
+
+.addCompany_buttons
+{
+    position: relative;
+    left:-20px;
+    top:-30px;
+
+}
+
+.form_container_addCompany
+{
+    position: relative;
+    top:30px;
+    left:10px
+}
+
+.addCompany_cin_lable_edit
+{
+    position: relative;
+    top:-120px;
+    left:40px; 
+    font-weight:800; 
+}
+
+.addCompany_cin_edit
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:-95px;
+    left:-250px;
+    
+}
+
+.addCompany_status_lable
+{
+    position: relative;
+    top:-175px;
+    left:385px; 
+    font-weight: 800; 
+}
+
+.addCompany_status{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    bottom:150px;
+    left:90px;
+    outline: none;
+    border: none;
+}
+
+
+.addCompany_buttons_edit
+{
+    position: relative;
+    left:-20px;
+    top:-50px;
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .mainAddCompanies {
+        position: absolute;
+        width: 70vw;
+        height: auto;
+        margin-left: 27%;
+        margin-top: 2%;
+        background: #FFFFFF;
+        border-radius: 45px;
+        padding: 1%;
+    }
+
+
+
+
+
+}

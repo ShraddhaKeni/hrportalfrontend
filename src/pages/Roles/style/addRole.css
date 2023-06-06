@@ -1,0 +1,139 @@
+
+
+.addRole_form_container
+{
+    position: absolute;
+    top:40px;
+    margin-left: 20px;
+}
+
+.addRole_form
+{
+    background-color: white;
+    width: 800px;
+    height: 350px;
+    position: relative;
+    left:250px;
+    top:150px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 45px;
+    justify-content: center;
+}
+
+.role_name_lable
+{
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    left: 60px;
+    top:120px;
+    font-weight: 200;
+}
+
+.role_name{
+    margin-top: 5px;
+    position: relative;
+    top:150px;  
+    width: 650px;
+    right: 70px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: #E5E5E5;
+    text-indent:10px ;
+}
+.role_name_lable_edit
+{
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    left: 60px;
+    top:80px;
+    font-weight: 200;
+}
+
+.role_name_edit
+{
+    margin-top: 5px;
+    position: relative;
+    top:150px;  
+    width: 650px;
+    right: 70px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: #E5E5E5;
+    text-indent:10px ;
+}
+
+.save_role
+{
+    position: relative;
+    top: 120px;
+    right:30px;
+    background-color: #552D59;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    font-size: 12px;
+    height: 30px;
+}
+
+.cancel_role
+{
+    position: relative;
+    top: 120px;
+    right:20px;
+    background-color: #732B2B;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    font-size: 12px;
+    height: 30px;
+    margin-left: 30px;
+}
+
+.role_buttons
+{
+    position: relative;
+    top: 25px;
+    left: 20px;
+}
+
+.role_name_container
+{
+    position: relative;
+}
+
+.role_name_container_edit
+{
+    position: relative;
+    bottom:40px;
+}
+
+.role_status_lable
+{
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    left: 60px;
+    top: 110px;
+    font-weight: 200;
+}
+
+.role_status{
+    position: relative;
+    width: 650px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    top:140px;
+    right:55px
+
+}

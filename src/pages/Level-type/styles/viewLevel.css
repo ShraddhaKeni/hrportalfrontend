@@ -1,0 +1,73 @@
+.main_levelTypes > h2
+{
+    padding: 0px;
+    margin: 0;
+    position: relative;
+    background-color: #E5E5E5;
+    
+}
+
+.table_container_levelTypes
+{
+    background-color: white;
+    border-radius: 20px;
+    padding:0px;
+    position: absolute;
+    top:200px;
+    left:550px;
+    text-align: center;
+    min-width: 700px;
+    width: max-content;
+    min-height: 200px;
+    height: auto;
+    padding-bottom: 10px;   
+    width: 800px;
+}
+
+
+.table_levelTypes td{   
+    width: 20%;
+}
+
+.tablehead_levelTypes
+{
+}
+
+.table_levelTypes
+{
+    margin-top: 20px;
+    margin-left: -25px;
+    width: 800px;
+}
+
+.hr_tag
+{
+    width: 400%;
+    margin-left: 10%;
+    margin-bottom: 2px;
+    margin-top:4px;
+}   
+
+button
+{
+    height: fit-content;
+    width: 80px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 100;
+}
+
+.add_level
+{
+    height: 40px;
+    width: 120px;
+    float: right;
+    position: fixed;
+    bottom:780px;
+    right:550px;
+    z-index: 10;
+    background-color:#552D59 ;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}

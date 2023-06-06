@@ -1,0 +1,77 @@
+.table_reporting_container
+{
+    background-color: white;
+    border-radius: 20px;
+    padding:0px;
+    position: absolute;
+    top:210px;
+    left:450px;
+    text-align: center;
+    min-width: 700px;
+    width: max-content;
+    min-height: 200px;
+    height: auto;
+    padding-bottom: 10px;   
+    width: 900px;
+}
+
+.table_reporting{
+    
+    margin-top: 20px;
+    margin-left: -25px;
+    width: 900px;
+}
+
+.table_reporting th{
+    width: 20%;
+}
+.hr_viewtagreport{
+    width: 780%;
+    margin-left: 8%;
+    margin-bottom: 2px;
+    margin-top: 4px;
+    color: #732B2B;
+}
+button
+    {
+        width: 80px;
+        font-size: 15px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 100;
+        border-radius: 2px;
+    }
+
+.action_report
+{
+    border: none;
+    outline: none;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background-color: #732B2B ;
+    font-size: 12px;
+}
+
+.edit_report
+{
+    border: none;
+    outline: none;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background-color: #552D59 ;
+    font-size: 12px;
+}
+
+.add_report
+{
+    height: 40px;
+    width: 120px;
+    margin-left: 700px;
+    
+    margin-top: -20px;
+    background-color:#552D59 ;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}

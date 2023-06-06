@@ -1,0 +1,318 @@
+.addEmployee_form
+{
+    background-color: white;
+    position: absolute;
+    width: 800px;
+    height: 550px;
+    top: 250px;
+    left:500px;
+    border-radius: 45px;
+}
+
+.addEmployee_container
+{
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.addEmployee_form_edit
+{
+
+    background-color: white;
+    position: absolute;
+    width: 800px;
+    height: 650px;
+    top: 200px;
+    left:500px;
+    border-radius: 45px;
+}
+
+.addEmployee_name_lable
+{
+    position: relative;
+    top:20px;
+    left:80px
+}
+
+.addEmployee_name
+{
+    width: 600px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:50px;
+    left:-48px;
+    text-indent:10px;
+    background-color: var(--input-background-color);
+}
+.addEmployee_company_lable
+{
+    position: relative;
+    top:40px;
+    left:80px
+}
+
+.addEmployee_company
+{
+    width: 250px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:70px;
+    left:-263px;
+    text-indent:10px ;
+}
+
+.addEmployee_user_lable
+{
+    position: relative;
+    top:-20px;
+    left: 400px;
+}
+
+.addEmployee_user
+{
+    width: 250px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:11px;
+    left:77px;
+    text-indent:10px ;
+}
+
+.addEmployee_designation_lable
+{
+    position: relative;
+    top:5px;
+    left:80px
+}
+
+.addEmployee_designation
+{
+    width: 250px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:35px;
+    left:-268px;
+    text-indent:10px ;
+} 
+
+.addEmployee_department_lable
+{
+    position: relative;
+    top:-55px;
+    left: 400px;
+}
+
+.addEmployee_department
+{
+    width: 250px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:-24px;
+    left:50px;
+    text-indent:10px ;
+}
+
+.addEmployee_email_lable
+{
+    position: relative;
+    top:-35px;
+    left:80px
+}
+
+.addEmployee_email
+{
+    width: 250px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:-10px;
+    left:-220px;
+    text-indent:10px ;
+    background-color: var(--input-background-color);
+
+}
+
+.addEmployee_date_lable
+{
+    position: relative;
+    top:-95px;
+    left: 400px;
+ 
+}
+
+.addEmployee_date
+{
+    width: 250px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:-70px;
+    left:70px;
+    text-indent:10px ;
+    background-color: var(--input-background-color);
+}
+
+.addEmployee_employeeCode_lable
+{
+    position: relative;
+    top:-75px;
+    left:80px
+}
+
+.addEmployee_employeeCode{
+    width: 250px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:-50px;
+    left:-255px;
+    text-indent:10px ;
+    background-color: var(--input-background-color);
+}
+
+
+.addEmployee_buttons
+{
+    position: relative;
+    left:-20px;
+    top:0px;
+}
+
+.save_employee
+{
+    border: none;
+    outline: none;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background-color: #732B2B ;
+    font-size: 12px;
+    position: relative;
+    bottom: 60px;
+}
+
+.cancel_employee
+{
+    border: none;
+    outline: none;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background-color: #552D59 ;
+    font-size: 12px;
+    position: relative;
+    bottom: 60px;
+    margin-left: 50px;
+    right: 10px;
+}
+
+
+.addEmployee_buttons_edit
+{
+    position: relative;
+    left:-20px;
+    top:-50px;
+}
+
+.addCompany_signature
+{
+    width: 250px;
+    height: 40px;
+    outline: none;
+    border: none;
+    position: relative;
+    top:-80px;
+    left:330px;
+    
+    
+}
+
+.addCompany_signature_lable
+{
+    position: relative;
+    top:-115px;
+    left: 400px;
+}
+
+.addEmployee_status_lable
+{
+    position: relative;
+    top:-120px;
+    left:340px; 
+    font-weight:800; 
+}
+
+.addEmployee_status
+{
+    position: relative;
+    width: 300px;
+    background: #F1F1F1;
+    height: 35px;
+    border-radius: 4px;
+    
+    border: none;
+    outline: none;
+    top:-90px;
+    left:-45px;
+    text-align: center;
+}
+
+
+.signature_edit
+{
+    position: relative;
+    bottom: 20px;
+}
+
+.addEmployee_buttons_edit{
+    position: relative;
+    top:-10px;
+}
+
+
+.modalContainer {
+    position: fixed;
+    width: 75%;
+    height: 80%;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    transform: translate(-50%,-50%);
+}
+
+  ​
+  .modal{
+    width: 90%;
+    max-width: 500px;
+    border: 5px;
+    padding: 10px;
+    background-color: white;
+    box-sizing: border-box;
+  }
+  ​
+  .modal__bottom {
+    text-align: right;
+    margin-top: 10px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-evenly;
+    position: relative;
+    top: 6%;
+    right: 10%;
+  }

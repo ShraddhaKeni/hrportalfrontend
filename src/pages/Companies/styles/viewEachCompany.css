@@ -1,0 +1,68 @@
+
+.companies_table_container
+{
+    position: absolute;
+    width: 36vw;
+    height: 70vh;
+    background-color: white;
+    border-radius: 45px;
+    margin: 1% 0% 0% 42%;
+}
+
+.companies_table
+{
+    width: 31vw;
+    height: 62vh;
+    position: relative;
+    border-radius: 45px;
+    padding: 10px 0px;
+    justify-content: center;
+    margin: 7% 0% 0% 7%;
+    text-align: center;
+  
+}
+
+.companies_table tr
+{
+    border: 1px solid black;
+}
+.companies_table td
+{
+    border: 1px solid black;
+}
+
+.companies_back
+{
+    float: right;
+    height: 40px;
+    width: 120px;
+    margin-right: 120px;
+    background-color:#7A4069 ;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .companies_table {
+        width: 35vw;
+        height: 62vh;
+        position: relative;
+        border-radius: 45px;
+        padding: 10px 0px;
+        justify-content: center;
+        margin: 7% 0% 0% 7%;
+        text-align: center;
+    }
+    .companies_table_container {
+        position: absolute;
+        width: 42vw;
+        height: 70vh;
+        background-color: white;
+        border-radius: 45px;
+        margin: 1% 0% 0% 42%;
+    }
+}

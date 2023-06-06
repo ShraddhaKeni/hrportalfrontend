@@ -160,7 +160,7 @@ export default class AddReportingto extends Component {
                 
                 {this.state.reporting !== " " ? <br /> : ""}
 
-                {this.state.reporting !== " " ? <label style={{marginLeft:"80px"}}>Status:</label> : ""}
+                {this.state.reporting !== " " ? <label style={{marginLeft:"150px"}}>Status:</label> : ""}
 
                 {this.state.reporting !== " " ?
                     <Form.Group className="mb-3">

@@ -119,21 +119,21 @@
 {
     font-family: 'Poppins', sans-serif;
     position: relative;
-    left: 60px;
-    top: 110px;
+    left: 74px;
+   
     font-weight: 200;
 }
 
 .role_status{
     position: relative;
-    width: 650px;
+    width: 786px;
     background: #F1F1F1;
     height: 35px;
     border-radius: 4px;
     text-indent: 10px;
     border: none;
     outline: none;
-    top:140px;
-    right:55px
+    top:18px;
+    right:48px
 
 }

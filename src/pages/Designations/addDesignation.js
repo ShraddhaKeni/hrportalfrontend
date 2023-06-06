@@ -99,7 +99,7 @@ export default class AddDesignation extends Component {
         <Form onSubmit={this.handleSubmit}>
           <label className='EDNameLabel'>Enter Designation Name :</label>
           <Form.Group className="mb-3" >
-              <Form.Control type="text" className='EDNInPut' name="name" placeholder="Enter Designation Name" value={this.state.name} onChange={this.handleChange} required />
+              <Form.Control style={{marginLeft:"-14px"}} type="text" className='EDNInPut' name="name" placeholder="Enter Designation Name" value={this.state.name} onChange={this.handleChange} required />
           </Form.Group>
           
           <br />
@@ -119,7 +119,7 @@ export default class AddDesignation extends Component {
           :
             " "
           }
-
+<br></br>
   
           <Button className="SaveButton" type="submit">
               Save

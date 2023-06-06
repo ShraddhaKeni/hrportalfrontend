@@ -93,6 +93,8 @@ export default class Department extends Component{
                                                 depart.status === true? <td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
+
+                                            <br></br>
                                         <td> 
                                             {depart.status==true?<Button className='role_delete' onClick={() => {this.deleteClicked(depart.id)}} >
                                                 Delete

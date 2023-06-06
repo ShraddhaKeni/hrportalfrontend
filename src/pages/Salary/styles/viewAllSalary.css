@@ -35,7 +35,8 @@
     height: 30px;
     color: white;
     background-color: #552D59 ;
-    font-size: 12px;
+    font-size: 18px;
+    margin-left: 32%;
 }
 
 .salary_view
@@ -46,7 +47,7 @@
     height: 30px;
     color: white;
     background-color: #732B2B ;
-    font-size: 12px;
+    font-size: 18px;
 }
 
 .salary_line
@@ -77,3 +78,7 @@
     top:140px;
     right:550px;
 }
+
+/* .table>tbody>tr>td{
+    padding-left: 111px;
+} */

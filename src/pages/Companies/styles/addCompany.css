@@ -393,7 +393,7 @@
 .addCompany_status_lable
 {
     position: relative;
-    top:-175px;
+    top:24px;
     left:385px; 
     font-weight: 800; 
 }
@@ -405,10 +405,11 @@
     height: 35px;
     border-radius: 4px;
     text-indent: 10px;
-    bottom:150px;
-    left:90px;
+    bottom: 150px;
+    left: -38px;
     outline: none;
     border: none;
+    margin-top: 19%;
 }
 
 

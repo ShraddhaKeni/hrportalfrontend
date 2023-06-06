@@ -139,8 +139,8 @@ export default class Viewjobs extends Component {
                                                 {item.status==true?<td><span style={{fontSize:24, color:"green"}}>&#10003;</span></td> 
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>}
                                                 <td>
-                                                    <Button onClick={()=>{this.deleteJob(item.id);this.componentDidMount()}} style={{padding:'5px', marginRight:'5px', backgroundColor:'orange'}} value>Delete</Button>
-                                                    <Button onClick={()=>this.setState({isEdit:true,job_id:item.id})}>Edit</Button>
+                                                    <Button onClick={()=>{this.deleteJob(item.id);this.componentDidMount()}} style={{padding:'5px', marginRight:'5px'}} className='role_delete' value>Delete</Button>
+                                                    <Button onClick={()=>this.setState({isEdit:true,job_id:item.id})} className='role_edit'>Edit</Button>
                                                 </td>
                                             </tr>
                                             )

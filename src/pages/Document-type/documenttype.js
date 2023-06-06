@@ -82,12 +82,12 @@ export default class Documenttype extends Component{
                                                 : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                             }
                                         <td> 
-                                           {doc.status!=false?<Button variant="danger" onClick={() => {this.changeStatus(doc.id,doc.status)}} >
+                                           {doc.status!=false?<Button className='role_delete' onClick={() => {this.changeStatus(doc.id,doc.status)}} >
                                                 Delete 
-                                            </Button> :<Button variant="primary" onClick={() => {this.changeStatus(doc.id,doc.status)}} >
+                                            </Button> :<Button className='role_edit' onClick={() => {this.changeStatus(doc.id,doc.status)}} >
                                                 Activate 
                                             </Button>} 
-                                            <Button variant="info" onClick={() => {this.editClicked(doc.id)}} >
+                                            <Button className='role_edit' onClick={() => {this.editClicked(doc.id)}} >
                                                 Edit 
                                             </Button> 
                                         </td>

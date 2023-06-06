@@ -247,7 +247,7 @@ export default class AddCompanies extends Component {
                     }
 
                     <br/>
-                 <div style={{marginTop: '41%', marginBottom: '2%'}}>
+                 <div style={{marginTop: '36%', marginBottom: '2%'}}>
                     <Button className="SaveButton" type="submit">
                         Save
                     </Button>&nbsp;&nbsp;

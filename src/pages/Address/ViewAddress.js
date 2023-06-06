@@ -153,12 +153,12 @@ const ViewAddress = () => {
                                                   : <td><span style={{fontSize:12, color:"red"}}>&#10060;</span></td>
                                     }
                                     <td>
-                                    {address.status==true?<Button variant="danger" onClick={()=>statusChange(address.id,address.status)}>
+                                    {address.status==true?<Button className='role_delete' onClick={()=>statusChange(address.id,address.status)}>
                                                   Delete 
-                                              </Button> :<Button variant="primary" onClick={()=>statusChange(address.id,address.status)}>
+                                              </Button> :<Button className='role_edit' onClick={()=>statusChange(address.id,address.status)}>
                                                   Activate
                                               </Button> }
-                                              <Button variant="info" onClick={() => {editClicked(address.id)}} >
+                                              <Button className='role_edit' onClick={() => {editClicked(address.id)}} >
                                                   Edit 
                                               </Button> 
                                     </td>

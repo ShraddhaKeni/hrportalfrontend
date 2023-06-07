@@ -24,6 +24,7 @@
     "react-scripts": "^5.0.1",
     "react-select": "^5.4.0",
     "react-select-search": "^3.0.10",
+    "react-signature-canvas": "^1.0.6",
     "reactjs-input-validator": "^0.16.4",
     "reactstrap": "^9.0.1",
     "styled-components": "^5.3.3",

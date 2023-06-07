@@ -281,3 +281,38 @@
     position: relative;
     top:-10px;
 }
+
+
+.modalContainer {
+    position: fixed;
+    width: 75%;
+    height: 80%;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    transform: translate(-50%,-50%);
+}
+
+  ​
+  .modal{
+    width: 90%;
+    max-width: 500px;
+    border: 5px;
+    padding: 10px;
+    background-color: white;
+    box-sizing: border-box;
+  }
+  ​
+  .modal__bottom {
+    text-align: right;
+    margin-top: 10px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-evenly;
+    position: relative;
+    top: 6%;
+    right: 10%;
+  }

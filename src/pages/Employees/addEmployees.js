@@ -1,9 +1,9 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles/addEmployee.css'
-
+import SignatureCanvas from 'react-signature-canvas'
 export default class AddEmployees extends Component {
     constructor(props) {
         super(props)
@@ -24,8 +24,14 @@ export default class AddEmployees extends Component {
             DesignData: [],
             status: "true",
             error: "",
+            openCanvas:false,
+            upload:false,
+            sign_status:false,
+            blob:null,
         }
     }
+
+    sigCanvas = React.createRef([])
 
     componentDidMount() {
         if (this.state.employee !== " ") {
@@ -73,7 +79,7 @@ export default class AddEmployees extends Component {
     }
 
     handleChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({...this.state, [event.target.name]: event.target.value });
     }
 
     handleSubmit = event => {
@@ -82,9 +88,9 @@ export default class AddEmployees extends Component {
         var employee = {}
         this.state.employee === " " ?
             employee = {
-                name: this.state.name,
-                comp_id: this.state.comp_id,
-                user_id: this.state.user_id,
+                name: String(this.state.name),
+                comp_id: String(this.state.comp_id),
+                user_id: String(this.state.user_id),
                 desig_id: parseInt(this.state.desig_id),
                 dept_id: parseInt(this.state.dept_id),
                 email: this.state.email,
@@ -95,9 +101,9 @@ export default class AddEmployees extends Component {
 
             }
             : employee = {
-                name: this.state.name,
-                comp_id: this.state.comp_id,
-                user_id: this.state.user_id,
+                name: String(this.state.name),
+                comp_id: String(this.state.comp_id),
+                user_id: String(this.state.user_id),
                 desig_id: parseInt(this.state.desig_id),
                 dept_id: parseInt(this.state.dept_id),
                 email: this.state.email,
@@ -112,40 +118,155 @@ export default class AddEmployees extends Component {
     }
 
     addEmployee(employee) {
-        //console.log(employee)
-        axios.post(`http://localhost:3001/employees/create`, employee,
+        let formData= new FormData()
+        for(let input of Object.keys(employee))
             {
-                'Content-type': 'application/json'
-            }).then(res => {
+                if(input=='status'||input=='signature')
+                {
+                    continue;
+                }
+                else
+                {
+                   formData.append(input,employee[input]);
+                }
+              
+            }
+        formData.append('status',this.state.status===true?'true':'false');
+        if(this.state.sign_status)
+        {
+            formData.append('signature',this.state.blob,`${this.state.name}-signature.png`);
+        }
+        else
+        {
+            formData.append('signature',this.state.signature,this.state.signature.name);
+        }
+       
+       
+        const config = {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+
+        axios.post(`http://localhost:3000/employees/create`, formData,
+           config).then(res => {
                 console.log("printing result: ")
                 console.log(res)
-                window.location.reload()
+                // window.location.reload()
             }).catch((error) => {
                 if (error.request) {
                     var err2 = new Error(error.request.response)
                     alert(JSON.parse(err2.message).message[0])
-                    window.location.reload()
+                    // window.location.reload()
                 }
             });
     }
 
     editEmployee(employee) {
-        console.log(employee)
-        axios.patch(`http://localhost:3001/employees/` + this.state.employee, employee,
+       
+        if(this.state.upload)
+        {
+           
+            let formData= new FormData()
+            for(let input of Object.keys(employee))
+            {
+                if(input=='status'||input=='signature')
+                {
+                    continue;
+                }
+                else
+                {
+                   formData.append(input,employee[input]);
+                }
+              
+            }
+            if(this.state.sign_status)
+            {
+                formData.append('signature',this.state.blob,`${this.state.name}-signature.png`)
+            }
+            else
+            {
+                formData.append('signature',this.state.signature,this.state.signature.name)
+            }
+            formData.append('status',this.state.status===true?'true':'false')
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+           
+            
+            axios.post(`http://localhost:3001/employees/update/${this.state.employee}`,formData,config)
+                .then(res=>{
+                    alert('Employee Updated')
+                    window.location.reload()
+                })
+                .catch(err=>{
+                    alert(err)
+                })
+    
+        }
+
+        else
+        {
+            axios.patch(`http://localhost:3001/employees/` + this.state.employee, employee,
             {
                 'Content-type': 'application/json'
             }).then(res => {
-                window.location.reload()
+                // window.location.reload()
             }).catch((error) => {
                 if (error.request) {
                     var err2 = new Error(error.request.response)
                     alert(JSON.parse(err2.message).message[0])
                 }
             });
+        }
+
+
+
+
+        
     }
 
     cancel() {
         window.location.reload()
+    }
+
+    renderSignatureCanvas()
+    {
+        return(
+              <div className="modalContainer">
+                <div className="modal">
+                  <div className="modal__bottom">
+                    <button type='button' onClick={()=>this.setState({openCanvas:false})}>Cancel</button>
+                    <button type='button' onClick={()=>this.sigCanvas.current.clear()}>Clear</button>
+                    <button type='button' onClick={()=>this.saveCanvas()}>Save</button>
+                  </div>                  
+                  <SignatureCanvas ref={this.sigCanvas} penColor="black" canvasProps={{ className: "sigCanvas" }} />
+                </div>
+              </div>
+            //  {openModel &&  }
+        )
+    }
+
+    handleFile=(e)=>{
+       let image = e.target.files[0]
+       if(image.type=='image/png'||image.type=='image/jpg')
+       {
+        this.setState({sign_status:false})
+        this.setState({upload:true})
+        this.setState({signature:image})
+       }
+    }
+
+    saveCanvas=()=>{
+        let url = this.sigCanvas.current.getTrimmedCanvas().toDataURL("image/png"); //for json
+        let canvas = this.sigCanvas.current.getCanvas() //for formdata
+        this.setState({sign_status:true})
+        canvas.toBlob(blob=>{
+            this.setState({blob:blob})
+            this.setState({openCanvas:false})
+        })
     }
 
     render() {
@@ -240,7 +361,10 @@ export default class AddEmployees extends Component {
                  <label className='addCompany_signature_lable'>Signature:</label>
 
                         <Form.Group className="mb-3" >
-                            <input className='addCompany_signature' type="file" name="signature" placeholder="Signature" value={this.state.signature} onChange={this.handleChange} />
+                            <input className='addCompany_signature' type="file" name="signature" placeholder="Signature" defaultValue={this.state.signature} onChange={(e)=>this.handleFile(e)} />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <button type='button' className='signature-canvas-button' onClick={()=>this.setState({openCanvas:!this.state.openCanvas})}>Add Signature</button>
                         </Form.Group>
                         </div>  
 
@@ -276,6 +400,7 @@ export default class AddEmployees extends Component {
                     }
                     </div>
                     </div>
+                    {this.state.openCanvas && this.renderSignatureCanvas()}
                 </form>
                 </div>
            

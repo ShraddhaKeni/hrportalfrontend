@@ -8,8 +8,9 @@ import * as ImIcons from 'react-icons/im'
 import * as HiIcons from 'react-icons/hi'
 import * as SiIcons from 'react-icons/si'
 import * as MdIcons from 'react-icons/md'
+import { checkAccess, checkCookies } from '../pages/Helper/Auth'
 
-export const NavbarData = [
+const NavbarData = [
     {
         title: 'Designation',
         path: '/designation',
@@ -120,3 +121,6 @@ export const NavbarData = [
         icon: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
     },
 ]
+
+
+export default NavbarData

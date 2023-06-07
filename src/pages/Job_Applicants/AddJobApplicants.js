@@ -12,7 +12,7 @@ const AddJobApplicants = () => {
 
   const getJobsData = async () =>{
     try {
-      const {data}= await axios.get(`http://localhost:3001/jobs/findAll`)
+      const {data}= await axios.get(`/jobs/findAll`)
       setjobs(data.data)
     } catch (error) {
       console.log(error)
@@ -27,6 +27,7 @@ const AddJobApplicants = () => {
     e.preventDefault()
     // console.log(createData)
     try {
+   
       const postData = {
         contact_no: document.getElementById('contactno').value.toString(),
         cv: createData.cv,
@@ -35,8 +36,8 @@ const AddJobApplicants = () => {
         name: createData.name,
         status:true
       }
-      // console.log(postData)
-      const postRequest = await axios.post(`http://localhost:3001/job-applicants/create`,postData,{
+      
+      const postRequest = await axios.post(`http://localhost:3000/job-applicants/create`,postData,{
         'Content-type':'application/json'
       })
       console.log(postData)

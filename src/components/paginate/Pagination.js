@@ -4,7 +4,7 @@ import { VscChevronLeft,VscChevronRight } from "react-icons/vsc";
 
 const Pagination = ({postPerPage,totalPosts,paginate,currentPage}) => {
     const pages = Math.ceil(totalPosts/postPerPage)
-    console.log(currentPage)
+   
   return (
     
     <div style={{display:'flex',justifyContent:'center'}}>

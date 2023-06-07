@@ -33,6 +33,7 @@ const UpdateDocuments = ({updates}) => {
             setDocTypes(data.data)
             document.getElementById('doc_type').value=documentsData.doc_type_id
             
+         
         } catch (error) {
             console.log(error)
         }

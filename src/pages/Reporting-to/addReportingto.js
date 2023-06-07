@@ -28,7 +28,7 @@ export default class AddReportingto extends Component {
 
     componentDidMount() {
         if(this.state.reporting !== " "){
-            axios.get('http://localhost:3001/report-to/'+this.state.reporting).then(response => {
+            axios.get('/report-to/'+this.state.reporting).then(response => {
                 this.setState({
                     employee: response.data.data.emp_id,
                     reportingto: response.data.data.reporting_emp_id,
@@ -40,7 +40,7 @@ export default class AddReportingto extends Component {
     }
     async getEmployeeDetails()
     {
-        const {data} = await axios.get('http://localhost:3001/employees')
+        const {data} = await axios.get('/employees')
         this.setState({EmployeeData:data.data})
         //console.log(this.state.EmployeeData)
     }
@@ -71,7 +71,7 @@ export default class AddReportingto extends Component {
     addReporting(reporting){
 
         
-        axios.post(`http://localhost:3001/report-to`, reporting ,
+        axios.post(`/report-to`, reporting ,
         {
             'Content-type':'application/json'
         }).then(res => {
@@ -90,7 +90,7 @@ export default class AddReportingto extends Component {
             reporting_emp_id:reporting.reporting_emp_id,
             status:isBool
         } 
-        axios.patch(`http://localhost:3001/report-to/`+this.state.reporting, data,
+        axios.patch(`/report-to/`+this.state.reporting, data,
         {
             'Content-type':'application/json'
         }).then(res => {

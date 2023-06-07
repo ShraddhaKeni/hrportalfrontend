@@ -20,13 +20,13 @@ export default class Cities extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:3001/states').then(response => {
+        axios.get('/states').then(response => {
             this.setState({
                 statesData: response.data.data
             });
         });
 
-        axios.get('http://localhost:3001/cities').then(response => {
+        axios.get('/cities').then(response => {
             this.setState({
                 cities: response.data.data
             });
@@ -55,7 +55,7 @@ export default class Cities extends Component{
             status:!status
         }
         console.log(change)
-        const requestStatusChange = await axios.patch(`http://localhost:3001/cities/${id}`,change,{
+        const requestStatusChange = await axios.patch(`/cities/${id}`,change,{
             'Content-type':'application/json'
         })
         window.location.reload();

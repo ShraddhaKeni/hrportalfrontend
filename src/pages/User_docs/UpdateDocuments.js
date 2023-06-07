@@ -28,7 +28,7 @@ const UpdateDocuments = ({updates}) => {
 
     const getDocumentTypeData = async()=>{
         try {
-            const {data} = await axios.get(`http://localhost:3001/document-type/findAll`)
+            const {data} = await axios.get(`/document-type/findAll`)
             setDocTypes(data.data)
             document.getElementById('doc_type').value=documentsData.doc_type_id
          
@@ -39,7 +39,7 @@ const UpdateDocuments = ({updates}) => {
     }
     const getUserDetails = async()=>{
         try {
-            const {data} = await axios.get(`http://localhost:3001/users/findAll`)
+            const {data} = await axios.get(`/users/findAll`)
             setusers(data.data)
         } catch (error) {
             console.log(error)

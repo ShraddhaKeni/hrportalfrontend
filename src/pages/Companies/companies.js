@@ -27,7 +27,7 @@ export default class Companies extends Component{
 
 
     componentDidMount(){    
-        axios.get('http://localhost:3001/companies').then(response => {
+        axios.get('/companies').then(response => {
             this.setState({
                 companies: response.data.data
             })
@@ -62,7 +62,7 @@ export default class Companies extends Component{
         const data ={
             status:!status
         }
-        const requestChange = await axios.patch(`http://localhost:3001/companies/${id}`,data,{
+        const requestChange = await axios.patch(`/companies/${id}`,data,{
             'Content-type': 'application/json'
         })
         window.location.reload();

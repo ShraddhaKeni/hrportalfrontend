@@ -20,7 +20,7 @@ const UpdateApplicationTrack = ({trackData}) => {
 
     const getApplicants = async()=>{
         try {
-            const {data} = await axios.get(`http://localhost:3001/job-applicants/findAll`)
+            const {data} = await axios.get(`/job-applicants/findAll`)
             setApplicantData(data.data)
             setDefaultApplicant(applicantData.find(x=>x.id==trackData.applicant_id))
             //console.log(addTrack.applicant_id)
@@ -33,7 +33,7 @@ const UpdateApplicationTrack = ({trackData}) => {
 
     const getEmployeeData = async()=>{
         try {
-            const {data} = await axios.get(`http://localhost:3001/employees`)
+            const {data} = await axios.get(`/employees`)
             setEmployees(data.data)
             document.getElementById('emp_id').value = addTrack.emp_id
         } catch (error) {
@@ -49,7 +49,7 @@ const UpdateApplicationTrack = ({trackData}) => {
             try {
                 setTrack({...addTrack,[e.target.name]:e.target.value})
                 const Applicat = applicantData.find(x=>x.id==id)
-                const {data} = await axios.get(`http://localhost:3001/jobs/find/${Applicat.job_id}`)
+                const {data} = await axios.get(`/jobs/find/${Applicat.job_id}`)
                 setJob(data.data)    
             } catch (error) {
                 console.log(error)
@@ -80,7 +80,7 @@ const UpdateApplicationTrack = ({trackData}) => {
                 level:parseInt(addTrack.level),
                 status:isBool
             }
-            const updateReqeust = await axios.patch(`http://localhost:3001/application-track/update/${trackData.id}`,data,{
+            const updateReqeust = await axios.patch(`/application-track/update/${trackData.id}`,data,{
                 'Content-type':'application/json'
             })
             console.log(updateReqeust)
@@ -95,7 +95,7 @@ const UpdateApplicationTrack = ({trackData}) => {
     async function findTitle(id)
     {
         try {
-            const {data} = await axios.get(`http://localhost:3001/jobs/find/${id}`)
+            const {data} = await axios.get(`/jobs/find/${id}`)
                 setJob(data.data) 
         } catch (error) {
             console.log(error)

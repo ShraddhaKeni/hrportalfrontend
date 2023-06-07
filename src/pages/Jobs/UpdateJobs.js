@@ -42,21 +42,21 @@ export default class UpdateJobs extends Component {
     
     fetchDeparmentData()
     {
-        axios.get('http://localhost:3001/departments/viewall')
+        axios.get('/departments/viewall')
             .then(response=>{
                 this.setState({DepartmentData:response.data.data})
             })
     }
     fetchRoleData()
     {
-        axios.get('http://localhost:3001/roles')
+        axios.get('/roles')
              .then(response=>{
                 this.setState({RoleData:response.data.data})
              })
     }
     async fetchEmployeeData()
     {
-        const {data} =await axios.get('http://localhost:3001/employees')
+        const {data} =await axios.get('/employees')
         this.setState({EmployeeData:data.data})
         console.log(this.state.EmployeeData);
     }
@@ -77,7 +77,7 @@ export default class UpdateJobs extends Component {
 
         
         console.log(pathcData)
-        axios.patch(`http://localhost:3001/jobs/update/${job_id}`,pathcData,{
+        axios.patch(`/jobs/update/${job_id}`,pathcData,{
             'Content-type':'application/json'
         })
         .then(()=>window.location.reload())
@@ -89,11 +89,11 @@ export default class UpdateJobs extends Component {
     {
 
         try {
-            const {data} = await axios.get(`http://localhost:3001/jobs/find/${this.state.job_id}`)
+            const {data} = await axios.get(`/jobs/find/${this.state.job_id}`)
             this.setState({job_details:data.data})
             this.setState({statusValue:this.state.job_details.status})
             //console.log(this.state.job_details)
-            const response = await axios.get(`http://localhost:3001/roles/${this.state.job_details.role_id}`)
+            const response = await axios.get(`/roles/${this.state.job_details.role_id}`)
             this.setState({role_details:response.data.data})
             console.log(this.state)
             this.setState({title:this.state.job_details.title})

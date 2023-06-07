@@ -25,19 +25,19 @@ export default class Employees extends Component{
 
     componentDidMount(){
         
-        axios.get('http://localhost:3001/employees').then(response => {
+        axios.get('/employees').then(response => {
             this.setState({
                 employees: response.data.data
             });
         });
 
-        axios.get('http://localhost:3001/users/findAll').then(response => {
+        axios.get('/users/findAll').then(response => {
             this.setState({
                 users: response.data.data
             });
         });
 
-        axios.get('http://localhost:3001/companies').then(response => {
+        axios.get('/companies').then(response => {
             this.setState({
                 companies: response.data.data
             });
@@ -82,7 +82,7 @@ export default class Employees extends Component{
             const statusChange = {
                 status:!status
             }
-            const changeRequest = await axios.patch(`http://localhost:3001/employees/${id}`,statusChange)
+            const changeRequest = await axios.patch(`/employees/${id}`,statusChange)
             window.location.reload();
             
 

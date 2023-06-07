@@ -18,21 +18,21 @@ export default class ViewCompanies extends Component {
   }  
 
   componentDidMount(){
-    axios.get('http://localhost:3001/companies/'+this.state.company_id).then(response => {
+    axios.get('/companies/'+this.state.company_id).then(response => {
         this.setState({
             company: response.data.data
         });
-        axios.get('http://localhost:3001/countries/'+this.state.company.country_id).then(country_res =>{
+        axios.get('/countries/'+this.state.company.country_id).then(country_res =>{
             this.setState({
                 country: country_res.data.data.name
             });
         });
-        axios.get('http://localhost:3001/states/'+this.state.company.state_id).then(state_res =>{
+        axios.get('/states/'+this.state.company.state_id).then(state_res =>{
             this.setState({
                 state: state_res.data.data.name
             });
         });
-        axios.get('http://localhost:3001/cities/'+this.state.company.city_id).then(city_res =>{
+        axios.get('/cities/'+this.state.company.city_id).then(city_res =>{
             this.setState({
                 city: city_res.data.data.name
             });

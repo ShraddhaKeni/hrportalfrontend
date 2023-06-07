@@ -25,7 +25,7 @@ export default class AddUsers extends Component {
 
     componentDidMount(){
         if(this.state.user !== " "){
-          axios.get('http://localhost:3001/users/'+this.state.user).then(response => {
+          axios.get('/users/'+this.state.user).then(response => {
               this.setState({
                   username: response.data.data.username,
                   password: response.data.data.password,
@@ -41,7 +41,7 @@ export default class AddUsers extends Component {
           });
         }
 
-        axios.get('http://localhost:3001/roles').then(response => {
+        axios.get('/roles').then(response => {
             this.setState({
                 RoleData: response.data.data
             });
@@ -99,7 +99,7 @@ export default class AddUsers extends Component {
             formData.append(input,user[input])
         }
 
-        axios.post(`http://localhost:3001/users/signup`, formData ,
+        axios.post(`/users/signup`, formData ,
         {
             'Content-type':'multipart/form-data'
         }).then(res => {
@@ -122,7 +122,7 @@ export default class AddUsers extends Component {
             username: user.username,
         }
         console.log(this.state.user)
-        axios.patch(`http://localhost:3001/users/`+this.state.user, data ,
+        axios.patch(`/users/`+this.state.user, data ,
         {
             'Content-type':'application/json'
         }).then(res => {

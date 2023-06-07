@@ -10,7 +10,7 @@ const UpdateJobApplicants = ({ applicant }) => {
   const getApplicants = async (id) => {
 
     try {
-      const { data } = await axios.get(`http://localhost:3001/job-applicants/findApplicant/${id}`);
+      const {data} = await axios.get(`/job-applicants/findApplicant/${id}`);
       setDetails(data.data)
     } catch (error) {
       console.log(error)
@@ -21,7 +21,7 @@ const UpdateJobApplicants = ({ applicant }) => {
   const getJob = async () => {
 
     try {
-      const { data } = await axios.get(`http://localhost:3001/jobs/findAll`);
+      const {data} = await axios.get(`/jobs/findAll`);
       setJobs(data.data)
       //console.log(applicant.job_id)
       document.getElementById('job_id').value = applicant.job_id
@@ -38,24 +38,25 @@ const UpdateJobApplicants = ({ applicant }) => {
   const handleSubmit = async (e) => {
 
     e.preventDefault()
-    try {
-      const isBool = applicantDetails.status.toString().toLowerCase() == 'true'
-      const patchData = {
-        job_id: parseInt(applicantDetails.job_id),
-        name: applicantDetails.name,
-        contact_no: applicantDetails.contact_no,
-        email_id: applicantDetails.email_id,
-        cv: applicantDetails.cv,
-        status: isBool
+      try {
+        const isBool = applicantDetails.status.toString().toLowerCase()=='true'
+        const patchData = {
+            job_id:parseInt(applicantDetails.job_id),
+            name:applicantDetails.name,
+            contact_no:applicantDetails.contact_no,
+            email_id:applicantDetails.email_id,
+            cv:applicantDetails.cv,
+            status:isBool
+        }
+        
+        const patchReqeust = await axios.patch(`/job-applicants/update/${applicant.id}`,patchData,{
+          'Content-type':'application/json'
+        })
+        window.location.reload()
+      } catch (error) {
+        console.log(error)
       }
-      console.log(patchData)
-      const patchReqeust = await axios.patch(`http://localhost:3001/job-applicants/update/${applicant.id}`, patchData, {
-        'Content-type': 'application/json'
-      })
-      window.location.reload()
-    } catch (error) {
-      console.log(error)
-    }
+   
   }
 
   useEffect(() => {

@@ -16,12 +16,12 @@ export default class AddDesignation extends Component {
     }
   }
 
-  componentDidMount() {
-    if (this.state.depart !== " ") {
-      axios.get('http://localhost:3001/departments/' + this.state.depart).then(response => {
-        this.setState({
-          name: response.data.data.name
-        });
+  componentDidMount(){
+    if(this.state.depart !== " "){
+      axios.get('/departments/'+this.state.depart).then(response => {
+          this.setState({
+              name: response.data.data.name
+          });
       });
     }
   }
@@ -64,15 +64,15 @@ export default class AddDesignation extends Component {
 
   }
 
-  addDepartment(department) {
-    axios.post(`http://localhost:3001/departments/add`, department,
-      {
-        'Content-type': 'application/json'
-      }).then(res => {
-
-        window.location.reload()
-      })
-
+  addDepartment(department){
+    axios.post(`/departments/add`, department ,
+    {
+      'Content-type':'application/json'
+    }).then(res => {
+      
+      window.location.reload()
+    })
+    
   }
 
   async editDepartment(department) {
@@ -83,11 +83,11 @@ export default class AddDesignation extends Component {
       name: department.name,
       status: bol
     }
-
-    const changeData = await axios.patch(`http://localhost:3001/departments/${this.state.depart}`, data,
-      {
-        'Content-type': 'application/json'
-      })
+    
+    const changeData = await axios.patch(`/departments/${this.state.depart}`, data,
+    {
+      'Content-type':'application/json'
+    })
     //console.log(changeData);
     window.location.reload()
 

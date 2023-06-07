@@ -33,8 +33,7 @@ export default class AddCompanies extends Component {
 
     componentDidMount(){
         if(this.state.company !== " "){
-          axios.get('http://localhost:3001/companies/'+this.state.company).then(response => {
-            console.log(response)
+          axios.get('/companies/'+this.state.company).then(response => {
               this.setState({
                   name: response.data.data.name,
                   address: response.data.data.address,
@@ -54,7 +53,7 @@ export default class AddCompanies extends Component {
           });
         }
 
-        axios.get('http://localhost:3001/countries').then(response => {
+        axios.get('/countries').then(response => {
             this.setState({
                 CountryData: response.data.data
             });
@@ -65,7 +64,7 @@ export default class AddCompanies extends Component {
         this.setState({
             country_id: e.target.value
         });
-        axios.get('http://localhost:3001/states/list/' + e.target.value).then(response => {
+        axios.get('/states/list/' + e.target.value).then(response => {
         this.setState({
                 StatesData: response.data.data
             });
@@ -76,7 +75,7 @@ export default class AddCompanies extends Component {
         this.setState({
             state_id: e.target.value
         });
-        axios.get('http://localhost:3001/cities/list/' + e.target.value).then(response => {
+        axios.get('/cities/list/' + e.target.value).then(response => {
             this.setState({
                 CityData: response.data.data
             });
@@ -130,7 +129,7 @@ export default class AddCompanies extends Component {
     }
 
     addCompany(company){
-        axios.post(`http://localhost:3001/companies/add`, company ,
+        axios.post(`/companies/add`, company ,
         {
             'Content-type':'application/json'
         }).then(res => {
@@ -139,8 +138,8 @@ export default class AddCompanies extends Component {
     }
 
     editCompany(company){
-        //console.log(company)
-        axios.patch(`http://localhost:3001/companies/`+this.state.company, company ,
+        console.log(company)
+        axios.patch(`/companies/`+this.state.company, company ,
         {
             'Content-type':'application/json'
         }).then(res => {

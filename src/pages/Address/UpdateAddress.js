@@ -25,8 +25,6 @@ const UpdateAddress = ({ addressDetails, id }) => {
   const pincodeRef = useRef([])
   const typeRef = useRef([]);
   const statusRef = useRef([])
-
-
   useEffect(() => {
     getCountryData();
     getStateData();
@@ -36,7 +34,7 @@ const UpdateAddress = ({ addressDetails, id }) => {
   const getCountryData = async () => {
 
     try {
-      const { data } = await axios.get(`http://localhost:3001/countries`)
+      const { data } = await axios.get(`/countries`)
       setCountry(data.data)
     }
     catch (error) {
@@ -44,69 +42,71 @@ const UpdateAddress = ({ addressDetails, id }) => {
     }
 
   }
+        
+  
+      const getStateData = async()=>{
 
-  const getStateData = async () => {
+        try {
+            const {data} = await axios.get(`/states`)
+            setStateData(data.data)
+        } catch (error) {
+            console.log(error)
+        }
+        
+      }
+      const getCityData = async ()=>{
+        try {
+          const {data} = await axios.get(`/cities`)
+          setCity(data.data)
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      const changeState = async (e) =>{
 
-    try {
-      const { data } = await axios.get(`http://localhost:3001/states`)
-      setStateData(data.data)
-    } catch (error) {
-      console.log(error)
-    }
+        try {
+         
+          setUpdate({...updateData,country_id:parseInt(e.target.value)});
+          const id = e.target.value;
+          const {data} = await axios.get(`/states/list/${id}`)
+          setStateData(data.data);
+        } catch (error) {
+          
+        }
+        
+        
+      }
+      const changeCity = async (e) =>{
 
-  }
-  const getCityData = async () => {
-    try {
-      const { data } = await axios.get(`http://localhost:3001/cities`)
-      setCity(data.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  const changeState = async (e) => {
+        setUpdate({...updateData,state_id:parseInt(e.target.value)});
+        const id = e.target.value;
+        const {data} = await axios.get(`/cities/list/${id}`)
+        setCity(data.data);
+        
+      }
+      const cityUpdated = (e)=>{
+        setUpdate({...updateData,city_id:parseInt(e.target.value)})
+      }
 
-    try {
-
-      setUpdate({ ...updateData, country_id: parseInt(e.target.value) });
-      const id = e.target.value;
-      const { data } = await axios.get(`http://localhost:3001/states/list/${id}`)
-      setStateData(data.data);
-    } catch (error) {
-
-    }
-
-
-  }
-  const changeCity = async (e) => {
-
-    setUpdate({ ...updateData, state_id: parseInt(e.target.value) });
-    const id = e.target.value;
-    const { data } = await axios.get(`http://localhost:3001/cities/list/${id}`)
-    setCity(data.data);
-
-  }
-  const cityUpdated = (e) => {
-    setUpdate({ ...updateData, city_id: parseInt(e.target.value) })
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(updateData)
-    try {
-      const updateRequest = await axios.patch(`http://localhost:3001/address/update/${id}`, updateData, {
-        'Content-type': 'application/json'
-      })
-      window.location.reload()
-    } catch (error) {
-      console.log(error)
-    }
-
-  }
-  const changeStatus = (e) => {
-    const isBool = e.target.value.toString().toLowerCase() == 'true'
-    setUpdate({ ...updateData, status: isBool })
-  }
-
+      const handleSubmit = async (e)=>{
+        e.preventDefault();
+        console.log(updateData)
+        try {
+          const updateRequest = await axios.patch(`/address/update/${id}`,updateData,{
+            'Content-type':'application/json'
+          })
+          window.location.reload()
+        } catch (error) {
+          console.log(error)
+        }
+        
+      }
+      const changeStatus = (e)=>
+      {
+        const isBool = e.target.value.toString().toLowerCase()=='true'
+        setUpdate({...updateData,status:isBool})
+      }
+    
 
   return (
     <>

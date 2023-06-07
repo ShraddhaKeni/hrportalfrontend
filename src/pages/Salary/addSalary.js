@@ -28,13 +28,13 @@ export default class Salary extends React.Component {
 
     componentDidMount() {
 
-        axios.get('http://localhost:3001/salary/findAll').then(response => {
+        axios.get('/salary/findAll').then(response => {
             this.setState({
                 salaryData: response.data.data
             });
         });
 
-        axios.get('http://localhost:3001/employees').then(response => {
+        axios.get('/employees').then(response => {
             this.setState({
                 employeesData: response.data.data
             });
@@ -58,7 +58,7 @@ export default class Salary extends React.Component {
             salary: this.state.salary //column name:value
         };
         console.log(salary)
-        axios.post(`http://localhost:3001/salary/create`, salary,
+        axios.post(`/salary/create`, salary,
             {
                 'Content-type': 'application/json'
             })
@@ -71,7 +71,7 @@ export default class Salary extends React.Component {
 
 
     EditNewSalary(salary) {
-        axios.post(`http://localhost:3001/salary/create`, salary,
+        axios.post(`/salary/create`, salary,
             {
                 'Content-type': 'application/json'
             })

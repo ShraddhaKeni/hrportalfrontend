@@ -14,11 +14,11 @@ export default class ViewUsers extends Component {
   }  
 
   componentDidMount(){
-    axios.get('http://localhost:3001/users/'+this.state.user_id).then(response => {
+    axios.get('/users/'+this.state.user_id).then(response => {
         this.setState({
             user: response.data.data
         });
-        axios.get('http://localhost:3001/roles/'+this.state.user.role_id).then(role_res =>{
+        axios.get('/roles/'+this.state.user.role_id).then(role_res =>{
             this.setState({
                 role: role_res.data.data.name
             });

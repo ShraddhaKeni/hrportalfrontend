@@ -10,7 +10,7 @@ const UpdateJobApplicants = ({applicant}) => {
   const getApplicants = async(id) =>{
 
     try {
-      const {data} = await axios.get(`http://localhost:3001/job-applicants/findApplicant/${id}`);
+      const {data} = await axios.get(`/job-applicants/findApplicant/${id}`);
       setDetails(data.data)
     } catch (error) {
       console.log(error)
@@ -21,7 +21,7 @@ const UpdateJobApplicants = ({applicant}) => {
   const getJob = async() =>{
 
     try {
-      const {data} = await axios.get(`http://localhost:3001/jobs/findAll`);
+      const {data} = await axios.get(`/jobs/findAll`);
       setJobs(data.data)
     } catch (error) {
       console.log(error)
@@ -47,7 +47,7 @@ const UpdateJobApplicants = ({applicant}) => {
             status:isBool
         }
         console.log(patchData)
-        const patchReqeust = await axios.patch(`http://localhost:3001/job-applicants/update/${applicant.id}`,patchData,{
+        const patchReqeust = await axios.patch(`/job-applicants/update/${applicant.id}`,patchData,{
           'Content-type':'application/json'
         })
         window.location.reload()

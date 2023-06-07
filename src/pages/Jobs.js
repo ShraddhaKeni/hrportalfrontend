@@ -22,24 +22,24 @@ export default class Jobs extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/departments/viewall').then(response => {
+        axios.get('/departments/viewall').then(response => {
             console.log(response)
             this.setState({
                 DepartmentData: response.data.data
             });
         }); 
-        axios.get('http://localhost:3001/roles').then(response => {
+        axios.get('/roles').then(response => {
             // console.log(response.data);
             this.setState({
                 RoleData: response.data.data
             });
         });
-        axios.get('http://localhost:3001/employees').then(response => {
+        axios.get('/employees').then(response => {
             this.setState({
                 EmployeeData: response.data.data
             });
         });
-        axios.get('http://localhost:3001/companies')
+        axios.get('/companies')
              .then(response=>{
                 this.setState({
                     CompanyData:response.data.data
@@ -59,7 +59,7 @@ export default class Jobs extends React.Component {
                 raised_by_emp:this.state.employee
             };
            console.log(user)
-             axios.post(`http://localhost:3001/jobs/create`, user,
+             axios.post(`/jobs/create`, user,
                 {
                     'Content-type': 'application/json'
                 })

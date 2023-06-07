@@ -30,7 +30,7 @@ export default class EditSalary extends Component{
             salary: this.state.salary //column name:value
         };
         console.log(salary)
-        axios.post(`http://localhost:3001/salary/create`, salary,
+        axios.post(`/salary/create`, salary,
         {
             'Content-type': 'application/json'
         })
@@ -46,13 +46,13 @@ export default class EditSalary extends Component{
 
     componentDidMount(){
 
-        axios.get('http://localhost:3001/employees/'+this.state.emp_id).then(response => {
+        axios.get('/employees/'+this.state.emp_id).then(response => {
             this.setState({
                 empName: response.data.data.name
             });
         });
 
-        axios.get('http://localhost:3001/salary/find/'+this.state.emp_id).then(response => {
+        axios.get('/salary/find/'+this.state.emp_id).then(response => {
             this.setState({
                 salaries: response.data.data
             });

@@ -25,7 +25,7 @@ export default class Roles extends Component{
     componentDidMount(){
         
         // axios.get('http://10.201.10.191:3000/roles').then(response => {
-        axios.get('http://localhost:3001/roles').then(response => {
+        axios.get('/roles').then(response => {
             this.setState({
                 roles: response.data.data
             });
@@ -47,7 +47,7 @@ export default class Roles extends Component{
         const data = {
             status:!status
         }
-        const deleted = axios.patch(`http://localhost:3001/roles/${id}`,data,{
+        const deleted = axios.patch(`/roles/${id}`,data,{
             'Content-type':'application/json'
         })
         window.location.reload();
